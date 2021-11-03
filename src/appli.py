@@ -9,5 +9,5 @@ with open("../settings.json") as json_file:
 
 hal = fonctions_analyse.consolider_source.chargement_hal(data["hal_fichier"])
 
-print(hal)
+s
 
