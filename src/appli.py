@@ -1,5 +1,5 @@
 import json
-import fonctions_analyse.consolider_source
+import fonctions_analyse.chargement_sources
 
 # import fonctions_analyse.chargement_data
 # import pandas as pd
@@ -7,7 +7,7 @@ import fonctions_analyse.consolider_source
 with open("../settings.json") as json_file:
     data = json.load(json_file)
 
-hal = fonctions_analyse.consolider_source.chargement_hal(data["hal_fichier"])
+hal = fonctions_analyse.chargement_sources.chargement_hal(data["hal_fichier"])
 
-s
+
 
