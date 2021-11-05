@@ -5,6 +5,7 @@ Fonctions pour consolider les sources
 import pandas as pd
 import re
 import unidecode
+from src.fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage_titre, doi_ou_hal
 
 
 def normalize_txt(title):
@@ -29,7 +30,7 @@ def chargement_hal(hal_file=""):
     if hal_file:
         # chargement, garde certaines colonnes et transformations des titres du fichier HAL
         # fichier_hal = "../data/" + hal_file
-        hal = pd.read_csv("../data/" + hal_file, sep=';',
+        hal = pd.read_csv("../data/dois/" + hal_file, sep=';',
                           skiprows=1)  # sep et skiprows afin de s'adapter au fichier csv
         hal = conforme_df(hal, {"DOI": "doi", 'Réf. HAL': 'halId', 'Titre': 'title'})
     else:  # Si le fichier n'est pas spécifié
@@ -41,7 +42,7 @@ def chargement_scopus(scopus_file=""):
     if scopus_file:
         # Chargement
         # fichier_scopus = "../data/" + scopus_file
-        scopus = pd.read_csv("../data/" + scopus_file, encoding='utf8')
+        scopus = pd.read_csv("../data/dois/" + scopus_file, encoding='utf8')
         scopus = conforme_df(scopus, {"DOI": "doi", "Title": "title"})
     else:  # Si pas de fichier spécifié
         scopus = None
@@ -55,7 +56,7 @@ def chargement_wos(wos_file=[]):
         #               "wos_2019b.txt", "wos_2019c.txt", "wos_2020a.txt", "wos_2020b.txt", "wos_2020c.txt"]
         df_buffer = []
         for f in wos_file:
-            df = pd.read_csv("../data/"+f, sep="\t", index_col=False)
+            df = pd.read_csv("../data/dois/" + f, sep="\t", index_col=False)
             df_buffer.append(df)
         wos = pd.concat(df_buffer)
         wos = conforme_df(wos, {"DI": "doi", "TI": "title"})
@@ -66,7 +67,7 @@ def chargement_wos(wos_file=[]):
 
 def chargement_pubmed(pubmed_file=""):
     if pubmed_file:
-        pubmed = pd.read_csv("../data/" + pubmed_file)
+        pubmed = pd.read_csv("../data/dois/" + pubmed_file)
         pubmed = conforme_df(pubmed, {"DOI": "doi", "Title": "title"})
     else:
         pubmed = None
@@ -85,7 +86,7 @@ def removeJoinDois(x):
 
 def chargement_lens(lens_file=""):
     if lens_file:
-        lens = pd.read_csv("../data/" + lens_file)
+        lens = pd.read_csv("../data/dois/" + lens_file)
         lens = conforme_df(lens, {"DOI": "doi", "Title": "title"})
         lens["doi"] = lens["doi"].apply(lambda x: removeJoinDois(x))
     else:
@@ -106,7 +107,7 @@ def extract_stats_from_base(src_name, df, stats_buffer):
         print(f"{src_name} not imported")
 
 
-def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None):
+def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None, lens_df=None):
     """" Extrait les statistiques de toutes les bases données"""
     stats = []
 
@@ -121,3 +122,46 @@ def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None)
 
     if pubmed_df is not None:
         extract_stats_from_base("pubmed", pubmed_df, stats)
+
+    if lens_df is not None:
+        extract_stats_from_base("lens", lens_df, stats)
+
+    return stats
+
+
+def chargement_tout(data):
+    # Charge tous les fichiers et donne des statistiques dessus et le dataframe de tous les dataframes
+
+    hal = chargement_hal(data["hal_fichier"])
+    scopus = chargement_scopus(data["scopus_fichier"])
+    wos = chargement_wos(data["wos_fichier"])
+    pubmed = chargement_pubmed(data["pubmed_fichier"])
+    lens = chargement_lens(data["lens_fichier"])
+
+    stats = statistiques_bases(hal, scopus, wos, pubmed, lens)
+
+    # Dedoublonnage
+    df_charge = pd.concat([hal, scopus, wos, pubmed, lens])
+    clean_doi = dedoublonnage_doi(df_charge)
+    clean_doi_title = dedoublonnage_titre(clean_doi)
+    final_df = doi_ou_hal(clean_doi_title)
+
+    stats.append([
+        "retenu",
+        len(final_df),
+        len(final_df[final_df['doi'].notna()]),
+        len(final_df[final_df['doi'].isna()])])
+
+    stat_table = pd.DataFrame(stats, columns=[
+        'name', 'all', 'doi', 'no_doi'])
+
+    # Sauvegarder les statistiques sur les bases
+    stat_table.to_csv(
+        "../resultats/fichiers_csv/statistiques_sur_les_bases.csv", index=False)
+
+    # extraire le jeu de données final
+    final_df.drop(columns=["title", "title_norm"], inplace=True)
+    final_df.to_csv("../resultats/fichiers_csv/consolider_doi_hal_id.csv",
+                    index=False, encoding='utf8')
+
+    return stat_table, final_df
