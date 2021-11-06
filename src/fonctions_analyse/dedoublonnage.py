@@ -4,6 +4,11 @@ Fonctions pour dédoublonner les publications
 
 
 def dedoublonnage_doi(df_charge):
+    """
+    Dédoublonnage des doi
+    :param dataframe df_charge: dataframe qui contient une colonne doi à dédoublonner
+    :return dataframe: le dataframe avec les doi dédoublonné
+    """
     # trie des documents par DOI puis par halId
     df_charge.sort_values(by=['doi', 'halId'], inplace=True)
     print("\n\nAvant dédoublonnage nombre publications :", len(df_charge[df_charge['doi'].notna()]))
@@ -17,6 +22,11 @@ def dedoublonnage_doi(df_charge):
 
 
 def dedoublonnage_titre(clean_doi):
+    """
+    Dédoublonnage des titres
+    :param dataframe clean_doi: dataframe qui contient une colonne title_norm à dédoublonner
+    :return dataframe: le dataframe avec les titres dédoublonné
+    """
     # sélectionner les documents  avec DOI, et ceux sans DOI dont les titres ne sont pas des doublons
     mask = (clean_doi['doi'].notna()) | (
             (clean_doi['doi'].isna()) & (~clean_doi['title_norm'].duplicated()))
@@ -27,6 +37,12 @@ def dedoublonnage_titre(clean_doi):
 
 
 def doi_ou_hal(clean_doi_title):
+    """
+    Exclue les lignes qui n'ont ni hal_id ni doi
+    :param dataframe clean_doi_title: dataframe dédoublonné
+    :return dataframe: dataframe avec des lignes qui ont un doi ou un hal_id
+    """
+
     final_df = clean_doi_title[(clean_doi_title['doi'].notna()) | (
         clean_doi_title['halId'].notna())].copy()
 
@@ -49,4 +65,3 @@ def doi_ou_hal(clean_doi_title):
     [print(k, '\t\t', v) for k, v in a_afficher.items()]
 
     return final_df
-

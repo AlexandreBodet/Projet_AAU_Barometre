@@ -9,14 +9,24 @@ from src.fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage
 
 
 def normalize_txt(title):
-    """retirer les espaces, les accents, tout en minuscules, retirer les caractères spéciaux"""
+    """Retirer les espaces, les accents, tout en minuscules, retirer les caractères spéciaux.
+
+    :param str title: titre à normaliser
+    :return str join_cut: titre normalisé
+    """
     cut = re.split("\W+", str(title))
     join_cut = "".join(cut).lower()
-    return unidecode.unidecode(join_cut)
+    join_cut = unidecode.unidecode(join_cut)
+    return join_cut
 
 
 def conforme_df(df, col_name):
-    """garde les colonnes de col_name, les renommes et passe en minuscule doi et titre """
+    """Garde les colonnes de col_name, les renommes et passe en minuscule doi et titre.
+
+    :param dataframe df: dataframe dont les titres et doi sont normalisés
+    :param dict[str,str] col_name: colonnes à garder
+    :return dataframe: dataframe modifié
+    """
     # memo : on ne supprime pas la colonne titre, car elle est utilisée pour le dédoublonnage
     df = df[list(col_name.keys())].copy()
     df.rename(columns=col_name, inplace=True)
@@ -27,6 +37,12 @@ def conforme_df(df, col_name):
 
 
 def chargement_hal(hal_file=""):
+    """Charge un fichier hal
+
+    :param str hal_file: du nom de fichier à charger
+    :return dataframe: dataframe chargé
+    """
+
     if hal_file:
         # chargement, garde certaines colonnes et transformations des titres du fichier HAL
         # fichier_hal = "../data/" + hal_file
@@ -39,6 +55,11 @@ def chargement_hal(hal_file=""):
 
 
 def chargement_scopus(scopus_file=""):
+    """Charge un fichier scopus
+
+    :param str scopus_file: nom de fichier à charger
+    :return dataframe: dataframe chargé
+    """
     if scopus_file:
         # Chargement
         # fichier_scopus = "../data/" + scopus_file
@@ -50,6 +71,11 @@ def chargement_scopus(scopus_file=""):
 
 
 def chargement_wos(wos_file=[]):
+    """Charge un fichier wos
+
+    :param str wos_file: nom de fichier à charger
+    :return dataframe: dataframe chargé
+    """
     if wos_file:
         # fichier_wos = ["wos_2016a.txt", "wos_2016b.txt", "wos_2016c.txt", "wos_2017a.txt", "wos_2017b.txt",
         #               "wos_2017c.txt", "wos_2018a.txt", "wos_2018b.txt", "wos_2018c.txt", "wos_2019a.txt",
@@ -66,6 +92,11 @@ def chargement_wos(wos_file=[]):
 
 
 def chargement_pubmed(pubmed_file=""):
+    """Charger un fichier pubmed
+
+    :param str pubmed_file: nom de fichier à charger
+    :return dataframe: dataframe chargé
+    """
     if pubmed_file:
         pubmed = pd.read_csv("../data/dois/" + pubmed_file)
         pubmed = conforme_df(pubmed, {"DOI": "doi", "Title": "title"})
@@ -75,7 +106,13 @@ def chargement_pubmed(pubmed_file=""):
 
 
 def removeJoinDois(x):
-    # retirer les listes de doi assemblé par "; "
+    """Retirer les listes de doi assemblé par "; "
+
+    :param str x: liste de dois ou doi
+    :return str: premier doi de la liste, ou doi s'il est seul
+    """
+
+    #
     doi = str(x).strip()
     if "; " in doi:
         cut = doi.split("; ")
@@ -85,6 +122,11 @@ def removeJoinDois(x):
 
 
 def chargement_lens(lens_file=""):
+    """Charger un fichier lens
+    
+    :param str lens_file: du nom de fichier à charger
+    :return dataframe: dataframe chargé
+    """
     if lens_file:
         lens = pd.read_csv("../data/dois/" + lens_file)
         lens = conforme_df(lens, {"DOI": "doi", "Title": "title"})
@@ -95,7 +137,12 @@ def chargement_lens(lens_file=""):
 
 
 def extract_stats_from_base(src_name, df, stats_buffer):
-    """de la base extraire les données total publications, doi only, no doi"""
+    """De la base extraire les données total publications, doi only, no doi.
+
+    :param str src_name: nom de la base de donnée source
+    :param dataframe df: dataframe chargé
+    :param list stats_buffer: liste des statistiques
+    """
     if stats_buffer is None:
         stats_buffer = []
     no_doi = df["doi"].isna().sum()
@@ -108,7 +155,15 @@ def extract_stats_from_base(src_name, df, stats_buffer):
 
 
 def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None, lens_df=None):
-    """" Extrait les statistiques de toutes les bases données"""
+    """ Extrait les statistiques de toutes les bases données
+
+    :param dataframe hal_df: données de hal
+    :param dataframe scopus_df: données de scopus
+    :param dataframe wos_df: données de wos
+    :param dataframe pubmed_df: données de pubmed
+    :param dataframe lens_df: données de lens
+    :return list: liste des statistiques extraites
+    """
     stats = []
 
     if hal_df is not None:
@@ -130,7 +185,12 @@ def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None,
 
 
 def chargement_tout(data):
-    # Charge tous les fichiers et donne des statistiques dessus et le dataframe de tous les dataframes
+    """
+    Charge tous les fichiers et donne des statistiques dessus et le dataframe de tous les dataframes
+
+    :param Dict[str,str] data: données issues du fichier settings
+    :return list, dataframe: liste des statistiques sur les bases et dataframe des données chargées
+    """
 
     hal = chargement_hal(data["hal_fichier"])
     scopus = chargement_scopus(data["scopus_fichier"])
