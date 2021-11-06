@@ -70,10 +70,10 @@ def chargement_scopus(scopus_file=""):
     return scopus
 
 
-def chargement_wos(wos_file=[]):
+def chargement_wos(wos_file=None):
     """Charge un fichier wos
 
-    :param str wos_file: nom de fichier à charger
+    :param list wos_file: nom de fichier à charger
     :return dataframe: dataframe chargé
     """
     if wos_file:

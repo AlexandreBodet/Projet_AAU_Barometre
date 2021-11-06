@@ -1,6 +1,6 @@
 {
-  "hal_fichier" : "extractionHAL_AAU.csv",
-  "scopus_fichier" : "scopus_AAU.csv",
+  "hal_fichier" : "extractionHAL.csv",
+  "scopus_fichier" : "scopus.csv",
   "pubmed_fichier" : "pubMed.csv",
   "wos_fichier" : "",
   "lens_fichier" : ""
