@@ -50,13 +50,13 @@ def chargement_hal(hal_file=""):
         #je mets un if pour qu'on puisse faire les tests entre l'extrHAL et l'api plus facilement
         #si extraction HAL depuis extrHAL : 
         if(hal_file == "extractionHAL.csv"):
-            hal = pd.read_csv("./data/dois/" + hal_file, sep=';',
+            hal = pd.read_csv("../data/dois/" + hal_file, sep=';',
                             skiprows=1)  # !!! attention, sep et skiprows dépend du fichier !!!
             hal = conforme_df(
                 hal, {"DOI": "doi", 'Réf. HAL': 'halId', 'Titre': 'title'})
         elif(hal_file == "hal_from_api.csv"):
         #si extraction HAL depuis l'API
-            hal = pd.read_csv("./data/dois/" + hal_file, sep=';',
+            hal = pd.read_csv("../data/dois/" + hal_file, sep=';',
                           skiprows=0)  # !!! attention, sep et skiprows dépend du fichier !!!
         
             hal = conforme_df(hal, {"doiId_s": "doi", 'halId_s': 'halId', 'title_s': 'title'})
@@ -74,7 +74,7 @@ def chargement_scopus(scopus_file=""):
     if scopus_file:
         # Chargement
         # fichier_scopus = "../data/" + scopus_file
-        scopus = pd.read_csv("./data/dois/" + scopus_file, encoding='utf8')
+        scopus = pd.read_csv("../data/dois/" + scopus_file, encoding='utf8')
         scopus = conforme_df(scopus, {"DOI": "doi", "Title": "title"})
     else:  # Si pas de fichier spécifié
         scopus = None
@@ -93,7 +93,7 @@ def chargement_wos(wos_file=None):
         #               "wos_2019b.txt", "wos_2019c.txt", "wos_2020a.txt", "wos_2020b.txt", "wos_2020c.txt"]
         df_buffer = []
         for f in wos_file:
-            df = pd.read_csv("./data/dois/" + f, sep="\t", index_col=False)
+            df = pd.read_csv("../data/dois/" + f, sep="\t", index_col=False)
             df_buffer.append(df)
         wos = pd.concat(df_buffer)
         wos = conforme_df(wos, {"DI": "doi", "TI": "title"})
@@ -109,7 +109,7 @@ def chargement_pubmed(pubmed_file=""):
     :return dataframe: dataframe chargé
     """
     if pubmed_file:
-        pubmed = pd.read_csv("./data/dois/" + pubmed_file)
+        pubmed = pd.read_csv("../data/dois/" + pubmed_file)
         pubmed = conforme_df(pubmed, {"DOI": "doi", "Title": "title"})
     else:
         pubmed = None
@@ -228,11 +228,11 @@ def chargement_tout(data):
 
     # Sauvegarder les statistiques sur les bases
     stat_table.to_csv(
-        "./resultats/fichiers_csv/statistiques_sur_les_bases.csv", index=False)
+        "../resultats/fichiers_csv/statistiques_sur_les_bases.csv", index=False)
 
     # extraire le jeu de données final
     final_df.drop(columns=["title", "title_norm"], inplace=True)
-    final_df.to_csv("./resultats/fichiers_csv/consolider_doi_hal_id.csv",
+    final_df.to_csv("../resultats/fichiers_csv/consolider_doi_hal_id.csv",
                     index=False, encoding='utf8')
 
     return stat_table, final_df
