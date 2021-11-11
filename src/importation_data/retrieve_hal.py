@@ -10,7 +10,8 @@ print(sys.path)
 
 
 def req_to_HAL_pd(requete):
-    """Faire la requête à HAL
+    """Faire la requête à HAL.
+
     :param str requete: requête url
     :return dataframe df: dataframe de la réponse
     """
@@ -20,7 +21,8 @@ def req_to_HAL_pd(requete):
 
 
 def api_to_csv(fichier_hal=""):
-    """Sauvegarder en csv le dataframe
+    """Sauvegarder le dataframe en csv.
+
     :param fichier_hal: str du fichier à enregistrer
     """
     if fichier_hal:
