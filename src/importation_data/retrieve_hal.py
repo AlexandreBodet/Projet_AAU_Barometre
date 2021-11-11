@@ -19,7 +19,7 @@ def req_to_HAL_pd(requete):
     return df
 
 
-def req_to_csv(fichier_hal=""):
+def api_to_csv(fichier_hal=""):
     """Sauvegarder en csv le dataframe
     :param fichier_hal: str du fichier à enregistrer
     """
@@ -28,4 +28,3 @@ def req_to_csv(fichier_hal=""):
         df = req_to_HAL_pd(query)
         df.rename(columns={"doiId_s": "DOI", "halId_s": "Réf. HAL", "title_s": "Titre"}, inplace=True)
         df.to_csv("../data/dois/hal_from_api.csv", index=False, encoding='utf8', sep=';')
-        
