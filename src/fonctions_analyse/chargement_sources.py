@@ -5,7 +5,8 @@ Fonctions pour consolider les sources
 import pandas as pd
 import re
 import unidecode
-from fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage_titre, doi_ou_hal
+from src.fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage_titre, doi_ou_hal
+
 
 def normalize_txt(title):
     """Retirer les espaces, les accents, tout en minuscules, retirer les caractères spéciaux.
@@ -35,31 +36,21 @@ def conforme_df(df, col_name):
     return df
 
 
-def chargement_hal(hal_file=""):
+def chargement_hal(hal_file="", skip=0):
     """Charge un fichier hal
 
+    :param skip: dit si la première ligne du fichier ne doit pas être lue
     :param str hal_file: du nom de fichier à charger
     :return dataframe: dataframe chargé
     """
 
     if hal_file:
         # chargement, garde certaines colonnes et transformations des titres du fichier HAL
-        # fichier_hal = "../data/" + hal_file
-
-        # ce qui suit a été fait par alan:
-        #je mets un if pour qu'on puisse faire les tests entre l'extrHAL et l'api plus facilement
-        #si extraction HAL depuis extrHAL : 
-        if(hal_file == "extractionHAL.csv"):
-            hal = pd.read_csv("../data/dois/" + hal_file, sep=';',
-                            skiprows=1)  # !!! attention, sep et skiprows dépend du fichier !!!
-            hal = conforme_df(
-                hal, {"DOI": "doi", 'Réf. HAL': 'halId', 'Titre': 'title'})
-        elif(hal_file == "hal_from_api.csv"):
-        #si extraction HAL depuis l'API
-            hal = pd.read_csv("../data/dois/" + hal_file, sep=';',
-                          skiprows=0)  # !!! attention, sep et skiprows dépend du fichier !!!
-        
-            hal = conforme_df(hal, {"doiId_s": "doi", 'halId_s': 'halId', 'title_s': 'title'})
+        fichier_hal = "../data/dois/" + hal_file
+        hal = pd.read_csv(fichier_hal, sep=';',
+                          skiprows=skip)  # !!! attention, skiprows dépend du fichier !!!
+        hal = conforme_df(
+            hal, {"DOI": "doi", 'Réf. HAL': 'halId', 'Titre': 'title'})
     else:  # Si le fichier n'est pas spécifié
         hal = None
     return hal
@@ -195,15 +186,19 @@ def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None,
     return stats
 
 
-def chargement_tout(data):
+def chargement_tout(data, api_hal=True):
     """
     Charge tous les fichiers et donne des statistiques dessus et le dataframe de tous les dataframes
 
+    :param api_hal: défini si le fichier vient de l'api ou manuellement
     :param Dict[str,str] data: données issues du fichier settings
     :return list, dataframe: liste des statistiques sur les bases et dataframe des données chargées
     """
 
-    hal = chargement_hal(data["hal_fichier"])
+    if api_hal:
+        hal = chargement_hal(data["hal_fichier_api"], skip=0)
+    else:
+        hal = chargement_hal(data["hal_manuel"], skip=1)
     scopus = chargement_scopus(data["scopus_fichier"])
     wos = chargement_wos(data["wos_fichier"])
     pubmed = chargement_pubmed(data["pubmed_fichier"])
