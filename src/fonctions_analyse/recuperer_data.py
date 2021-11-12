@@ -14,14 +14,13 @@ def req_to_json(url):
     :return json res: résultat json de la requête sql
     """
     found = False
-    res = {}
     while not found:
         req = r.get(url)
 
         try:
             res = req.json()
             found = True
-        finally:
+        except:
             pass
     return res
 
@@ -50,7 +49,7 @@ def get_hal_data(doi, hal_id):
                       )
 
     # Si l'API renvoie une erreur ou bien si aucun document n'est trouvé
-    if res.get("error") or res['response']['numFound'] == 0 or res == {}:
+    if res.get("error") or res['response']['numFound'] == 0:
         return {
             'hal_coverage': 'missing'
         }
@@ -213,6 +212,7 @@ def enrich_to_csv(df, progression_denominateur=100):
     :return dataframe: dataframe avec métadonnées ajoutées
     """
     df["is_paratext"] = np.nan
+    df["suspicious_journal"] = np.nan
     df.reset_index(drop=True, inplace=True)
     df = enrich_df(df, progression_denominateur)
     df_reorder = df[
