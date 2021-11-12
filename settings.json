@@ -4,5 +4,6 @@
   "scopus_fichier" : "scopus.csv",
   "pubmed_fichier" : "pubMed.csv",
   "wos_fichier" : "",
-  "lens_fichier" : ""
+  "lens_fichier" : "",
+  "mail" : "alexandre.bodet@eleves.ec-nantes.fr"
 }

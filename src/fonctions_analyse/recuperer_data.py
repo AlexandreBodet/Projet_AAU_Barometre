@@ -8,7 +8,7 @@ import requests as r
 
 def req_to_json(url):
     """
-    S'assurer que la réponse de l'API est en JSON
+    S'assurer que la réponse de l'API est en JSON.
 
     :param str url: url de la requête
     :return json res: résultat json de la requête sql
@@ -102,10 +102,11 @@ def get_hal_data(doi, hal_id):
     }
 
 
-def get_upw_data(doi):
+def get_upw_data(doi, email):
     """
     Récupérer les métadonnées de Unpaywall.
 
+    :param str email: email utilisé pour faire la requête à l'API
     :param str doi: doi dont les métadonnées doivent être récupérées
     :return dict: dictionnaire des métadonnées récupérées
     """
@@ -118,7 +119,7 @@ def get_upw_data(doi):
     """
 
     res = req_to_json(
-        f"https://api.unpaywall.org/v2/{doi}?email=alexandre.bodet@eleves.ec-nantes.fr")
+        f"https://api.unpaywall.org/v2/{doi}?email={email}")
 
     # Déduire upw_coverage
     if res.get("message") and "isn't in Unpaywall" in res.get("message"):
@@ -170,10 +171,11 @@ def get_upw_data(doi):
     }
 
 
-def enrich_df(df, progression_denominateur=100):
+def enrich_df(df, email, progression_denominateur=100):
     """
     Pour chaque publications lancer les requêtes et ajouter les métadonnées.
 
+    :param str email: email utilisé pour la requête Unpaywall avec l'API
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes
     :param dataframe df: dataframe auquel ajouter les métadonnées
     :return dataframe: dataframe modifié
@@ -192,7 +194,7 @@ def enrich_df(df, progression_denominateur=100):
         # S'il y a un DOI, prendre les données de Unpaywall.
         # Les métadonnées de HAL communes avec Unpaywall seront écrasées.
         if row.doi:
-            add = get_upw_data(row.doi)
+            add = get_upw_data(row.doi, email)
             # Ajout des métadonnées qui ne sont pas False
             md.update((k, v) for k, v in add.items() if v)
 
@@ -203,10 +205,11 @@ def enrich_df(df, progression_denominateur=100):
     return df
 
 
-def enrich_to_csv(df, progression_denominateur=100):
+def enrich_to_csv(df, email, progression_denominateur=100):
     """
     Enrichi en métadonnées et enregistre en csv.
 
+    :param str email: email utilisé pour la requête à l'API Unpaywall
     :param dataframe df: dataframe auquel ajouter les métadonnées
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes dans enrich_df
     :return dataframe: dataframe avec métadonnées ajoutées
@@ -214,7 +217,7 @@ def enrich_to_csv(df, progression_denominateur=100):
     df["is_paratext"] = np.nan
     df["suspicious_journal"] = np.nan
     df.reset_index(drop=True, inplace=True)
-    df = enrich_df(df, progression_denominateur)
+    df = enrich_df(df, email, progression_denominateur)
     df_reorder = df[
         ["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location", "hal_openAccess_bool",
          "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "published_date", "published_year",
