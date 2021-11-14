@@ -5,7 +5,7 @@ Fonctions pour consolider les sources
 import pandas as pd
 import re
 import unidecode
-from src.fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage_titre, doi_ou_hal
+from fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage_titre, doi_ou_hal
 
 
 def normalize_txt(title):
@@ -51,7 +51,7 @@ def chargement_hal(hal_file="", skip=0):
         # chargement, garde certaines colonnes et transformations des titres du fichier HAL
         fichier_hal = "../data/dois/" + hal_file
         hal = pd.read_csv(fichier_hal, sep=';',
-                          skiprows=skip)  # !!! attention, skiprows dépend du fichier !!!
+                          skiprows=skip)  
         hal = conforme_df(
             hal, {"DOI": "doi", 'Réf. HAL': 'halId', 'Titre': 'title'})
     else:  # Si le fichier n'est pas spécifié

@@ -1,9 +1,13 @@
 {
-  "hal_fichier_api" : "hal_from_api.csv",
-  "hal_manuel" : "extractionHAL.csv",
-  "scopus_fichier" : "scopus.csv",
-  "pubmed_fichier" : "pubMed.csv",
-  "wos_fichier" : "",
-  "lens_fichier" : "",
-  "mail" : "alexandre.bodet@eleves.ec-nantes.fr"
+  "files":{
+    "hal_fichier_api" : "hal_from_api.csv",
+    "hal_manuel" : "extractionHAL.csv",
+    "scopus_fichier" : "scopus.csv",
+    "pubmed_fichier" : "pubMed.csv",
+    "wos_fichier" : "",
+    "lens_fichier" : ""
+        },
+  "mail" : "alexandre.bodet@eleves.ec-nantes.fr",
+  "query": "https://api.archives-ouvertes.fr/search/?q=collCode_s:AAU%20AND%20docType_s:ART%20AND%20NOT%20popularLevel_s:1&rows=409&fl=title_s,doiId_s,publicationDate_s,publicationDateY_i,journalTitle_s,journalPublisher_s,halId_s,in,submittedDate_s,openAccess_bool,licence_s,selfArchiving_bool,docType_s,submitType_s,journalIssn_s,journalEissn_s,domain_s,authFullName_s&sort=publicationDateY_i%20desc"
+
 }
