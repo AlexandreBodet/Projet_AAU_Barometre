@@ -29,4 +29,4 @@ def api_to_csv(fichier_hal=""):
         query = "https://api.archives-ouvertes.fr/search/?q=collCode_s:AAU%20AND%20docType_s:ART%20AND%20NOT%20popularLevel_s:1&rows=409&fl=title_s,doiId_s,publicationDate_s,publicationDateY_i,journalTitle_s,journalPublisher_s,halId_s,in,submittedDate_s,openAccess_bool,licence_s,selfArchiving_bool,docType_s,submitType_s,journalIssn_s,journalEissn_s,domain_s,authFullName_s&sort=publicationDateY_i%20desc"
         df = req_to_HAL_pd(query)
         df.rename(columns={"doiId_s": "DOI", "halId_s": "Réf. HAL", "title_s": "Titre"}, inplace=True)
-        df.to_csv("../data/dois/hal_from_api.csv", index=False, encoding='utf8', sep=';')
+        df.to_csv("../data/dois/"+fichier_hal, index=False, encoding='utf8', sep=';')
