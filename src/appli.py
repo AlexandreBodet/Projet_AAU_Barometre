@@ -9,7 +9,7 @@ from fonctions_analyse.recuperer_data import enrich_to_csv
 with open("../settings.json") as json_file:
     data = json.load(json_file)
 
-api_to_csv(fichier_hal=["hal_fichier_api"])
+api_to_csv(fichier_hal=["hal_fichier_api"]) # pas trop compris ce que tu faisais là
 
 stats, df_charge = chargement_tout(donnees=data, api_hal=True, recherche_erreur=True)
 
