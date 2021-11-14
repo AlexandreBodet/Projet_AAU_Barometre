@@ -210,6 +210,7 @@ def chargement_tout(donnees, api_hal=True, recherche_erreur=True):
         hal = chargement_hal(donnees["hal_fichier_api"], skip=0)
     else:
         hal = chargement_hal(donnees["hal_manuel"], skip=1)
+    '''
     scopus = chargement_scopus(donnees["scopus_fichier"])
     wos = chargement_wos(donnees["wos_fichier"])
     pubmed = chargement_pubmed(donnees["pubmed_fichier"])
@@ -217,6 +218,10 @@ def chargement_tout(donnees, api_hal=True, recherche_erreur=True):
 
     stats = statistiques_bases(hal, scopus, wos, pubmed, lens)
     df_charge = pd.concat([hal, scopus, wos, pubmed, lens])
+    '''
+    stats = statistiques_bases(hal)
+    df_charge = pd.concat([hal])
+    
 
     # Recherche d'erreurs
     if recherche_erreur:
