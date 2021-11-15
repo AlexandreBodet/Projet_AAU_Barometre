@@ -11,7 +11,6 @@ def req_to_pd(requete):
     """
     res = r.get(requete).json()['response']['docs']
     df = pd.json_normalize(res)
-    
     return df
 
 
