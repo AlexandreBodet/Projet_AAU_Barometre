@@ -4,7 +4,7 @@ Fonctions pour récupérer les métadonnées associées aux publications
 
 import numpy as np
 import requests as r
-
+import pandas as pd 
 
 def req_to_json(url):
     """
@@ -187,13 +187,12 @@ def enrich_df(df, email, progression_denominateur=100):
         if row.Index > 0 and row.Index % int(
                 len(df) / progression_denominateur) == 0:  # le dénominateur impact l'intervalle des étapes : 100 une étape tout les 1% etc.
             print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ", round(row.Index / len(df) * progression_denominateur, 1), "%")
-
         # Récupérer les métadonnées de HAL
         md = get_hal_data(row.doi, row.halId)
 
         # S'il y a un DOI, prendre les données de Unpaywall.
         # Les métadonnées de HAL communes avec Unpaywall seront écrasées.
-        if row.doi:
+        if pd.isna(row.doi) == False: # avant, c'etait seulement if row.doi, mais ça passait tout le temps
             add = get_upw_data(row.doi, email)
             # Ajout des métadonnées qui ne sont pas False
             md.update((k, v) for k, v in add.items() if v)
