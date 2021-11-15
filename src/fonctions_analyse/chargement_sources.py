@@ -218,10 +218,6 @@ def chargement_tout(donnees, api_hal=True, recherche_erreur=True):
 
     stats = statistiques_bases(hal, scopus, wos, pubmed, lens)
     df_charge = pd.concat([hal, scopus, wos, pubmed, lens])
-    
-    stats = statistiques_bases(hal)
-    df_charge = pd.concat([hal])
-    
 
     # Recherche d'erreurs
     if recherche_erreur:

@@ -6,6 +6,7 @@ import numpy as np
 import requests as r
 import pandas as pd 
 
+
 def req_to_json(url):
     """
     S'assurer que la réponse de l'API est en JSON.
@@ -192,7 +193,7 @@ def enrich_df(df, email, progression_denominateur=100):
 
         # S'il y a un DOI, prendre les données de Unpaywall.
         # Les métadonnées de HAL communes avec Unpaywall seront écrasées.
-        if pd.isna(row.doi) == False: # avant, c'etait seulement if row.doi, mais ça passait tout le temps
+        if not pd.isna(row.doi):  # avant, c'était seulement if row.doi, mais ça passait tout le temps
             add = get_upw_data(row.doi, email)
             # Ajout des métadonnées qui ne sont pas False
             md.update((k, v) for k, v in add.items() if v)
