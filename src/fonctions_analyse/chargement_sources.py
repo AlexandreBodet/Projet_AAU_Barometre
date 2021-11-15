@@ -217,11 +217,7 @@ def chargement_tout(donnees, api_hal=True, recherche_erreur=True):
     lens = chargement_lens(donnees["lens_fichier"])
 
     stats = statistiques_bases(hal, scopus, wos, pubmed, lens)
-    df_charge = pd.concat([hal, scopus, wos, pubmed, lens])
-    
-    stats = statistiques_bases(hal)
-    df_charge = pd.concat([hal])
-    
+    df_charge = pd.concat([hal, scopus, wos, pubmed, lens])    
 
     # Recherche d'erreurs
     if recherche_erreur:
