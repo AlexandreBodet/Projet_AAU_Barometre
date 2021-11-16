@@ -1,0 +1,6 @@
+pandas==1.2.4
+requests==2.25.1
+json==0.1.1
+unidecode==1.2.0
+matplotlib==3.4.2
+numpy==1.20.2
