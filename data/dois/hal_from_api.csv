@@ -4,7 +4,6 @@ Titre;Réf. HAL;DOI
 "[""Marcher en ville : livret audio. Actes sonores du séminaire tenu à l'ENSAG les 3 juillet 2007, 13 novembre 2007 et 15 janvier 2008""]";hal-00993764;
 ['Marcher en ville. Faire corps, prendre corps, donner corps aux ambiances urbaines'];halshs-00596761;
 "[""L'usage des ambiances. Une épreuve sensible des situations""]";hal-01967270;
-['Résonances oasiennes. Approches sensibles de l’urbain au Sahara'];hal-03250069;
 ['Track the cities. [issue editor, N°40 La Furia Umana Journal]', 'Tracer les villes. [coord. du dossier, N°40 Revue La Furia Umana]'];hal-03169583;
 ['Ambiance et histoire de l’architecture : l’expérience et l’imaginaire sensibles de l’environnement construit', 'Ambiance and history of architecture: the built environment in our sensory expérience and imagination'];halshs-01995875;10.4000/ambiances.738
 ['Architecture et Numérique : l’usage contemporain des technologies de liaisons'];hal-02016753;
@@ -56,6 +55,7 @@ Titre;Réf. HAL;DOI
 ['ARCHITECTURE 68. Panorama international sur des renouveaux pédagogiques, Genève, MétisPresses'];hal-02975677;
 ['Machine learning for optimized buildings morphosis'];hal-03258021;10.1145/3423603.3424057
 ['La ville mot à mot'];hal-03334500;
+['Résonances oasiennes. Approches sensibles de l’urbain au Sahara'];hal-03250069;
 "[""Parcourir pour projeter A l'entour du cimetière, un parcours au Crêt-de-Roch (Saint-Etienne) Lectures du site & enjeux de projet""]";hal-01653048;
 ['Parcours de lecture de la place Sainte-Claire'];hal-01518097;
 ['The recuperation of public space : a closer look at Bogotá, Colombia'];hal-00995507;
@@ -129,8 +129,6 @@ Titre;Réf. HAL;DOI
 ['Listening to atmospheres'];hal-03244547;
 ['Concurrent Geometric, Structural and Environmental Design: Louvre Abu Dhabi'];hal-01501962;10.1007/978-3-7091-1251-9_6
 ['Des ambiances en passant'];hal-01879570;
-['Des ateliers exploratoires face à un monde découvert. Fabriquer des cohabitations scientifiques'];hal-03248193;
-['Un aperçu de l’héritage et du devenir des oasis sahariennes'];hal-03248263;
 ['Renaissance sensible d’une place publique saharienne. Aire d’expérience ludique et vie imaginaire'];hal-03248212;
 ['Capturing Chromatic Effects in Urban Environment'];halshs-03329818;10.1007/978-3-030-76694-8_12
 ['As Far As The Ear Can Hear. Listening to the social city'];halshs-03066959;
@@ -307,17 +305,19 @@ Titre;Réf. HAL;DOI
 "[""Que nous apprend l'interactionnisme des normes ? Une approche philosophique de l’interactionnisme symbolique et de l’interactionnisme réaliste""]";hal-01625607;
 ['Cartophonies sensibles\u202f: la construction d’une mémoire des lieux'];hal-01220526;
 ['Comprendre la catégorie d’ « adolescent » dans les sociétés méditerranéennes'];hal-03249279;
+['Des ateliers exploratoires face à un monde découvert. Fabriquer des cohabitations scientifiques'];hal-03248193;
+['Un aperçu de l’héritage et du devenir des oasis sahariennes'];hal-03248263;
 ['GDMS-R: A mixed SQL to manage raster and vector data'];halshs-01093211;
 ['Complexity and Scientific Challenges'];hal-01944915;10.1002/9781119341031.ch3
 ['Institutionnal dynamics and barriers to sustainable construction in France, the United Kingdom and the Netherlands'];halshs-00380126;
 "[""Les phonurgies historiques au service de l'imaginaire des habitants futurs""]";hal-02164429;
 ['Institutionnal dynamics and barriers toward sustainable construction in France, Great-Britain and the Netherlands'];halshs-00389235;
-['Oasis en présence : introduction'];hal-03384835;
 ['Quel devenir de la sensibilité contemporaine ?'];hal-03023816;
 ['Thinking from the border. Introduction'];hal-02506655;
 ['Towards an Art of Impregnation'];hal-01879781;
 ['Ménager des oasis urbaines : des représentations à la fabrication'];hal-03258578;
 ['Les compositions gravées en Bourgogne'];hal-01935161;
+['Oasis en présence : introduction'];hal-03384835;
 ['Effets odorants dans les « scénezgraphies » du côté de chez Swann'];hal-02462066;
 ['Pulse. Dwelling in Sound'];hal-02568178;
 ['Poética do Condomínio Barão de Mauá. Como restituir a persistência do meio de vida em uma área contaminada?', 'Poetics of Condomínio Barão de Mauá. How to restore livelihood persistence in a contaminated area?', 'Poétique du condominium Barão de Mauá. Comment restituer la persistance du milieu de vie dans une zone contaminée?'];halshs-02943484;
@@ -837,8 +837,6 @@ Titre;Réf. HAL;DOI
 ['Historical Knowledge Management Through Virtual Reality: Theoretical Aspects and Experiment Proposal'];hal-01062341;
 ['A generalized approach for historical mock-up acquisition and data modelling: towards historically enriched 3D city models'];hal-00738193;10.1051/3u3d/201202009
 ['3D historical models: the case studies of Liege and Nantes'];hal-00736628;
-['Collision Detection for haptic interaction with solid models and virtual prototypes'];hal-00785424;
-['Croiser habitudes et expérimentations pour un diagnostic partagé du paysage sonore'];hal-01404359;
 ['Crossing Professional Habits for Global Analysis of Urban Soundscapes'];hal-03244140;
 ['La qualité environnementale urbaine : éléments de cadrage - Approches sensibles des espaces urbains'];hal-03257038;
 ['Paysage (multi)sensoriel en recherches urbaines. Trajectoires, fondements, enjeux'];hal-03244367;
@@ -846,7 +844,6 @@ Titre;Réf. HAL;DOI
 ['DIAGPART. Des postures et pratiques de groupes professionnels au diagnostic pluriel du paysage sonore urbain'];hal-03053936;
 ['Understanding sensory experiences from and for urban design'];hal-03244327;
 ['Croiser habitudes et expérimentations pour un diagnostic partagé du paysage sonore'];hal-01890099;
-['Implementing Plural Analysis of Urban Soundscapes'];hal-03233772;10.48465/fa.2020.1048
 ['Infinite Atmospheres? Ethical Dimensions of and for the Design of Public Spaces. Session 7 – Introduction'];hal-03220330;10.48537/hal-03220330
 ['Sensory Experience, Environmental Experience and Political Engagement. Session 13 – Introduction'];hal-03220344;10.48537/hal-03220344
 ['Enquêter « LUCIE AUBRAC ». Questions interdisciplinaires, pédagogiques et politiques'];hal-03244350;
@@ -878,6 +875,8 @@ Titre;Réf. HAL;DOI
 ['Résiliences commerciales'];hal-03227839;
 ['Explorations urbaines sur internet'];hal-03227842;
 ['Ambient Outlines of Children’s Urban Experience. A Look Back at an Interpretative Methodology'];hal-03220383;10.48537/hal-03220383
+['Collision Detection for haptic interaction with solid models and virtual prototypes'];hal-00785424;
+['Implementing Plural Analysis of Urban Soundscapes'];hal-03233772;10.48465/fa.2020.1048
 ['Urban mobility plan environmental impacts assessment: a methodology including socio-economic consequences - The Eval-PDU project'];hal-00614951;
 ['Evaluating the urban climate using geo-database – GEOCLIM TOOL'];halshs-01192784;
 ['Thermoregulatory effect of green spaces and wetlands in Paris'];hal-01221384;
@@ -915,6 +914,7 @@ Titre;Réf. HAL;DOI
 ['Esquissons! Sketching architecture by listening'];hal-02280170;10.1051/shsconf/20196401006
 ['Economies, spatialités et urbanités du pain'];hal-01735451;
 ['Evaluation of AR Inconsistencies on AR Placement Tasks: A VR Simulation Study'];hal-01947356;10.1007/978-3-030-01790-3_12
+['Les archives sonores du CNRS s’écoutent en Europe : participation au programme européen Europeana Sounds'];hal-01578698;
 ['Three Avant-Garde Masterpieces: Atmospheres, Aura, Stimmung. Can Music Suggest an Original Interpretation of These Themes?'];hal-03220315;10.48537/hal-03220315
 ['Urban Atmospheres in Pandemic Times. Between Science Fiction and Reality'];hal-03220365;10.48537/hal-03220365
 ['Ambiance Narrative Design as an Innovation Tool. The Boundary Object Concept and Applied Case Study'];hal-03220274;10.48537/hal-03220274
@@ -1015,7 +1015,6 @@ Titre;Réf. HAL;DOI
 ['Public lighting and participatory democracy, the contribution of public transport drivers in Nantes Métropole to the evaluation of nocturnal urban ambiances', '(Ré)concilier éclairage urbain et environnement nocturne : les enjeux d’une controverse sociotechnique'];hal-02991958;
 "['Les appropriations multiples de l\'injonction à ""l\'usager"" dans la mise en œuvre de l\'action publique urbaine : le retour d\'une ingénierie urbaine']";halshs-01972707;
 ['Le retour de l’ingénieur-conseil face aux ambiguïtés de la commande publique : les bureaux d’études au secours du monde politique ?'];halshs-01972720;
-['Les archives sonores du CNRS s’écoutent en Europe : participation au programme européen Europeana Sounds'];hal-01578698;
 ['HAUP\xa0: L’hyperambiotope urbain participatif. Une interface de composition du paysage sonore pour une nouvelle médiation des territoires'];hal-01414019;
 ['From a sensitive Ecology to a Political Ecology of Ambiances. Issues and Challenges?'];hal-03220314;10.48537/hal-03220314
 ['Vers une co-production de l’habitat au sein des espaces périurbains, entre exploration et régulation : les apprentissages de deux démarches entre Nantes et Saint-Nazaire'];hal-03281206;
@@ -1055,6 +1054,7 @@ Titre;Réf. HAL;DOI
 ['Lisières urbaines, lieux de couture\xa0?'];hal-02474479;
 ['Les lisières urbaines : lieux de reliance urbaine et sensible'];hal-03114118;
 ['L’appréhension du paysage via les ateliers promenades : Vers une conception urbaine plus sensible'];hal-03244162;
+['Croiser habitudes et expérimentations pour un diagnostic partagé du paysage sonore'];hal-01404359;
 ['Je - tu- il, la marche aux trois personnes'];halshs-00502589;
 "[""L'usage des ambiances""]";hal-00995572;
 ['Produire avec Perec'];hal-01520078;
@@ -1187,7 +1187,6 @@ Titre;Réf. HAL;DOI
 ['Des formes environnementales en aménagement urbain : d’une perspective théorique aux études de cas'];halshs-02189179;
 ['Typische Atmosphären städtischer Plätze. Auf dem Weg zu einer anwendungsorientierten Atmosphärenforschung'];hal-00978333;
 ['Unterwegs in fremden Umgebungen. Ein praxeologischer Zugang zum Wayfinding von Fußgängern'];hal-00978335;
-['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315
 ['« Vous prenez quoi en photo là ? » Une approche du quotidien de la rénovation urbaine'];halshs-02298341;10.26151/espacestemps.net-87y1-es59
 ['Les statuts de la matière architecturée dans la philosophie allemande'];hal-02539336;
 ['Topologies de l’immersion - Études digitales'];hal-02281133;10.15122/isbn.978-2-406-09288-9
@@ -1337,7 +1336,6 @@ Titre;Réf. HAL;DOI
 ['Ambiances à vendre : la représentation des personnages dans les supports de promotion des projets immobiliers'];halshs-01246934;
 "[""Quand l'Europe renie son passé""]";hal-03417670;10.3917/comm.107.0796
 ['Qui sont les Jeunes Ramau ? Trajectoires, profils et positionnements'];hal-03250005;
-['Quelle place du sonore dans la production urbaine\xa0? Éclairage par les postures et pratiques professionnelles dans le cadre du diagnostic sonore urbain'];hal-02948549;10.4000/vertigo.23818
 ['Comparing sky shape skeletons for the analysis of visual dynamics along routes'];hal-00285927;10.1068/b32143
 ['Application of sensitivity analysis in building energy simulations: Combining first- and second-order elementary effects methods'];hal-00947577;10.1016/j.enbuild.2012.08.048
 "[""Libérez les sciences sociales avant qu'elles n'étouffent ! Enquête sur le libre-savoir scientifique""]";halshs-00623175;
@@ -1352,6 +1350,7 @@ Titre;Réf. HAL;DOI
 ['A cidade a través dos sentidos'];hal-00980748;
 ['Filmer les collections, déjouer les régimes de visibilité'];hal-03142025;
 ['Le « chef d’orchestre » au risque de « l’homme-orchestre » : les chefs de projet dans l’individualisation paradoxale du travail collectif'];halshs-03231390;10.3917/sopr.042.0021
+['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315
 ['CFD simulations of the night-time condensation inside a closed glasshouse: Sensitivity analysis to outside external conditions, heating and glass properties'];hal-01526013;10.1016/j.biosystemseng.2014.08.017
 ['Microclimate and building energy consumption: study of different coupling methods'];hal-01799921;10.1080/17512549.2015.1043643
 ['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];hal-01141712;10.1016/j.uclim.2015.04.001
@@ -1359,7 +1358,6 @@ Titre;Réf. HAL;DOI
 ['A hydrothermal model to assess the impact of green walls on urban microclimate and building energy consumption'];hal-01870606;10.1016/j.buildenv.2013.12.012
 ['SOLENE-microclimate: A Tool to Evaluate Envelopes Efficiency on Energy Consumption at District Scale.'];hal-01799920;10.1016/j.egypro.2015.11.088
 ['L’ingénierie privée en aménagement et urbanisme\u202f: une prothèse de l’ingénierie publique\u202f?'];halshs-03274055;
-['A numerical exercise for turbulent natural convection and pollutant diffusion in a two-dimensional partially partitioned cavity'];hal-00285872;
 ['Modeling methods to assess urban fluxes and heat island mitigation measures from street to city scale'];hal-01145181;10.1093/ijlct/ctt049
 ['Gérer les informations temporelles dans et par les modèles informatiques'];hal-01259330;10.3166/RIG.25.415-436
 ['Comment les consommateurs réagissent-ils, en situation d’achat, face à des fruits et légumes difformes\xa0? Premiers résultats d’une étude menée en magasin laboratoire virtuel immersif'];hal-02556606;10.3917/ror.141.0050
@@ -1390,7 +1388,6 @@ Titre;Réf. HAL;DOI
 "[""Animer l'espace public ? Une question pluridisciplinaire de recherche"", 'Livening up the public space of the city? A multidisciplinary question of research']";hal-01878779;
 ['L’oasis urbaine ou l’ambiance diastématique de la ville'];hal-03283198;
 "['Les enjeux d’une ""approche globale"" en aménagement : quand les études cherchent leur place entre expertise, conseil et conception']";hal-01419363;
-['Méthodologie de mise en place d’une Trame verte urbaine\xa0: le cas d’une communauté d’agglomération, Plaine Commune'];hal-01562969;10.4000/cybergeo.27713
 ['L’affadissement des villes méditerranéennes et la désacralisation de la figure de l’hôte', 'The fading of mediterranean towns and the desecration of host figure', 'La insipidez de las ciudades mediterráneas y la desacralización de la figura del anfitrión'];hal-03156566;
 "[""L'immersion par corps des chercheurs. Expérimentations méthodologiques à Salvador da Bahia et Caracas""]";hal-01346847;
 "[""Une perception indécise : L'esthétique atmosphérique de Cemetery of Splendour d'Apichatpong Weerasethakul""]";hal-02447045;
@@ -1466,5 +1463,8 @@ Titre;Réf. HAL;DOI
 ['Microclimatic coupling as a solution to improve building energy simulation in an urban context'];hal-01870609;10.1016/j.enbuild.2011.02.010
 "[""L'équation managementale""]";halshs-03274064;
 ['Les ateliers-promenades : des expériences sensibles (paysagères) habitantes aux micro-interventions urbaines', '«Walking Workshop»: Sensitive (Landscape) Dwelling Experiences Relating to Urban Micro-Interventions'];hal-01745133;
-['The urban boundary-layer field campaign in Marseille (UBL/CLU-ESCOMPTE): set-up and first results'];hal-00111637;10.1007/s10546-004-9241-4
 ['Implementation of street trees within the solar radiative exchange parameterization of TEB in SURFEX v8.0'];hal-02368820;10.5194/gmd-10-385-2017
+['Méthodologie de mise en place d’une Trame verte urbaine\xa0: le cas d’une communauté d’agglomération, Plaine Commune'];hal-01562969;10.4000/cybergeo.27713
+['The urban boundary-layer field campaign in Marseille (UBL/CLU-ESCOMPTE): set-up and first results'];hal-00111637;10.1007/s10546-004-9241-4
+['Quelle place du sonore dans la production urbaine\xa0? Éclairage par les postures et pratiques professionnelles dans le cadre du diagnostic sonore urbain'];hal-02948549;10.4000/vertigo.23818
+['A numerical exercise for turbulent natural convection and pollutant diffusion in a two-dimensional partially partitioned cavity'];hal-00285872;
