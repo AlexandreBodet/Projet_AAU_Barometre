@@ -11,7 +11,8 @@ def dedoublonnage_doi(df_charge):
     """
     # trie des documents par DOI puis par halId
     df_charge.sort_values(by=['doi', 'halId'], inplace=True)
-    print("\n\nAvant dédoublonnage nombre publications :", len(df_charge[df_charge['doi'].notna()]))
+    print("\n\nAvant dédoublonnage nombre publications avec doi:", len(df_charge[df_charge['doi'].notna()]))
+    print("\n\nAvant dédoublonnage nombre publications:", len(df_charge.index()))
 
     # retirer les docs dont le DOI est en double (et conserver les docs sans DOI)
     # (dans le mask il faut que la valeur boolean soit False pour qu'elle soit retirée, d'où le ~ )
