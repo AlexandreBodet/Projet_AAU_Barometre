@@ -1,5 +1,6 @@
 """
 Fonctions pour analyser les métadonnées associés aux publications
+Pour l'instant, seulement pour les données sortant de hal
 """
 
 import pandas as pd
@@ -32,7 +33,7 @@ def deduce_oa_type(row):
     else:
         return "closed"
 
-
+#alignement avec les données de hal
 match_ref = j.load(open("../data/match_referentials.json"))
 
 
@@ -48,17 +49,20 @@ def align_doctype(row):
 
 
 def align_domain(row):
-    if pd.isna(row["scientific_field"]) and pd.notna(row["hal_domain"]):
+    if pd.notna(row["hal_domain"]):
         if row["hal_domain"] in match_ref["domain"]:
             return match_ref["domain"][row["hal_domain"]]
         else:
             print("cannot align domain", row["halId"])
     else:
-        return row["scientific_field"]
+        print("cannot align domain", row["halId"])
 
 
-def aligner(df):
-
+def aligner(df=None):
+    if df is None:
+        df = pd.read_csv(
+            "../resultats/fichiers_csv/ajout_apc.csv", encoding='utf8')
+            
     df["is_oa"] = df.apply(lambda row: deduce_oa(row), axis=1)
     df["oa_type"] = df.apply(lambda row: deduce_oa_type(row), axis=1)
     df["genre"] = df.apply(lambda row: align_doctype(row), axis=1)
@@ -66,3 +70,5 @@ def aligner(df):
 
     df['hal_coverage'].fillna('missing', inplace=True)
     df['upw_coverage'].fillna('missing', inplace=True)
+    df.to_csv("../resultats/fichiers_csv/data_complete.csv", index=False)
+    return None
