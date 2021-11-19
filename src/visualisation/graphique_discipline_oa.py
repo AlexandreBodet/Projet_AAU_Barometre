@@ -4,11 +4,17 @@ import matplotlib.pyplot as plt
 
 # ========================OA_DISCIPLINE===================================
 
-def graphique_discipline_oa(df):
-    oneyear_pub = df.loc[df['published_year'] == "2020.0", :]
+def graphique_discipline_oa(df, annee):
+    """
+
+    :param df:
+    :param annee:
+    :return:
+    """
+    oneyear_pub = df.loc[df['published_year'] == annee, :]
     # retrait des publications où le domaine serait resté vide
     oneyear_pub = oneyear_pub[oneyear_pub["scientific_field"] != ""]
-    print("2020 nb of publi", len(oneyear_pub))
+    print(str(annee), " nb of publi", len(oneyear_pub))
     publications_par_domaine = oneyear_pub['scientific_field'].value_counts(
     ).sort_index()
     print(publications_par_domaine)
@@ -112,7 +118,7 @@ def graphique_discipline_oa(df):
                framealpha=False)
 
     plt.title(
-        "Taux d'accès ouvert des publications en 2020",
+        "Taux d'accès ouvert des publications en "+str(annee),
         fontsize=25,
         x=0.49,
         y=1.07,
@@ -120,7 +126,7 @@ def graphique_discipline_oa(df):
 
     # plt.show()
     plt.savefig(
-        '../resultats/img/discipline_oa.png',
+        "../resultats/img/discipline_oa_"+str(annee)+".png",
         dpi=100,
         bbox_inches='tight',
         pad_inches=0.1)

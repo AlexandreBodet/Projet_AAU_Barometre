@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import numpy as np
 
 from fonctions_analyse.chargement_sources import chargement_tout
 from importation_data.retrieve_hal import api_to_csv
@@ -26,4 +27,5 @@ df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], progression_denom
 
 aligner()
 '''
-graphique()
+df_raw = pd.read_csv("../resultats/fichiers_csv/data_complete.csv", na_filter=False, low_memory=False)
+graphique(df_raw=df_raw, annee=2020)

@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 
 # ====================disciplines=======================================
 # nb publications par discipline
+
+
 def graphique_discipline(df):
     print("graphique disciplines")
     # oneyear = df[ df["published_year"] == "2020.0"]
@@ -14,7 +16,7 @@ def graphique_discipline(df):
 
     print(scifield)
 
-    # ____1____ passer les données dans le modele de representation
+    # ____1____ passer les données dans le modèle de representation
     fig, (ax) = plt.subplots(figsize=(12, 7),
                              dpi=100, facecolor='w', edgecolor='k')
 

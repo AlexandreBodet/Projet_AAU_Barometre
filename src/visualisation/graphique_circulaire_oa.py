@@ -2,13 +2,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-# ====================CIRCULAIRE=======================================
-# circulaire bilan open access sur une année
-def graphique_circulaire_oa(df):
-    dfpie = df[df["published_year"] == "2020.0"]
+def graphique_circulaire_oa(df, annee):
+    """
+    Circulaire bilan open access sur une année.
+    :param annee:
+    :param df: dataframe utilisé
+    :return:
+    """
+    dfpie = df[df["published_year"] == annee]
     oa_bool = dfpie["is_oa"].value_counts().sort_index()
     oa_bool = oa_bool.rename({True: "Accès ouvert", False: "Accès fermé"})
-    print(oa_bool)
 
     oa_type = dfpie["oa_type"].value_counts().sort_index()
     oa_type = oa_type.rename({"closed": "Accès fermé",
@@ -51,9 +54,8 @@ def graphique_circulaire_oa(df):
 
     ax.pie([1], radius=1.3, colors='white')
 
-    # légende : reordonner les éléments
+    # légende : réordonner les éléments
     handles, labels = ax.get_legend_handles_labels()
-    print(labels)
     order = [0, 1, 3, 4, 5]
     ax.legend([handles[idx] for idx in order],
               [labels[idx] for idx in order],
@@ -64,11 +66,11 @@ def graphique_circulaire_oa(df):
               borderaxespad=-1)
 
     # ax.legend(loc="", fontsize = 12)
-    plt.title('Proportion des publications en 2020',
+    plt.title("Proportion des publications en "+str(annee),
               fontsize=23, x=0.55, y=1.8, alpha=0.6)
     # plt.show()
     plt.savefig(
-        '../resultats/img/circulaire_oa.png',
+        "../resultats/img/circulaire_oa_"+str(annee)+".png",
         dpi=150,
         bbox_inches='tight',
         pad_inches=0.9)
