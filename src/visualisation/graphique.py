@@ -79,13 +79,13 @@ def graphique_discipline():
         y=1,
         alpha=0.6)
     plt.savefig(
-        "../resultats/publication_par_discipline.png",
+        "../resultats/img/publication_par_discipline.png",
         dpi=100,
         bbox_inches='tight')
-'''
+
 # ====================CIRCULAIRE=======================================
 # circulaire bilan open access sur une année
-if graph == "circulaire":
+def graphique_circulaire():
     dfpie = df[df["published_year"] == "2020.0"]
     oa_bool = dfpie["is_oa"].value_counts().sort_index()
     oa_bool = oa_bool.rename({True: "Accès ouvert", False: "Accès fermé"})
@@ -145,15 +145,23 @@ if graph == "circulaire":
               borderaxespad=-1)
 
     # ax.legend(loc="", fontsize = 12)
-    plt.title('Proportion des publications depuis toujours',
+    plt.title('Proportion des publications en 2020',
               fontsize=23, x=0.55, y=1.8, alpha=0.6)
     # plt.show()
     plt.savefig(
-        './data/img/circulaire_2021.png',
+        '../resultats/img/circulaire_2020.png',
         dpi=150,
         bbox_inches='tight',
         pad_inches=0.9)
 
+def enregistrer_graphique():
+    graphique_discipline()
+    graphique_circulaire()
+
+
+
+
+'''
 # =========================OA_EVOL==================================
 # Evolution taux open access par années et par type
 if graph == "oa_evol":
