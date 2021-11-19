@@ -6,7 +6,7 @@ from importation_data.retrieve_hal import api_to_csv
 from fonctions_analyse.recuperer_data import enrich_to_csv
 from fonctions_analyse.ajouter_apc import ajout_apc
 from fonctions_analyse.aligner_data import aligner
-from visualisation.graphique import enregistrer_graphique
+from visualisation.graphique import graphique
 
 # Lecture des paramètres du projet
 # import sys
@@ -23,7 +23,7 @@ stats, df_charge = chargement_tout(
 df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], progression_denominateur=100)
 
 # ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"]) #une fois que je l'ai chargé, je le commente pour pas que ça le refasse
-'''
-aligner()
 
-enregistrer_graphique()
+aligner()
+'''
+graphique()
