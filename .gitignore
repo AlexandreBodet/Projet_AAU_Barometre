@@ -119,4 +119,3 @@ data/.DS_Store
 
 #Data that evolves with time
 /data/dois/hal_from_api.csv
-resultats/
