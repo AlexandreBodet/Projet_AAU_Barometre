@@ -7,6 +7,7 @@ import requests as r
 import pandas as pd 
 import json as j
 
+
 def req_to_json(url):
     """
     S'assurer que la réponse de l'API est en JSON.
@@ -209,12 +210,8 @@ def enrich_df(df, email, progression_denominateur=100):
         # Ajouter les métadonnées au dataframe
         for field in md:
             if field == 'hal_domain':
-                print(md[field])
-                print(type(md[field]))
                 new_domain = pd.Series([md[field]], index = [row.Index], dtype='object')
                 df.loc[[row.Index], 'hal_domain'] = new_domain
-                print(df.loc[[row.Index], 'hal_domain'])
-                print(type(df.loc[[row.Index], 'hal_domain']))
             else:
                 df.loc[row.Index, field] = md[field]
 
