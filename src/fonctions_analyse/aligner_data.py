@@ -49,13 +49,22 @@ def align_doctype(row):
 
 
 def align_domain(row):
-    if pd.notna(row["hal_domain"]):
+    res = []
+    print(row["hal_domain"])
+    print(type(row["hal_domain"]))
+    for e in row["hal_domain"]:
+        print(e)
+        res.append(match_ref["domain"][e])
+    print(res)
+    return res
+
+    '''if pd.notna(row["hal_domain"]):
         if row["hal_domain"] in match_ref["domain"]:
             return match_ref["domain"][row["hal_domain"]]
         else:
             print("cannot align domain", row["halId"])
     else:
-        print("cannot align domain", row["halId"])
+        print("cannot align domain", row["halId"])'''
 
 
 def aligner(df=None):

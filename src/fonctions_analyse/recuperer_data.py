@@ -5,7 +5,7 @@ Fonctions pour récupérer les métadonnées associées aux publications
 import numpy as np
 import requests as r
 import pandas as pd 
-
+import json as j
 
 def req_to_json(url):
     """
@@ -25,6 +25,8 @@ def req_to_json(url):
             pass
     return res
 
+
+match_ref = j.load(open("../data/match_referentials.json"))
 
 def get_hal_data(doi, hal_id):
     """
@@ -46,7 +48,7 @@ def get_hal_data(doi, hal_id):
 
     res = req_to_json("https://api.archives-ouvertes.fr/search/?q=" + query +
                       "&fl=halId_s,title_s,authFullName_s,publicationDate_s,publicationDateY_i,docType_s,journalTitle_s,journalIssn_s,"
-                      "journalEissn_s,journalPublisher_s,domain_s,submittedDate_s,submitType_s,linkExtId_s,openAccess_bool,licence_s,selfArchiving_bool"
+                      "journalEissn_s,journalPublisher_s,domain_s,domain_t,submittedDate_s,submitType_s,linkExtId_s,openAccess_bool,licence_s,selfArchiving_bool"
                       )
 
     # Si l'API renvoie une erreur ou bien si aucun document n'est trouvé
@@ -73,9 +75,15 @@ def get_hal_data(doi, hal_id):
     issn = ",".join(issn) if issn else False
 
     # Vérifier la présence de domaine disciplinaire (quelques notices peuvent ne pas avoir de domaine)
-    domain = False
+    domain = []
     if res.get('domain_s'):
-        domain = res["domain_s"][0]
+        domain = []
+        for e in res["domain_s"]:
+            if(e in match_ref["domain"]):
+                if(e not in domain):
+                    domain.append(e)
+        
+        
 
     auth_count = False
     if res.get("authFullName_s"):
@@ -200,7 +208,15 @@ def enrich_df(df, email, progression_denominateur=100):
 
         # Ajouter les métadonnées au dataframe
         for field in md:
-            df.loc[row.Index, field] = md[field]
+            if field == 'hal_domain':
+                print(md[field])
+                print(type(md[field]))
+                new_domain = pd.Series([md[field]], index = [row.Index], dtype='object')
+                df.loc[[row.Index], 'hal_domain'] = new_domain
+                print(df.loc[[row.Index], 'hal_domain'])
+                print(type(df.loc[[row.Index], 'hal_domain']))
+            else:
+                df.loc[row.Index, field] = md[field]
 
     return df
 
@@ -216,6 +232,7 @@ def enrich_to_csv(df, email, progression_denominateur=100):
     """
     df["is_paratext"] = np.nan
     df["suspicious_journal"] = np.nan
+    df["hal_domain"] = np.nan
     df.reset_index(drop=True, inplace=True)
     df = enrich_df(df, email, progression_denominateur)
     df_reorder = df[

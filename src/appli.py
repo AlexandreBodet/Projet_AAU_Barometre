@@ -22,8 +22,8 @@ stats, df_charge = chargement_tout(
 df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], progression_denominateur=100)
 
 # ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"]) #une fois que je l'ai chargé, je le commente pour pas que ça le refasse
-
-aligner()
 '''
+aligner()
 
-graphique_discipline()
+
+#graphique_discipline()
