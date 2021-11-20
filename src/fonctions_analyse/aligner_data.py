@@ -59,6 +59,7 @@ def align_domain(row):
             return match_ref["domain"][row["hal_domain"]]
         else:
             print("cannot align domain", row["halId"])
+            return "Autres"
     else:
         print("cannot align domain", row["halId"])'''
 

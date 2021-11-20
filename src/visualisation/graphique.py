@@ -2,6 +2,12 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+from datetime import date
+
+from visualisation.graphique_discipline import graphique_discipline
+from visualisation.graphique_circulaire_oa import graphique_circulaire_oa
+from visualisation.graphique_discipline_oa import graphique_discipline_oa
+from visualisation.graphique_oa_evolution import graphique_oa_evolution
 
 """
   circulaire : bilan open access sur une année
@@ -12,435 +18,42 @@ import numpy as np
   evol types d'accès ouvert green to diamond
 """
 
-df_raw = pd.read_csv(
-    "../resultats/fichiers_csv/data_complete.csv",
-    dtype={"published_year": "string"},
-    na_filter=False,
-    low_memory=False)
-
-# filtre : retrait des documents de paratexte
-df = df_raw[df_raw["is_paratext"] == ""]
-# rmq:  des publications ne sont pas dans la fourchette souhaitée [2016-2020]
 
 # circulaire // oa_evol // oa_discipline // oa_editeur //
 # comparaison_bases // apc_evol // apc_discipline // bibliodiversity
 # disciplines
-graph = "disciplines"
 
-# ====================disciplines=======================================
-# nb publications par discipline
-def graphique_discipline():
-    print("graphique disciplines")
-    # oneyear = df[ df["published_year"] == "2020.0"]
-    allyear = df
 
-    scifield = pd.crosstab(allyear["scientific_field"], allyear["is_oa"])
-    scifield.columns = ["not_oa", "is_oa"]
-    scifield["total"] = scifield["not_oa"] + scifield["is_oa"]
-
-    print(scifield)
-
-    # ____1____ passer les données dans le modele de representation
-    fig, (ax) = plt.subplots(figsize=(12, 7),
-                             dpi=100, facecolor='w', edgecolor='k')
-
-    ax.bar(
-        scifield.index,
-        scifield["is_oa"].tolist(),
-        color='#7E96C4',
-        align='center',
-        label="Accès ouvert")
-
-    ax.bar(
-        scifield.index,
-        scifield["not_oa"].tolist(),
-        bottom=scifield["is_oa"].tolist(),
-        align='center',
-        color='#BED0F4',
-        label="Accès fermé")
-
-    # ____2____ configurer l'affichage
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    # ax.spines['left'].set_visible(False)
-    # retirer l'origine sur Y
-    yticks = ax.yaxis.get_major_ticks()
-    yticks[0].label1.set_visible(False)
-    ax.yaxis.grid(ls='--', alpha=0.4)
-
-    ax.set_xticklabels(scifield.index, ha="right", rotation=60, fontsize=12)
-
-    # plt.tight_layout()
-    plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
-    plt.title(
-        "Nombre de publications depuis toujours par discipline",
-        fontsize=20,
-        x=0.5,
-        y=1,
-        alpha=0.6)
-    plt.savefig(
-        "../resultats/publication_par_discipline.png",
-        dpi=100,
-        bbox_inches='tight')
-'''
-# ====================CIRCULAIRE=======================================
-# circulaire bilan open access sur une année
-if graph == "circulaire":
-    dfpie = df[df["published_year"] == "2020.0"]
-    oa_bool = dfpie["is_oa"].value_counts().sort_index()
-    oa_bool = oa_bool.rename({True: "Accès ouvert", False: "Accès fermé"})
-    print(oa_bool)
-
-    oa_type = dfpie["oa_type"].value_counts().sort_index()
-    oa_type = oa_type.rename({"closed": "Accès fermé",
-                              "publisher": "Éditeur",
-                              "repository": "Archive ouverte",
-                              "publisher;repository": "Éditeur et Archive ouverte"})
-    # print(oa_type)
-
-    fig, ax = plt.subplots(dpi=100)
-    ax.set_aspect('equal')
-    ax.pie(
-        oa_bool,
-        labels=oa_bool.index,
-        radius=3,
-        labeldistance=None,
-        colors=[
-            'tomato',
-            'springgreen'],
-        autopct=lambda x: str(
-            round(
-                x,
-                1)) + '%',
-        pctdistance=0.9,
-        shadow=True)
-    ax.pie(
-        oa_type,
-        labels=oa_type.index,
-        radius=2.3,
-        labeldistance=None,
-        colors=[
-            'firebrick',
-            'gold',
-            'greenyellow',
-            'seagreen'],
-        autopct=lambda x: str(
-            round(
-                x,
-                1)) + '%',
-        pctdistance=0.9)
-
-    ax.pie([1], radius=1.3, colors='white')
-
-    # légende : reordonner les éléments
-    handles, labels = ax.get_legend_handles_labels()
-    print(labels)
-    order = [0, 1, 3, 4, 5]
-    ax.legend([handles[idx] for idx in order],
-              [labels[idx] for idx in order],
-              fontsize=14,
-              loc="center",
-              framealpha=1,
-              frameon=True,
-              borderaxespad=-1)
-
-    # ax.legend(loc="", fontsize = 12)
-    plt.title('Proportion des publications depuis toujours',
-              fontsize=23, x=0.55, y=1.8, alpha=0.6)
-    # plt.show()
-    plt.savefig(
-        './data/img/circulaire_2021.png',
-        dpi=150,
-        bbox_inches='tight',
-        pad_inches=0.9)
-
-# =========================OA_EVOL==================================
-# Evolution taux open access par années et par type
-if graph == "oa_evol":
-
-    # ____0____ recupérer les données
-    dfyears = df.loc[df["published_year"].isin(
-        ["2016.0", "2017.0", "2018.0", "2019.0", "2020.0"]), :]
-    print("nb publis a traiter", len(dfyears))
-    pd.set_option('mode.chained_assignment', None)
-    dfyears.is_oa = dfyears.is_oa.astype(bool)
-
-    # retour consol uniquement : comparer les valeurs avec ou sans DOI
-    halnodoi = dfyears[dfyears["doi"] == ""]
-    print(f"nb publis hal uniquement {len(halnodoi.index)}")
-
-    print(
-        f"soit en % de plus {round(len(halnodoi.index) / len(dfyears) * 100, 1)}")
-    haloa = dfyears.loc[(dfyears["doi"] == "") & (dfyears["is_oa"]), :]
-
-    print("nombre de publi oa dans hal", len(haloa))
-
-    # /!\ Si on veut réduire aux publications avec DOI seulement
-    dfyears = dfyears[dfyears["doi"] != ""].copy()
-
-    # retrouver les types d'AO
-    dfyears["oa_publisher_repository"] = dfyears.oa_type == "publisher;repository"
-    dfyears["oa_repository"] = dfyears.oa_type == "repository"
-    dfyears["oa_publisher"] = dfyears.oa_type == "publisher"
-    dfyears["oa_unk"] = dfyears.oa_type == "unknow"
-
-    # definition du taux AO par années
-    dfoa = pd.DataFrame(
-        dfyears.groupby(
-            ["published_year"])[
-            [
-                "is_oa",
-                "oa_repository",
-                "oa_publisher",
-                "oa_unk",
-                "oa_publisher_repository"]].agg(
-                    [
-                        "count",
-                        np.mean])).reset_index()
-
-    dfoa.columns = [
-        "published_year",
-        "nb_doi",
-        "oa_mean",
-        "nbdoi1",
-        "oa_repository_mean",
-        "nb_doi2",
-        "oa_publisher_mean",
-        "nb_doi3",
-        "oa_unk_mean",
-        "nb_doi4",
-        "oa_publisher_repository_mean"]
-
-    dfoa["year_label"] = dfoa.apply(lambda x: "{}\n{} publications".format(
-        x.published_year[:x.published_year.index(".")], int(x.nb_doi)), axis=1)
-    dfoa = dfoa.sort_values(by="published_year", ascending=True)
-
-    # ____1____ passer les données dans le modele de representation
-    fig, (ax) = plt.subplots(figsize=(15, 10),
-                             dpi=100, facecolor='w', edgecolor='k')
-
-    ax.bar(
-        dfoa.year_label,
-        dfoa.oa_repository_mean.tolist(),
-        align='center',
-        alpha=1.0,
-        color='seagreen',
-        ecolor='black',
-        label="Archive ouverte")
-
-    ax.bar(
-        dfoa.year_label,
-        dfoa.oa_publisher_repository_mean.tolist(),
-        align='center',
-        alpha=1.0,
-        color='greenyellow',
-        bottom=dfoa.oa_repository_mean.tolist(),
-        ecolor='black',
-        label="Éditeur et Archive ouverte")
-
-    ax.bar(
-        dfoa.year_label,
-        dfoa.oa_publisher_mean.tolist(),
-        align='center',
-        alpha=1.0,
-        color='gold',
-        bottom=[
-            sum(x) for x in zip(
-                dfoa.oa_repository_mean.tolist(),
-                dfoa.oa_publisher_repository_mean.tolist())],
-        ecolor='black',
-        label="Éditeur")
-
-    # ____2____ configurer l'affichage
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_visible(False)
-    # retirer l'origine sur Y
-    yticks = ax.yaxis.get_major_ticks()
-    yticks[0].label1.set_visible(False)
-
-    # tracer les grilles
-    ax.yaxis.grid(ls='--', alpha=0.4)
-    import numpy as np
-
-    # just to remove an mess error UserWarning: FixedFormatter should only be
-    # used together with FixedLocator
-    ax.set_xticks(np.arange(len(dfoa["year_label"])))
-    ax.set_xticklabels(dfoa["year_label"].tolist(), fontsize=15)
-    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-    ax.set_yticklabels(['{:,.0%}'.format(x)
-                       for x in ax.get_yticks()], fontsize=10)
-    # reordonner la legende pour avoir en haut l'éditeur
-    handles, labels = ax.get_legend_handles_labels()
-    order = [2, 1, 0]
-    ax.legend([handles[idx] for idx in order], [labels[idx]
-              for idx in order], fontsize=15, loc="upper center", borderaxespad=1.7)
-
-    oa_total_mean = [
-        sum(x) for x in zip(
-            dfoa.oa_repository_mean.tolist(),
-            dfoa.oa_publisher_repository_mean.tolist(),
-            dfoa.oa_publisher_mean.tolist())]
-
-    # ajout le taux d'accès ouvert global
-    for year_ix in range(len(dfoa.year_label)):
-        ax.annotate("{:,.1%}".format(oa_total_mean[year_ix]),
-                    xy=(year_ix, oa_total_mean[year_ix]),
-                    xytext=(0, 20),
-                    size=16,
-                    textcoords="offset points",
-                    ha='center', va='bottom')
-
-    # Ajouter les taux par type, difficulté : il faut prendre en compte les
-    # taux précédents
-    colname = [
-        "oa_repository_mean",
-        "oa_publisher_repository_mean",
-        "oa_publisher_mean"]
-    for col in colname:
-        for year_ix in range(len(dfoa.year_label)):
-
-            ypos_bottom = 0
-            for col_before_ix in range(colname.index(col)):
-                col_before = colname[col_before_ix]
-                ypos_bottom += dfoa[col_before][year_ix]
-
-            ax.annotate(f"{int(round(dfoa[col][year_ix] * 100))} %",
-                        xy=(year_ix, ypos_bottom + dfoa[col][year_ix] * 0.40),
-                        xytext=(0, 0),
-                        size=8,
-                        textcoords="offset points",
-                        ha='center', va='bottom', color="black")
-
-    plt.title("Évolution du taux d'accès ouvert aux publications",
-              fontsize=25, x=0.5, y=1.05, alpha=0.6)
-    plt.savefig(
-        './data/img/oa_evolution.png',
-        dpi=100,
-        bbox_inches='tight',
-        pad_inches=0.1)
-
-# ========================OA_DISCIPLINE===================================
-if graph == "oa_discipline":
-    oneyear_pub = df.loc[df['published_year'] == "2020.0", :]
-    # retrait des publications où le domaine serait resté vide
-    oneyear_pub = oneyear_pub[oneyear_pub["scientific_field"] != ""]
-    print("2020 nb of publi", len(oneyear_pub))
-    publications_par_domaine = oneyear_pub['scientific_field'].value_counts(
-    ).sort_index()
-    print(publications_par_domaine)
-
+def graphique(df_raw=None, annee=date.today().year, disciplinaire=True, circulaire=True, discipline_oa=True, evolution_oa=True):
     """
-  df_oa_discipline_global = pd.crosstab([oneyear_pub['scientific_field']],oneyear_pub['oa_type'])
-  # Ajout d'une colonne avec le total par discipline
-  df_oa_discipline_global["Total"] = publications_par_domaine
-  # Ajout d'une colonne qui concatène le nom de la discipline et le total
-  df_oa_discipline_global["y_label"] = df_oa_discipline_global.index + "\n" + df_oa_discipline_global["Total"].apply(str) + " publications"
+    Fonction principale pour générer les graphiques.
+    :param evolution_oa:
+    :param dataframe df_raw: le dataframe à utiliser
+    :param int annee: année utilisée pour certains graphiques
+    :param bool disciplinaire: dit si le graphique doit être fait
+    :param bool circulaire: dit si le graphique doit être fait
+    :param bool discipline_oa: dit si le graphique doit être fait
+    :return:
+    """
+    if df_raw is None:
+        print("Pas de dataframe chargé.")
+        return None
 
-  # Réindexation de l'index pour que les bonnes informations s'affichent dans le graphique final
-  df_oa_discipline_global.index = df_oa_discipline_global["y_label"]
-  """
+    # filtre : retrait des documents de paratexte
+    df = df_raw[df_raw["is_paratext"] == ""]  # pour nous : inutile car ils sont tous comme ça
+    # remarque:  des publications ne sont pas dans la fourchette souhaitée [2016-XX]
 
-    df_oa_discipline = pd.crosstab(
-        [oneyear_pub['scientific_field']], oneyear_pub['oa_type'])
-    df_oa_discipline = (
-        df_oa_discipline.T /
-        df_oa_discipline.T.sum()).mul(100).round(1)
-    df_oa_discipline = df_oa_discipline.T
-    df_oa_discipline["Total"] = publications_par_domaine
-    df_oa_discipline["y_label"] = df_oa_discipline.index + \
-        "\n" + df_oa_discipline["Total"].apply(str) + " publications"
-    df_oa_discipline.index = df_oa_discipline["y_label"]
+    if disciplinaire:
+        graphique_discipline(df)
+    if circulaire:
+        graphique_circulaire_oa(df, annee)
+    if discipline_oa:
+        graphique_discipline_oa(df, annee)
+    if evolution_oa:
+        graphique_oa_evolution(df)
 
-    df_oa_discipline.sort_index(ascending=False, inplace=True)
 
-    import matplotlib.ticker as mtick
-
-    ax = df_oa_discipline.drop(["Total",
-                                "y_label"],
-                               axis=1).plot(kind="barh",
-                                            stacked=True,
-                                            figsize=(14,
-                                                     10),
-                                            color=['tomato',
-                                                   'gold',
-                                                   'greenyellow',
-                                                   'seagreen'])
-    # ax.xaxis.set_major_formatter(mtick.PercentFormatter())
-
-    # _______ configurer l'afichage
-    # remove axis
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['bottom'].set_visible(False)
-    # remove xticks
-    plt.tick_params(
-        axis='x',  # changes apply to the x-axis
-        which='both',  # both major and minor ticks are affected
-        bottom=False,  # ticks along the bottom edge are off
-        labelbottom=False)  # labels along the bottom edge are off
-
-    labels = []
-    for j in df_oa_discipline.columns:
-        for i in df_oa_discipline.index:
-            label = df_oa_discipline.loc[i][j]
-            if not isinstance(label, str):
-                # pour un meilleur affichage : si ce n'est pas la discipline on
-                # arrondi
-                label = str(round(label))
-                label += " %"  # :label.find(".")
-                labels.append(label)
-
-    patches = ax.patches
-    for label, rect in zip(labels, patches):
-        width = rect.get_width()
-        if width > 0:
-            x = rect.get_x()
-            y = rect.get_y()
-            height = rect.get_height()
-            ax.text(
-                x + width / 2.,
-                y + height / 2.,
-                label,
-                ha='center',
-                va='center',
-                fontsize=9)
-
-    # Trier les disciplines par ordre alphabétique
-    # plt.gca().invert_yaxis()
-    plt.tick_params(axis='both', labelsize=13)
-
-    plt.ylabel(None, fontsize=15)
-
-    plt.legend(['Accès fermé',
-                'Éditeur',
-                'Éditeur et Archive ouverte',
-                'Archive ouverte'],
-               loc='best',
-               ncol=4,
-               frameon=True,
-               markerscale=1,
-               title=None,
-               fontsize=15,
-               borderpad=0.2,
-               labelspacing=0.3,
-               bbox_to_anchor=(0.02,
-                               0.985),
-               framealpha=False)
-
-    plt.title(
-        "Taux d'accès ouvert des publications depuis toujours par discipline",
-        fontsize=25,
-        x=0.49,
-        y=1.07,
-        alpha=0.6)
-
-    # plt.show()
-    plt.savefig(
-        './data/img/oa_discipline.png',
-        dpi=100,
-        bbox_inches='tight',
-        pad_inches=0.1)
+'''
 
 # =========================oa_editeur==================================
 # type d'accès ouvert par éditeurs
