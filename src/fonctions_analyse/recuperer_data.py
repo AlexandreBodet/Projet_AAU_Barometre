@@ -29,13 +29,14 @@ def req_to_json(url):
 
 match_ref = j.load(open("../data/match_referentials.json"))
 
-def get_hal_data(doi, hal_id):
+def get_hal_data(doi, hal_id, choix_domaine):
     """
     Récupérer les métadonnées de HAL.
     Si le DOI est dans unpaywall les métadonnées de HAL communes seront écrasées.
 
     :param str doi: doi dont les données sont à récupérer
-    :param str hal_id: hal id dont les données sont à récupérer
+    :param str hal_id: hal id dont les données sont à récupérer:
+    para str choix_domaine: 1 si on garde un domaine par document, n si on les prends tous 
     :return dict: dictionnaire des métadonnées récupérées
     """
 
@@ -76,13 +77,18 @@ def get_hal_data(doi, hal_id):
     issn = ",".join(issn) if issn else False
 
     # Vérifier la présence de domaine disciplinaire (quelques notices peuvent ne pas avoir de domaine)
+    
     domain = []
     if res.get('domain_s'):
-        domain = []
-        for e in res["domain_s"]:
+        if(choix_domaine == "1"):
+            e = res["domain_s"][0]
             if(e in match_ref["domain"]):
-                if(e not in domain):
-                    domain.append(e)
+                domain.append(e)
+        elif(choix_domaine == "n"):
+            for e in res["domain_s"]:
+                if(e in match_ref["domain"]):
+                    if(e not in domain):
+                        domain.append(e)
         
         
 
@@ -181,7 +187,7 @@ def get_upw_data(doi, email):
     }
 
 
-def enrich_df(df, email, progression_denominateur=100):
+def enrich_df(df, email, choix_domaine, progression_denominateur=100):
     """
     Pour chaque publications lancer les requêtes et ajouter les métadonnées.
 
@@ -198,7 +204,7 @@ def enrich_df(df, email, progression_denominateur=100):
                 len(df) / progression_denominateur) == 0:  # le dénominateur impact l'intervalle des étapes : 100 une étape tout les 1% etc.
             print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ", round(row.Index / len(df) * progression_denominateur, 1), "%")
         # Récupérer les métadonnées de HAL
-        md = get_hal_data(row.doi, row.halId)
+        md = get_hal_data(row.doi, row.halId, choix_domaine)
 
         # S'il y a un DOI, prendre les données de Unpaywall.
         # Les métadonnées de HAL communes avec Unpaywall seront écrasées.
@@ -218,7 +224,7 @@ def enrich_df(df, email, progression_denominateur=100):
     return df
 
 
-def enrich_to_csv(df, email, progression_denominateur=100):
+def enrich_to_csv(df, email, choix_domaine, progression_denominateur=100):
     """
     Enrichi en métadonnées et enregistre en csv.
 
@@ -231,7 +237,7 @@ def enrich_to_csv(df, email, progression_denominateur=100):
     df["suspicious_journal"] = np.nan
     df["hal_domain"] = np.nan
     df.reset_index(drop=True, inplace=True)
-    df = enrich_df(df, email, progression_denominateur)
+    df = enrich_df(df, email, choix_domaine, progression_denominateur)
     df_reorder = df[
         ["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location", "hal_openAccess_bool",
          "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "published_date", "published_year",

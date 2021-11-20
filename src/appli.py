@@ -19,7 +19,7 @@ api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], query=donnees
 stats, df_charge = chargement_tout(
     donnees=donnees["data"]["dois"], api_hal=True, recherche_erreur=True)
 print('\nchargement fini\n')
-df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], progression_denominateur=100)
+df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=donnees["data"]["domaine"], progression_denominateur=100)
 print('\nenrichissement fini\n')
 ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"]) #une fois que je l'ai chargé, je le commente pour pas que ça le refasse
 print('\najout apc fini\n')
