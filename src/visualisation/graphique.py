@@ -9,6 +9,8 @@ from visualisation.graphique_circulaire_oa import graphique_circulaire_oa
 from visualisation.graphique_discipline_oa import graphique_discipline_oa
 from visualisation.graphique_oa_evolution import graphique_oa_evolution
 from visualisation.graphique_oa_editeur import graphique_oa_editeur
+from visualisation.graphique_comparaison_bases import graphique_comparaison_bases
+from visualisation.graphique_apc_evolution import graphique_apc_evolution
 
 """
   circulaire : bilan open access sur une année
@@ -26,7 +28,7 @@ from visualisation.graphique_oa_editeur import graphique_oa_editeur
 
 
 def graphique(df_raw=None, annee=date.today().year, disciplinaire=True, circulaire=True, discipline_oa=True, evolution_oa=True,
-              oa_editeur=True):
+              oa_editeur=False, comparaison_bases=True, apc_evolution=True):
     """
     Fonction principale pour générer les graphiques.
     :param evolution_oa:
@@ -36,6 +38,8 @@ def graphique(df_raw=None, annee=date.today().year, disciplinaire=True, circulai
     :param bool circulaire: dit si le graphique doit être fait
     :param bool discipline_oa: dit si le graphique doit être fait
     :param bool oa_editeur: dit si le graphique doit être fait
+    :param bool comparaison_bases: dit si le graphique doit être fait
+    :param bool apc_evolution: dit si le graphique doit être fait
     :return:
     """
     if df_raw is None:
@@ -52,157 +56,17 @@ def graphique(df_raw=None, annee=date.today().year, disciplinaire=True, circulai
         graphique_circulaire_oa(df, annee)
     if discipline_oa:
         graphique_discipline_oa(df, annee)
-    if evolution_oa:
+    if evolution_oa:  # à corriger
         graphique_oa_evolution(df)
-    if oa_editeur: # ne fonctionne pas encore
+    if oa_editeur:  # ne fonctionne pas encore
         graphique_oa_editeur(df)
-
+    if comparaison_bases:  # à corriger, peut-être pas utile
+        graphique_comparaison_bases()
+    if apc_evolution:  # peut-être pas utile, à modifier
+        graphique_apc_evolution(df)
+    
 
 '''
-# =========================extra : comparaison_bases======================
-# comparaison du nb de publications dans les bases scopus wos hal et cie.
-if graph == "comparaison_bases":
-    # ____0____ recupérer les données
-    df = pd.read_csv("./data/out/step_a__statistiques_sur_les_bases.csv")
-    data = df.to_dict("list")
-    x = np.arange(len(data["name"]))  # the label locations
-    width = 0.2
-
-    # ____1____ passer les données dans le modele de representation graphique
-    fig, ax = plt.subplots(figsize=(7, 4))
-    ax.bar(
-        x - width,
-        data["all"],
-        width,
-        label='toutes publications',
-        color="orchid")
-    ax.bar(x, data["doi"], width, label='publications avec DOI', color="gold")
-    ax.bar(
-        x + width,
-        data["no_doi"],
-        width,
-        label='publications sans DOI',
-        color="skyblue")
-
-    # ____2____ configurer l'affichage
-    ax.yaxis.grid(ls='--', alpha=0.4)
-
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_visible(False)
-    # retirer l'origine sur Y
-    yticks = ax.yaxis.get_major_ticks()
-    yticks[0].label1.set_visible(False)
-
-    plt.yticks([i for i in range(0, 600, 100)], fontsize=10)
-    ax.set_ylabel('Nombre de publications', fontsize=8)
-    ax.set_xticks(x)
-    ax.set_xticklabels([n.capitalize() for n in data["name"]], fontsize=11)
-    plt.legend(loc="upper center", fontsize=8)
-
-    ax.set_title(
-        "Quantité de publications dans les bases",
-        fontsize=16,
-        alpha=0.6,
-        y=1.05)
-    plt.suptitle("Depuis toujours", fontsize=10, alpha=0.6, y=0.92)
-    plt.savefig('./data/img/comparaisons_entre_les_bases.png',
-                dpi=150, bbox_inches='tight', pad_inches=0.05)
-    exit()
-
-# =========================APC Evolution=================================
-# estimation du pourcentage de publication en accès ouvert chez l'éditeur
-# avec APC
-if graph == "apc_evol":
-    # ____0____ recupérer les données
-    dfyears = df.loc[df["published_year"].isin(
-        ["2016.0", "2017.0", "2018.0", "2019.0", "2020.0"]), :]
-    print("nb publis a traiter", len(dfyears), '\n\n')
-    pd.set_option('mode.chained_assignment', None)
-    df_gold = dfyears.loc[dfyears["oa_type"].str.contains(
-        "publisher", regex=False), :]
-    # print(df_gold["oa_type"].value_counts())
-
-    df_gold["has_apc"] = df_gold["apc_tracking"] != ""
-    df_gold = df_gold.astype({'has_apc': 'bool'})
-    print("nb public avec  APC", len(df_gold[df_gold["has_apc"]]))
-
-    # ____1____produire le tableau
-    df_apc = pd.DataFrame(df_gold.groupby(["published_year"])[
-                          ["has_apc"]].agg(["count", np.mean])).reset_index()
-    df_apc.columns = ["published_year", "nb", "has_apc_mean"]
-
-    df_apc["label"] = df_apc.apply(lambda x: "{}\n{} publications".format(
-        x.published_year[:x.published_year.index(".")], int(x.nb)), axis=1)
-
-    df_apc.sort_values(by="published_year", ascending=True, inplace=True)
-    print(df_apc)
-
-    # ____2____ passer les données dans le modele de representation
-    fig, (ax) = plt.subplots(figsize=(15, 10),
-                             dpi=100, facecolor='w', edgecolor='k')
-
-    ax.bar(
-        df_apc.label,
-        df_apc.has_apc_mean.tolist(),
-        align='center',
-        alpha=1.0,
-        color='lightpink',
-        ecolor='black',
-        label="Accès ouvert chez l'éditeur avec APC")
-
-    no_apc = 1 - df_apc["has_apc_mean"]
-    ax.bar(df_apc.label, no_apc, align='center', alpha=1.0, color='gainsboro',
-           bottom=df_apc.has_apc_mean.tolist(),
-           ecolor='black', label="Accès ouvert chez l'éditeur sans APC")
-
-    # ____2____ configurer l'affichage
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_visible(False)
-    # retirer l'origine sur Y
-    yticks = ax.yaxis.get_major_ticks()
-    yticks[0].label1.set_visible(False)
-
-    # tracer les grilles
-    ax.yaxis.grid(ls='--', alpha=0.4)
-    import numpy as np
-
-    # just to remove an mess error UserWarning: FixedFormatter should only be
-    # used together with FixedLocator
-    ax.set_xticks(np.arange(len(df_apc["label"])))
-    ax.set_xticklabels(df_apc["label"].tolist(), fontsize=15)
-    ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-    ax.set_yticklabels(['{:,.0%}'.format(x)
-                       for x in ax.get_yticks()], fontsize=10)
-
-    apc_percent = df_apc["has_apc_mean"].tolist()
-    print(apc_percent)
-    print(range(len(df_apc.label)))
-
-    # ajout du label sur les hist
-    for year_ix in range(len(df_apc.label)):
-        ax.annotate("{:,.1%}".format(apc_percent[year_ix]),
-                    xy=(year_ix, apc_percent[year_ix]),
-                    xytext=(0, 10),
-                    size=16,
-                    textcoords="offset points",
-                    ha='center', va='bottom')
-
-    plt.legend(loc='upper center', bbox_to_anchor=(0.5, 0.8), fontsize=12)
-
-    plt.title(
-        "Estimation du pourcentage de publications en accès ouvert \nchez l'éditeur avec frais de publications (APC)",
-        fontsize=25,
-        x=0.5,
-        y=1,
-        alpha=0.6)
-    plt.savefig(
-        './data/img/apc_evolution.png',
-        dpi=100,
-        bbox_inches='tight',
-        pad_inches=0.1)
-
 # ========================apc_discipline===================================
 if graph == "apc_discipline":
     oneyear_pub = df.loc[df['published_year'] == "2019.0", :]
