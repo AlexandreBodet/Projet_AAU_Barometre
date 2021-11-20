@@ -2,7 +2,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
-import seaborn as sns
 
 
 def graphique_oa_evolution(df, doi_only=False):

@@ -43,8 +43,6 @@ def graphique_discipline_oa(df, annee):
 
     df_oa_discipline.sort_index(ascending=False, inplace=True)
 
-    import matplotlib.ticker as mtick
-
     ax = df_oa_discipline.drop(["Total",
                                 "y_label"],
                                axis=1).plot(kind="barh",
