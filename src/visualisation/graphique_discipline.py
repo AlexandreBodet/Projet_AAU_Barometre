@@ -1,11 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# ====================disciplines=======================================
-# nb publications par discipline
-
 
 def graphique_discipline(df):
+    """
+    Nombre de publications par discipline
+    :param df:
+    :return:
+    """
     print("graphique disciplines")
     # oneyear = df[ df["published_year"] == "2020.0"]
     allyear = df
@@ -16,7 +18,7 @@ def graphique_discipline(df):
 
     print(scifield)
 
-    # ____1____ passer les données dans le modèle de representation
+    # Passer les données dans le modèle de representation
     fig, (ax) = plt.subplots(figsize=(12, 7),
                              dpi=100, facecolor='w', edgecolor='k')
 
@@ -35,7 +37,7 @@ def graphique_discipline(df):
         color='#BED0F4',
         label="Accès fermé")
 
-    # ____2____ configurer l'affichage
+    # Configurer l'affichage
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     # ax.spines['left'].set_visible(False)
@@ -54,8 +56,4 @@ def graphique_discipline(df):
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig(
-        "../resultats/img/discipline_recapitulatif.png",
-        dpi=100,
-        bbox_inches='tight')
-
+    plt.savefig("../resultats/img/discipline_recapitulatif.png", dpi=100, bbox_inches='tight')

@@ -1,14 +1,15 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def graphique_oa_editeur(df):
+def graphique_oa_editeur(df, annee):
     """
     Type d'accès ouvert par éditeur.
+    :param annee:
     :param dataframe df: dataframe aligné
     :return:
     """
-    oneyear_pub = df.loc[df['published_year'] == "2020.0", :].copy()
+    oneyear_pub = df.loc[df['published_year'] == annee, :].copy()
 
     # print(oneyear_pub['publisher'].value_counts().iloc[0:30])
 

@@ -8,13 +8,13 @@ def graphique_comparaison_bases():
     Comparaison du nb de publications dans les bases scopus wos hal et cie.
     
     """""
-    # ____0____ récupérer les données
+    # Récupérer les données
     df = pd.read_csv("../resultats/fichiers_csv/statistiques_sur_les_bases.csv")
     data = df.to_dict("list")
     x = np.arange(len(data["name"]))  # the label locations
     width = 0.2
 
-    # ____1____ passer les données dans le modèle de representation graphique
+    # Passer les données dans le modèle de representation graphique
     fig, ax = plt.subplots(figsize=(7, 4))
     ax.bar(
         x - width,
@@ -30,13 +30,13 @@ def graphique_comparaison_bases():
         label='publications sans DOI',
         color="skyblue")
 
-    # ____2____ configurer l'affichage
+    # Configurer l'affichage
     ax.yaxis.grid(ls='--', alpha=0.4)
 
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_visible(False)
-    # retirer l'origine sur Y
+    # Retirer l'origine sur Y
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
 
@@ -46,11 +46,6 @@ def graphique_comparaison_bases():
     ax.set_xticklabels([n.capitalize() for n in data["name"]], fontsize=11)
     plt.legend(loc="upper center", fontsize=8)
 
-    ax.set_title(
-        "Quantité de publications dans les bases",
-        fontsize=16,
-        alpha=0.6,
-        y=1.05)
+    ax.set_title("Quantité de publications dans les bases", fontsize=16, alpha=0.6, y=1.05)
     plt.suptitle("Depuis toujours", fontsize=10, alpha=0.6, y=0.92)
-    plt.savefig('../resultats/img/comparaisons_entre_les_bases.png',
-                dpi=150, bbox_inches='tight', pad_inches=0.05)
+    plt.savefig('../resultats/img/comparaisons_entre_les_bases.png', dpi=150, bbox_inches='tight', pad_inches=0.05)

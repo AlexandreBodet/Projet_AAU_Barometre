@@ -1,32 +1,30 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from datetime import date
 
 
-def graphique_oa_evolution(df, doi_only=False):
+def graphique_oa_evolution(df, annees, doi_only=False):
     # Récupérer les données
-    annees = [i for i in range(2016, date.today().year + 1)]
     df_annees = df.loc[df["published_year"].isin(annees), :]
     print("Nombre de publications à traiter", len(df_annees))
-    pd.set_option('mode.chained_assignment', None)
+    pd.set_option("mode.chained_assignment", None)
     df_annees.is_oa = df_annees.is_oa.astype(bool)
 
-    # retour consol uniquement : comparer les valeurs avec ou sans DOI
+    # retour console uniquement : comparer les valeurs avec ou sans DOI
     halnodoi = df_annees[df_annees["doi"] == ""]
-    print(f"nb publis hal uniquement {len(halnodoi.index)}")
+    print(f"nb publications hal uniquement {len(halnodoi.index)}")
 
     print(
         f"soit {round(len(halnodoi.index) / len(df_annees) * 100, 1)}% en plus ")
     haloa = df_annees.loc[(df_annees["doi"] == "") & (df_annees["is_oa"]), :]
 
-    print("nombre de publi oa dans hal", len(haloa))
+    print("nombre de publications oa dans hal", len(haloa))
 
     if doi_only:
         # /!\ Si on veut réduire aux publications avec DOI seulement
         df_annees = df_annees[df_annees["doi"] != ""].copy()
 
-    # retrouver les types d'AO
+    # retrouver les types d'Accès Ouvert
     df_annees["oa_publisher_repository"] = df_annees.oa_type == "publisher;repository"
     df_annees["oa_repository"] = df_annees.oa_type == "repository"
     df_annees["oa_publisher"] = df_annees.oa_type == "publisher"
@@ -56,59 +54,59 @@ def graphique_oa_evolution(df, doi_only=False):
 
     # ____1____ passer les données dans le modèle de representation
     fig, (ax) = plt.subplots(figsize=(15, 10),
-                             dpi=100, facecolor='w', edgecolor='k')
+                             dpi=100, facecolor="w", edgecolor="k")
 
     ax.bar(
         dfoa.year_label,
         dfoa.oa_repository_mean.tolist(),
-        align='center',
+        align="center",
         alpha=1.0,
-        color='seagreen',
-        ecolor='black',
+        color="seagreen",
+        ecolor="black",
         label="Archive ouverte")
 
     ax.bar(
         dfoa.year_label,
         dfoa.oa_publisher_repository_mean.tolist(),
-        align='center',
+        align="center",
         alpha=1.0,
-        color='greenyellow',
+        color="greenyellow",
         bottom=dfoa.oa_repository_mean.tolist(),
-        ecolor='black',
+        ecolor="black",
         label="Éditeur et Archive ouverte")
 
     ax.bar(
         dfoa.year_label,
         dfoa.oa_publisher_mean.tolist(),
-        align='center',
+        align="center",
         alpha=1.0,
-        color='gold',
+        color="gold",
         bottom=[
             sum(x) for x in zip(
                 dfoa.oa_repository_mean.tolist(),
                 dfoa.oa_publisher_repository_mean.tolist())],
-        ecolor='black',
+        ecolor="black",
         label="Éditeur")
 
     # ____2____ configurer l'affichage
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['left'].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_visible(False)
     # retirer l'origine sur Y
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
 
     # tracer les grilles
-    ax.yaxis.grid(ls='--', alpha=0.4)
+    ax.yaxis.grid(ls="--", alpha=0.4)
 
     # just to remove an mess error UserWarning: FixedFormatter should only be
     # used together with FixedLocator
     ax.set_xticks(np.arange(len(dfoa["year_label"])))
     ax.set_xticklabels(dfoa["year_label"].tolist(), fontsize=15)
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-    ax.set_yticklabels(['{:,.0%}'.format(x)
+    ax.set_yticklabels(["{:,.0%}".format(x)
                         for x in ax.get_yticks()], fontsize=10)
-    # réordonner la légende pour avoir en haut l'éditeur
+    # réordonner la légende pour avoir en haut l"éditeur
     handles, labels = ax.get_legend_handles_labels()
     order = [2, 1, 0]
     ax.legend([handles[idx] for idx in order], [labels[idx]
@@ -127,7 +125,7 @@ def graphique_oa_evolution(df, doi_only=False):
                     xytext=(0, 20),
                     size=16,
                     textcoords="offset points",
-                    ha='center', va='bottom')
+                    ha="center", va="bottom")
 
     # Ajouter les taux par type, difficulté : il faut prendre en compte les
     # taux précédents
@@ -148,12 +146,12 @@ def graphique_oa_evolution(df, doi_only=False):
                         xytext=(0, 0),
                         size=8,
                         textcoords="offset points",
-                        ha='center', va='bottom', color="black")
+                        ha="center", va="bottom", color="black")
 
     plt.title("Évolution du taux d'accès ouvert aux publications",
               fontsize=25, x=0.5, y=1.05, alpha=0.6)
     plt.savefig(
-        '../resultats/img/oa_evolution.png',
+        "../resultats/img/oa_evolution.png",
         dpi=100,
-        bbox_inches='tight',
+        bbox_inches="tight",
         pad_inches=0.1)

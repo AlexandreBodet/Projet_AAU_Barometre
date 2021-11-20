@@ -1,16 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from datetime import date
 
-def graphique_apc_evolution(df):
+
+def graphique_apc_evolution(df, annees):
     """
-
+    Evolution des APC
+    :param annees:
     :param df:
     :return:
     """
-    # ____0____ récupérer les données
-    annees = [i for i in range(2016, date.today().year + 1)]
+    # Récupérer les données
     dfyears = df.loc[df["published_year"].isin(annees), :]
     print("nb publications a traiter", len(dfyears), '\n\n')
     pd.set_option('mode.chained_assignment', None)
@@ -22,7 +22,7 @@ def graphique_apc_evolution(df):
     df_gold = df_gold.astype({'has_apc': 'bool'})
     print("nb public avec  APC", len(df_gold[df_gold["has_apc"]]))
 
-    # ____1____produire le tableau
+    # Produire le tableau
     df_apc = pd.DataFrame(df_gold.groupby(["published_year"])[
                               ["has_apc"]].agg(["count", np.mean])).reset_index()
     df_apc.columns = ["published_year", "nb", "has_apc_mean"]
@@ -33,7 +33,7 @@ def graphique_apc_evolution(df):
     df_apc.sort_values(by="published_year", ascending=True, inplace=True)
     print(df_apc)
 
-    # ____2____ passer les données dans le modèle de representation
+    # Passer les données dans le modèle de representation
     fig, (ax) = plt.subplots(figsize=(15, 10),
                              dpi=100, facecolor='w', edgecolor='k')
 
@@ -51,15 +51,15 @@ def graphique_apc_evolution(df):
            bottom=df_apc.has_apc_mean.tolist(),
            ecolor='black', label="Accès ouvert chez l'éditeur sans APC")
 
-    # ____2____ configurer l'affichage
+    # Configurer l'affichage
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_visible(False)
-    # retirer l'origine sur Y
+    # Retirer l'origine sur Y
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
 
-    # tracer les grilles
+    # Tracer les grilles
     ax.yaxis.grid(ls='--', alpha=0.4)
 
     # just to remove an mess error UserWarning: FixedFormatter should only be
