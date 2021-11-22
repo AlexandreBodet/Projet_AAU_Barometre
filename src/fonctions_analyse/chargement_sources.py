@@ -15,7 +15,7 @@ def normalize_txt(title):
     :param str title: titre à normaliser
     :return str join_cut: titre normalisé
     """
-    cut = re.split("\W+", str(title))
+    cut = re.split(r"\W+", str(title))
     join_cut = "".join(cut).lower()
     join_cut = unidecode.unidecode(join_cut)
     return join_cut
@@ -23,7 +23,7 @@ def normalize_txt(title):
 
 def conforme_df(df, col_name):
     """
-    Garde les colonnes de col_name, les renommes et passe en minuscule doi et titre.
+    Garde les colonnes de col_name, les renomme et passe en minuscule doi et titre.
 
     :param dataframe df: dataframe dont les titres et doi sont normalisés
     :param dict[str,str] col_name: colonnes à garder
@@ -35,7 +35,6 @@ def conforme_df(df, col_name):
 
     df["doi"] = df["doi"].str.lower()  # doi en minuscule
     df["title_norm"] = df["title"].apply(lambda row: normalize_txt(row))
-    return df
 
 
 def chargement_hal(hal_file="", skip=0):
@@ -52,8 +51,7 @@ def chargement_hal(hal_file="", skip=0):
         fichier_hal = "../data/dois/" + hal_file
         hal = pd.read_csv(fichier_hal, sep=';',
                           skiprows=skip)  
-        hal = conforme_df(
-            hal, {"DOI": "doi", 'Réf. HAL': 'halId', 'Titre': 'title'})
+        conforme_df(hal, {"DOI": "doi", 'Réf. HAL': 'halId', 'Titre': 'title'})
     else:  # Si le fichier n'est pas spécifié
         hal = None
     return hal
@@ -70,7 +68,7 @@ def chargement_scopus(scopus_file=""):
         # Chargement
         # fichier_scopus = "../data/" + scopus_file
         scopus = pd.read_csv("../data/dois/" + scopus_file, encoding='utf8')
-        scopus = conforme_df(scopus, {"DOI": "doi", "Title": "title"})
+        conforme_df(scopus, {"DOI": "doi", "Title": "title"})
     else:  # Si pas de fichier spécifié
         scopus = None
     return scopus
@@ -92,7 +90,7 @@ def chargement_wos(wos_file=None):
             df = pd.read_csv("../data/dois/" + f, sep="\t", index_col=False)
             df_buffer.append(df)
         wos = pd.concat(df_buffer)
-        wos = conforme_df(wos, {"DI": "doi", "TI": "title"})
+        conforme_df(wos, {"DI": "doi", "TI": "title"})
     else:
         wos = None
     return wos
@@ -107,7 +105,7 @@ def chargement_pubmed(pubmed_file=""):
     """
     if pubmed_file:
         pubmed = pd.read_csv("../data/dois/" + pubmed_file)
-        pubmed = conforme_df(pubmed, {"DOI": "doi", "Title": "title"})
+        conforme_df(pubmed, {"DOI": "doi", "Title": "title"})
     else:
         pubmed = None
     return pubmed
@@ -115,13 +113,12 @@ def chargement_pubmed(pubmed_file=""):
 
 def removeJoinDois(x):
     """
-    Retirer les listes de doi assemblé par "; "
+    Retirer les listes de doi assemblées par "; "
 
     :param str x: liste de dois ou doi
     :return str: premier doi de la liste, ou doi s'il est seul
     """
 
-    #
     doi = str(x).strip()
     if "; " in doi:
         cut = doi.split("; ")
@@ -139,30 +136,30 @@ def chargement_lens(lens_file=""):
     """
     if lens_file:
         lens = pd.read_csv("../data/dois/" + lens_file)
-        lens = conforme_df(lens, {"DOI": "doi", "Title": "title"})
+        conforme_df(lens, {"DOI": "doi", "Title": "title"})
         lens["doi"] = lens["doi"].apply(lambda x: removeJoinDois(x))
     else:
         lens = None
     return lens
 
 
-def extract_stats_from_base(src_name, df, stats_buffer):
+def extract_stats_from_base(src_name, df, statistiques):
     """
-    De la base extraire les données total publications, doi only, no doi.
+    Extraire du dataframe les données de la base sur le total publications, doi only, no doi.
 
     :param str src_name: nom de la base de donnée source
     :param dataframe df: dataframe chargé
-    :param list stats_buffer: liste des statistiques
+    :param list statistiques: liste des statistiques
     """
-    if stats_buffer is None:
-        stats_buffer = []
+    if statistiques is None:
+        statistiques = []
     no_doi = df["doi"].isna().sum()
     w_doi = df["doi"].str.match("10.").sum()
     if no_doi + w_doi == len(df.index):
-        print(f"\n\n{src_name} imported ok\n\tdois {w_doi}\n\tno dois {no_doi}")
-        stats_buffer.append([src_name, len(df.index), w_doi, no_doi])
+        print(f"{src_name} : {w_doi} fichiers avec dois importés - {no_doi} fichiers sans doi importés")
+        statistiques.append([src_name, len(df.index), w_doi, no_doi])
     else:
-        print(f"{src_name} not imported")
+        print(f"{src_name} pas importé")
 
 
 def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None, lens_df=None):
@@ -179,34 +176,33 @@ def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None,
     stats = []
 
     if hal_df is not None:
-        extract_stats_from_base("hal", hal_df, stats)
+        extract_stats_from_base(src_name="hal", df=hal_df, statistiques=stats)
 
     if scopus_df is not None:
-        extract_stats_from_base("scopus", scopus_df, stats)
+        extract_stats_from_base(src_name="scopus", df=scopus_df, statistiques=stats)
 
     if wos_df is not None:
-        extract_stats_from_base("wos", wos_df, stats)
+        extract_stats_from_base(src_name="wos", df=wos_df, statistiques=stats)
 
     if pubmed_df is not None:
-        extract_stats_from_base("pubmed", pubmed_df, stats)
+        extract_stats_from_base(src_name="pubmed", df=pubmed_df, statistiques=stats)
 
     if lens_df is not None:
-        extract_stats_from_base("lens", lens_df, stats)
+        extract_stats_from_base(src_name="lens", df=lens_df, statistiques=stats)
 
     return stats
 
 
-def chargement_tout(donnees, api_hal=True, recherche_erreur=True):
+def chargement_tout(donnees, recherche_erreur=True):
     """
     Charge tous les fichiers et donne des statistiques dessus et le dataframe de tous les dataframes.
 
     :param recherche_erreur: Dit si on doit enregistrer les csv qui notent les erreurs
-    :param api_hal: défini si le fichier vient de l'api ou manuellement
     :param Dict[str,str] donnees: données issues du fichier settings
     :return list, dataframe: liste des statistiques sur les bases et dataframe des données chargées
     """
 
-    if api_hal:
+    if donnees["utilise_api_hal"]:
         hal = chargement_hal(donnees["hal_fichier_api"], skip=0)
     else:
         hal = chargement_hal(donnees["hal_manuel"], skip=1)

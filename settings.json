@@ -2,6 +2,7 @@
   "data":{
     "dois":{
       "hal_fichier_api" : "hal_from_api.csv",
+      "utilise_api_hal" : true,
       "hal_manuel" : "extractionHAL.csv",
       "scopus_fichier" : "",
       "pubmed_fichier" : "",
