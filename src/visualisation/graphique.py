@@ -3,6 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
+from ast import literal_eval
 
 from visualisation.graphique_discipline import graphique_discipline
 from visualisation.graphique_circulaire_oa import graphique_circulaire_oa
@@ -42,6 +43,8 @@ def graphique(df_raw=None, annee=date.today().year, disciplinaire=True, circulai
     # filtre : retrait des documents de paratexte
     df = df_raw[df_raw["is_paratext"] == ""]  # pour nous : inutile car ils sont tous comme ça
     # remarque:  des publications ne sont pas dans la fourchette souhaitée [2016-XX]
+
+    df.scientific_field = df.scientific_field.apply(literal_eval)
 
     if disciplinaire:
         graphique_discipline(df)
