@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
 from src.visualisation import graphique_oa_editeur, graphique_discipline, graphique_circulaire_oa, graphique_discipline_oa, graphique_oa_evolution, graphique_comparaison_bases, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_evolution_type_oa
+from ast import literal_eval
 
 
 """
@@ -51,8 +52,10 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     df = df_raw[df_raw["is_paratext"] == ""]  # pour nous : inutile car ils sont tous comme ça
     # remarque:  des publications ne sont pas dans la fourchette souhaitée [2016-XX]
 
-    if disciplinaire:  # donner la possibilité de faire sur une ou plusieurs années
-        graphique_discipline.graphique_discipline(df)
+    df.scientific_field = df.scientific_field.apply(literal_eval)
+
+    if disciplinaire: # donner la possibilité de faire sur une ou plusieurs années
+        graphique_discipline(df)
     if circulaire:
         graphique_circulaire_oa.graphique_circulaire_oa(df, annee)
     if discipline_oa:

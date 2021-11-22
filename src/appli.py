@@ -15,15 +15,18 @@ from visualisation.graphique import graphique
 
 with open("../settings.json") as json_file:
     donnees = json.load(json_file)
-'''
-api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], query=donnees["query"])
 
+
+'''api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], query=donnees["query"])
+print('\n[FINI] Recuperation des données hal par api\n')
 stats, df_charge = chargement_tout(
     donnees=donnees["data"]["dois"], api_hal=True, recherche_erreur=True)
+print('\n[FINI] Chargement fini\n')
+df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=donnees["data"]["domaine"], progression_denominateur=100)
+print('\n[FINI] Enrichissement fini\n')
+ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"]) #une fois que je l'ai chargé, je le commente pour pas que ça le refasse
+print('\n[FINI] Ajout apc fini\n')
 
-df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], progression_denominateur=100)
-
-ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])
 
 aligner()
 '''

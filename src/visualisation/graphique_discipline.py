@@ -10,13 +10,23 @@ def graphique_discipline(df):
     """
     print("graphique disciplines")
     # oneyear = df[ df["published_year"] == "2020.0"]
-    allyear = df
+    allyear = df[["scientific_field", "is_oa"]]
 
-    scifield = pd.crosstab(allyear["scientific_field"], allyear["is_oa"])
+    data_domains = {"scientific_field": [], 
+        "is_oa": [] 
+        }
+    for row in allyear.itertuples():
+        for domain in row.scientific_field:
+            data_domains["scientific_field"].append(domain)
+            data_domains["is_oa"].append(row.is_oa)
+    df_domains = pd.DataFrame(data_domains)
+    
+    
+    scifield = pd.crosstab(df_domains["scientific_field"], df_domains["is_oa"])
+
     scifield.columns = ["not_oa", "is_oa"]
     scifield["total"] = scifield["not_oa"] + scifield["is_oa"]
 
-    print(scifield)
 
     # Passer les données dans le modèle de representation
     fig, (ax) = plt.subplots(figsize=(12, 7),

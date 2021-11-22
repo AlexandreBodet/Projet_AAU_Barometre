@@ -5,7 +5,7 @@ Pour l'instant, seulement pour les données sortant de hal
 
 import pandas as pd
 import json as j
-
+from ast import literal_eval
 
 def deduce_oa(row):
     '''déduit si la publication est en open access'''
@@ -49,22 +49,27 @@ def align_doctype(row):
 
 
 def align_domain(row):
-    if pd.notna(row["hal_domain"]):
+    res = []
+    for e in row["hal_domain"]:
+        res.append(match_ref["domain"][e])
+    return res
+
+    '''if pd.notna(row["hal_domain"]):
         if row["hal_domain"] in match_ref["domain"]:
             return match_ref["domain"][row["hal_domain"]]
         else:
             print("cannot align domain", row["halId"])
             return "Autres"
     else:
-        print("cannot align domain", row["halId"])
-        return "Autres"
+        print("cannot align domain", row["halId"])'''
 
 
 def aligner(df=None):
     if df is None:
         df = pd.read_csv(
             "../resultats/fichiers_csv/ajout_apc.csv", encoding='utf8')
-            
+
+    df.hal_domain = df.hal_domain.apply(literal_eval)
     df["is_oa"] = df.apply(lambda row: deduce_oa(row), axis=1)
     df["oa_type"] = df.apply(lambda row: deduce_oa_type(row), axis=1)
     df["genre"] = df.apply(lambda row: align_doctype(row), axis=1)
