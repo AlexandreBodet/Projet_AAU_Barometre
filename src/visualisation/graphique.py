@@ -55,7 +55,7 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     df.scientific_field = df.scientific_field.apply(literal_eval)
 
     if disciplinaire:
-        graphique_discipline(df)
+        graphique_discipline.graphique_discipline(df)
     if circulaire:
         graphique_circulaire_oa.graphique_circulaire_oa(df, annee)
     if discipline_oa:
