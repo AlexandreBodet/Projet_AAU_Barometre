@@ -22,11 +22,10 @@ def deduce_oa_type(row):
 
     # si unpaywall n'a pas trouvé de "repository" mais que c'est dans HAL : s'assurer que c'est sans embargo puis ajouter repository
     if "repository" not in loc and\
-        ((row["hal_location"] == "file" and row["hal_openAccess_bool"] == "True") or
+        ((row["hal_location"] == "file" and row["hal_openAccess_bool"]) or
          row["hal_location"] == "arxiv" or
          row["hal_location"] == "pubmedcentral"):
         loc.append("repository")
-
     if loc:
         loc.sort()
         return ";".join(loc)
@@ -53,16 +52,6 @@ def align_domain(row):
     for e in row["hal_domain"]:
         res.append(match_ref["domain"][e])
     return res
-
-    '''if pd.notna(row["hal_domain"]):
-        if row["hal_domain"] in match_ref["domain"]:
-            return match_ref["domain"][row["hal_domain"]]
-        else:
-            print("cannot align domain", row["halId"])
-            return "Autres"
-    else:
-        print("cannot align domain", row["halId"])'''
-
 
 def aligner(df=None):
     if df is None:
