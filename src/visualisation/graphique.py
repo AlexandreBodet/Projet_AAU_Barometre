@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
-from src.visualisation import graphique_oa_editeur, graphique_discipline, graphique_circulaire_oa, graphique_discipline_oa, graphique_oa_evolution, graphique_comparaison_bases, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_evolution_type_oa
+from visualisation import graphique_oa_editeur, graphique_discipline, graphique_circulaire_oa, graphique_discipline_oa, graphique_oa_evolution, graphique_comparaison_bases, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_evolution_type_oa
 from ast import literal_eval
 
 
@@ -55,7 +55,7 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     df.scientific_field = df.scientific_field.apply(literal_eval)
 
     if disciplinaire: # donner la possibilité de faire sur une ou plusieurs années
-        graphique_discipline(df)
+        graphique_discipline.graphique_discipline(df)
     if circulaire:
         graphique_circulaire_oa.graphique_circulaire_oa(df, annee)
     if discipline_oa:
