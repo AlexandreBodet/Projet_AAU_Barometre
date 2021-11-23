@@ -9,11 +9,23 @@ def graphique_discipline_oa(df, annee):
     :param annee:
     :return:
     """
+    print("\ngraphique discipline oa vertical\n")
+
     oneyear_pub = df.loc[df["published_year"] == annee, :]
-    # retrait des publications où le domaine serait resté vide
     oneyear_pub = oneyear_pub[oneyear_pub["scientific_field"] != ""]
+    data_domains = {"scientific_field": [],
+                    "oa_type": []
+                }
+    for row in oneyear_pub.itertuples():
+        for domain in row.scientific_field:
+            data_domains["scientific_field"].append(domain)
+            data_domains["oa_type"].append(row.oa_type)
+    df_domains = pd.DataFrame(data_domains)
+
+    # retrait des publications où le domaine serait resté vide
+    
     print(str(annee), " nb of publications", len(oneyear_pub))
-    publications_par_domaine = oneyear_pub["scientific_field"].value_counts(
+    publications_par_domaine = df_domains["scientific_field"].value_counts(
     ).sort_index()
     print(publications_par_domaine)
 
@@ -29,7 +41,7 @@ def graphique_discipline_oa(df, annee):
     """
 
     df_oa_discipline = pd.crosstab(
-        [oneyear_pub["scientific_field"]], oneyear_pub["oa_type"])
+        [df_domains["scientific_field"]], df_domains["oa_type"])
     df_oa_discipline = (
         df_oa_discipline.T /
         df_oa_discipline.T.sum()).mul(100).round(1)
