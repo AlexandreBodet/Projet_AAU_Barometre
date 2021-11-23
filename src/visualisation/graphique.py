@@ -6,7 +6,6 @@ from datetime import date
 from visualisation import graphique_oa_editeur, graphique_discipline, graphique_circulaire_oa, graphique_discipline_oa, graphique_oa_evolution, graphique_comparaison_bases, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_evolution_type_oa
 from ast import literal_eval
 
-
 """
   circulaire : bilan open access sur une année
   oa_evol : evolution taux open access par an et type oa
@@ -51,7 +50,6 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     # filtre : retrait des documents de paratexte
     df = df_raw[df_raw["is_paratext"] == ""]  # pour nous : inutile car ils sont tous comme ça
     # remarque:  des publications ne sont pas dans la fourchette souhaitée [2016-XX]
-
     df.scientific_field = df.scientific_field.apply(literal_eval)
 
     if disciplinaire:
@@ -62,15 +60,17 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         graphique_discipline_oa.graphique_discipline_oa(df, annee)
     if evolution_oa:  # à corriger
         graphique_oa_evolution.graphique_oa_evolution(df, annees=annees, doi_only=False, )
-    if oa_editeur:  # bizarre, il doit manquer des données
-        graphique_oa_editeur.graphique_oa_editeur(df, annee)
-    if comparaison_bases:  # à corriger, peut-être pas utile
+    if comparaison_bases:  # à corriger pour afficher qu'une fois dans le cas où on a une seule source
+        #je pense c'est pertinent pour montrer la proportion de doi/nodoi
         graphique_comparaison_bases.graphique_comparaison_bases()
-    if apc_evolution:  # peut-être pas utile, à modifier
+    if apc_evolution:  # peut-être pas utile, à modifier # je n'ai encore pu regarder ça 
         graphique_apc_evolution.graphique_apc_evolution(df, annees=annees)
     if apc_discipline:  # donner la possibilité de faire sur plusieurs années
         graphique_apc_discipline.graphique_apc_discipline(df, annee)
     if bibliodiversite:  # pas sûr de ce que c'est sensé rendre, peut-être pas utile
+        # le problème c'est que même pas la moitié ont un publisher ...
         graphique_bibliodiversite.graphique_bibliodiversite(df, annee)
-    if evolution_type_oa:  # à corriger, utile
+    if oa_editeur:  # prbl d'éditeur/publisher
+        graphique_oa_editeur.graphique_oa_editeur(df, annee)
+    if evolution_type_oa:  # à vérifier -> j'ai du commenter la ligne 56 et remplacer tout les suscpicious par suscpicious_journal mais pas sûr qu'il fallait faire ça 
         graphique_evolution_type_oa.graphique_evolution_type_oa(df, annees)
