@@ -51,10 +51,10 @@ def graphique_evolution_type_oa(df, annees):
 
     # ____0____ récupérer les données
     # repo only = repo and not suspicious
-
     df["green"] = df.apply(lambda row: deduce_green(row), axis=1)
+    '''    
     df["suspicious"] = df.suspicious_journal == "True"
-
+    '''
     # deduce bronze (at publisher but without licence and not suspicious)
 
     df["bronze"] = df.apply(lambda row: deduce_bronze(row), axis=1)
@@ -75,14 +75,15 @@ def graphique_evolution_type_oa(df, annees):
                     "gold": "bool",
                     "diamond": "bool"})
 
-    dfoatype = pd.DataFrame(df.groupby(["published_year"])[["green", "suspicious", "bronze", "hybrid", "gold", "diamond"]].agg(["count", np.mean])).reset_index()
+    dfoatype = pd.DataFrame(df.groupby(["published_year"])[
+                            ["green", "suspicious_journal", "bronze", "hybrid", "gold", "diamond"]].agg(["count", np.mean])).reset_index()
 
     dfoatype.columns = [
         "published_year",
         "nb1",
         "green",
         "nb2",
-        "suspicious",
+        "suspicious_journal",
         "nb3",
         "bronze",
         "nb4",
@@ -110,7 +111,7 @@ def graphique_evolution_type_oa(df, annees):
 
     ax.bar(
         dfoatype.year_label,
-        dfoatype.suspicious,
+        dfoatype.suspicious_journal,
         bottom=dfoatype.green.tolist(),
         label="Éditeur avec journal suspect",
         color="#7E7A7A")
@@ -121,7 +122,7 @@ def graphique_evolution_type_oa(df, annees):
         bottom=[
             sum(x) for x in zip(
                 dfoatype.green.tolist(),
-                dfoatype.suspicious.tolist())],
+                dfoatype.suspicious_journal.tolist())],
         label="Éditeur sans licence ouverte (bronze)",
         color="#a05195")
 
@@ -131,7 +132,7 @@ def graphique_evolution_type_oa(df, annees):
         bottom=[
             sum(x) for x in zip(
                 dfoatype.green.tolist(),
-                dfoatype.suspicious.tolist(),
+                dfoatype.suspicious_journal.tolist(),
                 dfoatype.bronze.tolist())],
         label="Éditeur avec journal sur abonnement (hybrid)",
         color="#d45287")
@@ -142,7 +143,7 @@ def graphique_evolution_type_oa(df, annees):
         bottom=[
             sum(x) for x in zip(
                 dfoatype.green.tolist(),
-                dfoatype.suspicious.tolist(),
+                dfoatype.suspicious_journal.tolist(),
                 dfoatype.bronze.tolist(),
                 dfoatype.hybrid.tolist())],
         label="Éditeur avec frais de publications (gold)",
@@ -154,7 +155,7 @@ def graphique_evolution_type_oa(df, annees):
         bottom=[
             sum(x) for x in zip(
                 dfoatype.green.tolist(),
-                dfoatype.suspicious.tolist(),
+                dfoatype.suspicious_journal.tolist(),
                 dfoatype.bronze.tolist(),
                 dfoatype.hybrid.tolist(),
                 dfoatype.gold.tolist())],
