@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import pandas as pd
 
 def graphique_circulaire_oa(df, annee):
     """
@@ -8,6 +8,9 @@ def graphique_circulaire_oa(df, annee):
     :param df: dataframe utilisé
     :return:
     """
+
+    print("\ngraphique discipline oa circulaire\n")
+
     dfpie = df[df["published_year"] == annee]
     oa_bool = dfpie["is_oa"].value_counts().sort_index()
     oa_bool = oa_bool.rename({True: "Accès ouvert", False: "Accès fermé"})

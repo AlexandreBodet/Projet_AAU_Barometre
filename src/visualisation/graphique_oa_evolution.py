@@ -5,6 +5,9 @@ import numpy as np
 
 def graphique_oa_evolution(df, annees, doi_only=False):
     # Récupérer les données
+
+    print("\ngraphique evolution oa\n")
+
     df_annees = df.loc[df["published_year"].isin(annees), :]
     print("Nombre de publications à traiter", len(df_annees))
     pd.set_option("mode.chained_assignment", None)
@@ -102,7 +105,7 @@ def graphique_oa_evolution(df, annees, doi_only=False):
     # just to remove an mess error UserWarning: FixedFormatter should only be
     # used together with FixedLocator
     ax.set_xticks(np.arange(len(dfoa["year_label"])))
-    ax.set_xticklabels(dfoa["year_label"].tolist(), fontsize=15)
+    ax.set_xticklabels(dfoa["year_label"].tolist(), fontsize=15, rotation=60)
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
     ax.set_yticklabels(["{:,.0%}".format(x)
                         for x in ax.get_yticks()], fontsize=10)
