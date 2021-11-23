@@ -37,10 +37,12 @@ match_ref = j.load(open("../data/match_referentials.json"))
 
 
 def align_doctype(row):
-    if pd.notna(row["genre"]):
+
+    '''if pd.notna(row["genre"]):
         return row["genre"]
+    ''' # j'utilise que les données de HAL, car elles sont pour tous
     # si pas de genre chez unpaywall mais présence chez HAL
-    if pd.isna(row["genre"]) and pd.notna(row["hal_docType"]):
+    if pd.notna(row["hal_docType"]):
         if row["hal_docType"] in match_ref["docType"]:
             return match_ref["docType"][row["hal_docType"]]
         else:
