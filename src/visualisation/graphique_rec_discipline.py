@@ -54,7 +54,7 @@ def graphique_discipline(df):
     yticks[0].label1.set_visible(False)
     ax.yaxis.grid(ls='--', alpha=0.4)
 
-    ax.set_xticklabels(scifield.index, ha="right", rotation=60, fontsize=12)
+    ax.set_xticklabels(scifield.index, ha="right", rotation=30, fontsize=12)
 
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)

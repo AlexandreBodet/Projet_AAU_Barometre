@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
-from visualisation import graphique_oa_editeur, graphique_discipline, graphique_circulaire_oa, graphique_discipline_oa, graphique_oa_evolution, graphique_comparaison_bases, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_evolution_type_oa
+from visualisation import graphique_oa_editeur, graphique_oa_discipline, graphique_oa_circulaire, graphique_oa_evolution, graphique_rec_base, graphique_rec_discipline, graphique_rec_genre, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_oa_type_evolution
 from ast import literal_eval
 
 """
@@ -22,10 +22,10 @@ from ast import literal_eval
 
 
 def graphique(df_raw=None, annee=date.today().year, annees=None,
-              recapitulatif_bases=True, recapitulatif_disciplines=True,
+              rec_base=True, rec_disciplines=True, rec_genre=True,
               oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=True,
               apc_evolution=True, apc_discipline=True, bibliodiversite=True,
-              oa_type_evolution=True):
+              oa_type_evolution=True, ):
     """
     Fonction principale pour générer les graphiques.
     :param dataframe df_raw: le dataframe à utiliser
@@ -55,21 +55,25 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     df.scientific_field = df.scientific_field.apply(literal_eval) # passe les listes de domaines du str à list
 
 
-    if recapitulatif_disciplines: 
-        graphique_discipline.graphique_discipline(df)
-    if recapitulatif_bases:  # je pense c'est pertinent pour montrer la proportion de doi - nodoi
+    if rec_disciplines: 
+        graphique_rec_discipline.graphique_discipline(df)
+    if rec_base:  # je pense c'est pertinent pour montrer la proportion de doi - nodoi
         #néanmoins, on voit quasi-pas la diff (il y en a une car on enlève qlq doublons), donc à retravailler jpense
-        graphique_comparaison_bases.graphique_comparaison_bases()
+        graphique_rec_base.graphique_comparaison_bases()
+    if rec_genre: #NEW -- à voir si tu trouves ça pertinent
+        graphique_rec_genre.graphique_genre(df)
+
     if oa_circulaire: 
-        graphique_circulaire_oa.graphique_circulaire_oa(df, annee)
+        graphique_oa_circulaire.graphique_circulaire_oa(df, annee)
     if oa_discipline:
-        graphique_discipline_oa.graphique_discipline_oa(df, annee)
+        graphique_oa_discipline.graphique_discipline_oa(df, annee)
     if oa_evolution:
         graphique_oa_evolution.graphique_oa_evolution(df, annees=annees, doi_only=False, )
-    if oa_editeur:  # prbl d'éditeur/publisher
+    if oa_editeur:  # prbl d'éditeur/publisher -> il manque la moitié
         graphique_oa_editeur.graphique_oa_editeur(df, annee)
-    if oa_type_evolution:  # à vérifier -> j'ai du commenter la ligne 56 et remplacer tout les suscpicious par suscpicious_journal mais pas sûr qu'il fallait faire ça
-        graphique_evolution_type_oa.graphique_evolution_type_oa(df, annees)
+    if oa_type_evolution:  # à creuser, je comprends pas trop, 
+        # -> j'ai du commenter la ligne 56 et remplacer tout les suscpicious par suscpicious_journal mais pas sûr qu'il fallait faire ça
+        graphique_oa_type_evolution.graphique_evolution_type_oa(df, annees)
 
     # apc
     if apc_evolution:  # peut-être pas utile, à modifier # je n'ai encore pu regarder ça 

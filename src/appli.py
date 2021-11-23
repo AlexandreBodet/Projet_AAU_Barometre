@@ -31,6 +31,7 @@ aligner()
 
 df_raw = pd.read_csv("../resultats/fichiers_csv/data_complete.csv", na_filter=False, low_memory=False)
 annees = [i for i in range(2010, date.today().year + 1)]
-graphique(df_raw=df_raw, annee=2020, disciplinaire=True, circulaire=True, discipline_oa=True, evolution_oa=True,
-          oa_editeur=False, comparaison_bases=True, apc_evolution=True, apc_discipline=False, bibliodiversite=False,
-          evolution_type_oa=True, annees=annees)
+graphique(df_raw=df_raw, annee=2020, annees=annees, rec_base=False, rec_disciplines=False, rec_genre=True,
+          oa_circulaire=False, oa_discipline=False, oa_evolution=False, oa_editeur=False,
+          apc_evolution=False, apc_discipline=False, bibliodiversite=False,
+          oa_type_evolution=False)
