@@ -40,7 +40,7 @@ def graphique_comparaison_bases():
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
 
-    plt.yticks([i for i in range(0, 600, 100)], fontsize=10)
+    plt.yticks([i for i in range(0, 1500, 250)], fontsize=10)
     ax.set_ylabel('Nombre de publications', fontsize=8)
     ax.set_xticks(x)
     ax.set_xticklabels([n.capitalize() for n in data["name"]], fontsize=11)
