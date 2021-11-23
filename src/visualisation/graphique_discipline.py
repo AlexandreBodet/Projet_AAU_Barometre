@@ -9,7 +9,6 @@ def graphique_discipline(df):
     :return:
     """
     print("graphique disciplines")
-    # oneyear = df[ df["published_year"] == "2020.0"]
     allyear = df[["scientific_field", "is_oa"]]
 
     data_domains = {"scientific_field": [], 
