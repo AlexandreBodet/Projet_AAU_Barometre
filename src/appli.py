@@ -34,11 +34,11 @@ print('\n[FINI] Enrichissement fini\n')
 ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"]) #une fois que je l'ai chargé, je le commente pour pas que ça le refasse
 print('\n[FINI] Ajout apc fini\n')
 
-
 aligner()
 '''
 df_raw = pd.read_csv("../resultats/fichiers_csv/data_complete.csv", na_filter=False, low_memory=False)
-annees = [i for i in range(2016, date.today().year + 1)]
-graphique(df_raw=df_raw, annee=2020, disciplinaire=True, circulaire=False, discipline_oa=False, evolution_oa=False,
-          oa_editeur=False, comparaison_bases=False, apc_evolution=False, apc_discipline=False, bibliodiversite=False,
-          evolution_type_oa=False, annees=annees)
+annees = [i for i in range(2010, date.today().year + 1)]
+graphique(df_raw=df_raw, annee=2020, annees=annees, rec_base=False, rec_disciplines=False, rec_genre=True,
+          oa_circulaire=False, oa_discipline=False, oa_evolution=False, oa_editeur=False,
+          apc_evolution=False, apc_discipline=False, bibliodiversite=False,
+          oa_type_evolution=False)

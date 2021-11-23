@@ -25,6 +25,7 @@ Titre;Réf. HAL;DOI
 ['Experiential Walks for Urban Design. Revealing, Representing, and Activating the Sensory Environment'];halshs-03329497;10.1007/978-3-030-76694-8
 "[""Écologie sociale de l'oreille. Enquêtes d'expérience musicale""]";hal-03290511;
 ['Des jardins pour ménager les bords de route et de voie ferrée. Actes du Séminaire de recherche, Grenoble, 17 décembre 2012'];hal-00993760;
+['De l’incertitude des savoirs aux nouvelles fabriques de l’expertise'];hal-03254766;
 ['Construire ! Entre Antiquité et Époque contemporaine, actes du 3e Congrès francophone d’histoire de la construction'];hal-02444013;
 ['La qualité sonore des espaces habités / Sonic quality in the living environment'];hal-01373799;
 ['Matérialités contemporaines = Materiality in its contemporary forms : architecture, perception, fabrication, conception. MC 2012 Symposium, Villefontaine, novembre 2012'];hal-00993761;
@@ -55,7 +56,6 @@ Titre;Réf. HAL;DOI
 ['Machine learning for optimized buildings morphosis'];hal-03258021;10.1145/3423603.3424057
 ['Résonances oasiennes. Approches sensibles de l’urbain au Sahara'];hal-03250069;
 ['La ville mot à mot'];hal-03334500;
-['De l’incertitude des savoirs aux nouvelles fabriques de l’expertise'];hal-03254766;
 "[""Parcourir pour projeter A l'entour du cimetière, un parcours au Crêt-de-Roch (Saint-Etienne) Lectures du site & enjeux de projet""]";hal-01653048;
 ['Parcours de lecture de la place Sainte-Claire'];hal-01518097;
 ['The recuperation of public space : a closer look at Bogotá, Colombia'];hal-00995507;
@@ -613,7 +613,6 @@ Titre;Réf. HAL;DOI
 ['Understanding and Representing Urban Heterogeneity : The Case of Waste Collection in São Paulo'];hal-00993641;
 "['RéfleCT/Xions autour d\'une ""installation d\'ambiance']";halshs-00833920;
 ['RefleCT/Xion from enaction to “daily enaction”'];halshs-00379458;
-['Experts et consultants au service de l’action publique locale. Une approche pragmatique du travail de l’ingénierie privée'];hal-03395103;
 ['Mirror, Mirror on My Phone: Investigating Dimensions of Self-Face Perception Induced by Augmented Reality Filters'];hal-03378222;10.1109/ISMAR52148.2021.00064
 ['Essai de classification des modalités de mise en œuvre de la terre crue en parois verticales et de leur nomenclature'];halshs-00736270;
 ['MapStack: Exploring Multilayered Geospatial Data In Virtual Reality'];hal-02932169;10.5220/0008978600880099
@@ -634,6 +633,7 @@ Titre;Réf. HAL;DOI
 ['A regional identity through a railway line : North Tunis suburb and the TGM'];halshs-00353019;
 ['EnVIE project: A framework to produce urban data at large scale'];hal-01501907;10.1051/3u3d/201202008
 "[""Méthodologies d'enquêtes en espace commercial : circulation des savoirs pour la construction de la maîtrise énergétique""]";hal-01175883;
+['Experts et consultants au service de l’action publique locale. Une approche pragmatique du travail de l’ingénierie privée'];hal-03395103;
 ['Animer une collection dans l’archive ouverte HAL : l’exemple de l’équipe de recherche Cresson'];hal-01578696;
 ['Drawing on urban ambiance to enliven urban critique'];hal-01886245;
 ['Retours sur le projet « Cartophonies »'];hal-01578699;
@@ -1192,6 +1192,8 @@ Titre;Réf. HAL;DOI
 ['Des formes environnementales en aménagement urbain : d’une perspective théorique aux études de cas'];halshs-02189179;
 ['Typische Atmosphären städtischer Plätze. Auf dem Weg zu einer anwendungsorientierten Atmosphärenforschung'];hal-00978333;
 ['Unterwegs in fremden Umgebungen. Ein praxeologischer Zugang zum Wayfinding von Fußgängern'];hal-00978335;
+['La condition grisante de la Cifre'];halshs-03234360;10.4000/craup.3057
+['Modeling design studio pedagogy: A mentored reflective practice'];hal-02872397;10.1017/dsd.2020.118
 ['« Vous prenez quoi en photo là ? » Une approche du quotidien de la rénovation urbaine'];halshs-02298341;10.26151/espacestemps.net-87y1-es59
 ['Les statuts de la matière architecturée dans la philosophie allemande'];hal-02539336;
 ['Topologies de l’immersion - Études digitales'];hal-02281133;10.15122/isbn.978-2-406-09288-9
@@ -1465,5 +1467,3 @@ Titre;Réf. HAL;DOI
 ['Cairo behind the gates', 'Le Caire derrière les murs'];hal-01324053;
 ['New architectural forms to increase dew collection'];hal-00978323;
 ['The use of SOLENE-microclimat model to assess adaptation strategies at the district scale'];hal-01667973;10.1016/j.uclim.2015.07.004
-['La condition grisante de la Cifre'];halshs-03234360;10.4000/craup.3057
-['Modeling design studio pedagogy: A mentored reflective practice'];hal-02872397;10.1017/dsd.2020.118

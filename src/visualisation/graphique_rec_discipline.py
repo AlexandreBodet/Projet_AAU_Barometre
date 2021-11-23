@@ -9,7 +9,6 @@ def graphique_discipline(df):
     :return:
     """
     print("graphique disciplines")
-    # oneyear = df[ df["published_year"] == "2020.0"]
     allyear = df[["scientific_field", "is_oa"]]
 
     data_domains = {"scientific_field": [], 
@@ -23,7 +22,6 @@ def graphique_discipline(df):
     
     
     scifield = pd.crosstab(df_domains["scientific_field"], df_domains["is_oa"])
-
     scifield.columns = ["not_oa", "is_oa"]
     scifield["total"] = scifield["not_oa"] + scifield["is_oa"]
 
@@ -56,7 +54,7 @@ def graphique_discipline(df):
     yticks[0].label1.set_visible(False)
     ax.yaxis.grid(ls='--', alpha=0.4)
 
-    ax.set_xticklabels(scifield.index, ha="right", rotation=60, fontsize=12)
+    ax.set_xticklabels(scifield.index, ha="right", rotation=30, fontsize=12)
 
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
@@ -66,4 +64,5 @@ def graphique_discipline(df):
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("../resultats/img/discipline_recapitulatif.png", dpi=100, bbox_inches='tight')
+    plt.savefig("../resultats/img/recapitulatif_disciplines.png",
+                dpi=100, bbox_inches='tight')

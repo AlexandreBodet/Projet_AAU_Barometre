@@ -1,10 +1,10 @@
 {
    "docType":{
-      "ART":"journal-article",
-      "COMM":"proceedings-article",
-      "COUV":"book-chapter",
+      "ART":"Articles dans une revue",
+      "COMM":"Communications dans un congrès",
+      "COUV":"Chapitres d'ouvrage",
       "UNDEFINED":"posted-content",
-      "DOUV":"book",
+      "DOUV":"Direction d'ouvrages",
       "OTHER":"other",
       "REPORT":"report",
       "OUV":"book",

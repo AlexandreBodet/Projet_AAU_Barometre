@@ -40,7 +40,7 @@ def graphique_comparaison_bases():
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
 
-    plt.yticks([i for i in range(0, 600, 100)], fontsize=10)
+    plt.yticks([i for i in range(0, 1500, 250)], fontsize=10)
     ax.set_ylabel('Nombre de publications', fontsize=8)
     ax.set_xticks(x)
     ax.set_xticklabels([n.capitalize() for n in data["name"]], fontsize=11)
@@ -48,4 +48,4 @@ def graphique_comparaison_bases():
 
     ax.set_title("Quantité de publications dans les bases", fontsize=16, alpha=0.6, y=1.05)
     plt.suptitle("Depuis toujours", fontsize=10, alpha=0.6, y=0.92)
-    plt.savefig('../resultats/img/comparaisons_entre_les_bases.png', dpi=150, bbox_inches='tight', pad_inches=0.05)
+    plt.savefig('../resultats/img/recapitulatif_bases.png', dpi=150, bbox_inches='tight', pad_inches=0.05)
