@@ -22,7 +22,6 @@ def graphique_discipline(df):
     
     
     scifield = pd.crosstab(df_domains["scientific_field"], df_domains["is_oa"])
-
     scifield.columns = ["not_oa", "is_oa"]
     scifield["total"] = scifield["not_oa"] + scifield["is_oa"]
 
@@ -65,4 +64,5 @@ def graphique_discipline(df):
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("../resultats/img/discipline_recapitulatif.png", dpi=100, bbox_inches='tight')
+    plt.savefig("../resultats/img/recapitulatif_disciplines.png",
+                dpi=100, bbox_inches='tight')

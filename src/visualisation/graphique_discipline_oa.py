@@ -134,7 +134,7 @@ def graphique_discipline_oa(df, annee):
 
     # plt.show()
     plt.savefig(
-        "../resultats/img/discipline_oa_"+str(annee)+".png",
+        "../resultats/img/oa_discipline_"+str(annee)+".png",
         dpi=100,
         bbox_inches="tight",
         pad_inches=0.1)

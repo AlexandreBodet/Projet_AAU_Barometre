@@ -105,7 +105,7 @@ def graphique_oa_evolution(df, annees, doi_only=False):
     # just to remove an mess error UserWarning: FixedFormatter should only be
     # used together with FixedLocator
     ax.set_xticks(np.arange(len(dfoa["year_label"])))
-    ax.set_xticklabels(dfoa["year_label"].tolist(), fontsize=15, rotation=60)
+    ax.set_xticklabels(dfoa["year_label"].tolist(), fontsize=15, rotation=30)
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
     ax.set_yticklabels(["{:,.0%}".format(x)
                         for x in ax.get_yticks()], fontsize=10)
@@ -154,7 +154,7 @@ def graphique_oa_evolution(df, annees, doi_only=False):
     plt.title("Évolution du taux d'accès ouvert aux publications",
               fontsize=25, x=0.5, y=1.05, alpha=0.6)
     plt.savefig(
-        "../resultats/img/oa_evolution.png",
+        "../resultats/img/oa_evolution_"+str(annees[0])+"_"+str(annees[-1])+".png",
         dpi=100,
         bbox_inches="tight",
         pad_inches=0.1)
