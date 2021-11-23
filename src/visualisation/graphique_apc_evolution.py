@@ -65,7 +65,7 @@ def graphique_apc_evolution(df, annees):
     # just to remove an mess error UserWarning: FixedFormatter should only be
     # used together with FixedLocator
     ax.set_xticks(np.arange(len(df_apc["label"])))
-    ax.set_xticklabels(df_apc["label"].tolist(), fontsize=15)
+    ax.set_xticklabels(df_apc["label"].tolist(), fontsize=15, rotation=30)
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
     ax.set_yticklabels(['{:,.0%}'.format(x)
                         for x in ax.get_yticks()], fontsize=10)
