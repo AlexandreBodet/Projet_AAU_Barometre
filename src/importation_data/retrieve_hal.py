@@ -4,7 +4,6 @@ import pandas as pd
 
 def req_to_pd(requete):
     """Fait la requête pour récupérer l'ensemble des publications du laboratoire
-
     :param str requete: requête url
     :return dataframe df: dataframe de la réponse
     """
@@ -15,7 +14,6 @@ def req_to_pd(requete):
 
 def api_to_csv(fichier_hal="", query=""):
     """Sauvegarder le dataframe en csv.
-
     :param str query: query à utiliser dans l'API
     :param str fichier_hal: du fichier à enregistrer
     """

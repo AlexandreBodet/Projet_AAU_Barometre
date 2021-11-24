@@ -11,7 +11,6 @@ from fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage_tit
 def normalize_txt(title):
     """
     Retirer les espaces, les accents, tout en minuscules, retirer les caractères spéciaux.
-
     :param str title: titre à normaliser
     :return str join_cut: titre normalisé
     """
@@ -24,23 +23,23 @@ def normalize_txt(title):
 def conforme_df(df, col_name):
     """
     Garde les colonnes de col_name, les renomme et passe en minuscule doi et titre.
-
     :param dataframe df: dataframe dont les titres et doi sont normalisés
     :param dict[str,str] col_name: colonnes à garder
     :return dataframe: dataframe modifié
     """
     # memo : on ne supprime pas la colonne titre, car elle est utilisée pour le dédoublonnage
+    print("conformer le df")
     df = df[list(col_name.keys())].copy()
     df.rename(columns=col_name, inplace=True)
 
     df["doi"] = df["doi"].str.lower()  # doi en minuscule
     df["title_norm"] = df["title"].apply(lambda row: normalize_txt(row))
+    return df
 
 
 def chargement_hal(hal_file="", skip=0):
     """
-    Charge un fichier hal
-
+    Charge un fichier hal.
     :param skip: dit si la première ligne du fichier ne doit pas être lue
     :param str hal_file: du nom de fichier à charger
     :return dataframe: dataframe chargé
@@ -49,9 +48,9 @@ def chargement_hal(hal_file="", skip=0):
     if hal_file:
         # chargement, garde certaines colonnes et transformations des titres du fichier HAL
         fichier_hal = "../data/dois/" + hal_file
-        hal = pd.read_csv(fichier_hal, sep=';',
+        hal = pd.read_csv(fichier_hal, sep=";",
                           skiprows=skip)  
-        conforme_df(hal, {"DOI": "doi", 'Réf. HAL': 'halId', 'Titre': 'title'})
+        hal = conforme_df(hal, {"DOI": "doi", "Réf. HAL": "halId", "Titre": "title"})
     else:  # Si le fichier n'est pas spécifié
         hal = None
     return hal
@@ -59,16 +58,14 @@ def chargement_hal(hal_file="", skip=0):
 
 def chargement_scopus(scopus_file=""):
     """
-    Charge un fichier scopus
-
+    Charge un fichier scopus.
     :param str scopus_file: nom de fichier à charger
     :return dataframe: dataframe chargé
     """
     if scopus_file:
         # Chargement
-        # fichier_scopus = "../data/" + scopus_file
-        scopus = pd.read_csv("../data/dois/" + scopus_file, encoding='utf8')
-        conforme_df(scopus, {"DOI": "doi", "Title": "title"})
+        scopus = pd.read_csv("../data/dois/" + scopus_file, encoding="utf8")
+        scopus = conforme_df(scopus, {"DOI": "doi", "Title": "title"})
     else:  # Si pas de fichier spécifié
         scopus = None
     return scopus
@@ -76,8 +73,7 @@ def chargement_scopus(scopus_file=""):
 
 def chargement_wos(wos_file=None):
     """
-    Charge un fichier wos
-
+    Charge un fichier wos.
     :param list wos_file: nom de fichier à charger
     :return dataframe: dataframe chargé
     """
@@ -90,7 +86,7 @@ def chargement_wos(wos_file=None):
             df = pd.read_csv("../data/dois/" + f, sep="\t", index_col=False)
             df_buffer.append(df)
         wos = pd.concat(df_buffer)
-        conforme_df(wos, {"DI": "doi", "TI": "title"})
+        wos = conforme_df(wos, {"DI": "doi", "TI": "title"})
     else:
         wos = None
     return wos
@@ -98,14 +94,13 @@ def chargement_wos(wos_file=None):
 
 def chargement_pubmed(pubmed_file=""):
     """
-    Charger un fichier pubmed
-
+    Charger un fichier pubmed.
     :param str pubmed_file: nom de fichier à charger
     :return dataframe: dataframe chargé
     """
     if pubmed_file:
         pubmed = pd.read_csv("../data/dois/" + pubmed_file)
-        conforme_df(pubmed, {"DOI": "doi", "Title": "title"})
+        pubmed = conforme_df(pubmed, {"DOI": "doi", "Title": "title"})
     else:
         pubmed = None
     return pubmed
@@ -113,8 +108,7 @@ def chargement_pubmed(pubmed_file=""):
 
 def removeJoinDois(x):
     """
-    Retirer les listes de doi assemblées par "; "
-
+    Retirer les listes de doi assemblées par "; ".
     :param str x: liste de dois ou doi
     :return str: premier doi de la liste, ou doi s'il est seul
     """
@@ -129,8 +123,7 @@ def removeJoinDois(x):
 
 def chargement_lens(lens_file=""):
     """
-    Charger un fichier lens
-    
+    Charger un fichier lens.
     :param str lens_file: du nom de fichier à charger
     :return dataframe: dataframe chargé
     """
@@ -146,7 +139,6 @@ def chargement_lens(lens_file=""):
 def extract_stats_from_base(src_name, df, statistiques):
     """
     Extraire du dataframe les données de la base sur le total publications, doi only, no doi.
-
     :param str src_name: nom de la base de donnée source
     :param dataframe df: dataframe chargé
     :param list statistiques: liste des statistiques
@@ -165,7 +157,6 @@ def extract_stats_from_base(src_name, df, statistiques):
 def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None, lens_df=None):
     """
     Extrait les statistiques de toutes les bases données
-
     :param dataframe hal_df: données de hal
     :param dataframe scopus_df: données de scopus
     :param dataframe wos_df: données de wos
@@ -193,29 +184,30 @@ def statistiques_bases(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None,
     return stats
 
 
-def chargement_tout(donnees, recherche_erreur=True):
+def chargement_tout(donnees, recherche_erreur=True, utilise_api_hal=True):
     """
     Charge tous les fichiers et donne des statistiques dessus et le dataframe de tous les dataframes.
-
-    :param recherche_erreur: Dit si on doit enregistrer les csv qui notent les erreurs
+    :param bool recherche_erreur: Dit si on doit enregistrer les csv qui notent les erreurs
+    :param bool utilise_api_hal: Dit si on a utilisé l'api de hal
     :param Dict[str,str] donnees: données issues du fichier settings
     :return list, dataframe: liste des statistiques sur les bases et dataframe des données chargées
     """
 
-    if donnees["utilise_api_hal"]:
+    if utilise_api_hal:
         hal = chargement_hal(donnees["hal_fichier_api"], skip=0)
+        print("api")
     else:
         hal = chargement_hal(donnees["hal_manuel"], skip=1)
-    
+
+    # chargements depuis toutes les bases de données
     scopus = chargement_scopus(donnees["scopus_fichier"])
     wos = chargement_wos(donnees["wos_fichier"])
     pubmed = chargement_pubmed(donnees["pubmed_fichier"])
     lens = chargement_lens(donnees["lens_fichier"])
 
-    stats = statistiques_bases(hal, scopus, wos, pubmed, lens)
-    df_charge = pd.concat([hal, scopus, wos, pubmed, lens])
+    df_charge = pd.concat([hal, scopus, wos, pubmed, lens])  # dataframe avec toutes les données
 
-    # Recherche d'erreurs
+    # Recherche d'erreurs si spécifié, les fichiers csv résultant sont dans resultats/fichiers_csv/erreurs
     if recherche_erreur:
         identifie_hal_sans_doi_to_csv(df_charge)
         identifie_doublons_titres_to_csv(df_charge)
@@ -225,23 +217,22 @@ def chargement_tout(donnees, recherche_erreur=True):
     clean_doi_title = dedoublonnage_titre(clean_doi)
     final_df = doi_ou_hal(clean_doi_title)
 
+    # Statistiques sur les bases
+    stats = statistiques_bases(hal, scopus, wos, pubmed, lens)  # donne les statistiques pour toutes les bases
+    # Ajoute les statistiques finales sur toutes les bases
     stats.append([
         "retenu",
         len(final_df),
-        len(final_df[final_df['doi'].notna()]),
-        len(final_df[final_df['doi'].isna()])])
-
-    stat_table = pd.DataFrame(stats, columns=[
-        'name', 'all', 'doi', 'no_doi'])
-
-    # Sauvegarder les statistiques sur les bases
-    stat_table.to_csv(
-        "../resultats/fichiers_csv/statistiques_sur_les_bases.csv", index=False)
+        len(final_df[final_df["doi"].notna()]),
+        len(final_df[final_df["doi"].isna()])])
+    # Noms des colonnes
+    stat_table = pd.DataFrame(stats, columns=["name", "all", "doi", "no_doi"])
+    stat_table.to_csv("../resultats/fichiers_csv/statistiques_sur_les_bases.csv", index=False)
 
     # extraire le jeu de données final
     final_df.drop(columns=["title", "title_norm"], inplace=True)
     final_df.to_csv("../resultats/fichiers_csv/consolider_doi_hal_id.csv",
-                    index=False, encoding='utf8')
+                    index=False, encoding="utf8")
 
     return stat_table, final_df
 
@@ -250,37 +241,34 @@ def identifie_hal_sans_doi_to_csv(rawdf):
     """
     Identifier les documents HAL sans DOI et dont le titre correspond à un document avec DOI.
     Enregistre dans un csv pour voir les erreurs.
-
     :param dataframe rawdf: dataframe non dedoublonné
     """
     doi_only = rawdf[(
-            rawdf['doi'].notna() & rawdf['halId'].isna())].copy()
-    doi_only['doi'] = doi_only['doi'].str.lower()
-    doi_only.drop_duplicates('doi', inplace=True)
-    del doi_only['halId']
+            rawdf["doi"].notna() & rawdf["halId"].isna())].copy()  # possèdent un doi mais pas de hal_id
+    doi_only["doi"] = doi_only["doi"].str.lower()
+    doi_only.drop_duplicates("doi", inplace=True)
+    del doi_only["halId"]
 
     hal_only = rawdf[(
-            rawdf['doi'].isna() & rawdf['halId'].notna())].copy()
-    del hal_only['doi']
+            rawdf["doi"].isna() & rawdf["halId"].notna())].copy()  # possèdent un hal_id mais pas de doi
+    del hal_only["doi"]
 
-    hal_verify_doi = pd.merge(doi_only, hal_only, on='title_norm')
-    hal_verify_doi.sort_values("title_norm", inplace=True)
+    hal_verify_doi = pd.merge(doi_only, hal_only, on="title_norm")
+    hal_verify_doi.sort_values("title_norm", inplace=True)  # sélectionne les doublons de titre, donc les documents HAL visés
     hal_verify_doi.drop(columns=["title_y", "title_norm"], inplace=True)
-    hal_verify_doi.to_csv("../resultats/fichiers_csv/erreurs/hal_sans_doi.csv", index=False, encoding='utf8')
+    hal_verify_doi.to_csv("../resultats/fichiers_csv/erreurs/hal_sans_doi.csv", index=False, encoding="utf8")
 
 
 def identifie_doublons_titres_to_csv(rawdf):
     """
     Identifier les doublons de titre sur les notices HAL sans DOI.
-
     :param dataframe rawdf: dataframe non dédoublonné
     """
     hal_only = rawdf[(
-            rawdf['doi'].isna() & rawdf['halId'].notna())].copy()
+            rawdf["doi"].isna() & rawdf["halId"].notna())].copy()
     # identification des doublons de titre
-    hal_only['duplicated'] = hal_only.duplicated('title_norm', keep=False)
-    hal_only_doubl = hal_only[hal_only['duplicated']].copy()
+    hal_only["duplicated"] = hal_only.duplicated("title_norm", keep=False)
+    hal_only_doubl = hal_only[hal_only["duplicated"]].copy()
     hal_only_doubl.sort_values("title", inplace=True)
     hal_only_doubl.drop(["doi", "title_norm", "duplicated"], axis=1, inplace=True)
-
-    hal_only_doubl.to_csv("../resultats/fichiers_csv/erreurs/doublons_titres.csv", index=False, encoding='utf8')
+    hal_only_doubl.to_csv("../resultats/fichiers_csv/erreurs/doublons_titres.csv", index=False, encoding="utf8")

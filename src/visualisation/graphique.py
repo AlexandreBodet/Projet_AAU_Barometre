@@ -31,8 +31,9 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     :param dataframe df_raw: le dataframe à utiliser
     :param int annee: année utilisée pour certains graphiques
     :param list annees: liste des années pour les graphiques d'évolution
-    :param bool recapitulatif_bases: dit si le graphique doit être fait
-    :param bool recapitulatif_disciplines: dit si le graphique doit être fait
+    :param bool rec_base: dit si le graphique doit être fait
+    :param bool rec_disciplines: dit si le graphique doit être fait
+    :param bool rec_genre: dit si le graphique doit être fait
     :param bool oa_circulaire: dit si le graphique doit être fait
     :param bool oa_discipline: dit si le graphique doit être fait
     :param bool oa_evolution: dit si le graphique doit être fait
