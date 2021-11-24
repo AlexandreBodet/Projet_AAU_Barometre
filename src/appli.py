@@ -18,7 +18,7 @@ dossiers_data()  # crée les différents dossiers s'ils n'existent pas
 
 with open("../settings.json") as json_file:
     donnees = json.load(json_file)
-"""
+
 if donnees["parametres"]["utilise_api_hal"]:
     api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], query=donnees["query"])
     print('\n[FINI] Récupération des données hal par api\n')
@@ -30,8 +30,7 @@ print('\n[FINI] Chargement fini\n')
 df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=donnees["data"]["domaine"], progression_denominateur=100)
 print('\n[FINI] Enrichissement fini\n')
 
-"""
-df_charge = pd.read_csv("../resultats/fichiers_csv/df_metadonnees.csv")
+
 ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])  # une fois que je l'ai chargé, je le commente pour pas que ça le refasse
 print('\n[FINI] Ajout apc fini\n')
 
