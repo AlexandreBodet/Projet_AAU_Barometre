@@ -139,10 +139,10 @@ def ajout_apc(df, data_apc):
     :param dataframe df: dataframe où ajouter les apc
     :param dict data_apc: dictionnaire des noms de fichiers à utiliser
     """
-    openapc_dois = pd.read_csv("../data/apc_tracking/" + data_apc["openapc_dois"], na_filter=False)
-    openapc_journals = pd.read_csv("../data/apc_tracking/" + data_apc["openapc_journals"], na_filter=False)
-    doaj_apc_journals = pd.read_csv("../data/apc_tracking/" + data_apc["doaj_apc_journals"], na_filter=False)
-    fh_json = open("../data/apc_tracking/" + data_apc["suspiciousIssns"])
+    openapc_dois = pd.read_csv("./data/apc_tracking/" + data_apc["openapc_dois"], na_filter=False)
+    openapc_journals = pd.read_csv("./data/apc_tracking/" + data_apc["openapc_journals"], na_filter=False)
+    doaj_apc_journals = pd.read_csv("./data/apc_tracking/" + data_apc["doaj_apc_journals"], na_filter=False)
+    fh_json = open("./data/apc_tracking/" + data_apc["suspiciousIssns"])
     suspiciousIssns = json.load(fh_json)
 
     # Supprime les valeurs en double et sépare monnaie et devise
@@ -164,5 +164,5 @@ def ajout_apc(df, data_apc):
         for field in md:
             df.loc[row.Index, field] = md[field]
 
-    df.to_csv("../resultats/fichiers_csv/ajout_apc.csv", index=False)
-    return None
+    df.to_csv("./resultats/fichiers_csv/ajout_apc.csv", index=False)
+    return df

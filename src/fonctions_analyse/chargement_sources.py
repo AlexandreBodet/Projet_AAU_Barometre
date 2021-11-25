@@ -5,7 +5,7 @@ Fonctions pour consolider les sources
 import pandas as pd
 import re
 import unidecode
-from fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage_titre, doi_ou_hal
+from src.fonctions_analyse.dedoublonnage import dedoublonnage_doi, dedoublonnage_titre, doi_ou_hal
 
 
 def normalize_txt(title):
@@ -47,7 +47,7 @@ def chargement_hal(hal_file="", skip=0):
 
     if hal_file:
         # chargement, garde certaines colonnes et transformations des titres du fichier HAL
-        fichier_hal = "../data/dois/" + hal_file
+        fichier_hal = "./data/dois/" + hal_file
         hal = pd.read_csv(fichier_hal, sep=";",
                           skiprows=skip)  
         hal = conforme_df(hal, {"DOI": "doi", "Réf. HAL": "halId", "Titre": "title"})
@@ -64,7 +64,7 @@ def chargement_scopus(scopus_file=""):
     """
     if scopus_file:
         # Chargement
-        scopus = pd.read_csv("../data/dois/" + scopus_file, encoding="utf8")
+        scopus = pd.read_csv("./data/dois/" + scopus_file, encoding="utf8")
         scopus = conforme_df(scopus, {"DOI": "doi", "Title": "title"})
     else:  # Si pas de fichier spécifié
         scopus = None
@@ -83,7 +83,7 @@ def chargement_wos(wos_file=None):
         #               "wos_2019b.txt", "wos_2019c.txt", "wos_2020a.txt", "wos_2020b.txt", "wos_2020c.txt"]
         df_buffer = []
         for f in wos_file:
-            df = pd.read_csv("../data/dois/" + f, sep="\t", index_col=False)
+            df = pd.read_csv("./data/dois/" + f, sep="\t", index_col=False)
             df_buffer.append(df)
         wos = pd.concat(df_buffer)
         wos = conforme_df(wos, {"DI": "doi", "TI": "title"})
@@ -99,7 +99,7 @@ def chargement_pubmed(pubmed_file=""):
     :return dataframe: dataframe chargé
     """
     if pubmed_file:
-        pubmed = pd.read_csv("../data/dois/" + pubmed_file)
+        pubmed = pd.read_csv("./data/dois/" + pubmed_file)
         pubmed = conforme_df(pubmed, {"DOI": "doi", "Title": "title"})
     else:
         pubmed = None
@@ -128,7 +128,7 @@ def chargement_lens(lens_file=""):
     :return dataframe: dataframe chargé
     """
     if lens_file:
-        lens = pd.read_csv("../data/dois/" + lens_file)
+        lens = pd.read_csv("./data/dois/" + lens_file)
         conforme_df(lens, {"DOI": "doi", "Title": "title"})
         lens["doi"] = lens["doi"].apply(lambda x: removeJoinDois(x))
     else:
@@ -227,11 +227,11 @@ def chargement_tout(donnees, recherche_erreur=True, utilise_api_hal=True):
         len(final_df[final_df["doi"].isna()])])
     # Noms des colonnes
     stat_table = pd.DataFrame(stats, columns=["name", "all", "doi", "no_doi"])
-    stat_table.to_csv("../resultats/fichiers_csv/statistiques_sur_les_bases.csv", index=False)
+    stat_table.to_csv("./resultats/fichiers_csv/statistiques_sur_les_bases.csv", index=False)
 
     # extraire le jeu de données final
     final_df.drop(columns=["title", "title_norm"], inplace=True)
-    final_df.to_csv("../resultats/fichiers_csv/consolider_doi_hal_id.csv",
+    final_df.to_csv("./resultats/fichiers_csv/consolider_doi_hal_id.csv",
                     index=False, encoding="utf8")
 
     return stat_table, final_df
@@ -256,7 +256,7 @@ def identifie_hal_sans_doi_to_csv(rawdf):
     hal_verify_doi = pd.merge(doi_only, hal_only, on="title_norm")
     hal_verify_doi.sort_values("title_norm", inplace=True)  # sélectionne les doublons de titre, donc les documents HAL visés
     hal_verify_doi.drop(columns=["title_y", "title_norm"], inplace=True)
-    hal_verify_doi.to_csv("../resultats/fichiers_csv/erreurs/hal_sans_doi.csv", index=False, encoding="utf8")
+    hal_verify_doi.to_csv("./resultats/fichiers_csv/erreurs/hal_sans_doi.csv", index=False, encoding="utf8")
 
 
 def identifie_doublons_titres_to_csv(rawdf):
@@ -271,4 +271,4 @@ def identifie_doublons_titres_to_csv(rawdf):
     hal_only_doubl = hal_only[hal_only["duplicated"]].copy()
     hal_only_doubl.sort_values("title", inplace=True)
     hal_only_doubl.drop(["doi", "title_norm", "duplicated"], axis=1, inplace=True)
-    hal_only_doubl.to_csv("../resultats/fichiers_csv/erreurs/doublons_titres.csv", index=False, encoding="utf8")
+    hal_only_doubl.to_csv("./resultats/fichiers_csv/erreurs/doublons_titres.csv", index=False, encoding="utf8")

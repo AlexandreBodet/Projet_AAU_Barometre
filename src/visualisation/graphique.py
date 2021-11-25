@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
-from visualisation import graphique_oa_editeur, graphique_oa_discipline, graphique_oa_circulaire, graphique_oa_evolution, graphique_rec_base, graphique_rec_discipline, graphique_rec_genre, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_oa_type_evolution
+from src.visualisation import graphique_oa_editeur, graphique_oa_discipline, graphique_oa_circulaire, graphique_oa_evolution, graphique_rec_base, graphique_rec_discipline, graphique_rec_genre, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_oa_type_evolution
 from ast import literal_eval
 
 """

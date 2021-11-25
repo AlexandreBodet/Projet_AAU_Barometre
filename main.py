@@ -2,13 +2,13 @@ import json
 import pandas as pd
 import numpy as np
 from datetime import date
-from configuration import dossiers_data
-from fonctions_analyse.chargement_sources import chargement_tout
-from importation_data.retrieve_hal import api_to_csv
-from fonctions_analyse.recuperer_data import enrich_to_csv
-from fonctions_analyse.ajouter_apc import ajout_apc
-from fonctions_analyse.aligner_data import aligner
-from visualisation.graphique import graphique
+from src.configuration import dossiers_data
+from src.fonctions_analyse.chargement_sources import chargement_tout
+from src.importation_data.retrieve_hal import api_to_csv
+from src.fonctions_analyse.recuperer_data import enrich_to_csv
+from src.fonctions_analyse.ajouter_apc import ajout_apc
+from src.fonctions_analyse.aligner_data import aligner
+from src.visualisation.graphique import graphique
 
 # Lecture des paramètres du projet
 # import sys
@@ -16,7 +16,7 @@ from visualisation.graphique import graphique
 
 dossiers_data()  # crée les différents dossiers s'ils n'existent pas
 
-with open("../settings.json") as json_file:
+with open("./settings.json") as json_file:
     donnees = json.load(json_file)
 
 if donnees["parametres"]["utilise_api_hal"]:
@@ -30,11 +30,11 @@ print('\n[FINI] Chargement fini\n')
 df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=donnees["data"]["domaine"], progression_denominateur=100)
 print('\n[FINI] Enrichissement fini\n')
 
-
-ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])  # une fois que je l'ai chargé, je le commente pour pas que ça le refasse
+# df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
+df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])  # une fois que je l'ai chargé, je le commente pour pas que ça le refasse
 print('\n[FINI] Ajout apc fini\n')
 
-aligner(df=df_charge, referentials=donnees["data"]["match_ref"])
+df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"])
 
 annees = [i for i in range(2010, date.today().year + 1)]
 graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=False, rec_disciplines=False, rec_genre=True,

@@ -53,9 +53,9 @@ Titre;Réf. HAL;DOI
 ['ARCHITECTURE 68. Panorama international sur des renouveaux pédagogiques, Genève, MétisPresses'];hal-02975677;
 ['Machine learning for optimized buildings morphosis'];hal-03258021;10.1145/3423603.3424057
 ['Résonances oasiennes. Approches sensibles de l’urbain au Sahara'];hal-03250069;
-['La ville mot à mot'];hal-03334500;
 ['SHS Web of Conferences - Proceedings SCAN’18 – 8e Séminaire de Conception Architecturale Numérique'];hal-01913383;
 ['Usage, Usability, and Utility of 3D City Models – European COST Action TU0801'];hal-01347580;
+['La ville mot à mot'];hal-03334500;
 "[""Parcourir pour projeter A l'entour du cimetière, un parcours au Crêt-de-Roch (Saint-Etienne) Lectures du site & enjeux de projet""]";hal-01653048;
 ['Parcours de lecture de la place Sainte-Claire'];hal-01518097;
 ['The recuperation of public space : a closer look at Bogotá, Colombia'];hal-00995507;
@@ -1121,7 +1121,6 @@ Titre;Réf. HAL;DOI
 ['Real-time adaptive blur for reducing eye strain in stereoscopic displays'];hal-01015057;
 ['Permanent Genetic Resources added to Molecular Ecology Resources Database 1 June 2010 - 31 July 2010'];hal-01094222;10.1111/j.1755-0998.2010.02916.x
 ['Méthodologie de mise en place d’une Trame verte urbaine\xa0: le cas d’une communauté d’agglomération, Plaine Commune'];hal-01562969;10.4000/cybergeo.27713
-['The urban boundary-layer field campaign in Marseille (UBL/CLU-ESCOMPTE): set-up and first results'];hal-00111637;10.1007/s10546-004-9241-4
 "['Lectures de Marie-Paule Halgand : « REM », Jean-Louis Violeau, Editions B2, 2014, 106 p. ; « REM CLOG », Kyle May, rédacteur en chef, 184 p.']";hal-02877854;
 ['Le scénographe, une figure émergente de La ville événementielle'];hal-02883354;
 "[""Lecture de Frédéric Barbe : Fabrication et usage des écoquartiers, essai critique sur la généralisation de l'aménagement durable en France de Vincent Renault, Lausanne, Presse polytechniques et universitaires romandes, collection « Espace en société », 2014, 122 p.""]";hal-02877881;
@@ -1411,7 +1410,6 @@ Titre;Réf. HAL;DOI
 ['Sonic Affordances of a Sacred Spring. The Urban Courtyard as a Figure of Rehabilitation of the Medina'];hal-02998784;
 ['Living in a harbour : Nantes (Fr) From Cranes To Elephant'];hal-02148513;
 ['La Cartopartie, une nouvelle forme de balade urbaine déployée par les villes'];hal-02187403;10.4000/craup.1003
-['Genèse des formations en urbanisme en France : Grenoble un “laboratoire urbain” pas comme les autres\xa0?'];hal-01995855;10.4000/tem.4773
 ['Urban heat island temporal and spatial variations: Empirical modeling from geographical and meteorological data'];hal-01630175;10.1016/j.buildenv.2017.08.009
 ['The Mountain Metropolis’s Land Design Project. Grenoble, from Plain to Slope', 'Le projet de sol de la métropole montagne\u202f: Grenoble, de plaines en pentes'];hal-01995848;10.4000/rga.4088
 "[""Effects of physical, non-immersive virtual, and immersive virtual store environments on consumers' perceptions and purchase behavior""]";hal-02551772;10.1016/j.chb.2020.106374
@@ -1453,7 +1451,6 @@ Titre;Réf. HAL;DOI
 ['Cairo behind the gates', 'Le Caire derrière les murs'];hal-01324053;
 ['New architectural forms to increase dew collection'];hal-00978323;
 ['The use of SOLENE-microclimat model to assess adaptation strategies at the district scale'];hal-01667973;10.1016/j.uclim.2015.07.004
-['Recent Excavation and Recording at the New Neolithic Rock Art Site of Vallée Aux Noirs, Buthiers (Seine-et-Marne, France)'];hal-01869312;10.1111/ojoa.12133
 ['Usage de la morphométrie dans la révélation des préférences de mobilité. Application aux cheminements piétons'];hal-01345703;10.3166/rig.24.101-130
 "[""Étude comparée de quatre indicateurs qualifiant le champ visuel d'un piéton en milieu urbain"", 'Comparative study of four indicators qualifying the pedestrian viewshed in the urban environment']";hal-01150201;10.3166/rig.25.75-98
 "['Le « vu -pas vu » comme dépassement de « la nécessaire politesse entre savoirs »', 'See or being seen... or not"" - How to overcome the essential Courtesy between Knowledges']";hal-01412287;
@@ -1467,3 +1464,7 @@ Titre;Réf. HAL;DOI
 ['Caractérisation des tissus urbains à partir de l’analyse structurelle des réseaux viaires'];halshs-01345699;10.4000/cybergeo.25009
 ['The automatic classification of urban open space by a pattern-matching method of the viewshed at intersections'];hal-01945663;10.1177/2399808318816994
 ['Les enjeux de la narration dans l’immersion 3D archéologique', 'Narration issues in archaeological 3D immersion'];hal-02874766;10.4000/insitu.27623
+['Recent Excavation and Recording at the New Neolithic Rock Art Site of Vallée Aux Noirs, Buthiers (Seine-et-Marne, France)'];hal-01869312;10.1111/ojoa.12133
+['Genèse des formations en urbanisme en France : Grenoble un “laboratoire urbain” pas comme les autres\xa0?'];hal-01995855;10.4000/tem.4773
+['The urban boundary-layer field campaign in Marseille (UBL/CLU-ESCOMPTE): set-up and first results'];hal-00111637;10.1007/s10546-004-9241-4
+['Urban cooling strategies as interaction opportunities in the public space: a methodological proposal'];hal-03445642;10.1088/1742-6596/2042/1/012128

@@ -27,7 +27,8 @@ def req_to_json(url):
     return res
 
 
-match_ref = j.load(open("../data/match_referentials.json"))
+match_ref = j.load(open("./data/match_referentials.json"))
+
 
 def get_hal_data(doi, hal_id, choix_domaine):
     """
@@ -228,6 +229,7 @@ def enrich_to_csv(df, email, choix_domaine, progression_denominateur=100):
     """
     Enrichi en métadonnées et enregistre en csv.
 
+    :param str choix_domaine: "1" ou "n" pour choisir un ou tous les domaines sur les publications avec plusieurs domaines
     :param str email: email utilisé pour la requête à l'API Unpaywall
     :param dataframe df: dataframe auquel ajouter les métadonnées
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes dans enrich_df
@@ -244,5 +246,5 @@ def enrich_to_csv(df, email, choix_domaine, progression_denominateur=100):
          "journal_name", "journal_issns", "publisher", "genre", "journal_issn_l", "oa_status", "upw_location",
          "version",
          "suspicious_journal", "licence", "journal_is_in_doaj", "journal_is_oa", "author_count", "is_paratext"]]
-    df_reorder.to_csv("../resultats/fichiers_csv/df_metadonnees.csv", index=False)
+    df_reorder.to_csv("./resultats/fichiers_csv/df_metadonnees.csv", index=False)
     return df

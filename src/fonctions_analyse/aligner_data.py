@@ -84,10 +84,10 @@ def aligner(referentials, df=None):
     """
     if df is None:
         df = pd.read_csv(
-            "../resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
+            "./resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
 
     # alignement avec les données de hal
-    match_ref = j.load(open("../data/"+referentials))
+    match_ref = j.load(open("./data/"+referentials))
 
     df.hal_domain = df.hal_domain.apply(literal_eval)
     df["is_oa"] = df.apply(lambda row: deduce_oa(row), axis=1)
@@ -97,5 +97,5 @@ def aligner(referentials, df=None):
 
     df["hal_coverage"].fillna("missing", inplace=True)
     df["upw_coverage"].fillna("missing", inplace=True)
-    df.to_csv("../resultats/fichiers_csv/data_complete.csv", index=False)
-    return None
+    df.to_csv("./resultats/fichiers_csv/data_complete.csv", index=False)
+    return df
