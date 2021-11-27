@@ -2,7 +2,6 @@
   "data":{
     "dois":{
       "hal_fichier_api" : "hal_from_api.csv",
-      "utilise_api_hal" : true,
       "hal_manuel" : "extractionHAL.csv",
       "scopus_fichier" : "",
       "pubmed_fichier" : "",
@@ -15,9 +14,15 @@
       "doaj_apc_journals" : "doaj_apc_journals.csv",
       "suspiciousIssns" : "suspiciousIssns.json"
     },
-    "domaine": "n"
+    "domaine": "n",
+    "match_ref": "match_referentials.json"
   },
   "mail" : "alexandre.bodet@eleves.ec-nantes.fr",
   "fullquery_to_see": "https://api.archives-ouvertes.fr/search/?q=collCode_s:AAU%20AND%20docType_s:(COUV+OR+COMM+OR+ART+OR+DOUV)%20AND%20NOT%20popularLevel_s:1&rows=10000&fl=title_s,doiId_s,publicationDate_s,publicationDateY_i,journalTitle_s,journalPublisher_s,halId_s,in,submittedDate_s,openAccess_bool,licence_s,selfArchiving_bool,docType_s,submitType_s,journalIssn_s,journalEissn_s,domain_s,authFullName_s&sort=publicationDateY_i%20desc",
-  "query":"https://api.archives-ouvertes.fr/search/?q=collCode_s:AAU%20AND%20docType_s:(COUV+OR+COMM+OR+ART+OR+DOUV)%20AND%20NOT%20popularLevel_s:1&rows=2000&fl=halId_s,doiId_s,title_s"
+  "query":"https://api.archives-ouvertes.fr/search/?q=collCode_s:AAU%20AND%20docType_s:(COUV+OR+COMM+OR+ART+OR+DOUV)%20AND%20NOT%20popularLevel_s:1&rows=200&fl=halId_s,doiId_s,title_s",
+  "parametres": {
+    "utilise_api_hal" : true,
+    "recherche_erreurs": true
+  }
+
 }

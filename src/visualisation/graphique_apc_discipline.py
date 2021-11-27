@@ -102,7 +102,7 @@ def graphique_apc_discipline(df, annee):
                framealpha=False)
 
     plt.savefig(
-        "../resultats/img/apc_discipline_" + str(annee) + ".png",
+        "./resultats/img/apc_discipline_" + str(annee) + ".png",
         dpi=100,
         bbox_inches='tight',
         pad_inches=0.1)

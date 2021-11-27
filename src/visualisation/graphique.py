@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import date
-from visualisation import graphique_oa_editeur, graphique_oa_discipline, graphique_oa_circulaire, graphique_oa_evolution, graphique_rec_base, graphique_rec_discipline, graphique_rec_genre, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_oa_type_evolution
+from src.visualisation import graphique_oa_editeur, graphique_oa_discipline, graphique_oa_circulaire, graphique_oa_evolution, graphique_rec_base, graphique_rec_discipline, graphique_rec_genre, graphique_apc_evolution, graphique_apc_discipline, graphique_bibliodiversite, graphique_oa_type_evolution
 from ast import literal_eval
 
 """
@@ -31,8 +31,9 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     :param dataframe df_raw: le dataframe à utiliser
     :param int annee: année utilisée pour certains graphiques
     :param list annees: liste des années pour les graphiques d'évolution
-    :param bool recapitulatif_bases: dit si le graphique doit être fait
-    :param bool recapitulatif_disciplines: dit si le graphique doit être fait
+    :param bool rec_base: dit si le graphique doit être fait
+    :param bool rec_disciplines: dit si le graphique doit être fait
+    :param bool rec_genre: dit si le graphique doit être fait
     :param bool oa_circulaire: dit si le graphique doit être fait
     :param bool oa_discipline: dit si le graphique doit être fait
     :param bool oa_evolution: dit si le graphique doit être fait
@@ -50,9 +51,10 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         return None
 
     # filtre : retrait des documents de paratexte
-    df = df_raw[df_raw["is_paratext"] == ""]  # pour nous : inutile car ils sont tous comme ça
+    df = df_raw[(df_raw["is_paratext"] == "") | df_raw["is_paratext"].isna()]  # pour nous : inutile car ils sont tous comme ça
     # remarque:  des publications ne sont pas dans la fourchette souhaitée [2016-XX]
-    df.scientific_field = df.scientific_field.apply(literal_eval) # passe les listes de domaines du str à list
+    if type(df.scientific_field[0]) == str:
+        df.scientific_field = df.scientific_field.apply(literal_eval) # passe les listes de domaines du str à list
 
 
     if rec_disciplines: 

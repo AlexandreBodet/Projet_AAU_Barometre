@@ -92,7 +92,7 @@ def graphique_apc_evolution(df, annees):
         y=1,
         alpha=0.6)
     plt.savefig(
-        '../resultats/img/apc_evolution.png',
+        './resultats/img/apc_evolution.png',
         dpi=100,
         bbox_inches='tight',
         pad_inches=0.1)

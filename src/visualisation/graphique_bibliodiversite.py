@@ -103,4 +103,4 @@ def graphique_bibliodiversite(df, annee):
         x=0.5,
         y=0.89,
         alpha=0.6)
-    plt.savefig('../resultats/img/bibliodiversite.png', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./resultats/img/bibliodiversite.png', bbox_inches='tight', pad_inches=0.1)

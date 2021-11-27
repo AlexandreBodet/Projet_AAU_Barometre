@@ -207,5 +207,5 @@ def graphique_evolution_type_oa(df, annees):
 
     plt.title("Évolution des types d'accès ouvert",
               fontsize=18, x=0.5, y=1.05, alpha=0.8)
-    plt.savefig("../resultats/img/oa_type_evolution.png", dpi=100,
+    plt.savefig("./resultats/img/oa_type_evolution.png", dpi=100,
                 bbox_inches="tight")  # , pad_inches=0.1)
