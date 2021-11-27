@@ -89,7 +89,8 @@ def aligner(referentials, df=None):
     # alignement avec les données de hal
     match_ref = j.load(open("./data/"+referentials))
 
-    df.hal_domain = df.hal_domain.apply(literal_eval)
+    if type(df.hal_domain[0]) == str:
+        df.hal_domain = df.hal_domain.apply(literal_eval)
     df["is_oa"] = df.apply(lambda row: deduce_oa(row), axis=1)
     df["oa_type"] = df.apply(lambda row: deduce_oa_type(row), axis=1)
     df["genre"] = df.apply(lambda row: align_doctype(row, match_ref), axis=1)
