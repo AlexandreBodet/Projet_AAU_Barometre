@@ -154,7 +154,7 @@ def graphique_oa_evolution(df, annees, doi_only=False):
     plt.title("Évolution du taux d'accès ouvert aux publications",
               fontsize=25, x=0.5, y=1.05, alpha=0.6)
     plt.savefig(
-        "../resultats/img/oa_evolution_"+str(annees[0])+"_"+str(annees[-1])+".png",
+        "./resultats/img/oa_evolution_"+str(annees[0])+"_"+str(annees[-1])+".png",
         dpi=100,
         bbox_inches="tight",
         pad_inches=0.1)

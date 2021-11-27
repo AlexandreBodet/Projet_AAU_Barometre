@@ -64,5 +64,5 @@ def graphique_discipline(df):
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("../resultats/img/recapitulatif_disciplines.png",
+    plt.savefig("./resultats/img/recapitulatif_disciplines.png",
                 dpi=100, bbox_inches='tight')

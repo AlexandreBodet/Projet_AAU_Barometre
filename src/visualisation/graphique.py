@@ -51,9 +51,10 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         return None
 
     # filtre : retrait des documents de paratexte
-    df = df_raw[df_raw["is_paratext"] == ""]  # pour nous : inutile car ils sont tous comme ça
+    df = df_raw[(df_raw["is_paratext"] == "") | df_raw["is_paratext"].isna()]  # pour nous : inutile car ils sont tous comme ça
     # remarque:  des publications ne sont pas dans la fourchette souhaitée [2016-XX]
-    df.scientific_field = df.scientific_field.apply(literal_eval) # passe les listes de domaines du str à list
+    if type(df.scientific_field[0]) == str:
+        df.scientific_field = df.scientific_field.apply(literal_eval) # passe les listes de domaines du str à list
 
 
     if rec_disciplines: 

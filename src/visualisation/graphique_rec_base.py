@@ -48,4 +48,4 @@ def graphique_comparaison_bases():
 
     ax.set_title("Quantité de publications dans les bases", fontsize=16, alpha=0.6, y=1.05)
     plt.suptitle("Depuis toujours", fontsize=10, alpha=0.6, y=0.92)
-    plt.savefig('../resultats/img/recapitulatif_bases.png', dpi=150, bbox_inches='tight', pad_inches=0.05)
+    plt.savefig('./resultats/img/recapitulatif_bases.png', dpi=150, bbox_inches='tight', pad_inches=0.05)

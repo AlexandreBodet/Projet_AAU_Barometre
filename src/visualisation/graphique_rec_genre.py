@@ -53,4 +53,4 @@ def graphique_genre(df):
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("../resultats/img/recapitulatif_genre.png", bbox_inches='tight')
+    plt.savefig("./resultats/img/recapitulatif_genre.png", bbox_inches='tight')

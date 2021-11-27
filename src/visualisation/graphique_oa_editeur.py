@@ -146,7 +146,7 @@ def graphique_oa_editeur(df, annee):
         y=0.95,
         alpha=0.6)
     plt.savefig(
-        '../resultats/img/oa_editeur.png',
+        './resultats/img/oa_editeur.png',
         dpi=100,
         bbox_inches='tight',
         pad_inches=0.9)
