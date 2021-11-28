@@ -9,7 +9,7 @@ def graphique_comparaison_bases():
     
     """""
     # Récupérer les données
-    df = pd.read_csv("../resultats/fichiers_csv/statistiques_sur_les_bases.csv")
+    df = pd.read_csv("./resultats/fichiers_csv/statistiques_sur_les_bases.csv")
     data = df.to_dict("list")
     x = np.arange(len(data["name"]))  # the label locations
     width = 0.2
