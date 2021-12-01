@@ -2,11 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def graphique_discipline_oa(df, annee):
+def graphique_discipline_oa(df, annee, dossier):
     """
     Open access par discipline
     :param df:
     :param annee:
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
     print("\ngraphique discipline oa vertical\n")
@@ -134,7 +135,7 @@ def graphique_discipline_oa(df, annee):
 
     # plt.show()
     plt.savefig(
-        "./resultats/img/oa_discipline_"+str(annee)+".png",
+        "./resultats/img/"+dossier+"/oa_discipline_"+str(annee)+".png",
         dpi=100,
         bbox_inches="tight",
         pad_inches=0.1)

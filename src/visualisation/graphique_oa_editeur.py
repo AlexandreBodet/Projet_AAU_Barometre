@@ -2,11 +2,12 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def graphique_oa_editeur(df, annee):
+def graphique_oa_editeur(df, annee, dossier):
     """
     Type d'accès ouvert par éditeur.
     :param annee:
     :param dataframe df: dataframe aligné
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
     oneyear_pub = df.loc[df['published_year'] == annee, :].copy()
@@ -146,7 +147,7 @@ def graphique_oa_editeur(df, annee):
         y=0.95,
         alpha=0.6)
     plt.savefig(
-        './resultats/img/oa_editeur.png',
+        "./resultats/img/"+dossier+"/oa_editeur.png",
         dpi=100,
         bbox_inches='tight',
         pad_inches=0.9)

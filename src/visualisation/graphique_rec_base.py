@@ -3,11 +3,12 @@ import pandas as pd
 import numpy as np
 
 
-def graphique_comparaison_bases():
+def graphique_comparaison_bases(dossier):
     """
     Comparaison du nb de publications dans les bases scopus wos hal et cie.
-    
-    """""
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
+
+    """
     # Récupérer les données
     df = pd.read_csv("./resultats/fichiers_csv/statistiques_sur_les_bases.csv")
     data = df.to_dict("list")
@@ -48,4 +49,4 @@ def graphique_comparaison_bases():
 
     ax.set_title("Quantité de publications dans les bases", fontsize=16, alpha=0.6, y=1.05)
     plt.suptitle("Depuis toujours", fontsize=10, alpha=0.6, y=0.92)
-    plt.savefig('./resultats/img/recapitulatif_bases.png', dpi=150, bbox_inches='tight', pad_inches=0.05)
+    plt.savefig("./resultats/img/"+dossier+"/recapitulatif_bases.png", dpi=150, bbox_inches='tight', pad_inches=0.05)

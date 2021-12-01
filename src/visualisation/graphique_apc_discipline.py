@@ -2,11 +2,12 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def graphique_apc_discipline(df, annee):
+def graphique_apc_discipline(df, annee, dossier):
     """
 
     :param df:
     :param annee:
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
     oneyear_pub = df.loc[df['published_year'] == annee, :]
@@ -18,7 +19,7 @@ def graphique_apc_discipline(df, annee):
 
     gold["has_apc"] = gold['apc_tracking'] != ""
 
-    df_apc_discipline = pd.crosstab(
+    df_apc_discipline = pd.crosstab(  # Scientific field est désormais une liste, voir si on peut faire comme dans rec_discipline lignes 18-25
         [gold['scientific_field']], gold['has_apc'])
     print(df_apc_discipline.columns)
     df_apc_discipline.columns = ["no_apc", "has_apc"]
@@ -102,7 +103,7 @@ def graphique_apc_discipline(df, annee):
                framealpha=False)
 
     plt.savefig(
-        "./resultats/img/apc_discipline_" + str(annee) + ".png",
+        "./resultats/img/"+dossier+"/apc_discipline_" + str(annee) + ".png",
         dpi=100,
         bbox_inches='tight',
         pad_inches=0.1)

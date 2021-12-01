@@ -2,11 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def graphique_bibliodiversite(df, annee):
+def graphique_bibliodiversite(df, annee, dossier):
     """
     Pour éclairer la bibliodiversité
     :param df:
     :param annee:
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
     print("graphique bibliodiversity")
@@ -103,4 +104,4 @@ def graphique_bibliodiversite(df, annee):
         x=0.5,
         y=0.89,
         alpha=0.6)
-    plt.savefig('./resultats/img/bibliodiversite.png', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig("./resultats/img/"+dossier+"/bibliodiversite.png", bbox_inches="tight", pad_inches=0.1)

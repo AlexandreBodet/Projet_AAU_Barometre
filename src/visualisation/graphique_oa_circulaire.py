@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def graphique_circulaire_oa(df, annee):
+
+def graphique_circulaire_oa(df, annee, dossier):
     """
     Circulaire bilan open access sur une année.
     :param annee:
     :param df: dataframe utilisé
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
 
@@ -68,11 +70,11 @@ def graphique_circulaire_oa(df, annee):
               borderaxespad=-1)
 
     # ax.legend(loc="", fontsize = 12)
-    plt.title("Proportion des publications en "+str(annee),
+    plt.title("Proportion des publications en " + str(annee),
               fontsize=23, x=0.55, y=1.8, alpha=0.6)
     # plt.show()
     plt.savefig(
-        "./resultats/img/oa_circulaire_"+str(annee)+".png",
+        "./resultats/img/" + dossier + "/oa_circulaire_" + str(annee) + ".png",
         dpi=150,
         bbox_inches='tight',
         pad_inches=0.9)

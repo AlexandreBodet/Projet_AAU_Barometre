@@ -38,34 +38,34 @@ def deduce_diamond(row):
         return False
 
 
-def graphique_evolution_type_oa(df, annees):
+def graphique_evolution_type_oa(df, annees, dossier):
     """
     Evolution des types d'accès ouvert green à diamond.
     :param df:
     :param annees:
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
     df = df.loc[df["published_year"].isin(annees), :]
     print("doc a traiter", len(df))
     print("doc en oa", len(df[df["is_oa"]]))
 
-    # ____0____ récupérer les données
+    # Récupérer les données
     # repo only = repo and not suspicious
-    df["green"] = df.apply(lambda row: deduce_green(row), axis=1)
-    '''    
-    df["suspicious"] = df.suspicious_journal == "True"
-    '''
-    # deduce bronze (at publisher but without licence and not suspicious)
 
+    # déduire bronze (chez un éditeur, sans license et pas suspicieux)
     df["bronze"] = df.apply(lambda row: deduce_bronze(row), axis=1)
 
-    # deduce hybrid
+    # déduire green
+    df["green"] = df.apply(lambda row: deduce_green(row), axis=1)
+
+    # déduire hybrid
     df["hybrid"] = df.apply(lambda row: deduce_hybrid(row), axis=1)
 
-    # deduce gold
+    # déduire gold
     df["gold"] = df.apply(lambda row: deduce_gold(row), axis=1)
 
-    # deduce diamond
+    # déduire diamond
     df["diamond"] = df.apply(lambda row: deduce_diamond(row), axis=1)
 
     # Transformer les nouvelles colonnes en booléens
@@ -73,7 +73,8 @@ def graphique_evolution_type_oa(df, annees):
                     "bronze": "bool",
                     "hybrid": "bool",
                     "gold": "bool",
-                    "diamond": "bool"})
+                    "diamond": "bool",
+                    "suspicious_journal": "bool"})
 
     dfoatype = pd.DataFrame(df.groupby(["published_year"])[
                             ["green", "suspicious_journal", "bronze", "hybrid", "gold", "diamond"]].agg(["count", np.mean])).reset_index()
@@ -186,8 +187,7 @@ def graphique_evolution_type_oa(df, annees):
               frameon=False,
               borderaxespad=-1)
 
-    # boucle pour ajouter les taux, difficulté : il faut prendre en compte les
-    # taux précédents
+    # boucle pour ajouter les taux, difficulté : il faut prendre en compte les taux précédents
     colname = ["green", "bronze", "hybrid", "gold", "diamond"]
     for col in colname:
         for year_ix in range(len(dfoatype.year_label)):
@@ -207,5 +207,5 @@ def graphique_evolution_type_oa(df, annees):
 
     plt.title("Évolution des types d'accès ouvert",
               fontsize=18, x=0.5, y=1.05, alpha=0.8)
-    plt.savefig("./resultats/img/oa_type_evolution.png", dpi=100,
+    plt.savefig("./resultats/img/"+dossier+"/oa_type_evolution.png", dpi=100,
                 bbox_inches="tight")  # , pad_inches=0.1)

@@ -3,11 +3,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def graphique_apc_evolution(df, annees):
+def graphique_apc_evolution(df, annees, dossier):
     """
     Evolution des APC
     :param annees:
     :param df:
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
     # Récupérer les données
@@ -92,7 +93,7 @@ def graphique_apc_evolution(df, annees):
         y=1,
         alpha=0.6)
     plt.savefig(
-        './resultats/img/apc_evolution.png',
+        "./resultats/img/"+dossier+"/apc_evolution.png",
         dpi=100,
         bbox_inches='tight',
         pad_inches=0.1)

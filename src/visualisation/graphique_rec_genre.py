@@ -2,10 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def graphique_genre(df):
+def graphique_genre(df, dossier):
     """
     Nombre de publications par discipline
     :param df:
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
     print("graphique genre")
@@ -53,4 +54,4 @@ def graphique_genre(df):
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("./resultats/img/recapitulatif_genre.png", bbox_inches='tight')
+    plt.savefig("./resultats/img/"+dossier+"/recapitulatif_genre.png", bbox_inches='tight')

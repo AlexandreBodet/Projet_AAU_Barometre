@@ -2,10 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def graphique_discipline(df):
+def graphique_discipline(df, dossier):
     """
     Nombre de publications par discipline
     :param df:
+    :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
     print("graphique disciplines")
@@ -64,5 +65,5 @@ def graphique_discipline(df):
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("./resultats/img/recapitulatif_disciplines.png",
+    plt.savefig("./resultats/img/"+dossier+"/recapitulatif_disciplines.png",
                 dpi=100, bbox_inches='tight')

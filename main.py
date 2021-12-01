@@ -18,7 +18,7 @@ dossiers_data()  # crée les différents dossiers s'ils n'existent pas
 
 with open("./settings.json") as json_file:
     donnees = json.load(json_file)
-
+"""
 if donnees["parametres"]["utilise_api_hal"]:
     api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], query=donnees["query"])
     print('\n[FINI] Récupération des données hal par api\n')
@@ -29,15 +29,17 @@ print('\n[FINI] Chargement fini\n')
 
 df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=donnees["data"]["domaine"], progression_denominateur=100)
 print('\n[FINI] Enrichissement fini\n')
-
-# df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
+"""
+df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
 df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])  # une fois que je l'ai chargé, je le commente pour pas que ça le refasse
 print('\n[FINI] Ajout apc fini\n')
 
 df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"])
 
 annees = [i for i in range(2010, date.today().year + 1)]
-graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=False, rec_disciplines=False, rec_genre=True,
+graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=False, rec_disciplines=False, rec_genre=False,
           oa_circulaire=False, oa_discipline=False, oa_evolution=False, oa_editeur=False,
-          apc_evolution=False, apc_discipline=False, bibliodiversite=False,
+          apc_evolution=False, apc_discipline=False, bibliodiversite=True,
           oa_type_evolution=False)
+
+# graphique(df_raw=df_charge, annee=2020, annees=annees)
