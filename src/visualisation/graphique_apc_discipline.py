@@ -19,7 +19,8 @@ def graphique_apc_discipline(df, annee, dossier):
 
     gold["has_apc"] = gold['apc_tracking'] != ""
 
-    df_apc_discipline = pd.crosstab(  # Scientific field est désormais une liste, voir si on peut faire comme dans rec_discipline lignes 18-25
+    df_apc_discipline = pd.crosstab(
+        # Scientific field est désormais une liste, voir si on peut faire comme dans rec_discipline lignes 18-25
         [gold['scientific_field']], gold['has_apc'])
     print(df_apc_discipline.columns)
     df_apc_discipline.columns = ["no_apc", "has_apc"]
@@ -27,7 +28,8 @@ def graphique_apc_discipline(df, annee, dossier):
     df_apc_discipline["has_apc_percent"] = df_apc_discipline["has_apc"] / df_apc_discipline["total"] * 100
     df_apc_discipline["no_apc_percent"] = df_apc_discipline["no_apc"] / df_apc_discipline["total"] * 100
 
-    df_apc_discipline["y_label"] = df_apc_discipline.index + "\n" + df_apc_discipline["total"].apply(str) + " publications"
+    df_apc_discipline["y_label"] = df_apc_discipline.index + "\n" + df_apc_discipline["total"].apply(
+        str) + " publications"
     df_apc_discipline.index = df_apc_discipline["y_label"]
     df_apc_discipline.sort_index(ascending=False, inplace=True)
     df_apc_discipline.drop(
@@ -103,7 +105,7 @@ def graphique_apc_discipline(df, annee, dossier):
                framealpha=False)
 
     plt.savefig(
-        "./resultats/img/"+dossier+"/apc_discipline_" + str(annee) + ".png",
+        "./resultats/img/" + dossier + "/apc_discipline_" + str(annee) + ".png",
         dpi=100,
         bbox_inches='tight',
         pad_inches=0.1)

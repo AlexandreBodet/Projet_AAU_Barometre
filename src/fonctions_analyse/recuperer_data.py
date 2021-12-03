@@ -4,7 +4,7 @@ Fonctions pour récupérer les métadonnées associées aux publications
 
 import numpy as np
 import requests as r
-import pandas as pd 
+import pandas as pd
 import json as j
 
 
@@ -13,12 +13,12 @@ def req_to_json(url):
     S'assurer que la réponse de l'API est en JSON.
 
     :param str url: url de la requête
-    :return json res: résultat json de la requête sql
+    :return dict res: résultat json de la requête sql
     """
     found = False
     while not found:
         req = r.get(url)
-
+        res = {}
         try:
             res = req.json()
             found = True
@@ -37,7 +37,7 @@ def get_hal_data(doi, hal_id, choix_domaine):
 
     :param str doi: doi dont les données sont à récupérer
     :param str hal_id: hal id dont les données sont à récupérer:
-    para str choix_domaine: 1 si on garde un domaine par document, n si on les prends tous 
+    :para str choix_domaine: 1 si on garde un domaine par document, n si on les prend tous
     :return dict: dictionnaire des métadonnées récupérées
     """
 
@@ -78,20 +78,18 @@ def get_hal_data(doi, hal_id, choix_domaine):
     issn = ",".join(issn) if issn else False
 
     # Vérifier la présence de domaine disciplinaire (quelques notices peuvent ne pas avoir de domaine)
-    
+
     domain = []
     if res.get('domain_s'):
-        if(choix_domaine == "1"):
+        if choix_domaine == "1":
             e = res["domain_s"][0]
-            if(e in match_ref["domain"]):
+            if e in match_ref["domain"]:
                 domain.append(e)
-        elif(choix_domaine == "n"):
+        elif choix_domaine == "n":
             for e in res["domain_s"]:
-                if(e in match_ref["domain"]):
-                    if(e not in domain):
+                if e in match_ref["domain"]:
+                    if e not in domain:
                         domain.append(e)
-        
-        
 
     auth_count = False
     if res.get("authFullName_s"):
@@ -203,7 +201,8 @@ def enrich_df(df, email, choix_domaine, progression_denominateur=100):
         # A chaque étape, afficher la progression
         if row.Index > 0 and row.Index % int(
                 len(df) / progression_denominateur) == 0:  # le dénominateur impact l'intervalle des étapes : 100 une étape tout les 1% etc.
-            print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ", round(row.Index / len(df) * progression_denominateur, 1), "%")
+            print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ",
+                  round(row.Index / len(df) * progression_denominateur, 1), "%")
         # Récupérer les métadonnées de HAL
         md = get_hal_data(row.doi, row.halId, choix_domaine)
 
@@ -217,7 +216,7 @@ def enrich_df(df, email, choix_domaine, progression_denominateur=100):
         # Ajouter les métadonnées au dataframe
         for field in md:
             if field == 'hal_domain':
-                new_domain = pd.Series([md[field]], index = [row.Index], dtype='object')
+                new_domain = pd.Series([md[field]], index=[row.Index], dtype='object')
                 df.loc[[row.Index], 'hal_domain'] = new_domain
             else:
                 df.loc[row.Index, field] = md[field]
