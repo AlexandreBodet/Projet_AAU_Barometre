@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module src.fonctions_analyse.ajouter_apc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="src.html"><font color="#ffffff">src</font></a>.<a href="src.fonctions_analyse.html"><font color="#ffffff">fonctions_analyse</font></a>.ajouter_apc</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cdocuments_d%5Cprojets_github%5Cprojet_aau_barometre%5Csrc%5Cfonctions_analyse%5Cajouter_apc.py">d:\documents_d\projets_github\projet_aau_barometre\src\fonctions_analyse\ajouter_apc.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="pandas.html">pandas</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-ajout_apc"><strong>ajout_apc</strong></a>(df, data_apc)</dt><dd><tt>Ajoute&nbsp;les&nbsp;APC&nbsp;au&nbsp;dataframe.<br>
+&nbsp;<br>
+:param&nbsp;dataframe&nbsp;df:&nbsp;dataframe&nbsp;où&nbsp;ajouter&nbsp;les&nbsp;apc<br>
+:param&nbsp;dict&nbsp;data_apc:&nbsp;dictionnaire&nbsp;des&nbsp;noms&nbsp;de&nbsp;fichiers&nbsp;à&nbsp;utiliser</tt></dd></dl>
+ <dl><dt><a name="-check_suspicious_j"><strong>check_suspicious_j</strong></a>(ligne, suspiciousIssns)</dt><dd><tt>Vérifier&nbsp;si&nbsp;le&nbsp;journal&nbsp;est&nbsp;dans&nbsp;la&nbsp;liste&nbsp;de&nbsp;ceux&nbsp;suspects.<br>
+&nbsp;<br>
+:param&nbsp;ligne:&nbsp;ligne&nbsp;du&nbsp;dataframe&nbsp;à&nbsp;vérifier<br>
+:param&nbsp;json&nbsp;suspiciousIssns:&nbsp;fichier&nbsp;json&nbsp;des&nbsp;journaux&nbsp;suspicieux<br>
+:return&nbsp;dict:&nbsp;dictionnaire&nbsp;qui&nbsp;dit&nbsp;si&nbsp;le&nbsp;journal&nbsp;est&nbsp;suspicieux</tt></dd></dl>
+ <dl><dt><a name="-clean_pub_year"><strong>clean_pub_year</strong></a>(x)</dt><dd><tt>Donne&nbsp;l'année&nbsp;mais&nbsp;en&nbsp;entier.<br>
+&nbsp;<br>
+:param&nbsp;str&nbsp;x:&nbsp;année&nbsp;en&nbsp;entrée<br>
+:return&nbsp;int:&nbsp;année&nbsp;en&nbsp;sortie</tt></dd></dl>
+ <dl><dt><a name="-separation_montant_devise"><strong>separation_montant_devise</strong></a>(apc_journal, column)</dt><dd><tt>Supprime&nbsp;les&nbsp;valeurs&nbsp;en&nbsp;double&nbsp;et&nbsp;sépare&nbsp;monnaie&nbsp;et&nbsp;devise.<br>
+&nbsp;<br>
+:param&nbsp;dataframe&nbsp;apc_journal:&nbsp;dataframe&nbsp;des&nbsp;apc&nbsp;des&nbsp;journaux<br>
+:param&nbsp;column:&nbsp;colonnes&nbsp;des&nbsp;APC&nbsp;à&nbsp;séparer</tt></dd></dl>
+ <dl><dt><a name="-track_apc"><strong>track_apc</strong></a>(doi, ligne, open_apc_dois, openapc_journals, doaj_apc_journals)</dt><dd><tt>Heuristique&nbsp;sur&nbsp;les&nbsp;APC.<br>
+&nbsp;<br>
+:param&nbsp;str&nbsp;doi:&nbsp;doi&nbsp;dont&nbsp;on&nbsp;veut&nbsp;récupérer&nbsp;les&nbsp;APC<br>
+:param&nbsp;ligne:&nbsp;ligne&nbsp;du&nbsp;dataframe&nbsp;à&nbsp;utiliser<br>
+:param&nbsp;dataframe&nbsp;openapc_journals:&nbsp;dataframe&nbsp;des&nbsp;apc&nbsp;des&nbsp;journaux&nbsp;depuis&nbsp;openapc<br>
+:param&nbsp;dataframe&nbsp;open_apc_dois:&nbsp;dataframe&nbsp;des&nbsp;apc&nbsp;de&nbsp;openapc<br>
+:param&nbsp;dataframe&nbsp;doaj_apc_journals:&nbsp;dataframe&nbsp;des&nbsp;apc&nbsp;des&nbsp;différents&nbsp;journaux&nbsp;avec&nbsp;les&nbsp;doaj<br>
+:return&nbsp;dict:&nbsp;dictionnaire&nbsp;des&nbsp;apc&nbsp;payés</tt></dd></dl>
+ <dl><dt><a name="-transformation_df"><strong>transformation_df</strong></a>(df)</dt><dd><tt>Transforme&nbsp;le&nbsp;dataframe&nbsp;pour&nbsp;éviter&nbsp;certaines&nbsp;erreurs.<br>
+&nbsp;<br>
+:param&nbsp;dataframe&nbsp;df:&nbsp;dataframe&nbsp;à&nbsp;transformer</tt></dd></dl>
+</td></tr></table>
+</body></html>

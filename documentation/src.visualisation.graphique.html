@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module src.visualisation.graphique</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="src.html"><font color="#ffffff">src</font></a>.<a href="src.visualisation.html"><font color="#ffffff">visualisation</font></a>.graphique</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cdocuments_d%5Cprojets_github%5Cprojet_aau_barometre%5Csrc%5Cvisualisation%5Cgraphique.py">d:\documents_d\projets_github\projet_aau_barometre\src\visualisation\graphique.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="src.visualisation.graphique_apc_discipline.html">src.visualisation.graphique_apc_discipline</a><br>
+<a href="src.visualisation.graphique_apc_evolution.html">src.visualisation.graphique_apc_evolution</a><br>
+<a href="src.visualisation.graphique_bibliodiversite.html">src.visualisation.graphique_bibliodiversite</a><br>
+<a href="src.visualisation.graphique_oa_circulaire.html">src.visualisation.graphique_oa_circulaire</a><br>
+</td><td width="25%" valign=top><a href="src.visualisation.graphique_oa_discipline.html">src.visualisation.graphique_oa_discipline</a><br>
+<a href="src.visualisation.graphique_oa_editeur.html">src.visualisation.graphique_oa_editeur</a><br>
+<a href="src.visualisation.graphique_oa_evolution.html">src.visualisation.graphique_oa_evolution</a><br>
+<a href="src.visualisation.graphique_oa_type_evolution.html">src.visualisation.graphique_oa_type_evolution</a><br>
+</td><td width="25%" valign=top><a href="src.visualisation.graphique_rec_base.html">src.visualisation.graphique_rec_base</a><br>
+<a href="src.visualisation.graphique_rec_discipline.html">src.visualisation.graphique_rec_discipline</a><br>
+<a href="src.visualisation.graphique_rec_genre.html">src.visualisation.graphique_rec_genre</a><br>
+<a href="matplotlib.html">matplotlib</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="os.html">os</a><br>
+<a href="pandas.html">pandas</a><br>
+<a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-graphique"><strong>graphique</strong></a>(df_raw=None, annee=2021, annees=None, rec_base=True, rec_disciplines=True, rec_genre=True, oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=True, apc_evolution=True, apc_discipline=True, bibliodiversite=True, oa_type_evolution=True)</dt><dd><tt>Fonction&nbsp;principale&nbsp;pour&nbsp;générer&nbsp;les&nbsp;graphiques.<br>
+:param&nbsp;dataframe&nbsp;df_raw:&nbsp;le&nbsp;dataframe&nbsp;à&nbsp;utiliser<br>
+:param&nbsp;int&nbsp;annee:&nbsp;année&nbsp;utilisée&nbsp;pour&nbsp;certains&nbsp;graphiques<br>
+:param&nbsp;list&nbsp;annees:&nbsp;liste&nbsp;des&nbsp;années&nbsp;pour&nbsp;les&nbsp;graphiques&nbsp;d'évolution<br>
+:param&nbsp;bool&nbsp;rec_base:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;rec_disciplines:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;rec_genre:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;oa_circulaire:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;oa_discipline:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;oa_evolution:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;oa_editeur:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;apc_evolution:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;apc_discipline:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;bibliodiversite:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:param&nbsp;bool&nbsp;oa_type_evolution:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
+:return:</tt></dd></dl>
+</td></tr></table>
+</body></html>

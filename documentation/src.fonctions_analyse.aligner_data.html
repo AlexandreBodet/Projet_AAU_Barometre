@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module src.fonctions_analyse.aligner_data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="src.html"><font color="#ffffff">src</font></a>.<a href="src.fonctions_analyse.html"><font color="#ffffff">fonctions_analyse</font></a>.aligner_data</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cdocuments_d%5Cprojets_github%5Cprojet_aau_barometre%5Csrc%5Cfonctions_analyse%5Caligner_data.py">d:\documents_d\projets_github\projet_aau_barometre\src\fonctions_analyse\aligner_data.py</a></font></td></tr></table>
+    <p><tt>Fonctions&nbsp;pour&nbsp;analyser&nbsp;les&nbsp;métadonnées&nbsp;associés&nbsp;aux&nbsp;publications.<br>
+Pour&nbsp;l'instant,&nbsp;seulement&nbsp;pour&nbsp;les&nbsp;données&nbsp;sortant&nbsp;de&nbsp;hal.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="pandas.html">pandas</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-align_doctype"><strong>align_doctype</strong></a>(row, match_ref)</dt><dd><tt>Donne&nbsp;le&nbsp;type&nbsp;de&nbsp;document&nbsp;(chapitres&nbsp;d'ouvrage,&nbsp;articles&nbsp;dans&nbsp;une&nbsp;revue,&nbsp;...)<br>
+:param&nbsp;row:&nbsp;ligne&nbsp;à&nbsp;traiter<br>
+:param&nbsp;dict&nbsp;match_ref:&nbsp;noms&nbsp;des&nbsp;domaines&nbsp;et&nbsp;de&nbsp;type&nbsp;de&nbsp;documents<br>
+:return:</tt></dd></dl>
+ <dl><dt><a name="-align_domain"><strong>align_domain</strong></a>(row, match_ref)</dt><dd><tt>Donne&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines&nbsp;correspondants<br>
+:param&nbsp;row:&nbsp;ligne&nbsp;à&nbsp;traiter<br>
+:param&nbsp;dict&nbsp;match_ref:&nbsp;noms&nbsp;des&nbsp;domaines&nbsp;et&nbsp;de&nbsp;type&nbsp;de&nbsp;documents<br>
+:return&nbsp;list:&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines</tt></dd></dl>
+ <dl><dt><a name="-aligner"><strong>aligner</strong></a>(referentials, df=None)</dt><dd><tt>Aligne&nbsp;les&nbsp;données&nbsp;dans&nbsp;les&nbsp;bonnes&nbsp;colonnes.&nbsp;Open_access&nbsp;ou&nbsp;non,&nbsp;le&nbsp;type&nbsp;d'oa,<br>
+:param&nbsp;str&nbsp;referentials:&nbsp;str&nbsp;du&nbsp;nom&nbsp;de&nbsp;fichier&nbsp;json&nbsp;pour&nbsp;les&nbsp;noms&nbsp;des&nbsp;domaines&nbsp;et&nbsp;de&nbsp;type&nbsp;de&nbsp;documents<br>
+:param&nbsp;df:&nbsp;dataframe&nbsp;en&nbsp;sortie&nbsp;de&nbsp;ajout_apc()</tt></dd></dl>
+ <dl><dt><a name="-deduce_oa"><strong>deduce_oa</strong></a>(row)</dt><dd><tt>Déduit&nbsp;si&nbsp;la&nbsp;publication&nbsp;est&nbsp;en&nbsp;open&nbsp;access<br>
+:param&nbsp;row:&nbsp;ligne&nbsp;du&nbsp;dataframe&nbsp;à&nbsp;traiter<br>
+:return&nbsp;bool:&nbsp;publication&nbsp;en&nbsp;open&nbsp;access</tt></dd></dl>
+ <dl><dt><a name="-deduce_oa_type"><strong>deduce_oa_type</strong></a>(row)</dt><dd><tt>Déduit&nbsp;le&nbsp;type&nbsp;d'open&nbsp;access<br>
+:param&nbsp;row:&nbsp;ligne&nbsp;du&nbsp;dataframe&nbsp;à&nbsp;traiter<br>
+:return&nbsp;str:&nbsp;type&nbsp;d'open&nbsp;access&nbsp;(closed,&nbsp;repository,&nbsp;publisher&nbsp;ou&nbsp;bien&nbsp;publisher;repository)</tt></dd></dl>
+</td></tr></table>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module src.fonctions_analyse.chargement_sources</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="src.html"><font color="#ffffff">src</font></a>.<a href="src.fonctions_analyse.html"><font color="#ffffff">fonctions_analyse</font></a>.chargement_sources</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cdocuments_d%5Cprojets_github%5Cprojet_aau_barometre%5Csrc%5Cfonctions_analyse%5Cchargement_sources.py">d:\documents_d\projets_github\projet_aau_barometre\src\fonctions_analyse\chargement_sources.py</a></font></td></tr></table>
+    <p><tt>Fonctions&nbsp;pour&nbsp;consolider&nbsp;les&nbsp;sources</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pandas.html">pandas</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="unidecode.html">unidecode</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-chargement_hal"><strong>chargement_hal</strong></a>(hal_file='', skip=0)</dt><dd><tt>Charge&nbsp;un&nbsp;fichier&nbsp;hal.<br>
+:param&nbsp;skip:&nbsp;dit&nbsp;si&nbsp;la&nbsp;première&nbsp;ligne&nbsp;du&nbsp;fichier&nbsp;ne&nbsp;doit&nbsp;pas&nbsp;être&nbsp;lue<br>
+:param&nbsp;str&nbsp;hal_file:&nbsp;du&nbsp;nom&nbsp;de&nbsp;fichier&nbsp;à&nbsp;charger<br>
+:return&nbsp;dataframe:&nbsp;dataframe&nbsp;chargé</tt></dd></dl>
+ <dl><dt><a name="-chargement_lens"><strong>chargement_lens</strong></a>(lens_file='')</dt><dd><tt>Charger&nbsp;un&nbsp;fichier&nbsp;lens.<br>
+:param&nbsp;str&nbsp;lens_file:&nbsp;du&nbsp;nom&nbsp;de&nbsp;fichier&nbsp;à&nbsp;charger<br>
+:return&nbsp;dataframe:&nbsp;dataframe&nbsp;chargé</tt></dd></dl>
+ <dl><dt><a name="-chargement_pubmed"><strong>chargement_pubmed</strong></a>(pubmed_file='')</dt><dd><tt>Charger&nbsp;un&nbsp;fichier&nbsp;pubmed.<br>
+:param&nbsp;str&nbsp;pubmed_file:&nbsp;nom&nbsp;de&nbsp;fichier&nbsp;à&nbsp;charger<br>
+:return&nbsp;dataframe:&nbsp;dataframe&nbsp;chargé</tt></dd></dl>
+ <dl><dt><a name="-chargement_scopus"><strong>chargement_scopus</strong></a>(scopus_file='')</dt><dd><tt>Charge&nbsp;un&nbsp;fichier&nbsp;scopus.<br>
+:param&nbsp;str&nbsp;scopus_file:&nbsp;nom&nbsp;de&nbsp;fichier&nbsp;à&nbsp;charger<br>
+:return&nbsp;dataframe:&nbsp;dataframe&nbsp;chargé</tt></dd></dl>
+ <dl><dt><a name="-chargement_tout"><strong>chargement_tout</strong></a>(donnees, recherche_erreur=True, utilise_api_hal=True)</dt><dd><tt>Charge&nbsp;tous&nbsp;les&nbsp;fichiers&nbsp;et&nbsp;donne&nbsp;des&nbsp;statistiques&nbsp;dessus&nbsp;et&nbsp;le&nbsp;dataframe&nbsp;de&nbsp;tous&nbsp;les&nbsp;dataframes.<br>
+:param&nbsp;bool&nbsp;recherche_erreur:&nbsp;Dit&nbsp;si&nbsp;on&nbsp;doit&nbsp;enregistrer&nbsp;les&nbsp;csv&nbsp;qui&nbsp;notent&nbsp;les&nbsp;erreurs<br>
+:param&nbsp;bool&nbsp;utilise_api_hal:&nbsp;Dit&nbsp;si&nbsp;on&nbsp;a&nbsp;utilisé&nbsp;l'api&nbsp;de&nbsp;hal<br>
+:param&nbsp;Dict[str,str]&nbsp;donnees:&nbsp;données&nbsp;issues&nbsp;du&nbsp;fichier&nbsp;settings<br>
+:return&nbsp;list,&nbsp;dataframe:&nbsp;liste&nbsp;des&nbsp;statistiques&nbsp;sur&nbsp;les&nbsp;bases&nbsp;et&nbsp;dataframe&nbsp;des&nbsp;données&nbsp;chargées</tt></dd></dl>
+ <dl><dt><a name="-chargement_wos"><strong>chargement_wos</strong></a>(wos_file=None)</dt><dd><tt>Charge&nbsp;un&nbsp;fichier&nbsp;wos.<br>
+:param&nbsp;list&nbsp;wos_file:&nbsp;nom&nbsp;de&nbsp;fichier&nbsp;à&nbsp;charger<br>
+:return&nbsp;dataframe:&nbsp;dataframe&nbsp;chargé</tt></dd></dl>
+ <dl><dt><a name="-conforme_df"><strong>conforme_df</strong></a>(df, col_name)</dt><dd><tt>Garde&nbsp;les&nbsp;colonnes&nbsp;de&nbsp;col_name,&nbsp;les&nbsp;renomme&nbsp;et&nbsp;passe&nbsp;en&nbsp;minuscule&nbsp;doi&nbsp;et&nbsp;titre.<br>
+:param&nbsp;pd.Dataframe&nbsp;df:&nbsp;dataframe&nbsp;dont&nbsp;les&nbsp;titres&nbsp;et&nbsp;doi&nbsp;sont&nbsp;normalisés<br>
+:param&nbsp;dict[str,str]&nbsp;col_name:&nbsp;colonnes&nbsp;à&nbsp;garder<br>
+:return&nbsp;pd.Dataframe:&nbsp;dataframe&nbsp;modifié</tt></dd></dl>
+ <dl><dt><a name="-extract_stats_from_base"><strong>extract_stats_from_base</strong></a>(src_name, df, statistiques)</dt><dd><tt>Extraire&nbsp;du&nbsp;dataframe&nbsp;les&nbsp;données&nbsp;de&nbsp;la&nbsp;base&nbsp;sur&nbsp;le&nbsp;total&nbsp;publications,&nbsp;doi&nbsp;only,&nbsp;no&nbsp;doi.<br>
+:param&nbsp;str&nbsp;src_name:&nbsp;nom&nbsp;de&nbsp;la&nbsp;base&nbsp;de&nbsp;donnée&nbsp;source<br>
+:param&nbsp;dataframe&nbsp;df:&nbsp;dataframe&nbsp;chargé<br>
+:param&nbsp;list&nbsp;statistiques:&nbsp;liste&nbsp;des&nbsp;statistiques</tt></dd></dl>
+ <dl><dt><a name="-identifie_doublons_titres_to_csv"><strong>identifie_doublons_titres_to_csv</strong></a>(rawdf)</dt><dd><tt>Identifier&nbsp;les&nbsp;doublons&nbsp;de&nbsp;titre&nbsp;sur&nbsp;les&nbsp;notices&nbsp;HAL&nbsp;sans&nbsp;DOI.<br>
+:param&nbsp;dataframe&nbsp;rawdf:&nbsp;dataframe&nbsp;non&nbsp;dédoublonné</tt></dd></dl>
+ <dl><dt><a name="-identifie_hal_sans_doi_to_csv"><strong>identifie_hal_sans_doi_to_csv</strong></a>(rawdf)</dt><dd><tt>Identifier&nbsp;les&nbsp;documents&nbsp;HAL&nbsp;sans&nbsp;DOI&nbsp;et&nbsp;dont&nbsp;le&nbsp;titre&nbsp;correspond&nbsp;à&nbsp;un&nbsp;document&nbsp;avec&nbsp;DOI.<br>
+Enregistre&nbsp;dans&nbsp;un&nbsp;csv&nbsp;pour&nbsp;voir&nbsp;les&nbsp;erreurs.<br>
+:param&nbsp;dataframe&nbsp;rawdf:&nbsp;dataframe&nbsp;non&nbsp;dedoublonné</tt></dd></dl>
+ <dl><dt><a name="-normalize_txt"><strong>normalize_txt</strong></a>(title)</dt><dd><tt>Retirer&nbsp;les&nbsp;espaces,&nbsp;les&nbsp;accents,&nbsp;tout&nbsp;en&nbsp;minuscules,&nbsp;retirer&nbsp;les&nbsp;caractères&nbsp;spéciaux.<br>
+:param&nbsp;str&nbsp;title:&nbsp;titre&nbsp;à&nbsp;normaliser<br>
+:return&nbsp;str&nbsp;join_cut:&nbsp;titre&nbsp;normalisé</tt></dd></dl>
+ <dl><dt><a name="-removeJoinDois"><strong>removeJoinDois</strong></a>(x)</dt><dd><tt>Retirer&nbsp;les&nbsp;listes&nbsp;de&nbsp;doi&nbsp;assemblées&nbsp;par&nbsp;";&nbsp;".<br>
+:param&nbsp;str&nbsp;x:&nbsp;liste&nbsp;de&nbsp;dois&nbsp;ou&nbsp;doi<br>
+:return&nbsp;str:&nbsp;premier&nbsp;doi&nbsp;de&nbsp;la&nbsp;liste,&nbsp;ou&nbsp;doi&nbsp;s'il&nbsp;est&nbsp;seul</tt></dd></dl>
+ <dl><dt><a name="-statistiques_bases"><strong>statistiques_bases</strong></a>(hal_df=None, scopus_df=None, wos_df=None, pubmed_df=None, lens_df=None)</dt><dd><tt>Extrait&nbsp;les&nbsp;statistiques&nbsp;de&nbsp;toutes&nbsp;les&nbsp;bases&nbsp;données<br>
+:param&nbsp;dataframe&nbsp;hal_df:&nbsp;données&nbsp;de&nbsp;hal<br>
+:param&nbsp;dataframe&nbsp;scopus_df:&nbsp;données&nbsp;de&nbsp;scopus<br>
+:param&nbsp;dataframe&nbsp;wos_df:&nbsp;données&nbsp;de&nbsp;wos<br>
+:param&nbsp;dataframe&nbsp;pubmed_df:&nbsp;données&nbsp;de&nbsp;pubmed<br>
+:param&nbsp;dataframe&nbsp;lens_df:&nbsp;données&nbsp;de&nbsp;lens<br>
+:return&nbsp;list:&nbsp;liste&nbsp;des&nbsp;statistiques&nbsp;extraites</tt></dd></dl>
+</td></tr></table>
+</body></html>

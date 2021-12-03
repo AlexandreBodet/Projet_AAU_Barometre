@@ -19,8 +19,7 @@ class TestRetrieveHal(unittest.TestCase):
         self.assertIsInstance(req, pd.DataFrame)
 
     def test_api_to_csv(self):
-        api_to_csv(donnees["data"]["dois"]["hal_fichier_api"],
-                   "https://api.archives-ouvertes.fr/search/?q=collCode_s:AAU%20AND%20docType_s:(COUV+OR+COMM+OR+ART+OR+DOUV)%20AND%20NOT%20popularLevel_s:1&rows=200&fl=halId_s,doiId_s,title_s")
+        api_to_csv(donnees["data"]["dois"]["hal_fichier_api"], donnees["nom_labo"])
         df = pd.read_csv("./data/dois/" + donnees["data"]["dois"]["hal_fichier_api"], sep=";")
         self.assertIsInstance(df, pd.DataFrame)
         self.assertFalse(df.empty)

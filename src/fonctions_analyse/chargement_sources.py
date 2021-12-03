@@ -23,9 +23,9 @@ def normalize_txt(title):
 def conforme_df(df, col_name):
     """
     Garde les colonnes de col_name, les renomme et passe en minuscule doi et titre.
-    :param dataframe df: dataframe dont les titres et doi sont normalisés
+    :param pd.Dataframe df: dataframe dont les titres et doi sont normalisés
     :param dict[str,str] col_name: colonnes à garder
-    :return dataframe: dataframe modifié
+    :return pd.Dataframe: dataframe modifié
     """
     # memo : on ne supprime pas la colonne titre, car elle est utilisée pour le dédoublonnage
     print("conformer le df")

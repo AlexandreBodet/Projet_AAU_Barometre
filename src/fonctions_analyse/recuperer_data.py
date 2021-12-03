@@ -36,8 +36,8 @@ def get_hal_data(doi, hal_id, choix_domaine):
     Si le DOI est dans unpaywall les métadonnées de HAL communes seront écrasées.
 
     :param str doi: doi dont les données sont à récupérer
-    :param str hal_id: hal id dont les données sont à récupérer:
-    :para str choix_domaine: 1 si on garde un domaine par document, n si on les prend tous
+    :param str hal_id: hal id dont les données sont à récupérer
+    :param str choix_domaine: 1 si on garde un domaine par document, n si on les prend tous
     :return dict: dictionnaire des métadonnées récupérées
     """
 
