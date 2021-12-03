@@ -2,26 +2,36 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def graphique_discipline(df):
+def graphique_discipline(df, domain = False, domain_shs = False, domain_info = False):
     """
     Nombre de publications par discipline
     :param df:
     :return:
     """
     print("graphique disciplines")
-    allyear = df[["scientific_field", "is_oa"]]
 
-    data_domains = {"scientific_field": [], 
+    if(domain == True):
+        var = "scientific_field"
+    elif(domain_shs == True):
+        var = "shs_field"
+    elif(domain_info == True):
+        var = "info_field"
+    
+    allyear = df[[var, "is_oa"]].copy()
+
+    data_domains = {
+        var: [],
         "is_oa": [] 
         }
     for row in allyear.itertuples():
-        for domain in row.scientific_field:
-            data_domains["scientific_field"].append(domain)
+        print(row)
+        for domain in row.loc[:,var]:
+            print(domain)
+            data_domains[var].append(domain)
             data_domains["is_oa"].append(row.is_oa)
     df_domains = pd.DataFrame(data_domains)
     
-    
-    scifield = pd.crosstab(df_domains["scientific_field"], df_domains["is_oa"])
+    scifield = pd.crosstab(df_domains[var], df_domains["is_oa"])
     scifield.columns = ["not_oa", "is_oa"]
     scifield["total"] = scifield["not_oa"] + scifield["is_oa"]
 

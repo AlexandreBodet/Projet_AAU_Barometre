@@ -25,7 +25,7 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
               rec_base=True, rec_disciplines=True, rec_genre=True,
               oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=True,
               apc_evolution=True, apc_discipline=True, bibliodiversite=True,
-              oa_type_evolution=True, ):
+              oa_type_evolution=True, domain=False, domain_shs=False, domain_info=False):
     """
     Fonction principale pour générer les graphiques.
     :param dataframe df_raw: le dataframe à utiliser
@@ -55,10 +55,14 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     # remarque:  des publications ne sont pas dans la fourchette souhaitée [2016-XX]
     if type(df.scientific_field[0]) == str:
         df.scientific_field = df.scientific_field.apply(literal_eval) # passe les listes de domaines du str à list
-
+    if type(df.shs_field[0]) == str:
+        df.shs_field = df.shs_field.apply(literal_eval)  # passe les listes de domaines du str à list
+    if type(df.info_field[0]) == str:
+        df.info_field = df.info_field.apply(literal_eval)
 
     if rec_disciplines: 
-        graphique_rec_discipline.graphique_discipline(df)
+        graphique_rec_discipline.graphique_discipline(
+            df, domain, domain_shs, domain_info)
     if rec_base:  # je pense c'est pertinent pour montrer la proportion de doi - nodoi
         #néanmoins, on voit quasi-pas la diff (il y en a une car on enlève qlq doublons), donc à retravailler jpense
         graphique_rec_base.graphique_comparaison_bases()
