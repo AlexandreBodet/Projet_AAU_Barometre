@@ -27,14 +27,12 @@ def req_to_json(url):
     return res
 
 
-match_ref = j.load(open("./data/match_referentials.json"))
-
-
-def get_hal_data(doi, hal_id, choix_domaine):
+def get_hal_data(doi, hal_id, choix_domaine, match_ref):
     """
     Récupérer les métadonnées de HAL.
     Si le DOI est dans unpaywall les métadonnées de HAL communes seront écrasées.
 
+    :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
     :param str doi: doi dont les données sont à récupérer
     :param str hal_id: hal id dont les données sont à récupérer
     :param str choix_domaine: 1 si on garde un domaine par document, n si on les prend tous
@@ -80,14 +78,15 @@ def get_hal_data(doi, hal_id, choix_domaine):
     # Vérifier la présence de domaine disciplinaire (quelques notices peuvent ne pas avoir de domaine)
 
     domain = []
+    match = j.load(open("./data/"+match_ref))
     if res.get('domain_s'):
         if choix_domaine == "1":
             e = res["domain_s"][0]
-            if e in match_ref["domain"]:
+            if e in match["domain"]:
                 domain.append(e)
         elif choix_domaine == "n":
             for e in res["domain_s"]:
-                if e in match_ref["domain"]:
+                if e in match["domain"]:
                     if e not in domain:
                         domain.append(e)
 
@@ -186,10 +185,12 @@ def get_upw_data(doi, email):
     }
 
 
-def enrich_df(df, email, choix_domaine, progression_denominateur=100):
+def enrich_df(df, email, choix_domaine, match_ref, progression_denominateur):
     """
-    Pour chaque publications lancer les requêtes et ajouter les métadonnées.
+    Pour chaque publication lancer les requêtes et ajouter les métadonnées.
 
+    :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
+    :param str choix_domaine: "1" ou "n" pour choisir un ou tous les domaines sur les publications avec plusieurs domaines
     :param str email: email utilisé pour la requête Unpaywall avec l'API
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes
     :param dataframe df: dataframe auquel ajouter les métadonnées
@@ -204,7 +205,7 @@ def enrich_df(df, email, choix_domaine, progression_denominateur=100):
             print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ",
                   round(row.Index / len(df) * progression_denominateur, 1), "%")
         # Récupérer les métadonnées de HAL
-        md = get_hal_data(row.doi, row.halId, choix_domaine)
+        md = get_hal_data(row.doi, row.halId, choix_domaine, match_ref)
 
         # S'il y a un DOI, prendre les données de Unpaywall.
         # Les métadonnées de HAL communes avec Unpaywall seront écrasées.
@@ -224,10 +225,11 @@ def enrich_df(df, email, choix_domaine, progression_denominateur=100):
     return df
 
 
-def enrich_to_csv(df, email, choix_domaine, progression_denominateur=100):
+def enrich_to_csv(df, email, choix_domaine, match_ref="match_referentials.json", progression_denominateur=100):
     """
     Enrichi en métadonnées et enregistre en csv.
 
+    :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
     :param str choix_domaine: "1" ou "n" pour choisir un ou tous les domaines sur les publications avec plusieurs domaines
     :param str email: email utilisé pour la requête à l'API Unpaywall
     :param dataframe df: dataframe auquel ajouter les métadonnées
@@ -238,7 +240,7 @@ def enrich_to_csv(df, email, choix_domaine, progression_denominateur=100):
     df["suspicious_journal"] = np.nan
     df["hal_domain"] = np.nan
     df.reset_index(drop=True, inplace=True)
-    df = enrich_df(df, email, choix_domaine, progression_denominateur)
+    df = enrich_df(df, email, choix_domaine, match_ref, progression_denominateur)
     df_reorder = df[
         ["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location", "hal_openAccess_bool",
          "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "published_date", "published_year",

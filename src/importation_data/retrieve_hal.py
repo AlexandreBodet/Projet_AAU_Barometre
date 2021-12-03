@@ -13,17 +13,17 @@ def req_to_pd(requete):
     return df
 
 
-def api_to_csv(fichier_hal="", nom_labo=""):
+def api_to_csv(fichier_hal="", donnees_api=""):
     """
     Sauvegarder le dataframe en csv.
-    :param str nom_labo: nom du labo à utiliser dans la query pour l'API
+    :param str donnees_api: nom du labo à utiliser dans la query pour l'API + nombre de lignes à utiliser
     :param str fichier_hal: du fichier à enregistrer
     """
-    if fichier_hal and nom_labo:
+    if fichier_hal and donnees_api:
         # query complète pour pouvoir comparer les résultats
         # fullquery_to_see = "https://api.archives-ouvertes.fr/search/?q=collCode_s:"+nom_labo+"%20AND%20docType_s:(COUV+OR+COMM+OR+ART+OR+DOUV)%20AND%20NOT%20popularLevel_s:1&rows=10000&fl=title_s,doiId_s,publicationDate_s,publicationDateY_i,journalTitle_s,journalPublisher_s,halId_s,in,submittedDate_s,openAccess_bool,licence_s,selfArchiving_bool,docType_s,submitType_s,journalIssn_s,journalEissn_s,domain_s,authFullName_s&sort=publicationDateY_i%20desc"
 
-        query = "https://api.archives-ouvertes.fr/search/?q=collCode_s:"+nom_labo+"%20AND%20docType_s:(COUV+OR+COMM+OR+ART+OR+DOUV)%20AND%20NOT%20popularLevel_s:1&rows=101&fl=halId_s,doiId_s,title_s"
+        query = "https://api.archives-ouvertes.fr/search/?q=collCode_s:"+donnees_api["nom_labo"]+"%20AND%20docType_s:(COUV+OR+COMM+OR+ART+OR+DOUV)%20AND%20NOT%20popularLevel_s:1&rows="+str(donnees_api["nombre_lignes_api"])+"&fl=halId_s,doiId_s,title_s"
 
         df = req_to_pd(query)
         df.rename(columns={"doiId_s": "DOI", "halId_s": "Réf. HAL", "title_s": "Titre"}, inplace=True)

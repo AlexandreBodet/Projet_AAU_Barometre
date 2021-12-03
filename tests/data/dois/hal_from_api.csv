@@ -19,12 +19,14 @@ Titre;Réf. HAL;DOI
 ['Traversées urbaines'];hal-01488320;
 ['UDMV15: Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068684;
 "[""Les mondes de l'architecture""]";hal-01590961;
+['Institution universitaire et mouvements étudiants ? Entre intégration et rupture'];hal-03205491;
+['Experiential Walks for Urban Design. Revealing, Representing, and Activating the Sensory Environment'];halshs-03329497;10.1007/978-3-030-76694-8
 ['Noir-Neonoir-Postnoir. [coord. du dossier, N°36 Revue La Furia Umana]'];hal-02135582;
 ['Aτμόσφαιρες, αύριο. Ambiances, demain. Ambiances, tomorrow'];hal-01459043;
 ['Challenges of Communication in a Context of Crisis. Troubles, Misunderstandings and Discords'];hal-03250077;
 ['UDMV16: Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068689;
-['Institution universitaire et mouvements étudiants ? Entre intégration et rupture'];hal-03205491;
-['Experiential Walks for Urban Design. Revealing, Representing, and Activating the Sensory Environment'];halshs-03329497;10.1007/978-3-030-76694-8
+['Réalité virtuelle et réalité augmentée : mythes et réalités'];hal-01963014;
+['Virtual Reality, Augmented Reality: myths and realities'];hal-01812771;
 "[""Écologie sociale de l'oreille. Enquêtes d'expérience musicale""]";hal-03290511;
 ['Des jardins pour ménager les bords de route et de voie ferrée. Actes du Séminaire de recherche, Grenoble, 17 décembre 2012'];hal-00993760;
 ['De l’incertitude des savoirs aux nouvelles fabriques de l’expertise'];hal-03254766;
@@ -41,7 +43,6 @@ Titre;Réf. HAL;DOI
 ['Forms of Experienced Environments: Questioning Relations Between Humans, Aesthetics, and Sciences'];halshs-02530943;
 ['UDMV14: Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068673;
 ['Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068666;
-['Virtual Reality, Augmented Reality: myths and realities'];hal-01812771;
 ['La participation sociale et politique au quotidien'];hal-03250092;
 ['La construction du chez-soi dans la transition énergétique : entre conceptions de la performance et pratiques habitantes'];hal-01274986;
 ['Ambiances in action - ambiances en acte(s)'];halshs-00746478;
@@ -52,7 +53,6 @@ Titre;Réf. HAL;DOI
 ['Architecture Pratiques plurielles de la recherche. [coord. du dossier Représentations, N°138 Culture et Recherche]'];hal-01931440;
 ['Ambiances, Alloæsthesia: Senses, Inventions, Worlds'];hal-03136469;
 ['L’Ambiance et l’histoire de l’architecture : l’expérience et l’imaginaire sensibles de l’environnement construit [coord. dossier N° 2 de Ambiances journal ]', 'Ambiance and history of architecture: the built environment in our sensory experience and imagination [coord. dossier N° 2 de Ambiances journal ]'];halshs-01958336;10.4000/ambiances.738
-['Réalité virtuelle et réalité augmentée : mythes et réalités'];hal-01963014;
 ['ARCHITECTURE 68. Panorama international sur des renouveaux pédagogiques, Genève, MétisPresses'];hal-02975677;
 ['Machine learning for optimized buildings morphosis'];hal-03258021;10.1145/3423603.3424057
 ['Résonances oasiennes. Approches sensibles de l’urbain au Sahara'];hal-03250069;
@@ -100,102 +100,3 @@ Titre;Réf. HAL;DOI
 ['Towards Urban Fabrics Characterization Based on Buildings Footprints'];hal-01347299;10.1007/978-3-642-29063-3_18
 ['A New Method to Characterize Density Adapted to a Coarse City Model'];hal-01347216;10.1007/978-3-642-31833-7_16
 ['Pour une approche du paysage sonore par analogie au visuel - si le son donne à voir, le champ de vision donne-t-il à entendre ?'];hal-01347179;
-['Mesure et représentation cartographique de l’impression de confinement d’un piéton immergé dans la ville'];hal-01903328;10.1051/shsconf/20184701011
-['GDMS-R: A mixed SQL to manage raster and vector data'];halshs-01093211;
-['Measuring Surrounding Space to Assess the Pedestrian Visual Aperture Angle in the Urban Fabric: Toward a Kurtosis-Based Isovist Indicator'];hal-01347331;10.1007/978-3-642-19766-6_11
-['Environmental impact assessment of urban mobility plan: a methodology including socio-economic consequences'];hal-01347313;10.1007/978-94-007-2540-9_2
-['Ateliers promenades, vers une connaissance sensible'];hal-03448945;
-['Die Bedeutung von Alltagsästhetik im Kontext der Polarisierung und Hybridisierung von Städten - eine Spurensuche'];hal-02558010;10.1007/978-3-658-11492-3_11
-"[""Déplacement des mégalithes extraordinaires sur le littoral morbihanais, modèles d'embarcations et questions relatives à la navigation atlantique dès le V ème millénaire AVJC""]";hal-01906640;
-['The effects of atmospheres'];hal-02557981;10.1108/S1871-317320190000016014
-['Heuristique et potentialités du sensible'];hal-01879790;
-['Die Atmosphärisierung der Alltagserfahrung'];halshs-02181923;
-['Le transect urbain. Pour une écriture corrélée des ambiances et de l’environnement'];hal-01518091;
-['La Ciudad y los niños. Juego y creatividad arquitectónica trente a la emergencia de la ciudad garantizada'];hal-03248300;
-['Les compositions gravées en Beauce et Gâtinais'];hal-01935153;
-['Urbanisme sur mesure, urbanisme en mesure'];halshs-02186843;
-['Barcelona en Comù: Questions Facing a New Brand of Political Action'];hal-02475580;
-['Réalité virtuelle - Concepts et outils'];hal-00968248;
-['La réalité virtuelle'];hal-00785613;
-"[""L'accompagnement des auto-réhabilitateurs par les magasins de bricolage : vision prospective pour l'amélioration énergétique de l'habitat""]";halshs-01501479;
-"[""L'espace sonore en action""]";halshs-01295498;
-['Prises et emprises de la ville sonore'];hal-01879793;
-"['La ""clusterisation"" du projet urbain de l\'ile de Nantes']";halshs-02193877;
-"[""L'usager dans la construction métropolitaine nantaise""]";hal-01358228;
-['Le même et le différent'];hal-01518094;
-['Imprégnations de Tokyo'];hal-01879792;
-['Villeneuve Échirolles en projets'];hal-01735431;
-"[""Natures d'ambiances en bord de routes : collectifs de jardins, dépendances routières et trame verte urbaine""]";hal-01168250;
-['Les crieurs publics'];hal-01324078;
-['La ville sonnante'];hal-02104066;
-"[""Canopea ® prototype expérimental d'habitat solaire""]";hal-02164544;
-['Penser depuis la frontière. Introduction'];hal-01961113;
-['The Sonic Attunement of Social Life'];hal-01879784;
-['A World of Attunements'];halshs-02181950;
-['The Soundscape of a City in the Nineteenth Century'];hal-02164588;
-['Pasajes de la vida'];halshs-01704465;
-['Measuring distance in the monumentalities of the Neolithic in Western France'];hal-02172195;
-['The Atmospherization of Everyday Experience'];halshs-02181915;
-['Listening to atmospheres'];hal-03244547;
-['Concurrent Geometric, Structural and Environmental Design: Louvre Abu Dhabi'];hal-01501962;10.1007/978-3-7091-1251-9_6
-['Des ambiances en passant'];hal-01879570;
-['Renaissance sensible d’une place publique saharienne. Aire d’expérience ludique et vie imaginaire'];hal-03248212;
-['Capturing Chromatic Effects in Urban Environment'];halshs-03329818;10.1007/978-3-030-76694-8_12
-['As Far As The Ear Can Hear. Listening to the social city'];halshs-03066959;
-['L’usage des ambiances. Introduction'];halshs-03083995;
-['Nefta : une corbeille de sons'];halshs-03083998;
-['Introduction'];hal-00923807;
-"[""Le mouvement : un révélateur des potentialités esthétiques de l'architecture ordinaire ?""]";halshs-00605300;
-"[""La ville à l'épreuve du mouvement""]";halshs-00354155;
-['Morale et politique dans le monument historique'];hal-00911154;
-"['Maracanã, a potência de uma ambiência', ""Maracanã, la puissance d'une ambiance""]";halshs-03137452;
-"[""Inscription de l'architecture commerciale""]";hal-01213565;
-"[""Concevoir l'architecture commerciale à partir des ambiances""]";hal-01213548;
-['Les espaces-temps de la mobilité labile'];hal-01640585;
-"[""Entre urbanité, ambiances et pragmatisme : une écologie de l'ordre public""]";hal-01640639;
-"[""De l'ambiance héritée à l'ambiance programmée Les leçons d'une expérience""]";halshs-00390170;
-['Atmosphären. Konzept für einen nicht repräsentationellen Zugang zum Raum'];hal-00995473;
-['Vers une culturalisation de la recherche sur les ambiances'];hal-00995478;
-['The fabulous history of immersive devices'];hal-02105506;
-['Silence of Mauá: an atmospheric ethnography of urban sounds'];halshs-02181937;
-['Smellscape Design and Monitoring'];hal-01879788;
-"[""La maîtrise de l'énergie dans les pratiques d'auto-réhabilitation en milieu rural""]";hal-01972376;
-"[""Le plafond lumineux d'Augustin Rey""]";halshs-00567901;
-['Qualité des ambiances et processus de conception'];halshs-00567910;
-['Sympathique maison ensoleillée de 4 chambres ...'];halshs-00576022;
-['Les petites annonces de la maison individuelle'];halshs-00572413;
-"['Balcony form; An approach to reduce sound pressure level into the building façade']";hal-01555295;
-['Acoustic diffraction patterns from regular to fractal structures: application to the Sierpinski carpet'];hal-01555279;10.1007/1-84628-048-6_7
-['Fractal scattering indicators for urban sound diffusion'];hal-01552973;10.1142/9789812702746_0018
-['Le Corbusier Plans. 1950 - Climate Chart (Chandigarh). English version'];halshs-01249644;
-['Le Corbusier Plans. 1940 - Studies in Sunlight (no place). English version'];halshs-01249648;
-['Le Corbusier Plans. 1950 - Studies in Sunlight - Tower of Shadows (Chandigarh). English version'];halshs-01249639;
-['Le Corbusier Plans. 1950 - Grille climatique (Chandigarh). Version française'];halshs-01249645;
-['Le Corbusier Plans. 1950 - Etudes d’ensoleillement - Tour d’ombres (Chandigarh). Version française'];halshs-01249642;
-"[""Les sensations du soleil dans les théories architecturales et urbaines. De l'hygiénisme à la ville durable""]";halshs-01246925;
-['Le Corbusier Plans. 1940 - Etudes d’Ensoleillement (sans lieu). Version française'];halshs-01249649;
-['Squaring the Circle'];hal-01552932;
-['Ambiance(s) de gare et imaginaire ferroviaire'];hal-00995447;
-['Quel rôle les mesures physiques peuvent-elles jouer dans la compréhension des ambiances architecturales et urbaines ?'];halshs-00380037;
-"[""L'imaginaire au passage""]";hal-00995435;
-['Préface'];hal-00995510;
-['Vers une esthétique des ambiances'];hal-02104065;
-['Ambiances urbaines, écologie sensible'];hal-00995502;
-['Por uma gramática geradora das ambiências'];hal-00995500;
-['Prologue'];hal-01879803;
-['Visions pratiques en milieu urbain'];hal-01879811;
-['Contribution'];hal-00995444;
-"[""L'architecture comme engagement sensible""]";hal-00995460;
-['Kunst im Rohzustand'];hal-00995443;
-"[""Gestes et registres d'action""]";hal-00995479;
-['Le management urbain des petites opérations complexes'];halshs-01566962;
-"[""Vers un modèle écologique d'analyse et de projet""]";hal-00995439;
-"[""L'Identité sonore urbaine""]";hal-01561759;
-['The included third as urban project'];hal-01566980;
-['Ambiances urbaines et espaces publics'];hal-01561723;
-['L’expérience sonore des lieux Spécificités, approches, enjeux : introduction'];hal-01141840;
-"[""Les jardins en bord d'infrastructures de transport : ambiance et écologie, une approche croisée""]";hal-00995485;
-['The three dynamics of urban ambiances'];hal-00995497;
-"[""Composer l'espace""]";halshs-00379493;
-['Episode'];hal-00995489;
-['Ambiance architecturale et urbaine'];hal-01561162;

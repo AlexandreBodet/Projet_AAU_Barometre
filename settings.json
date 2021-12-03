@@ -18,8 +18,10 @@
     "match_ref": "match_referentials.json"
   },
   "mail" : "alexandre.bodet@eleves.ec-nantes.fr",
-  "query":"https://api.archives-ouvertes.fr/search/?q=collCode_s:AAU%20AND%20docType_s:(COUV+OR+COMM+OR+ART+OR+DOUV)%20AND%20NOT%20popularLevel_s:1&rows=101&fl=halId_s,doiId_s,title_s",
-  "nom_labo": "AAU",
+  "api_hal": {
+    "nom_labo": "AAU",
+    "nombre_lignes_api": 2000
+  },
   "parametres": {
     "utilise_api_hal" : true,
     "recherche_erreurs": true
