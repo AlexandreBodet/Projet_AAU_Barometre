@@ -31,7 +31,7 @@ df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=don
 print('\n[FINI] Enrichissement fini\n')
 
 df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
-df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])  # une fois que je l'ai chargé, je le commente pour pas que ça le refasse
+df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])
 print('\n[FINI] Ajout apc fini\n')
 
 df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"])
