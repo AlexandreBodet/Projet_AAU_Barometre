@@ -46,27 +46,17 @@
       "0.spi":"Sciences de l'ingénieur",
       "1.spi.acou": "Acoustique",
       "0.qfin":"Social sciences",
-      
       "0.math":"Mathematics",
-      
       "0.nlin":"Mathematics",
       "0.stat":"Computer and \n information sciences",
-      
       "0.chim":"Chemistry",
-      
       "1.sdv.mhep":"Medical research",
-      
       "0.phys":"Physical sciences, Astronomy",
-      
       "0.sde":"Sciences de l'environnement",
       "1.sde.es": "Environnement et Société",
-      
       "0.sdu":"Earth, Ecology, \nEnergy and applied biology",  
-      
       "0.shs":"Sciences de l'Homme et de la Société",
-
       "0.info": "Computer and \n information sciences",
-      
       "0.scco":"Sciences Cognitives",
       "1.scco.psyc":"Psychologie"
    },

@@ -30,14 +30,13 @@ def req_to_json(url):
 match_ref = j.load(open("./data/match_referentials.json"))
 
 
-def get_hal_data(doi, hal_id, choix_domaine):
+def get_hal_data(doi, hal_id):
     """
     Récupérer les métadonnées de HAL.
     Si le DOI est dans unpaywall les métadonnées de HAL communes seront écrasées.
 
     :param str doi: doi dont les données sont à récupérer
     :param str hal_id: hal id dont les données sont à récupérer:
-    para str choix_domaine: 1 si on garde un domaine par document, n si on les prends tous 
     :return dict: dictionnaire des métadonnées récupérées
     """
 
@@ -243,7 +242,7 @@ def enrich_df(df, email, choix_domaine, progression_denominateur=100):
     return df
 
 
-def enrich_to_csv(df, email, choix_domaine, progression_denominateur=100):
+def enrich_to_csv(df, email, progression_denominateur=100):
     """
     Enrichi en métadonnées et enregistre en csv.
 
@@ -257,7 +256,7 @@ def enrich_to_csv(df, email, choix_domaine, progression_denominateur=100):
     df["suspicious_journal"] = np.nan
     df["hal_domain"] = np.nan
     df.reset_index(drop=True, inplace=True)
-    df = enrich_df(df, email, choix_domaine, progression_denominateur)
+    df = enrich_df(df, email, progression_denominateur)
     df_reorder = df[
         ["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location", "hal_openAccess_bool",
          "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "hal_shsdomain", "hal_infodomain","published_date", "published_year",

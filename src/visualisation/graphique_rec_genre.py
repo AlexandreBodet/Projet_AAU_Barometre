@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
+from datetime import date
 
 def graphique_genre(df):
     """
@@ -48,7 +48,8 @@ def graphique_genre(df):
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
     plt.title(
-        "Nombre de publications depuis toujours par genre",
+        "Nombre de publications depuis toujours par genre" + "\nmesurée en " +
+        str(date.today().month) + "/" + str(date.today().year),
         fontsize=20,
         x=0.5,
         y=1,

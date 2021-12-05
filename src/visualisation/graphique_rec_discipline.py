@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
+from datetime import date
 
 def graphique_discipline(df, domain = False, domain_shs = False, domain_info = False):
     """
@@ -8,25 +8,30 @@ def graphique_discipline(df, domain = False, domain_shs = False, domain_info = F
     :param df:
     :return:
     """
-    print("graphique disciplines")
 
     if(domain == True):
         var = "scientific_field"
-    elif(domain_shs == True):
+        titre = "tous les domaines" # attention lorsqu'on change, pour le print 10 lignes plus loin et pour le titre de la figure
+        name_file = "domaines"
+    if(domain_shs == True):
         var = "shs_field"
-    elif(domain_info == True):
+        titre = "le domaine shs"
+        name_file = "sous_domaine_shs"
+    if(domain_info == True):
         var = "info_field"
+        titre = "le domaine info"
+        name_file = "sous_domaine_info"
     
+    print("graphique pour " + titre)
+
     allyear = df[[var, "is_oa"]].copy()
 
     data_domains = {
         var: [],
         "is_oa": [] 
         }
-    for row in allyear.itertuples():
-        print(row)
-        for domain in row.loc[:,var]:
-            print(domain)
+    for index, row in allyear.iterrows():
+        for domain in allyear.loc[index,var]:
             data_domains[var].append(domain)
             data_domains["is_oa"].append(row.is_oa)
     df_domains = pd.DataFrame(data_domains)
@@ -69,10 +74,11 @@ def graphique_discipline(df, domain = False, domain_shs = False, domain_info = F
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
     plt.title(
-        "Nombre de publications depuis toujours par discipline",
+        "Nombre de publications depuis toujours pour " + titre +  "\nmesurée en " +
+        str(date.today().month) + "/" + str(date.today().year),
         fontsize=20,
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("./resultats/img/recapitulatif_disciplines.png",
+    plt.savefig("./resultats/img/recapitulatif_" + name_file + ".png",
                 dpi=100, bbox_inches='tight')

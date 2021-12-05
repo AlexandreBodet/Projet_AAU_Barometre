@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
+from datetime import date
 
 def graphique_discipline_oa(df, annee):
     """
@@ -126,7 +126,8 @@ def graphique_discipline_oa(df, annee):
                framealpha=False)
 
     plt.title(
-        "Taux d'accès ouvert des publications en "+str(annee),
+        "Taux d'accès ouvert des publications en "+str(annee) + "\nmesuré en " +
+        str(date.today().month) + "/" + str(date.today().year), 
         fontsize=25,
         x=0.49,
         y=1.07,

@@ -61,8 +61,15 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         df.info_field = df.info_field.apply(literal_eval)
 
     if rec_disciplines: 
-        graphique_rec_discipline.graphique_discipline(
-            df, domain, domain_shs, domain_info)
+        if domain: 
+            graphique_rec_discipline.graphique_discipline(
+                df, domain=True) 
+        if domain_shs:
+            graphique_rec_discipline.graphique_discipline(
+                df, domain_shs=True)
+        if domain_info:
+            graphique_rec_discipline.graphique_discipline(
+                df, domain_info=True)
     if rec_base:  # je pense c'est pertinent pour montrer la proportion de doi - nodoi
         #néanmoins, on voit quasi-pas la diff (il y en a une car on enlève qlq doublons), donc à retravailler jpense
         graphique_rec_base.graphique_comparaison_bases()

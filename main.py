@@ -27,17 +27,19 @@ stats, df_charge = chargement_tout(donnees=donnees["data"]["dois"], recherche_er
                                    utilise_api_hal=donnees["parametres"]["utilise_api_hal"])
 print('\n[FINI] Chargement fini\n')
 
-df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=donnees["data"]["domaine"], progression_denominateur=100)
+df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], progression_denominateur=100)
 print('\n[FINI] Enrichissement fini\n')
 
 df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
 df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])  # une fois que je l'ai chargé, je le commente pour pas que ça le refasse
 print('\n[FINI] Ajout apc fini\n')'''
 
-df_charge = aligner(df=None, referentials=donnees["data"]["match_ref"])
+df_charge = aligner(
+    df=None, referentials=donnees["data"]["match_ref"], choixDomaines=donnees["choixDomaines"])
 
 annees = [i for i in range(2010, date.today().year + 1)]
-graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=False, rec_disciplines=True, rec_genre=True,
-          oa_circulaire=False, oa_discipline=False, oa_evolution=False, oa_editeur=False,
+
+graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=True, rec_disciplines=True, rec_genre=True,
+          oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=False,
           apc_evolution=False, apc_discipline=False, bibliodiversite=False,
-          oa_type_evolution=False, domain=True)
+          oa_type_evolution=False, domain=True, domain_shs=True, domain_info=True)

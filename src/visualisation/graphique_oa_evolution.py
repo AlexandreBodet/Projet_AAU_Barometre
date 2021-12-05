@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-
+from datetime import date 
 
 def graphique_oa_evolution(df, annees, doi_only=False):
     # Récupérer les données
@@ -151,7 +151,8 @@ def graphique_oa_evolution(df, annees, doi_only=False):
                         textcoords="offset points",
                         ha="center", va="bottom", color="black")
 
-    plt.title("Évolution du taux d'accès ouvert aux publications",
+    plt.title("Évolution du taux d'accès ouvert aux publications" + "\nmesurée en " +
+              str(date.today().month) + "/" + str(date.today().year),
               fontsize=25, x=0.5, y=1.05, alpha=0.6)
     plt.savefig(
         "./resultats/img/oa_evolution_"+str(annees[0])+"_"+str(annees[-1])+".png",
