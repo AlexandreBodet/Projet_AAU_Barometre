@@ -35,15 +35,17 @@ if __name__ == "__main__":
     print('\n[FINI] Enrichissement fini\n')
 
     df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
-    df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])
-    print('\n[FINI] Ajout apc fini\n')
+
+    if donnees["parametres"]["calculs_APC"]:
+        df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])
+        print('\n[FINI] Ajout apc fini\n')
 
     df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"])
 
     annees = [i for i in range(2010, date.today().year + 1)]
     graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=False, rec_disciplines=False, rec_genre=False,
               oa_circulaire=False, oa_discipline=False, oa_evolution=False, oa_editeur=False,
-              apc_evolution=False, apc_discipline=False, bibliodiversite=True,
+              apc_evolution=donnees["parametres"]["calculs_APC"] and False, apc_discipline=donnees["parametres"]["calculs_APC"] and False, bibliodiversite=True,
               oa_type_evolution=False)
 
     # graphique(df_raw=df_charge, annee=2020, annees=annees)

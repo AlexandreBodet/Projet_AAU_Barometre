@@ -24,7 +24,8 @@
   },
   "parametres": {
     "utilise_api_hal" : true,
-    "recherche_erreurs": true
+    "recherche_erreurs": true,
+    "calcul_APC": false
   }
 
 }
