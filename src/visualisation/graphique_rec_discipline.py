@@ -81,5 +81,5 @@ def graphique_discipline(df, dossier, domain = False, domain_shs = False, domain
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("./resultats/img/"+dossier+ "recapitulatif_" + name_file + ".png",
+    plt.savefig("./resultats/img/"+dossier+ "/recapitulatif_" + name_file + ".png",
                 dpi=100, bbox_inches='tight')
