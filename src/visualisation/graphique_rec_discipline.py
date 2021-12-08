@@ -11,15 +11,15 @@ def graphique_discipline(df, domain = False, domain_shs = False, domain_info = F
 
     if(domain == True):
         var = "scientific_field"
-        titre = "tous les domaines" # attention lorsqu'on change, pour le print 10 lignes plus loin et pour le titre de la figure
+        titre = "par domaines" # attention lorsqu'on change, pour le print 10 lignes plus loin et pour le titre de la figure
         name_file = "domaines"
     if(domain_shs == True):
         var = "shs_field"
-        titre = "le domaine shs"
+        titre = "par sous domaines shs"
         name_file = "sous_domaine_shs"
     if(domain_info == True):
         var = "info_field"
-        titre = "le domaine info"
+        titre = "par sous domaines info"
         name_file = "sous_domaine_info"
     
     print("graphique pour " + titre)
@@ -74,7 +74,7 @@ def graphique_discipline(df, domain = False, domain_shs = False, domain_info = F
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
     plt.title(
-        "Nombre de publications depuis toujours pour " + titre +  "\nmesurée en " +
+        "Nombre de publications depuis toujours " + titre +  "\nmesurée en " +
         str(date.today().month) + "/" + str(date.today().year),
         fontsize=20,
         x=0.5,

@@ -126,7 +126,7 @@ def graphique_discipline_oa(df, annee):
                framealpha=False)
 
     plt.title(
-        "Taux d'accès ouvert des publications en "+str(annee) + "\nmesuré en " +
+        "Taux d'accès ouvert des publications en " +str(annee) + " par domaines" + "\nmesuré en " +
         str(date.today().month) + "/" + str(date.today().year), 
         fontsize=25,
         x=0.49,

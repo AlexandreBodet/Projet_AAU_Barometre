@@ -71,7 +71,7 @@ def graphique_circulaire_oa(df, annee):
               borderaxespad=-1)
 
     # ax.legend(loc="", fontsize = 12)
-    plt.title("Proportion des publications en "+str(annee) + "\nmesurée en " + 
+    plt.title("Proportion des publications en accès ouverte en "+str(annee) + "\nmesurée en " + 
                 str(date.today().month) + "/" + str(date.today().year),
               fontsize=23, x=0.55, y=1.8, alpha=0.6)
     # plt.show()

@@ -39,7 +39,7 @@ df_charge = aligner(
 
 annees = [i for i in range(2010, date.today().year + 1)]
 
-graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=True, rec_disciplines=True, rec_genre=True,
-          oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=False,
+graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=True, rec_disciplines=True, rec_genre=False,
+          oa_circulaire=False, oa_discipline=False, oa_evolution=False, oa_editeur=False,
           apc_evolution=False, apc_discipline=False, bibliodiversite=False,
           oa_type_evolution=False, domain=True, domain_shs=True, domain_info=True)
