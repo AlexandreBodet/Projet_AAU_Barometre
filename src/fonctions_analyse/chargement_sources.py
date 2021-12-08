@@ -189,7 +189,7 @@ def chargement_tout(donnees, recherche_erreur=True, utilise_api_hal=True):
     Charge tous les fichiers et donne des statistiques dessus et le dataframe de tous les dataframes.
     :param bool recherche_erreur: Dit si on doit enregistrer les csv qui notent les erreurs
     :param bool utilise_api_hal: Dit si on a utilisé l'api de hal
-    :param Dict[str,str] donnees: données issues du fichier settings
+    :param Dict[str, str] donnees: données issues du fichier settings
     :return list, dataframe: liste des statistiques sur les bases et dataframe des données chargées
     """
 
@@ -207,7 +207,7 @@ def chargement_tout(donnees, recherche_erreur=True, utilise_api_hal=True):
 
     df_charge = pd.concat([hal, scopus, wos, pubmed, lens])  # dataframe avec toutes les données
 
-    # Recherche d'erreurs si spécifié, les fichiers csv résultant sont dans resultats/fichiers_csv/erreurs
+    # Recherche d'erreurs si spécifiée, les fichiers csv résultant sont dans resultats/fichiers_csv/erreurs
     if recherche_erreur:
         identifie_hal_sans_doi_to_csv(df_charge)
         identifie_doublons_titres_to_csv(df_charge)
@@ -241,7 +241,7 @@ def identifie_hal_sans_doi_to_csv(rawdf):
     """
     Identifier les documents HAL sans DOI et dont le titre correspond à un document avec DOI.
     Enregistre dans un csv pour voir les erreurs.
-    :param dataframe rawdf: dataframe non dedoublonné
+    :param pd.Dataframe rawdf: dataframe non dedoublonné
     """
     doi_only = rawdf[(
             rawdf["doi"].notna() & rawdf["halId"].isna())].copy()  # possèdent un doi mais pas de hal_id
@@ -262,7 +262,7 @@ def identifie_hal_sans_doi_to_csv(rawdf):
 def identifie_doublons_titres_to_csv(rawdf):
     """
     Identifier les doublons de titre sur les notices HAL sans DOI.
-    :param dataframe rawdf: dataframe non dédoublonné
+    :param pd.Dataframe rawdf: dataframe non dédoublonné
     """
     hal_only = rawdf[(
             rawdf["doi"].isna() & rawdf["halId"].notna())].copy()

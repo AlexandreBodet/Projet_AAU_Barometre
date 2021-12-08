@@ -34,7 +34,7 @@ if __name__ == "__main__":
     df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=donnees["data"]["domaine"], match_ref=donnees["data"]["match_ref"], progression_denominateur=100)
     print('\n[FINI] Enrichissement fini\n')
 
-    df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
+    # df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
 
     if donnees["parametres"]["calculs_APC"]:
         df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])

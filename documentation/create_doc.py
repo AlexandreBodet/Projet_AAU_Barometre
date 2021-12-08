@@ -1,3 +1,7 @@
+"""
+Exécuter ce fichier python pour générer les fichiers de documentations html, mis à part Projet_AAU_Barometre.html généré à la main..
+"""
+
 import subprocess
 import os
 

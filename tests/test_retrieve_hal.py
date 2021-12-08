@@ -2,7 +2,7 @@ import unittest
 import sys
 import pandas as pd
 import json
-
+import pandas.testing as pd_testing
 sys.path.append("../")
 from src.importation_data.retrieve_hal import api_to_csv, req_to_pd
 
@@ -19,10 +19,13 @@ class TestRetrieveHal(unittest.TestCase):
         self.assertIsInstance(req, pd.DataFrame)
 
     def test_api_to_csv(self):
-        api_to_csv(donnees["data"]["dois"]["hal_fichier_api"], donnees["nom_labo"])
+        api_to_csv(donnees["data"]["dois"]["hal_fichier_api"], donnees["api_hal"])
         df = pd.read_csv("./data/dois/" + donnees["data"]["dois"]["hal_fichier_api"], sep=";")
         self.assertIsInstance(df, pd.DataFrame)
         self.assertFalse(df.empty)
         self.assertEqual(df.columns[0], "Titre")
         self.assertEqual(df.columns[1], "Réf. HAL")
         self.assertEqual(df.columns[2], "DOI")
+
+    def test_pandas_df(self):
+        pd_testing.assert_frame_equal(pd.DataFrame([0, 1, 0, 0]), pd.DataFrame([0, 0, 0, 0]))
