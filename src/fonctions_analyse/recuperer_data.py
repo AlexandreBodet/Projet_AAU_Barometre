@@ -196,12 +196,11 @@ def get_upw_data(doi, email):
     }
 
 
-def enrich_df(df, email, choix_domaine, match_ref, progression_denominateur):
+def enrich_df(df, email, match_ref, progression_denominateur):
     """
     Pour chaque publication lancer les requêtes et ajouter les métadonnées.
 
     :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
-    :param str choix_domaine: "1" ou "n" pour choisir un ou tous les domaines sur les publications avec plusieurs domaines
     :param str email: email utilisé pour la requête Unpaywall avec l'API
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes
     :param dataframe df: dataframe auquel ajouter les métadonnées
@@ -216,7 +215,7 @@ def enrich_df(df, email, choix_domaine, match_ref, progression_denominateur):
             print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ",
                   round(row.Index / len(df) * progression_denominateur, 1), "%")
         # Récupérer les métadonnées de HAL
-        md = get_hal_data(row.doi, row.halId, choix_domaine, match_ref)
+        md = get_hal_data(row.doi, row.halId, match_ref)
 
         # S'il y a un DOI, prendre les données de Unpaywall.
         # Les métadonnées de HAL communes avec Unpaywall seront écrasées.
@@ -249,7 +248,6 @@ def enrich_to_csv(df, email, match_ref="match_referentials.json", progression_de
     Enrichi en métadonnées et enregistre en csv.
 
     :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
-    :param str choix_domaine: "1" ou "n" pour choisir un ou tous les domaines sur les publications avec plusieurs domaines
     :param str email: email utilisé pour la requête à l'API Unpaywall
     :param dataframe df: dataframe auquel ajouter les métadonnées
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes dans enrich_df
