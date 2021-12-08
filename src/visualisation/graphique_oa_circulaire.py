@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from datetime import date
 
 
 def graphique_circulaire_oa(df, annee, dossier):
@@ -10,8 +11,10 @@ def graphique_circulaire_oa(df, annee, dossier):
     :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
-
+    
     print("\ngraphique discipline oa circulaire\n")
+    date_mesured = str(date.today().month) + "/" + str(date.today().year)
+
 
     dfpie = df[df["published_year"] == annee]
     oa_bool = dfpie["is_oa"].value_counts().sort_index()
@@ -70,7 +73,12 @@ def graphique_circulaire_oa(df, annee, dossier):
               borderaxespad=-1)
 
     # ax.legend(loc="", fontsize = 12)
+<<<<<<< HEAD
     plt.title("Proportion des publications en " + str(annee),
+=======
+    plt.title("Proportion des publications en accès ouverte en "+str(annee) + "\nmesurée en " + 
+                str(date.today().month) + "/" + str(date.today().year),
+>>>>>>> devV2_laurence
               fontsize=23, x=0.55, y=1.8, alpha=0.6)
     # plt.show()
     plt.savefig(

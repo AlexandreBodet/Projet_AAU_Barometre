@@ -21,7 +21,7 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
               rec_base=True, rec_disciplines=True, rec_genre=True,
               oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=True,
               apc_evolution=True, apc_discipline=True, bibliodiversite=True,
-              oa_type_evolution=True, ):
+              oa_type_evolution=True, domain=False, domain_shs=False, domain_info=False):
     """
     Fonction principale pour générer les graphiques.
     :param dataframe df_raw: le dataframe à utiliser
@@ -53,18 +53,29 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     # filtre : retrait des documents de paratexte
     df = df_raw[(df_raw["is_paratext"] == "") | df_raw["is_paratext"].isna()]  # pour nous : inutile car ils sont tous comme ça
     # remarque:  des publications ne sont pas dans la fourchette souhaitée [2016-XX]
-
-    if type(df.scientific_field[0]) == str:  # Le scientific field change de type quand on l'enregistre en csv puis le lit
-        df.scientific_field = df.scientific_field.apply(literal_eval)  # passe les listes de domaines du str à list
+    if type(df.scientific_field[0]) == str:
+        df.scientific_field = df.scientific_field.apply(literal_eval) # passe les listes de domaines du str à list
+    if type(df.shs_field[0]) == str:
+        df.shs_field = df.shs_field.apply(literal_eval)  # passe les listes de domaines du str à list
+    if type(df.info_field[0]) == str:
+        df.info_field = df.info_field.apply(literal_eval)
 
     # Récapitulatifs
     if rec_disciplines: 
-        graphique_rec_discipline.graphique_discipline(df=df, dossier=nom_dossier)
-    if rec_base:  # Proportion de doi - nodoi
-        # néanmoins, on voit quasiment pas la différence (il y en a une car on enlève quelques doublons), donc à retravailler je pense
+        if domain: 
+            graphique_rec_discipline.graphique_discipline(
+                df, domain=True, dossier=nom_dossier)
+        if domain_shs:
+            graphique_rec_discipline.graphique_discipline(
+                df, domain_shs=True, dossier=nom_dossier)
+        if domain_info:
+            graphique_rec_discipline.graphique_discipline(
+                df, domain_info=True, dossier=nom_dossier)
+    if rec_base:  # je pense c'est pertinent pour montrer la proportion de doi - nodoi
+        #néanmoins, on voit quasi-pas la diff (il y en a une car on enlève qlq doublons), donc à retravailler jpense
         graphique_rec_base.graphique_comparaison_bases(dossier=nom_dossier)
-    if rec_genre:
-        graphique_rec_genre.graphique_genre(df=df, dossier=nom_dossier)
+    if rec_genre: #NEW -- à voir si tu trouves ça pertinent
+        graphique_rec_genre.graphique_genre(df, dossier=nom_dossier)
 
     # Taux d'Open Access
     if oa_circulaire: 

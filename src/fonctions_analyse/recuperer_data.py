@@ -27,7 +27,7 @@ def req_to_json(url):
     return res
 
 
-def get_hal_data(doi, hal_id, choix_domaine, match_ref):
+def get_hal_data(doi, hal_id, match_ref):
     """
     Récupérer les métadonnées de HAL.
     Si le DOI est dans unpaywall les métadonnées de HAL communes seront écrasées.
@@ -35,7 +35,6 @@ def get_hal_data(doi, hal_id, choix_domaine, match_ref):
     :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
     :param str doi: doi dont les données sont à récupérer
     :param str hal_id: hal id dont les données sont à récupérer
-    :param str choix_domaine: 1 si on garde un domaine par document, n si on les prend tous
     :return dict: dictionnaire des métadonnées récupérées
     """
 
@@ -49,7 +48,7 @@ def get_hal_data(doi, hal_id, choix_domaine, match_ref):
 
     res = req_to_json("https://api.archives-ouvertes.fr/search/?q=" + query +
                       "&fl=halId_s,title_s,authFullName_s,publicationDate_s,publicationDateY_i,docType_s,journalTitle_s,journalIssn_s,"
-                      "journalEissn_s,journalPublisher_s,domain_s,domain_t,submittedDate_s,submitType_s,linkExtId_s,openAccess_bool,licence_s,selfArchiving_bool"
+                      "journalEissn_s,journalPublisher_s,*_domain_s,domain_t,submittedDate_s,submitType_s,linkExtId_s,openAccess_bool,licence_s,selfArchiving_bool"
                       )
 
     # Si l'API renvoie une erreur ou bien si aucun document n'est trouvé
@@ -78,17 +77,26 @@ def get_hal_data(doi, hal_id, choix_domaine, match_ref):
     # Vérifier la présence de domaine disciplinaire (quelques notices peuvent ne pas avoir de domaine)
 
     domain = []
+    shsdomain = []
+    infodomain = []
     match = j.load(open("./data/"+match_ref))
-    if res.get('domain_s'):
-        if choix_domaine == "1":
-            e = res["domain_s"][0]
-            if e in match["domain"]:
-                domain.append(e)
-        elif choix_domaine == "n":
-            for e in res["domain_s"]:
-                if e in match["domain"]:
-                    if e not in domain:
-                        domain.append(e)
+    if res.get('level0_domain_s'):
+        for e in res['level0_domain_s']:
+            e = "0."+e
+            if(e in match["domain"]):
+                if(e not in domain):
+                    domain.append(e)
+    if res.get('level1_domain_s'):
+        for e in res['level1_domain_s']:
+            e = "1."+e
+            if(e in match["shsdomain"]):
+                if(e not in shsdomain):
+                    shsdomain.append(e)
+            if(e in match["infodomain"]):
+                if(e not in infodomain):
+                    infodomain.append(e)
+    
+    
 
     auth_count = False
     if res.get("authFullName_s"):
@@ -113,6 +121,9 @@ def get_hal_data(doi, hal_id, choix_domaine, match_ref):
         'hal_selfArchiving': res.get("selfArchiving_bool"),
         'hal_docType': res.get('docType_s'),
         'hal_domain': domain,
+        'hal_shsdomain': shsdomain,
+        'hal_infodomain': infodomain
+
     }
 
 
@@ -219,13 +230,21 @@ def enrich_df(df, email, choix_domaine, match_ref, progression_denominateur):
             if field == 'hal_domain':
                 new_domain = pd.Series([md[field]], index=[row.Index], dtype='object')
                 df.loc[[row.Index], 'hal_domain'] = new_domain
+            elif field == 'hal_shsdomain':
+                new_domain = pd.Series([md[field]], index=[
+                                       row.Index], dtype='object')
+                df.loc[[row.Index], 'hal_shsdomain'] = new_domain
+            elif field == 'hal_infodomain':
+                new_domain = pd.Series([md[field]], index=[
+                                       row.Index], dtype='object')
+                df.loc[[row.Index], 'hal_infodomain'] = new_domain
             else:
                 df.loc[row.Index, field] = md[field]
 
     return df
 
 
-def enrich_to_csv(df, email, choix_domaine, match_ref="match_referentials.json", progression_denominateur=100):
+def enrich_to_csv(df, email, match_ref="match_referentials.json", progression_denominateur=100):
     """
     Enrichi en métadonnées et enregistre en csv.
 
@@ -240,10 +259,10 @@ def enrich_to_csv(df, email, choix_domaine, match_ref="match_referentials.json",
     df["suspicious_journal"] = np.nan
     df["hal_domain"] = np.nan
     df.reset_index(drop=True, inplace=True)
-    df = enrich_df(df, email, choix_domaine, match_ref, progression_denominateur)
+    df = enrich_df(df, email, match_ref, progression_denominateur)
     df_reorder = df[
         ["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location", "hal_openAccess_bool",
-         "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "published_date", "published_year",
+         "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "hal_shsdomain", "hal_infodomain","published_date", "published_year",
          "journal_name", "journal_issns", "publisher", "genre", "journal_issn_l", "oa_status", "upw_location",
          "version",
          "suspicious_journal", "licence", "journal_is_in_doaj", "journal_is_oa", "author_count", "is_paratext"]]
