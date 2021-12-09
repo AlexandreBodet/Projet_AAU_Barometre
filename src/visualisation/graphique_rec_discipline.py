@@ -1,28 +1,43 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import date
 
-
-def graphique_discipline(df, dossier):
+def graphique_discipline(df, dossier, domain = False, domain_shs = False, domain_info = False):
     """
     Nombre de publications par discipline
     :param df:
     :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
-    print("graphique disciplines")
-    allyear = df[["scientific_field", "is_oa"]]
 
-    data_domains = {"scientific_field": [], 
+    if(domain == True):
+        var = "scientific_field"
+        titre = "par domaines" # attention lorsqu'on change, pour le print 10 lignes plus loin et pour le titre de la figure
+        name_file = "domaines"
+    if(domain_shs == True):
+        var = "shs_field"
+        titre = "par sous domaines shs"
+        name_file = "sous_domaine_shs"
+    if(domain_info == True):
+        var = "info_field"
+        titre = "par sous domaines info"
+        name_file = "sous_domaine_info"
+    
+    print("graphique pour " + titre)
+
+    allyear = df[[var, "is_oa"]].copy()
+
+    data_domains = {
+        var: [],
         "is_oa": [] 
         }
-    for row in allyear.itertuples():
-        for domain in row.scientific_field:
-            data_domains["scientific_field"].append(domain)
+    for index, row in allyear.iterrows():
+        for domain in allyear.loc[index,var]:
+            data_domains[var].append(domain)
             data_domains["is_oa"].append(row.is_oa)
     df_domains = pd.DataFrame(data_domains)
     
-    
-    scifield = pd.crosstab(df_domains["scientific_field"], df_domains["is_oa"])
+    scifield = pd.crosstab(df_domains[var], df_domains["is_oa"])
     scifield.columns = ["not_oa", "is_oa"]
     scifield["total"] = scifield["not_oa"] + scifield["is_oa"]
 
@@ -60,10 +75,11 @@ def graphique_discipline(df, dossier):
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
     plt.title(
-        "Nombre de publications depuis toujours par discipline",
+        "Nombre de publications depuis toujours " + titre +  "\nmesurée en " +
+        str(date.today().month) + "/" + str(date.today().year),
         fontsize=20,
         x=0.5,
         y=1,
         alpha=0.6)
-    plt.savefig("./resultats/img/"+dossier+"/recapitulatif_disciplines.png",
+    plt.savefig("./resultats/img/"+dossier+ "/recapitulatif_" + name_file + ".png",
                 dpi=100, bbox_inches='tight')

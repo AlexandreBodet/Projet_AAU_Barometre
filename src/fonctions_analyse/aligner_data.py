@@ -63,7 +63,7 @@ def align_doctype(row, match_ref):
             print("cannot align doctype", row["halId"])
 
 
-def align_domain(row, match_ref):
+def align_domain(row, match_ref, choixDomain):
     """
     Donne la liste des domaines correspondants
     :param row: ligne à traiter
@@ -72,11 +72,46 @@ def align_domain(row, match_ref):
     """
     res = []
     for e in row["hal_domain"]:
-        res.append(match_ref["domain"][e])
+        if(choixDomain[match_ref["domain"][e]]):
+            res.append(match_ref["domain"][e])
+        else:
+            res.append("Autres")
     return res
 
 
-def aligner(referentials, df=None):
+def align_shsdomain(row, match_ref, choixShsDomain):
+    """
+    Donne la liste des domaines correspondants
+    :param row: ligne à traiter
+    :param dict match_ref: noms des domaines et de type de documents
+    :return list: la liste des domaines
+    """
+    res = []
+    for e in row["hal_shsdomain"]:
+        if(choixShsDomain[match_ref["shsdomain"][e]]):
+            res.append(match_ref["shsdomain"][e])
+        else:
+            res.append("Autres")
+    return res
+
+
+def align_infodomain(row, match_ref, choixInfoDomain):
+    """
+    Donne la liste des domaines correspondants
+    :param row: ligne à traiter
+    :param dict match_ref: noms des domaines et de type de documents
+    :return list: la liste des domaines
+    """
+    res = []
+    for e in row["hal_infodomain"]:
+        if(choixInfoDomain[match_ref["infodomain"][e]]):
+            res.append(match_ref["infodomain"][e])
+        else:
+            res.append("Autres")
+    return res
+
+
+def aligner(referentials, choixDomaines, df=None):
     """
     Aligne les données dans les bonnes colonnes. Open_access ou non, le type d'oa,
     :param str referentials: str du nom de fichier json pour les noms des domaines et de type de documents
@@ -91,10 +126,20 @@ def aligner(referentials, df=None):
 
     if type(df.hal_domain[0]) == str:
         df.hal_domain = df.hal_domain.apply(literal_eval)
+    if type(df.hal_shsdomain[0]) == str:
+        df.hal_shsdomain = df.hal_shsdomain.apply(literal_eval)
+    if type(df.hal_infodomain[0]) == str:
+        df.hal_infodomain = df.hal_infodomain.apply(literal_eval)
+    
     df["is_oa"] = df.apply(lambda row: deduce_oa(row), axis=1)
     df["oa_type"] = df.apply(lambda row: deduce_oa_type(row), axis=1)
     df["genre"] = df.apply(lambda row: align_doctype(row, match_ref), axis=1)
-    df["scientific_field"] = df.apply(lambda row: align_domain(row, match_ref), axis=1)
+    df["scientific_field"] = df.apply(
+        lambda row: align_domain(row, match_ref, choixDomaines["domain"]), axis=1)
+    df["shs_field"] = df.apply(lambda row: align_shsdomain(
+        row, match_ref, choixDomaines["shsdomain"]), axis=1)
+    df["info_field"] = df.apply(lambda row: align_infodomain(
+        row, match_ref, choixDomaines["infodomain"]), axis=1)
 
     df["hal_coverage"].fillna("missing", inplace=True)
     df["upw_coverage"].fillna("missing", inplace=True)

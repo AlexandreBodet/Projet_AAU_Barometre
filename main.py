@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     with open("./settings.json") as json_file:
         donnees = json.load(json_file)
-
+    """
     if donnees["parametres"]["utilise_api_hal"]:
         api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], donnees_api=donnees["api_hal"])
         print('\n[FINI] Récupération des données hal par api\n')
@@ -31,8 +31,9 @@ if __name__ == "__main__":
                                        utilise_api_hal=donnees["parametres"]["utilise_api_hal"])
     print('\n[FINI] Chargement fini\n')
 
-    df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], choix_domaine=donnees["data"]["domaine"], match_ref=donnees["data"]["match_ref"], progression_denominateur=100)
+    df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], match_ref=donnees["data"]["match_ref"], progression_denominateur=100)
     print('\n[FINI] Enrichissement fini\n')
+    """
 
     # df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
 
@@ -40,12 +41,12 @@ if __name__ == "__main__":
         df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])
         print('\n[FINI] Ajout apc fini\n')
 
-    df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"])
+    df_charge = aligner(df=None, referentials=donnees["data"]["match_ref"], choixDomaines=donnees["choixDomaines"])
 
     annees = [i for i in range(2010, date.today().year + 1)]
     graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=False, rec_disciplines=False, rec_genre=False,
               oa_circulaire=False, oa_discipline=False, oa_evolution=False, oa_editeur=False,
               apc_evolution=donnees["parametres"]["calculs_APC"] and False, apc_discipline=donnees["parametres"]["calculs_APC"] and False, bibliodiversite=True,
-              oa_type_evolution=False)
+              oa_type_evolution=False, domain=True, domain_shs=True, domain_info=True)
 
     # graphique(df_raw=df_charge, annee=2020, annees=annees)
