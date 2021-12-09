@@ -22,8 +22,8 @@ if __name__ == "__main__":
 
     with open("./settings.json") as json_file:
         donnees = json.load(json_file)
-
-    '''if donnees["parametres"]["utilise_api_hal"]:
+    """
+    if donnees["parametres"]["utilise_api_hal"]:
         api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], donnees_api=donnees["api_hal"])
         print('\n[FINI] Récupération des données hal par api\n')
 
@@ -33,10 +33,11 @@ if __name__ == "__main__":
 
     df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], match_ref=donnees["data"]["match_ref"], progression_denominateur=100)
     print('\n[FINI] Enrichissement fini\n')
+    """
 
     df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
     df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])
-    print('\n[FINI] Ajout apc fini\n')'''
+    print('\n[FINI] Ajout apc fini\n')
 
     df_charge = aligner(df=None, referentials=donnees["data"]["match_ref"], choixDomaines=donnees["choixDomaines"])
 
