@@ -1,6 +1,7 @@
 """
 Fonctions pour récupérer les métadonnées associées aux publications
 """
+import os
 
 import numpy as np
 import requests as r
@@ -16,6 +17,7 @@ def req_to_json(url):
     :return dict res: résultat json de la requête sql
     """
     found = False
+    res = {}
     while not found:
         req = r.get(url)
         res = {}
@@ -83,20 +85,18 @@ def get_hal_data(doi, hal_id, match_ref):
     if res.get('level0_domain_s'):
         for e in res['level0_domain_s']:
             e = "0."+e
-            if(e in match["domain"]):
-                if(e not in domain):
+            if e in match["domain"]:
+                if e not in domain:
                     domain.append(e)
     if res.get('level1_domain_s'):
         for e in res['level1_domain_s']:
             e = "1."+e
-            if(e in match["shsdomain"]):
-                if(e not in shsdomain):
+            if e in match["shsdomain"]:
+                if e not in shsdomain:
                     shsdomain.append(e)
-            if(e in match["infodomain"]):
-                if(e not in infodomain):
+            if e in match["infodomain"]:
+                if e not in infodomain:
                     infodomain.append(e)
-    
-    
 
     auth_count = False
     if res.get("authFullName_s"):
@@ -206,14 +206,30 @@ def enrich_df(df, email, match_ref, progression_denominateur):
     :param dataframe df: dataframe auquel ajouter les métadonnées
     :return dataframe: dataframe modifié
     """
+    buffer_folder = "./resultats/fichiers_csv/buffer/"
+    buffer = "buffer_recuperer_data.csv"
+    try:
+        # Buffer si la connexion crashe pendant la récupération des données
+        df_traite = pd.read_csv(buffer_folder + buffer, converters={'doi': str}, na_filter=False,
+                                encoding='utf8')
+        df_traite.replace("", np.nan, inplace=True)  # Pour empêcher le merge de supprimer des lignes à cause de la lecture du nan comme ""
+        df.replace("", np.nan, inplace=True)
+        df = pd.merge(df, df_traite.drop(["is_paratext", "suspicious_journal", "hal_domain"], axis=1), on=["doi", "halId"])
+    except FileNotFoundError:
+        df["df_data_traite"] = False
+        if not os.path.isdir(buffer_folder):
+            os.mkdir(buffer_folder)
 
     for row in df.itertuples():
-        # Définir les étapes de la progression
-        # A chaque étape, afficher la progression
-        if row.Index > 0 and row.Index % int(
-                len(df) / progression_denominateur) == 0:  # le dénominateur impact l'intervalle des étapes : 100 une étape tout les 1% etc.
-            print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ",
-                  round(row.Index / len(df) * progression_denominateur, 1), "%")
+        if df.loc[row.Index, "df_data_traite"]:
+            continue  # Passe la récupération des métadonnées pour la ligne si elle a déjà été effectuée, utilise le buffer
+
+        # À chaque étape selon l'espacement entre les affichages voulu, afficher la progression et enregistrer un buffer
+        # Le dénominateur impacte l'intervalle des étapes : 100 une étape tout les 1%, etc
+        if row.Index > 0 and row.Index % int(len(df) / progression_denominateur) == 0:
+            print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ", round(row.Index / len(df) * progression_denominateur, 1), "%")
+            df.to_csv(buffer_folder + buffer, index=False)
+
         # Récupérer les métadonnées de HAL
         md = get_hal_data(row.doi, row.halId, match_ref)
 
@@ -239,7 +255,12 @@ def enrich_df(df, email, match_ref, progression_denominateur):
                 df.loc[[row.Index], 'hal_infodomain'] = new_domain
             else:
                 df.loc[row.Index, field] = md[field]
+        df.loc[row.Index, "df_data_traite"] = True  # Utile pour le buffer
 
+    # on supprime les données utilisées par le buffer
+    os.remove(buffer_folder+buffer)
+    os.rmdir(buffer_folder)
+    df.drop(["df_data_traite"], axis=1, inplace=True)
     return df
 
 
@@ -260,7 +281,7 @@ def enrich_to_csv(df, email, match_ref="match_referentials.json", progression_de
     df = enrich_df(df, email, match_ref, progression_denominateur)
     df_reorder = df[
         ["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location", "hal_openAccess_bool",
-         "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "hal_shsdomain", "hal_infodomain","published_date", "published_year",
+         "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "hal_shsdomain", "hal_infodomain", "published_date", "published_year",
          "journal_name", "journal_issns", "publisher", "genre", "journal_issn_l", "oa_status", "upw_location",
          "version",
          "suspicious_journal", "licence", "journal_is_in_doaj", "journal_is_oa", "author_count", "is_paratext"]]
