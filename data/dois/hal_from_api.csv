@@ -163,7 +163,6 @@ Titre;Réf. HAL;DOI
 ['Qualité des ambiances et processus de conception'];halshs-00567910;
 ['Sympathique maison ensoleillée de 4 chambres ...'];halshs-00576022;
 ['Les petites annonces de la maison individuelle'];halshs-00572413;
-"['Balcony form; An approach to reduce sound pressure level into the building façade']";hal-01555295;
 ['Acoustic diffraction patterns from regular to fractal structures: application to the Sierpinski carpet'];hal-01555279;10.1007/1-84628-048-6_7
 ['Fractal scattering indicators for urban sound diffusion'];hal-01552973;10.1142/9789812702746_0018
 ['Le Corbusier Plans. 1950 - Climate Chart (Chandigarh). English version'];halshs-01249644;
@@ -381,6 +380,7 @@ Titre;Réf. HAL;DOI
 ['Towards VE that are More Closely Related to the Real World'];hal-01735022;10.1002/9781119341031.ch4
 "[""Entre urbanité, ambiances et pragmatisme : une écologie de l'ordre public""]";hal-01640639;
 ['Les espaces-temps de la mobilité labile'];hal-01640585;
+"['Balcony form; An approach to reduce sound pressure level into the building façade']";hal-01555295;
 ['Espaces publics, temps publics, corps publics'];hal-00993697;
 ['Formal Modulation for Acoustic Performances of a Bridge'];hal-00993625;
 ['Dew architectures - Dew annouces the good weather'];hal-00993656;
@@ -450,11 +450,9 @@ Titre;Réf. HAL;DOI
 ['Towards a new semantically enriched geoprocessing tool adapted to the Territorial Intelligence and socio-ecological foresight main thematics.'];halshs-00938242;
 ['Efficient Constrained Delaunay Triangulation implementation in Java for spatial hydrological analysis'];hal-00329503;
 ['GearScape: an extensible free and open-source GIS adapted to the European Network of Territorial Intelligence main thematic'];halshs-00784703;
-['Environmental impact assessment of urban mobility plan : a methodology including socio-economic consequences'];hal-00635714;
 ['A visibility based method to assess the shrinkage feeling in downtown Detroit'];halshs-00745882;
 ['Isovist computation of outdoor environment with semi-dense line SLAM and monocular camera'];hal-03368466;
 ['A structural analysis of the streets’ network to urban fabric characterization'];hal-01347325;
-['Urban mobility plan environmental impacts assessment: a methodology including socio-economic consequences - The Eval-PDU project'];hal-00614951;
 "[""T4SU\xa0: analyses et représentations des vues du ciel, du soleil et des saillances paysagères dans le contexte d'un outil de CAO""]";hal-01402727;
 ['GDMS: An abstraction layer to enhance Spatial Data Infrastructures usability'];hal-00329500;
 ['Sensitivity of spatial indicators for urban terrain characterization'];hal-00329504;
@@ -690,7 +688,6 @@ Titre;Réf. HAL;DOI
 ['Inverse simulation of sunlighting: a geometrical framework for architectural and urban design'];halshs-02472154;
 ['Visual Analysis of Urban Environment'];halshs-02472303;
 ['An Image-based and Knowledge-based System for Efficient Architectural and Urban Modeling'];hal-02475749;
-"[""Acoustical Effect Evaluation of Balconies' Ceiling Form in Protecting Buildings Facades Against Traffic Noise.""]";hal-01555296;10.13140/2.1.4715.2161
 ['Playing with Design Intents: Integrating Physical and Urban Constraints in CAD', 'Le jeu des intentions:intégration de contraintes physiques et urbaines en CAO'];hal-02562728;
 ['Svalabard: Une table à dessin virtuelle pour la modélisation 3D'];inria-00550691;10.1145/1148613.1148626
 ['Benefits and limits of GIS for managing heterogeneous environmental data in sustainable urban design: example of the ADEQUA project'];hal-02476255;
@@ -1060,6 +1057,9 @@ Titre;Réf. HAL;DOI
 "['Les appropriations multiples de l\'injonction à ""l\'usager"" dans la mise en œuvre de l\'action publique urbaine : le retour d\'une ingénierie urbaine']";halshs-01972707;
 ['Consulting reports in urban planning as technical tools : an ethnographic study of intricacy between technical writing and political decision'];halshs-01894705;
 ['Working Modes with a Declarative Modeler'];hal-00816857;
+['Environmental impact assessment of urban mobility plan : a methodology including socio-economic consequences'];hal-00635714;
+['Urban mobility plan environmental impacts assessment: a methodology including socio-economic consequences - The Eval-PDU project'];hal-00614951;
+"[""Acoustical Effect Evaluation of Balconies' Ceiling Form in Protecting Buildings Facades Against Traffic Noise.""]";hal-01555296;10.13140/2.1.4715.2161
 ['Je - tu- il, la marche aux trois personnes'];halshs-00502589;
 "[""L'usage des ambiances""]";hal-00995572;
 ['Produire avec Perec'];hal-01520078;

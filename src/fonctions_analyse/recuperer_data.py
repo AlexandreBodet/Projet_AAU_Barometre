@@ -2,7 +2,7 @@
 Fonctions pour récupérer les métadonnées associées aux publications
 """
 import os
-
+import time
 import numpy as np
 import requests as r
 import pandas as pd
@@ -16,16 +16,14 @@ def req_to_json(url):
     :param str url: url de la requête
     :return dict res: résultat json de la requête sql
     """
-    found = False
-    res = {}
-    while not found:
-        req = r.get(url)
-        res = {}
+    while True:
         try:
-            res = req.json()
-            found = True
-        except:
-            pass
+            req = r.get(url)
+            break  # sort de la boucle si le serveur a répondu
+        except r.exceptions.ConnectionError:
+            time.sleep(0.5)
+            pass  # réessaye après 0.5 seconde si le serveur ne répond pas
+    res = req.json()
     return res
 
 
@@ -214,8 +212,11 @@ def enrich_df(df, email, match_ref, progression_denominateur):
                                 encoding='utf8')
         df_traite.replace("", np.nan, inplace=True)  # Pour empêcher le merge de supprimer des lignes à cause de la lecture du nan comme ""
         df.replace("", np.nan, inplace=True)
-        df = pd.merge(df, df_traite.drop(["is_paratext", "suspicious_journal", "hal_domain"], axis=1), on=["doi", "halId"])
+        df = pd.merge(df, df_traite, on=["doi", "halId"])
     except FileNotFoundError:
+        df["is_paratext"] = np.nan
+        df["suspicious_journal"] = np.nan
+        df["hal_domain"] = np.nan
         df["df_data_traite"] = False
         if not os.path.isdir(buffer_folder):
             os.mkdir(buffer_folder)
@@ -274,9 +275,6 @@ def enrich_to_csv(df, email, match_ref="match_referentials.json", progression_de
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes dans enrich_df
     :return dataframe: dataframe avec métadonnées ajoutées
     """
-    df["is_paratext"] = np.nan
-    df["suspicious_journal"] = np.nan
-    df["hal_domain"] = np.nan
     df.reset_index(drop=True, inplace=True)
     df = enrich_df(df, email, match_ref, progression_denominateur)
     df_reorder = df[
