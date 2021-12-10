@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 from datetime import date
+
 
 def graphique_genre(df, dossier):
     """
@@ -43,7 +45,8 @@ def graphique_genre(df, dossier):
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
     ax.yaxis.grid(ls='--', alpha=0.4)
-
+    ax.xaxis.set_major_locator(mticker.FixedLocator(
+        [x for x in range(len(scifield.index))]))  # pour éviter un warning, on fixe la position des labels
     ax.set_xticklabels(scifield.index, ha="right", rotation=30, fontsize=12)
 
     # plt.tight_layout()

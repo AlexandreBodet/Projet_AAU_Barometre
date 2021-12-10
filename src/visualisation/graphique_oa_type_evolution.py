@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 import pandas as pd
 import numpy as np
 
@@ -171,6 +172,7 @@ def graphique_evolution_type_oa(df, annees, dossier):
     ax.yaxis.grid(ls="--", alpha=0.2)
     # preciser legend pour Y
     ax.set_ylim([0, .8])
+    ax.yaxis.set_major_locator(mticker.FixedLocator(ax.get_yticks().tolist()))
     ax.set_yticklabels(
         [f"{int(round(x * 100))} %" for x in ax.get_yticks()], fontsize=10)
     # retirer l'origine sur Y
