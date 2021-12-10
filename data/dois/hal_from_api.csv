@@ -9,7 +9,6 @@ Titre;Réf. HAL;DOI
 ['Ambiance et histoire de l’architecture : l’expérience et l’imaginaire sensibles de l’environnement construit', 'Ambiance and history of architecture: the built environment in our sensory expérience and imagination'];halshs-01995875;10.4000/ambiances.738
 ['SHS Web of Conferences - Proceedings SCAN’18 – 8e Séminaire de Conception Architecturale Numérique'];hal-01913383;
 ['Usage, Usability, and Utility of 3D City Models – European COST Action TU0801'];hal-01347580;
-['La ville mot à mot'];hal-03334500;
 ['Architecture et Numérique : l’usage contemporain des technologies de liaisons'];hal-02016753;
 ['Architectures des milieux hyper-conditionnés / Architectures of hyper-conditioned environments'];hal-02474409;10.4000/craup.2546
 "[""Dockers à Nantes. L'expérience des itinéraires""]";hal-01846886;
@@ -56,6 +55,7 @@ Titre;Réf. HAL;DOI
 ['Machine learning for optimized buildings morphosis'];hal-03258021;10.1145/3423603.3424057
 ['Résonances oasiennes. Approches sensibles de l’urbain au Sahara'];hal-03250069;
 ['Amiens 2030 - Le quotidien en projets'];hal-00975415;
+['La ville mot à mot'];hal-03334500;
 "[""Parcourir pour projeter A l'entour du cimetière, un parcours au Crêt-de-Roch (Saint-Etienne) Lectures du site & enjeux de projet""]";hal-01653048;
 ['Parcours de lecture de la place Sainte-Claire'];hal-01518097;
 ['The recuperation of public space : a closer look at Bogotá, Colombia'];hal-00995507;
@@ -1205,7 +1205,6 @@ Titre;Réf. HAL;DOI
 ['A Sonic Paradigm of Urban Ambiances'];hal-00980746;
 ['A brief archaeology of the notion of ambiance'];hal-02568186;
 ['Des formes environnementales en aménagement urbain : d’une perspective théorique aux études de cas'];halshs-02189179;
-['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315
 ['Typische Atmosphären städtischer Plätze. Auf dem Weg zu einer anwendungsorientierten Atmosphärenforschung'];hal-00978333;
 ['Unterwegs in fremden Umgebungen. Ein praxeologischer Zugang zum Wayfinding von Fußgängern'];hal-00978335;
 ['La condition grisante de la Cifre'];halshs-03234360;10.4000/craup.3057
@@ -1475,3 +1474,4 @@ Titre;Réf. HAL;DOI
 ['Quelle place du sonore dans la production urbaine\xa0? Éclairage par les postures et pratiques professionnelles dans le cadre du diagnostic sonore urbain'];hal-02948549;10.4000/vertigo.23818
 ['Smart system to generate the optimal authorized bounding volume'];hal-03451894;10.1108/OHI-02-2021-0039
 ['Working Modes with a Declarative Modeler'];hal-00816837;10.1016/S0169-7552(98)00176-7
+['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315

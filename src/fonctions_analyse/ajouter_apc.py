@@ -111,7 +111,7 @@ def separation_montant_devise(apc_journal, column):
     :param column: colonnes des APC à séparer
     """
 
-    apc_journal["APC amount"] = apc_journal[column].str.split(";", expand=True)
+    apc_journal["APC amount"] = apc_journal[column].str.split(";", expand=True)[0]
     apc_journal[["APC amount", "APC currency"]] = apc_journal["APC amount"].str.split(" ", expand=True)
     return None
 

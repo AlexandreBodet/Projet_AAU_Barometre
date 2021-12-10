@@ -60,8 +60,7 @@ def graphique_apc_discipline(df, annee, dossier):
         for i in df_apc_discipline.index:
             label = df_apc_discipline.loc[i][j]
             if not isinstance(label, str):
-                # pour un meilleur affichage : si ce n'est pas la discipline on
-                # arrondi
+                # pour un meilleur affichage : si ce n'est pas la discipline on arrondit
                 label = str(round(label))
                 label += " %"  # :label.find(".")
                 labels.append(label)

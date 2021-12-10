@@ -43,9 +43,9 @@ if __name__ == "__main__":
     df_charge = aligner(df=None, referentials=donnees["data"]["match_ref"], choixDomaines=donnees["choixDomaines"])
 
     annees = [i for i in range(2010, date.today().year + 1)]
-    graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=False, rec_disciplines=False, rec_genre=False,
-              oa_circulaire=False, oa_discipline=False, oa_evolution=False, oa_editeur=False,
-              apc_evolution=donnees["parametres"]["calcul_APC"] and False, apc_discipline=donnees["parametres"]["calcul_APC"] and False, bibliodiversite=True,
-              oa_type_evolution=False, domain=True, domain_shs=True, domain_info=True)
+    graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=True, rec_disciplines=True, rec_genre=True,
+              oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=True,
+              apc_evolution=donnees["parametres"]["calcul_APC"] and True, apc_discipline=donnees["parametres"]["calcul_APC"] and False, bibliodiversite=True,
+              oa_type_evolution=True, domain=True, domain_shs=True, domain_info=True)
 
     # graphique(df_raw=df_charge, annee=2020, annees=annees)
