@@ -47,6 +47,7 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         print("Pas de dataframe chargé. Impossible de générer les graphiques.")
         return None
 
+    # Création du dossier et des sous-dossiers
     nom_dossier = datetime.now().isoformat(
         timespec="seconds")  # Nom du dossier unique dans lequel les images seront enregistrées
     nom_dossier = nom_dossier.replace(":", "-")  # Supprime les ":"
@@ -57,7 +58,7 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     # filtre : retrait des documents de paratexte
     df = df_raw[
         (df_raw["is_paratext"] == "") | df_raw["is_paratext"].isna()]  # pour nous : inutile, car ils sont tous comme ça
-    # remarque: des publications ne sont pas dans la fourchette souhaitée [2016-XX]
+
     if type(df.scientific_field[0]) == str:
         df.scientific_field = df.scientific_field.apply(literal_eval)  # passe les listes de domaines du str à list
     if type(df.shs_field[0]) == str:
@@ -69,8 +70,10 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     if rec_disciplines:
         if domain:
             graphique_rec_discipline.graphique_discipline(df, domain=True, dossier=nom_dossier)
-            graphique_rec_discipline.graphique_discipline(df, annee=annee, domain=True, dossier=nom_dossier)  # Sur une seule année
-            graphique_rec_discipline.graphique_discipline(df, annee=annees, domain=True, dossier=nom_dossier)  # Liste d'années
+            graphique_rec_discipline.graphique_discipline(df, annee=annee, domain=True,
+                                                          dossier=nom_dossier)  # Sur une seule année
+            graphique_rec_discipline.graphique_discipline(df, annee=annees, domain=True,
+                                                          dossier=nom_dossier)  # Liste d'années
         if domain_shs:
             graphique_rec_discipline.graphique_discipline(df, domain_shs=True, dossier=nom_dossier)
             graphique_rec_discipline.graphique_discipline(df, annee=annee, domain_shs=True, dossier=nom_dossier)
@@ -79,15 +82,20 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
             graphique_rec_discipline.graphique_discipline(df, domain_info=True, dossier=nom_dossier)
             graphique_rec_discipline.graphique_discipline(df, annee=annee, domain_info=True, dossier=nom_dossier)
             graphique_rec_discipline.graphique_discipline(df, annee=annees, domain_info=True, dossier=nom_dossier)
-    if rec_base:  # je pense que c'est pertinent pour montrer la proportion de doi - nodoi
-        # néanmoins, on voit quasi-pas la diff (il y en a une car on enlève qlq doublons), donc à retravailler je pense
+
+    if rec_base:  # proportion doi/no-doi par base
         graphique_rec_base.graphique_comparaison_bases(dossier=nom_dossier)
+
     if rec_genre:  # NEW -- à voir si tu trouves ça pertinent
         graphique_rec_genre.graphique_genre(df, dossier=nom_dossier)
+        graphique_rec_genre.graphique_genre(df, annee=annee, dossier=nom_dossier)
+        graphique_rec_genre.graphique_genre(df, annee=annees, dossier=nom_dossier)
 
     # Taux d'Open Access
     if oa_circulaire:
         graphique_oa_circulaire.graphique_circulaire_oa(df=df, annee=annee, dossier=nom_dossier)
+
+        
     if oa_discipline:
         graphique_oa_discipline.graphique_discipline_oa(df=df, annee=annee, dossier=nom_dossier)
     if oa_evolution:
@@ -103,5 +111,7 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
     if apc_discipline:  # donner la possibilité de faire sur plusieurs années
         graphique_apc_discipline.graphique_apc_discipline(df=df, annee=annee, dossier=nom_dossier)
     if bibliodiversite:
+        graphique_bibliodiversite.graphique_bibliodiversite(df=df, dossier=nom_dossier)
         graphique_bibliodiversite.graphique_bibliodiversite(df=df, annee=annee, dossier=nom_dossier)
-        graphique_bibliodiversite.graphique_bibliodiversite(df=df, annee=annees, dossier=nom_dossier)  # Même chose sur plusieurs années
+        graphique_bibliodiversite.graphique_bibliodiversite(df=df, annee=annees,
+                                                            dossier=nom_dossier)  # Même chose sur plusieurs années

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from datetime import date
 
 
-def graphique_bibliodiversite(df, annee, dossier):
+def graphique_bibliodiversite(df, dossier, annee=None):
     """
     Pour éclairer la bibliodiversité
     :param pd.Dataframe df: dataframe d'entrée
@@ -15,8 +15,11 @@ def graphique_bibliodiversite(df, annee, dossier):
 
     if type(annee) == int:
         year = df[(df["published_year"] == annee) & (df["publisher"] != "")].copy()
-    else:  # une liste d'années
+    elif type(annee) == list:  # une liste d'années
         year = df[(df["published_year"].isin(annee)) & (df["publisher"] != "")].copy()
+    else:
+        year = df[df["publisher"] != ""].copy()
+
     # Fusionner les éditeurs au mm nom
     year["publisher"].replace({"Elsevier BV": "Elsevier"}, inplace=True)
     year["publisher"].replace(
@@ -99,9 +102,9 @@ def graphique_bibliodiversite(df, annee, dossier):
             x=0.5,
             y=0.89,
             alpha=0.6)
-        plt.savefig("./resultats/img/" + dossier + "/bibliodiversite_" + str(annee) + ".png", bbox_inches="tight",
+        plt.savefig("./resultats/img/" + dossier + "/" + str(annee) + "/bibliodiversite.png", bbox_inches="tight",
                     pad_inches=0.1)
-    else:  # une liste d'années
+    elif type(annee) == list:  # une liste d'années
         plt.title(
             "Répartition des 30 premiers éditeurs\npar nombre de publications entre " + str(annee[0]) + " et " + str(
                 annee[-1]) + "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year),
@@ -115,6 +118,21 @@ def graphique_bibliodiversite(df, annee, dossier):
             x=0.5,
             y=0.89,
             alpha=0.6)
-        plt.savefig("./resultats/img/" + dossier + "/bibliodiversite_" + str(annee[0]) + "-" + str(annee[-1]) + ".png",
-                    bbox_inches="tight",
-                    pad_inches=0.1)
+        plt.savefig("./resultats/img/" + dossier + "/" + str(annee[0]) + "-" + str(
+            annee[-1]) + "/bibliodiversite.png", bbox_inches="tight", pad_inches=0.1)
+    else:
+        plt.title(
+            "Répartition des 30 premiers éditeurs\npar nombre de publications\nmesurée en " + str(
+                date.today().month) + "/" + str(date.today().year),
+            fontsize=25,
+            x=0.5,
+            y=1.03,
+            alpha=0.6)
+        plt.suptitle(
+            f"éditeurs = {nb_publisher}    publications = {nb_publications}",
+            fontsize=13,
+            x=0.5,
+            y=0.89,
+            alpha=0.6)
+        plt.savefig("./resultats/img/" + dossier + "/bibliodiversite.png", bbox_inches="tight", pad_inches=0.1)
+    plt.close()

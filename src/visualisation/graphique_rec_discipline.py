@@ -17,9 +17,9 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
     :return:
     """
     if type(annee) == int:
-        year = df[(df["published_year"] == annee) & (df["publisher"] != "")].copy()
+        year = df[df["published_year"] == annee].copy()
     elif type(annee) == list:  # une liste d'années
-        year = df[(df["published_year"].isin(annee)) & (df["publisher"] != "")].copy()
+        year = df[df["published_year"].isin(annee)].copy()
     else:  # Sinon on prend tout
         year = df.copy()
 
@@ -61,7 +61,7 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
 
     # Passer les données dans le modèle de representation
     fig, (ax) = plt.subplots(figsize=(12, 7),
-                             dpi=100, facecolor='w', edgecolor='k')
+                             dpi=100, facecolor="w", edgecolor="k")
 
     pour_graphe = scifield[~scifield.index.isin(["Autres"])].copy()  # tout sauf Autres
     pour_graphe.sort_values("total", ascending=False, inplace=True)  # plus de publications = au début
@@ -70,25 +70,25 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
     ax.bar(
         pour_graphe.index,
         pour_graphe["is_oa"].tolist(),
-        color='#7E96C4',
-        align='center',
+        color="#7E96C4",
+        align="center",
         label="Accès ouvert")
 
     ax.bar(
         pour_graphe.index,
         pour_graphe["not_oa"].tolist(),
         bottom=pour_graphe["is_oa"].tolist(),
-        align='center',
-        color='#BED0F4',
+        align="center",
+        color="#BED0F4",
         label="Accès fermé")
 
     # Configurer l'affichage
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
     # retirer l'origine sur Y
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
-    ax.yaxis.grid(ls='--', alpha=0.4)
+    ax.yaxis.grid(ls="--", alpha=0.4)
     ax.xaxis.set_major_locator(mticker.FixedLocator(
         [x for x in range(len(pour_graphe.index))]))  # pour éviter un warning, on fixe la position des labels
     ax.set_xticklabels(pour_graphe.index, ha="right", rotation=30, fontsize=12)
@@ -105,7 +105,7 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
             y=1,
             alpha=0.6)
         plt.savefig("./resultats/img/" + dossier + "/" + str(annee) + "/recapitulatif_" + name_file + ".png",
-                    dpi=100, bbox_inches='tight')
+                    dpi=100, bbox_inches="tight")
     elif type(annee) == list:
         plt.title(
             "Nombre de publications " + titre + " entre " + str(annee[0]) + " et " + str(annee[-1]) + "\nmesurée en " +
@@ -115,7 +115,7 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
             y=1,
             alpha=0.6)
         plt.savefig("./resultats/img/" + dossier + "/" + str(annee[0]) + "-" + str(
-            annee[-1]) + "/recapitulatif_" + name_file + ".png", dpi=100, bbox_inches='tight')
+            annee[-1]) + "/recapitulatif_" + name_file + ".png", dpi=100, bbox_inches="tight")
     else:
         plt.title(
             "Nombre de publications " + titre + "\nmesurée en " +
@@ -125,4 +125,5 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
             y=1,
             alpha=0.6)
         plt.savefig("./resultats/img/" + dossier + "/recapitulatif_" + name_file + ".png",
-                    dpi=100, bbox_inches='tight')
+                    dpi=100, bbox_inches="tight")
+    plt.close()
