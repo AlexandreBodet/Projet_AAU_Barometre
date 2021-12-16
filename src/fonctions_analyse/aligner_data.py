@@ -104,7 +104,7 @@ def align_infodomain(row, match_ref, choixInfoDomain):
     """
     res = []
     for e in row["hal_infodomain"]:
-        if(choixInfoDomain[match_ref["infodomain"][e]]):
+        if choixInfoDomain[match_ref["infodomain"][e]]:
             res.append(match_ref["infodomain"][e])
         else:
             res.append("Autres")

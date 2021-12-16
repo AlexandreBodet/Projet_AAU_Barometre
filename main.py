@@ -26,7 +26,7 @@ if __name__ == "__main__":
     if donnees["parametres"]["utilise_api_hal"]:
         api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], donnees_api=donnees["api_hal"])
         print('\n[FINI] Récupération des données hal par api\n')
-
+    """
     stats, df_charge = chargement_tout(donnees=donnees["data"]["dois"], recherche_erreur=donnees["parametres"]["recherche_erreurs"],
                                        utilise_api_hal=donnees["parametres"]["utilise_api_hal"])
     print('\n[FINI] Chargement fini\n')
@@ -39,8 +39,13 @@ if __name__ == "__main__":
     if donnees["parametres"]["calcul_APC"]:
         df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])
         print('\n[FINI] Ajout apc fini\n')
+    """
+    df_charge = pd.read_csv("./resultats/fichiers_csv/ajout_apc.csv")
 
     df_charge = aligner(df=None, referentials=donnees["data"]["match_ref"], choixDomaines=donnees["choixDomaines"])
+
+
+
 
     annees = [i for i in range(2010, date.today().year + 1)]
     graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=True, rec_disciplines=True, rec_genre=True,

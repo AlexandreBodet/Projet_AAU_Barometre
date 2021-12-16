@@ -1,27 +1,30 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import date
 
 
 def graphique_bibliodiversite(df, annee, dossier):
     """
     Pour éclairer la bibliodiversité
-    :param df:
-    :param annee:
+    :param pd.Dataframe df: dataframe d'entrée
+    :param annee: un entier pour les publications d'une seule année ou une liste d'années
     :param str dossier: dossier unique dans lequel enregistrer les résultats
     :return:
     """
-    print("graphique bibliodiversity")
-    oneyear = df[(df["published_year"] == annee)
-                 & (df["publisher"] != "")].copy()
-    # Fusionner les éditeurs au mm nom
-    oneyear["publisher"].replace({"Elsevier BV": "Elsevier"}, inplace=True)
-    oneyear["publisher"].replace(
-        {"Springer Science and Business Media LLC": "Springer"}, inplace=True)
-    oneyear["publisher"].replace(
-        {"Springer International Publishing": "Springer"}, inplace=True)
-    # print(oneyear["publisher"].value_counts())
+    print("graphique bibliodiversite ", annee)
 
-    bibdiversity = pd.crosstab(oneyear["publisher"], oneyear["is_oa"])
+    if type(annee) == int:
+        year = df[(df["published_year"] == annee) & (df["publisher"] != "")].copy()
+    else:  # une liste d'années
+        year = df[(df["published_year"].isin(annee)) & (df["publisher"] != "")].copy()
+    # Fusionner les éditeurs au mm nom
+    year["publisher"].replace({"Elsevier BV": "Elsevier"}, inplace=True)
+    year["publisher"].replace(
+        {"Springer Science and Business Media LLC": "Springer"}, inplace=True)
+    year["publisher"].replace(
+        {"Springer International Publishing": "Springer"}, inplace=True)
+
+    bibdiversity = pd.crosstab(year["publisher"], year["is_oa"])
     bibdiversity["total"] = bibdiversity[False] + bibdiversity[True]
     # Renommer les colonnes
     bibdiversity.columns = ["not_oa", "is_oa", "total"]
@@ -30,13 +33,6 @@ def graphique_bibliodiversite(df, annee, dossier):
     # Données pour la phrase "n publisher publient 50 % des publications d'UP"
     nb_publisher = len(bibdiversity)
     nb_publications = bibdiversity["total"].sum()
-    one_percent = round(nb_publisher / 100)
-    print("1 % des éditeurs = ", one_percent, "publishers")
-    one_percent_total = bibdiversity["total"].iloc[0:7].sum()
-    one_percent_total_percent = round(
-        one_percent_total / nb_publications * 100)
-    string4graph = f"1 % des éditeurs publient\n{one_percent_total_percent} % des publications d'Université de Paris\n≠ bibliodiversité"
-    print(string4graph)
 
     # Générer graphique
     df4graph = bibdiversity[:30]
@@ -60,9 +56,9 @@ def graphique_bibliodiversite(df, annee, dossier):
         plt.annotate(
             x,
             (x, y),
-            textcoords="offset points",  # how to position the text
-            xytext=(0, 2),  # distance from text to points (x,y)
-            ha='left',  # horizontal alignment can be left, right or center
+            textcoords="offset points",  # comment positionner le texte
+            xytext=(0, 2),  # distance du texte aux points (x,y)
+            ha='left',  # l'alignement horizontal peut être 'left', 'right' ou 'center'
             va='bottom',
             rotation=30,
             fontsize=9
@@ -74,16 +70,13 @@ def graphique_bibliodiversite(df, annee, dossier):
     ax.set_ylabel("Nombre de publications", labelpad=10)
     ax.set_xlabel("Éditeurs", labelpad=10)
 
-    # remove xticks
+    # enlever xticks
     plt.tick_params(
-        axis='x',  # changes apply to the x-axis
-        which='both',  # both major and minor ticks are affected
-        bottom=False,  # ticks along the bottom edge are off
-        top=False,  # ticks along the top edge are off
-        labelbottom=False)  # labels along the bottom edge are off
-
-    # punchline
-    plt.text(-1, -1, string4graph, fontsize=19)   # en commentaire pour empêcher un bug
+        axis='x',  # changement sur l'axe x
+        which='both',  # les ticks majeurs et mineurs sont affectés
+        bottom=False,  # pas de ticks sur le bord du bas
+        top=False,  # même chose en haut
+        labelbottom=False)  # pas de labels en bas
 
     plt.legend(
         loc="upper center",
@@ -92,16 +85,36 @@ def graphique_bibliodiversite(df, annee, dossier):
             0.5,
             0.95),
         borderaxespad=1.7)
-    plt.title(
-        "Répartition des 30 premiers éditeurs\npar nombre de publications pour l'année "+str(annee),
-        fontsize=25,
-        x=0.5,
-        y=1.03,
-        alpha=0.6)
-    plt.suptitle(
-        f"éditeurs = {nb_publisher}    publications = {nb_publications}",
-        fontsize=13,
-        x=0.5,
-        y=0.89,
-        alpha=0.6)
-    plt.savefig("./resultats/img/"+dossier+"/bibliodiversite.png", bbox_inches="tight", pad_inches=0.1)
+    if type(annee) == int:
+        plt.title(
+            "Répartition des 30 premiers éditeurs\npar nombre de publications pour l'année " + str(
+                annee) + "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year),
+            fontsize=25,
+            x=0.5,
+            y=1.03,
+            alpha=0.6)
+        plt.suptitle(
+            f"éditeurs = {nb_publisher}    publications = {nb_publications}",
+            fontsize=13,
+            x=0.5,
+            y=0.89,
+            alpha=0.6)
+        plt.savefig("./resultats/img/" + dossier + "/bibliodiversite_" + str(annee) + ".png", bbox_inches="tight",
+                    pad_inches=0.1)
+    else:  # une liste d'années
+        plt.title(
+            "Répartition des 30 premiers éditeurs\npar nombre de publications entre " + str(annee[0]) + " et " + str(
+                annee[-1]) + "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year),
+            fontsize=25,
+            x=0.5,
+            y=1.03,
+            alpha=0.6)
+        plt.suptitle(
+            f"éditeurs = {nb_publisher}    publications = {nb_publications}",
+            fontsize=13,
+            x=0.5,
+            y=0.89,
+            alpha=0.6)
+        plt.savefig("./resultats/img/" + dossier + "/bibliodiversite_" + str(annee[0]) + "-" + str(annee[-1]) + ".png",
+                    bbox_inches="tight",
+                    pad_inches=0.1)

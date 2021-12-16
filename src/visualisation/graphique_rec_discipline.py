@@ -4,16 +4,24 @@ import matplotlib.ticker as mticker
 from datetime import date
 
 
-def graphique_discipline(df, dossier, domain=False, domain_shs=False, domain_info=False):
+def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False, domain_info=False):
     """
     Nombre de publications par discipline
-    :param domain_info:
-    :param domain_shs:
-    :param domain:
+
     :param df:
     :param str dossier: dossier unique dans lequel enregistrer les résultats
+    :param annee: int, list ou None. Désigne les années à sélectionner. None laisse toutes les publications
+    :param domain_info: dit si le graphe doit être sur les sous-domaines informatiques
+    :param domain_shs: dit si le graphe doit être sur les sous-domaines de sciences humaines et sociales
+    :param domain: dit si le graphe doit être sur les domaines
     :return:
     """
+    if type(annee) == int:
+        year = df[(df["published_year"] == annee) & (df["publisher"] != "")].copy()
+    elif type(annee) == list:  # une liste d'années
+        year = df[(df["published_year"].isin(annee)) & (df["publisher"] != "")].copy()
+    else:  # Sinon on prend tout
+        year = df.copy()
 
     if domain:
         var = "scientific_field"
@@ -33,9 +41,9 @@ def graphique_discipline(df, dossier, domain=False, domain_shs=False, domain_inf
         var = ""
         titre = ""
 
-    print("graphique pour " + titre)
+    print("graphique récapitulatif " + titre)
 
-    allyear = df[[var, "is_oa"]].copy()
+    allyear = year[[var, "is_oa"]].copy()
 
     data_domains = {
         var: [],
@@ -55,17 +63,21 @@ def graphique_discipline(df, dossier, domain=False, domain_shs=False, domain_inf
     fig, (ax) = plt.subplots(figsize=(12, 7),
                              dpi=100, facecolor='w', edgecolor='k')
 
+    pour_graphe = scifield[~scifield.index.isin(["Autres"])].copy()  # tout sauf Autres
+    pour_graphe.sort_values("total", ascending=False, inplace=True)  # plus de publications = au début
+    pour_graphe = pour_graphe[:8].append(scifield.loc["Autres"])  # On remet autres à la fin
+
     ax.bar(
-        scifield.index,
-        scifield["is_oa"].tolist(),
+        pour_graphe.index,
+        pour_graphe["is_oa"].tolist(),
         color='#7E96C4',
         align='center',
         label="Accès ouvert")
 
     ax.bar(
-        scifield.index,
-        scifield["not_oa"].tolist(),
-        bottom=scifield["is_oa"].tolist(),
+        pour_graphe.index,
+        pour_graphe["not_oa"].tolist(),
+        bottom=pour_graphe["is_oa"].tolist(),
         align='center',
         color='#BED0F4',
         label="Accès fermé")
@@ -73,23 +85,44 @@ def graphique_discipline(df, dossier, domain=False, domain_shs=False, domain_inf
     # Configurer l'affichage
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    # ax.spines['left'].set_visible(False)
     # retirer l'origine sur Y
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
     ax.yaxis.grid(ls='--', alpha=0.4)
     ax.xaxis.set_major_locator(mticker.FixedLocator(
-        [x for x in range(len(scifield.index))]))  # pour éviter un warning, on fixe la position des labels
-    ax.set_xticklabels(scifield.index, ha="right", rotation=30, fontsize=12)
+        [x for x in range(len(pour_graphe.index))]))  # pour éviter un warning, on fixe la position des labels
+    ax.set_xticklabels(pour_graphe.index, ha="right", rotation=30, fontsize=12)
 
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
-    plt.title(
-        "Nombre de publications depuis toujours " + titre + "\nmesurée en " +
-        str(date.today().month) + "/" + str(date.today().year),
-        fontsize=20,
-        x=0.5,
-        y=1,
-        alpha=0.6)
-    plt.savefig("./resultats/img/" + dossier + "/recapitulatif_" + name_file + ".png",
-                dpi=100, bbox_inches='tight')
+
+    if type(annee) == int:
+        plt.title(
+            "Nombre de publications " + titre + " en " + str(annee) + "\nmesurée en " +
+            str(date.today().month) + "/" + str(date.today().year),
+            fontsize=20,
+            x=0.5,
+            y=1,
+            alpha=0.6)
+        plt.savefig("./resultats/img/" + dossier + "/" + str(annee) + "/recapitulatif_" + name_file + ".png",
+                    dpi=100, bbox_inches='tight')
+    elif type(annee) == list:
+        plt.title(
+            "Nombre de publications " + titre + " entre " + str(annee[0]) + " et " + str(annee[-1]) + "\nmesurée en " +
+            str(date.today().month) + "/" + str(date.today().year),
+            fontsize=20,
+            x=0.5,
+            y=1,
+            alpha=0.6)
+        plt.savefig("./resultats/img/" + dossier + "/" + str(annee[0]) + "-" + str(
+            annee[-1]) + "/recapitulatif_" + name_file + ".png", dpi=100, bbox_inches='tight')
+    else:
+        plt.title(
+            "Nombre de publications " + titre + "\nmesurée en " +
+            str(date.today().month) + "/" + str(date.today().year),
+            fontsize=20,
+            x=0.5,
+            y=1,
+            alpha=0.6)
+        plt.savefig("./resultats/img/" + dossier + "/recapitulatif_" + name_file + ".png",
+                    dpi=100, bbox_inches='tight')
