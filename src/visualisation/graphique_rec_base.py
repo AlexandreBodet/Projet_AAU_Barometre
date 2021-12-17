@@ -6,10 +6,11 @@ from datetime import date
 
 def graphique_comparaison_bases(dossier):
     """
-    Comparaison du nombre de publications dans les bases scopus wos hal et cie.
+    Graphique de comparaison du nombre de publications dans les bases scopus wos hal et cie.
+    S'il n'y a qu'une base, on ne fait pas le total
     :param str dossier: dossier unique dans lequel enregistrer les résultats
-
     """
+    print("graphique comparaison bases")
     # Récupérer les données
     df = pd.read_csv("./resultats/fichiers_csv/statistiques_sur_les_bases.csv")
     if len(df) == 2:

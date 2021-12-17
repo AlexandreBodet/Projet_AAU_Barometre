@@ -6,9 +6,9 @@ from datetime import date
 
 def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False, domain_info=False):
     """
-    Nombre de publications par discipline
+    Graphique du nombre de publications par discipline ou sous-discipline
 
-    :param df:
+    :param pd.Dataframe df: dataframe d'entrée
     :param str dossier: dossier unique dans lequel enregistrer les résultats
     :param annee: int, list ou None. Désigne les années à sélectionner. None laisse toutes les publications
     :param domain_info: dit si le graphe doit être sur les sous-domaines informatiques
@@ -41,7 +41,7 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
         var = ""
         titre = ""
 
-    print("graphique récapitulatif " + titre)
+    print("graphique récapitulatif ", titre, annee)
 
     allyear = year[[var, "is_oa"]].copy()
 
@@ -95,11 +95,10 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
 
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
-
+    mesure_en = "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year)
     if type(annee) == int:
         plt.title(
-            "Nombre de publications " + titre + " en " + str(annee) + "\nmesurée en " +
-            str(date.today().month) + "/" + str(date.today().year),
+            "Nombre de publications " + titre + " en " + str(annee) + mesure_en,
             fontsize=20,
             x=0.5,
             y=1,
@@ -108,8 +107,7 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
                     dpi=100, bbox_inches="tight")
     elif type(annee) == list:
         plt.title(
-            "Nombre de publications " + titre + " entre " + str(annee[0]) + " et " + str(annee[-1]) + "\nmesurée en " +
-            str(date.today().month) + "/" + str(date.today().year),
+            "Nombre de publications " + titre + " entre " + str(annee[0]) + " et " + str(annee[-1]) + mesure_en,
             fontsize=20,
             x=0.5,
             y=1,
@@ -118,8 +116,7 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
             annee[-1]) + "/recapitulatif_" + name_file + ".png", dpi=100, bbox_inches="tight")
     else:
         plt.title(
-            "Nombre de publications " + titre + "\nmesurée en " +
-            str(date.today().month) + "/" + str(date.today().year),
+            "Nombre de publications " + titre + mesure_en,
             fontsize=20,
             x=0.5,
             y=1,

@@ -93,11 +93,15 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
 
     # Taux d'Open Access
     if oa_circulaire:
+        graphique_oa_circulaire.graphique_circulaire_oa(df=df, dossier=nom_dossier)
         graphique_oa_circulaire.graphique_circulaire_oa(df=df, annee=annee, dossier=nom_dossier)
+        graphique_oa_circulaire.graphique_circulaire_oa(df=df, annee=annees, dossier=nom_dossier)
 
-        
     if oa_discipline:
+        graphique_oa_discipline.graphique_discipline_oa(df=df, dossier=nom_dossier)
         graphique_oa_discipline.graphique_discipline_oa(df=df, annee=annee, dossier=nom_dossier)
+        graphique_oa_discipline.graphique_discipline_oa(df=df, annee=annees, dossier=nom_dossier)
+
     if oa_evolution:
         graphique_oa_evolution.graphique_oa_evolution(df=df, annees=annees, dossier=nom_dossier, doi_only=False)
     if oa_editeur:  # problème d'éditeur/publisher -> il manque la moitié
@@ -110,6 +114,7 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         graphique_apc_evolution.graphique_apc_evolution(df=df, annees=annees, dossier=nom_dossier)
     if apc_discipline:  # donner la possibilité de faire sur plusieurs années
         graphique_apc_discipline.graphique_apc_discipline(df=df, annee=annee, dossier=nom_dossier)
+
     if bibliodiversite:
         graphique_bibliodiversite.graphique_bibliodiversite(df=df, dossier=nom_dossier)
         graphique_bibliodiversite.graphique_bibliodiversite(df=df, annee=annee, dossier=nom_dossier)

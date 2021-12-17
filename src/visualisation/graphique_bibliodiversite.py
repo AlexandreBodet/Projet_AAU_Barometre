@@ -5,7 +5,8 @@ from datetime import date
 
 def graphique_bibliodiversite(df, dossier, annee=None):
     """
-    Pour éclairer la bibliodiversité
+    Graphique avec le nombre de publications par publisher.
+    Pour éclairer la bibliodiversité.
     :param pd.Dataframe df: dataframe d'entrée
     :param annee: un entier pour les publications d'une seule année ou une liste d'années
     :param str dossier: dossier unique dans lequel enregistrer les résultats
@@ -41,7 +42,7 @@ def graphique_bibliodiversite(df, dossier, annee=None):
     df4graph = bibdiversity[:30]
 
     fig, (ax) = plt.subplots(figsize=(15, 10),
-                             dpi=100, facecolor='w', edgecolor='k')
+                             dpi=100, facecolor="w", edgecolor="k")
     ax.bar(
         df4graph.index,
         df4graph.is_oa,
@@ -61,22 +62,22 @@ def graphique_bibliodiversite(df, dossier, annee=None):
             (x, y),
             textcoords="offset points",  # comment positionner le texte
             xytext=(0, 2),  # distance du texte aux points (x,y)
-            ha='left',  # l'alignement horizontal peut être 'left', 'right' ou 'center'
-            va='bottom',
+            ha="left",  # l'alignement horizontal peut être "left", "right" ou "center"
+            va="bottom",
             rotation=30,
             fontsize=9
         )
 
-    # Configurer l'affichage
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
+    # Configurer l"affichage
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
     ax.set_ylabel("Nombre de publications", labelpad=10)
     ax.set_xlabel("Éditeurs", labelpad=10)
 
     # enlever xticks
     plt.tick_params(
-        axis='x',  # changement sur l'axe x
-        which='both',  # les ticks majeurs et mineurs sont affectés
+        axis="x",  # changement sur l'axe x
+        which="both",  # les ticks majeurs et mineurs sont affectés
         bottom=False,  # pas de ticks sur le bord du bas
         top=False,  # même chose en haut
         labelbottom=False)  # pas de labels en bas
