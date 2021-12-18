@@ -12,9 +12,9 @@ def graphique_discipline_oa(df, dossier, annee=None):
     """
     print("graphique open access par discipline", annee)
 
-    if type(annee) == int:
+    if isinstance(annee, int):
         year = df[df["published_year"] == annee].copy()
-    elif type(annee) == list:  # une liste d'années
+    elif isinstance(annee, list):  # une liste d'années
         year = df[df["published_year"].isin(annee)].copy()
     else:  # Sinon on prend tout
         year = df.copy()
@@ -111,13 +111,13 @@ def graphique_discipline_oa(df, dossier, annee=None):
                framealpha=False)
 
     mesure_en = "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year)
-    if type(annee) == int:
+    if isinstance(annee, int):
         plt.title(
             "Taux d'accès ouvert des publications par domaine en " + str(annee) + mesure_en, fontsize=25, x=0.49,
             y=1.07, alpha=0.6)
         plt.savefig("./resultats/img/" + dossier + "/" + str(annee) + "/oa_discipline.png", dpi=100,
                     bbox_inches="tight", pad_inches=0.1)
-    elif type(annee) == list:
+    elif isinstance(annee, list):
         plt.title(
             "Taux d'accès ouvert des publications par domaine entre " + str(annee[0]) + " et " + str(
                 annee[-1]) + mesure_en, fontsize=25, x=0.49, y=1.07, alpha=0.6)

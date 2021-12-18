@@ -13,9 +13,9 @@ def graphique_circulaire_oa(df, dossier, annee=None):
 
     print("graphique discipline oa circulaire", annee)
 
-    if type(annee) == int:
+    if isinstance(annee, int):
         dfpie = df[df["published_year"] == annee].copy()
-    elif type(annee) == list:  # une liste d'années
+    elif isinstance(annee, list):  # une liste d'années
         dfpie = df[df["published_year"].isin(annee)].copy()
     else:  # Sinon on prend tout
         dfpie = df.copy()
@@ -64,12 +64,12 @@ def graphique_circulaire_oa(df, dossier, annee=None):
 
     # ax.legend(loc="", fontsize = 12)
     mesure_en = "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year)
-    if type(annee) == int:
+    if isinstance(annee, int):
         plt.title("Proportion des publications en accès ouvert en " + str(annee) + mesure_en, fontsize=23, x=0.55,
                   y=1.8, alpha=0.6)
         plt.savefig("./resultats/img/" + dossier + "/" + str(annee) + "/oa_circulaire.png", dpi=150,
                     bbox_inches="tight", pad_inches=0.9)
-    elif type(annee) == list:
+    elif isinstance(annee, list):
         plt.title(
             "Proportion des publications en accès ouvert entre " + str(annee[0]) + " et " + str(annee[-1]) + mesure_en,
             fontsize=23, x=0.55, y=1.8, alpha=0.6)

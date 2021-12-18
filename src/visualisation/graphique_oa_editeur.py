@@ -2,66 +2,43 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def graphique_oa_editeur(df, annee, dossier):
+def graphique_oa_editeur(df, dossier, annee=None):
     """
-    Type d'accès ouvert par éditeur.
-    :param annee:
-    :param dataframe df: dataframe aligné
+    Type d'accès ouvert par éditeur. Prend les 20 éditeurs avec le plus de publications pour une année, plusieurs années ou sur toutes les publications.
+
+    :param pd.Dataframe df: dataframe d'entrée
+    :param annee: int, list ou None. Désigne les années à sélectionner. None laisse toutes les publications
     :param str dossier: dossier unique dans lequel enregistrer les résultats
-    :return:
     """
-    oneyear_pub = df.loc[df['published_year'] == annee, :].copy()
+    if isinstance(annee, int):
+        year = df[df["published_year"] == annee].copy()
+    elif isinstance(annee, list):  # une liste d'années
+        year = df[df["published_year"].isin(annee)].copy()
+    else:  # Sinon on prend tout
+        year = df.copy()
+    print("graphique oa editeur", annee)
 
-    # print(oneyear_pub['publisher'].value_counts().iloc[0:30])
-
-    # fusionner les éditeurs similaires
-    oneyear_pub["publisher"].replace({"Elsevier BV": "Elsevier"}, inplace=True)
-    oneyear_pub["publisher"].replace(
+    # Fusionner les éditeurs similaires
+    year["publisher"].replace({"Elsevier BV": "Elsevier"}, inplace=True)
+    year["publisher"].replace(
         {"Springer Science and Business Media LLC": "Springer"}, inplace=True)
-    oneyear_pub["publisher"].replace(
+    year["publisher"].replace(
         {"Springer International Publishing": "Springer"}, inplace=True)
 
-    publications_par_editeur = oneyear_pub['publisher'].value_counts(
-    ).iloc[0:30]
-    print("\n\napres fusion\n\n", publications_par_editeur)
+    publications_par_editeur = year["publisher"].value_counts().iloc[0:20]  # 20 premiers éditeurs sélectionnés
 
-    sel_editors = [
-        "Elsevier",
-        "Springer",
-        "Wiley",
-        "Oxford University Press (OUP)",
-        "MDPI AG",
-        "EDP Sciences",
-        "Ovid Technologies (Wolters Kluwer Health)",
-        "American Physical Society (APS)",
-        "Frontiers Media SA",
-        "Informa UK Limited",
-        "BMJ",
-        "American Chemical Society (ACS)",
-        "American Astronomical Society",
-        "IOP Publishing",
-        "Cold Spring Harbor Laboratory"]
-
-    oneyear_editors = oneyear_pub[oneyear_pub['publisher'].isin(sel_editors)]
-
-    # #Quelle est la proportion d'accès ouvert, par type d'accès, des publications par éditeur dans l'année ?
-    # df_oa_editeur_global = pd.crosstab([oneyear_editors['publisher']],oneyear_editors['oa_type'])
-    # df_oa_editeur_global["Total"] = publications_par_editeur
-    # df_oa_editeur_global["y_label"] = df_oa_editeur_global.index + " - " + df_oa_editeur_global["Total"].apply(str) + " publications"
-
-    # df_oa_editeur_global.index = df_oa_editeur_global["y_label"]
-
-    # récupérer les données d'accès ouvert
+    # Récupérer les données d'accès ouvert
     df_oa_editeur = pd.crosstab(
-        [oneyear_pub['publisher']], oneyear_editors['oa_type'])
+        [year["publisher"]], year["oa_type"])
     # Convertir le résultat en pourcentages
     df_oa_editeur = (df_oa_editeur.T / df_oa_editeur.T.sum()).mul(100).round(1)
     df_oa_editeur = df_oa_editeur.T
     df_oa_editeur["Total"] = publications_par_editeur
-    df_oa_editeur["y_label"] = df_oa_editeur.index + "\n" + \
-        df_oa_editeur["Total"].apply(str) + " publications"
+    df_oa_editeur.dropna(inplace=True)  # On supprime les lignes de publishers qui ne sont pas dans le top 20
+    df_oa_editeur["y_label"] = df_oa_editeur.index + " - " + df_oa_editeur["Total"].astype(int).apply(
+        str) + " publications"
     df_oa_editeur.index = df_oa_editeur["y_label"]
-    df_oa_editeur.sort_values(by=['closed'], ascending=True, inplace=True)
+    df_oa_editeur.sort_values(by=["Total", "closed"], ascending=[False, True], inplace=True)
 
     # __2__ Générer le graphique
 
@@ -71,24 +48,25 @@ def graphique_oa_editeur(df, annee, dossier):
                                          stacked=True,
                                          figsize=(15,
                                                   13),
-                                         color=['tomato',
-                                                'gold',
-                                                'greenyellow',
-                                                'seagreen'])
+                                         color=["tomato",
+                                                "gold",
+                                                "greenyellow",
+                                                "seagreen"])
 
-    # ___3____ Configurer l'affichage
+    # ___3____ Configurer l"affichage
 
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.spines['bottom'].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["bottom"].set_visible(False)
 
+    # enlever xticks
     plt.tick_params(
-        axis='x',  # changes apply to the x-axis
-        which='both',  # both major and minor ticks are affected
-        bottom=False,  # ticks along the bottom edge are off
-        labelbottom=False)  # labels along the bottom edge are off
+        axis="x",  # changement sur l'axe x
+        which="both",  # les ticks majeurs et mineurs sont affectés
+        bottom=False,  # pas de ticks sur le bord du bas
+        labelbottom=False)  # pas de labels en bas
 
-    # Ajouter le pourcentage pour chaque types
+    # Ajouter le pourcentage pour chaque type
     labels = []
     for j in df_oa_editeur.columns:
         for i in df_oa_editeur.index:
@@ -110,20 +88,20 @@ def graphique_oa_editeur(df, annee, dossier):
                 x + .3 + width / 2.,
                 y + height / 2.,
                 label,
-                ha='center',
-                va='center',
+                ha="center",
+                va="center",
                 fontsize=11)
 
     plt.gca().invert_yaxis()
-    plt.tick_params(axis='both', labelsize=18)
+    plt.tick_params(axis="both", labelsize=18)
     plt.ylabel(None)
 
     # générer une première fois sans renommer les colonnes pour s'assurer que le renommage est correct
-    plt.legend(['Accès fermé',
-                'Éditeur',
-                'Éditeur et Archive ouverte',
-                'Archive ouverte'],
-               loc='best',
+    plt.legend(["Accès fermé",
+                "Éditeur",
+                "Éditeur et Archive ouverte",
+                "Archive ouverte"],
+               loc="best",
                ncol=4,
                markerscale=1,
                title=None,
@@ -134,20 +112,58 @@ def graphique_oa_editeur(df, annee, dossier):
                                0.985),
                framealpha=False)
 
-    plt.title(
-        "Taux d'accès ouvert aux publications depuis toujours par éditeurs",
-        fontsize=34,
-        x=0.49,
-        y=1.1,
-        alpha=0.6)
-    plt.suptitle(
-        "Visualisation des 15 premiers éditeurs par quantité de publications",
-        fontsize=20,
-        x=0.49,
-        y=0.95,
-        alpha=0.6)
-    plt.savefig(
-        "./resultats/img/"+dossier+"/oa_editeur.png",
-        dpi=100,
-        bbox_inches='tight',
-        pad_inches=0.9)
+    if isinstance(annee, int):
+        plt.title(
+            "Taux d'accès ouvert aux publications en " + str(annee) + " par éditeur",
+            fontsize=34,
+            x=0.49,
+            y=1.1,
+            alpha=0.6)
+        plt.suptitle(
+            "Visualisation des 20 premiers éditeurs par quantité de publications",
+            fontsize=20,
+            x=0.49,
+            y=0.95,
+            alpha=0.6)
+        plt.savefig(
+            "./resultats/img/" + dossier + "/" + str(annee) + "/oa_editeur.png",
+            dpi=100,
+            bbox_inches="tight",
+            pad_inches=0.9)
+    elif isinstance(annee, list):
+        plt.title(
+            "Taux d'accès ouvert aux publications entre " + str(annee[0]) + " et " + str(annee[-1]) + " par éditeur",
+            fontsize=34,
+            x=0.49,
+            y=1.1,
+            alpha=0.6)
+        plt.suptitle(
+            "Visualisation des 20 premiers éditeurs par quantité de publications",
+            fontsize=20,
+            x=0.49,
+            y=0.95,
+            alpha=0.6)
+        plt.savefig(
+            "./resultats/img/" + dossier + "/" + str(annee[0]) + "-" + str(annee[-1]) + "/oa_editeur.png",
+            dpi=100,
+            bbox_inches="tight",
+            pad_inches=0.9)
+    else:
+        plt.title(
+            "Taux d'accès ouvert aux publications par éditeur",
+            fontsize=34,
+            x=0.49,
+            y=1.1,
+            alpha=0.6)
+        plt.suptitle(
+            "Visualisation des 20 premiers éditeurs par quantité de publications",
+            fontsize=20,
+            x=0.49,
+            y=0.95,
+            alpha=0.6)
+        plt.savefig(
+            "./resultats/img/" + dossier + "/oa_editeur.png",
+            dpi=100,
+            bbox_inches="tight",
+            pad_inches=0.9)
+    plt.close()

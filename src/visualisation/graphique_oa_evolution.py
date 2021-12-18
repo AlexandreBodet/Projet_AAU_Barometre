@@ -1,35 +1,24 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from datetime import date 
+from datetime import date
+
 
 def graphique_oa_evolution(df, annees, dossier, doi_only=False):
     """
     Graphique de l'évolution d'open access.
-    :param df:
-    :param annees:
+    :param pd.Dataframe df: dataframe d'entrée
+    :param list annees: Désigne les années à sélectionner
     :param str dossier: dossier unique dans lequel enregistrer les résultats
-    :param doi_only:
-    :return:
+    :param doi_only: utilise uniquement les publications avec doi
     """
+    print("graphique evolution oa")
+
     # Récupérer les données
-
-    print("\ngraphique evolution oa\n")
-
     df_annees = df.loc[df["published_year"].isin(annees), :]
-    print("Nombre de publications à traiter", len(df_annees))
+
     pd.set_option("mode.chained_assignment", None)
     df_annees.is_oa = df_annees.is_oa.astype(bool)
-
-    # retour console uniquement : comparer les valeurs avec ou sans DOI
-    halnodoi = df_annees[df_annees["doi"] == ""]
-    print(f"nb publications hal uniquement {len(halnodoi.index)}")
-
-    print(
-        f"soit {round(len(halnodoi.index) / len(df_annees) * 100, 1)}% en plus ")
-    haloa = df_annees.loc[(df_annees["doi"] == "") & (df_annees["is_oa"]), :]
-
-    print("nombre de publications oa dans hal", len(haloa))
 
     if doi_only:
         # /!\ Si on veut réduire aux publications avec DOI seulement
@@ -41,23 +30,13 @@ def graphique_oa_evolution(df, annees, dossier, doi_only=False):
     df_annees["oa_publisher"] = df_annees.oa_type == "publisher"
     df_annees["oa_unk"] = df_annees.oa_type == "unknow"
 
-    # definition du taux AO par années
+    # définition du taux AO par an
     dfoa = pd.DataFrame(df_annees.groupby(["published_year"])[
-                            ["is_oa", "oa_repository", "oa_publisher", "oa_unk", "oa_publisher_repository"]].agg(
+        ["is_oa", "oa_repository", "oa_publisher", "oa_unk", "oa_publisher_repository"]].agg(
         ["count", np.mean])).reset_index()
 
-    dfoa.columns = [
-        "published_year",
-        "nb_doi",
-        "oa_mean",
-        "nbdoi1",
-        "oa_repository_mean",
-        "nb_doi2",
-        "oa_publisher_mean",
-        "nb_doi3",
-        "oa_unk_mean",
-        "nb_doi4",
-        "oa_publisher_repository_mean"]
+    dfoa.columns = ["published_year", "nb_doi", "oa_mean", "nbdoi1", "oa_repository_mean", "nb_doi2",
+                    "oa_publisher_mean", "nb_doi3", "oa_unk_mean", "nb_doi4", "oa_publisher_repository_mean"]
 
     dfoa["year_label"] = dfoa.apply(lambda x: "{}\n{} publications".format(
         str(x.published_year), int(x.nb_doi)), axis=1)
@@ -110,18 +89,16 @@ def graphique_oa_evolution(df, annees, dossier, doi_only=False):
     # tracer les grilles
     ax.yaxis.grid(ls="--", alpha=0.4)
 
-    # just to remove an mess error UserWarning: FixedFormatter should only be
-    # used together with FixedLocator
     ax.set_xticks(np.arange(len(dfoa["year_label"])))
     ax.set_xticklabels(dfoa["year_label"].tolist(), fontsize=15, rotation=30)
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
     ax.set_yticklabels(["{:,.0%}".format(x)
                         for x in ax.get_yticks()], fontsize=10)
-    # réordonner la légende pour avoir en haut l"éditeur
+    # réordonner la légende pour avoir en haut l'éditeur
     handles, labels = ax.get_legend_handles_labels()
     order = [2, 1, 0]
-    ax.legend([handles[idx] for idx in order], [labels[idx]
-                                                for idx in order], fontsize=15, loc="upper center", borderaxespad=1.7)
+    ax.legend([handles[idx] for idx in order], [labels[idx] for idx in order], fontsize=15, loc="upper center",
+              borderaxespad=1.7)
 
     oa_total_mean = [
         sum(x) for x in zip(
@@ -138,12 +115,8 @@ def graphique_oa_evolution(df, annees, dossier, doi_only=False):
                     textcoords="offset points",
                     ha="center", va="bottom")
 
-    # Ajouter les taux par type, difficulté : il faut prendre en compte les
-    # taux précédents
-    colname = [
-        "oa_repository_mean",
-        "oa_publisher_repository_mean",
-        "oa_publisher_mean"]
+    # Ajouter les taux par type, difficulté : il faut prendre en compte les taux précédents
+    colname = ["oa_repository_mean", "oa_publisher_repository_mean", "oa_publisher_mean"]
     for col in colname:
         for year_ix in range(len(dfoa.year_label)):
 
@@ -159,11 +132,10 @@ def graphique_oa_evolution(df, annees, dossier, doi_only=False):
                         textcoords="offset points",
                         ha="center", va="bottom", color="black")
 
-    plt.title("Évolution du taux d'accès ouvert aux publications" + "\nmesurée en " +
-              str(date.today().month) + "/" + str(date.today().year),
-              fontsize=25, x=0.5, y=1.05, alpha=0.6)
+    plt.title(
+        "Évolution du taux d'accès ouvert aux publications" + "\nmesurée en " + str(date.today().month) + "/" + str(
+            date.today().year), fontsize=25, x=0.5, y=1.05, alpha=0.6)
     plt.savefig(
-        "./resultats/img/"+dossier+"/oa_evolution_"+str(annees[0])+"_"+str(annees[-1])+".png",
-        dpi=100,
-        bbox_inches="tight",
-        pad_inches=0.1)
+        "./resultats/img/" + dossier + "/" + str(annees[0]) + "-" + str(annees[-1]) + "/oa_evolution.png", dpi=100,
+        bbox_inches="tight", pad_inches=0.1)
+    plt.close()

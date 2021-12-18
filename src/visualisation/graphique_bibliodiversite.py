@@ -14,9 +14,9 @@ def graphique_bibliodiversite(df, dossier, annee=None):
     """
     print("graphique bibliodiversite ", annee)
 
-    if type(annee) == int:
+    if isinstance(annee, int):
         year = df[(df["published_year"] == annee) & (df["publisher"] != "")].copy()
-    elif type(annee) == list:  # une liste d'années
+    elif isinstance(annee, list):  # une liste d'années
         year = df[(df["published_year"].isin(annee)) & (df["publisher"] != "")].copy()
     else:
         year = df[df["publisher"] != ""].copy()
@@ -89,7 +89,7 @@ def graphique_bibliodiversite(df, dossier, annee=None):
             0.5,
             0.95),
         borderaxespad=1.7)
-    if type(annee) == int:
+    if isinstance(annee, int):
         plt.title(
             "Répartition des 30 premiers éditeurs\npar nombre de publications pour l'année " + str(
                 annee) + "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year),
@@ -105,7 +105,7 @@ def graphique_bibliodiversite(df, dossier, annee=None):
             alpha=0.6)
         plt.savefig("./resultats/img/" + dossier + "/" + str(annee) + "/bibliodiversite.png", bbox_inches="tight",
                     pad_inches=0.1)
-    elif type(annee) == list:  # une liste d'années
+    elif isinstance(annee, list):  # une liste d'années
         plt.title(
             "Répartition des 30 premiers éditeurs\npar nombre de publications entre " + str(annee[0]) + " et " + str(
                 annee[-1]) + "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year),

@@ -6,16 +6,17 @@ from datetime import date
 
 def graphique_genre(df, dossier, annee=None):
     """
-    Graphique du nombre de publications par discipline
+    Graphique du nombre de publications par discipline.
+
     :param pd.Dataframe df: dataframe d'entrée
     :param str dossier: dossier unique dans lequel enregistrer les résultats
     :param annee: int, list ou None. Désigne les années à sélectionner. None laisse toutes les publications
     """
     print("graphique genre", annee)
 
-    if type(annee) == int:
+    if isinstance(annee, int):
         year = df[df["published_year"] == annee].copy()
-    elif type(annee) == list:  # une liste d'années
+    elif isinstance(annee, list):  # une liste d'années
         year = df[df["published_year"].isin(annee)].copy()
     else:  # Sinon on prend tout
         year = df.copy()
@@ -59,7 +60,7 @@ def graphique_genre(df, dossier, annee=None):
     # plt.tight_layout()
     plt.legend(loc="upper center", fontsize=14, borderaxespad=1.7)
     mesure_en = "\nmesurée en " + str(date.today().month) + "/" + str(date.today().year)
-    if type(annee) == int:
+    if isinstance(annee, int):
         plt.title(
             "Nombre de publications par genre en " + str(annee) + mesure_en,
             fontsize=20,
@@ -67,7 +68,7 @@ def graphique_genre(df, dossier, annee=None):
             y=1,
             alpha=0.6)
         plt.savefig("./resultats/img/" + dossier + "/" + str(annee) + "/recapitulatif_genre.png", bbox_inches="tight")
-    elif type(annee) == list:
+    elif isinstance(annee, list):
         plt.title(
             "Nombre de publications par genre entre " + str(annee[0]) + " et " + str(annee[-1]) + mesure_en,
             fontsize=20,

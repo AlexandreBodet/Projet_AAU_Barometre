@@ -87,25 +87,26 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         graphique_rec_base.graphique_comparaison_bases(dossier=nom_dossier)
 
     if rec_genre:  # NEW -- à voir si tu trouves ça pertinent
-        graphique_rec_genre.graphique_genre(df, dossier=nom_dossier)
-        graphique_rec_genre.graphique_genre(df, annee=annee, dossier=nom_dossier)
-        graphique_rec_genre.graphique_genre(df, annee=annees, dossier=nom_dossier)
+        fonctions_multiples(func=graphique_rec_genre.graphique_genre, df=df, dossier=nom_dossier,
+                            annee=annee, annees=annees)
 
     # Taux d'Open Access
     if oa_circulaire:
-        graphique_oa_circulaire.graphique_circulaire_oa(df=df, dossier=nom_dossier)
-        graphique_oa_circulaire.graphique_circulaire_oa(df=df, annee=annee, dossier=nom_dossier)
-        graphique_oa_circulaire.graphique_circulaire_oa(df=df, annee=annees, dossier=nom_dossier)
+        fonctions_multiples(func=graphique_oa_circulaire.graphique_circulaire_oa, df=df, dossier=nom_dossier,
+                            annee=annee, annees=annees)
 
     if oa_discipline:
-        graphique_oa_discipline.graphique_discipline_oa(df=df, dossier=nom_dossier)
-        graphique_oa_discipline.graphique_discipline_oa(df=df, annee=annee, dossier=nom_dossier)
-        graphique_oa_discipline.graphique_discipline_oa(df=df, annee=annees, dossier=nom_dossier)
+        fonctions_multiples(func=graphique_oa_discipline.graphique_discipline_oa, df=df, dossier=nom_dossier,
+                            annee=annee, annees=annees)
 
     if oa_evolution:
         graphique_oa_evolution.graphique_oa_evolution(df=df, annees=annees, dossier=nom_dossier, doi_only=False)
+
     if oa_editeur:  # problème d'éditeur/publisher -> il manque la moitié
+        graphique_oa_editeur.graphique_oa_editeur(df=df, dossier=nom_dossier)
         graphique_oa_editeur.graphique_oa_editeur(df=df, annee=annee, dossier=nom_dossier)
+        graphique_oa_editeur.graphique_oa_editeur(df=df, annee=annees, dossier=nom_dossier)
+
     if oa_type_evolution:
         graphique_oa_type_evolution.graphique_evolution_type_oa(df=df, annees=annees, dossier=nom_dossier)
 
@@ -116,7 +117,11 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         graphique_apc_discipline.graphique_apc_discipline(df=df, annee=annee, dossier=nom_dossier)
 
     if bibliodiversite:
-        graphique_bibliodiversite.graphique_bibliodiversite(df=df, dossier=nom_dossier)
-        graphique_bibliodiversite.graphique_bibliodiversite(df=df, annee=annee, dossier=nom_dossier)
-        graphique_bibliodiversite.graphique_bibliodiversite(df=df, annee=annees,
-                                                            dossier=nom_dossier)  # Même chose sur plusieurs années
+        fonctions_multiples(func=graphique_bibliodiversite.graphique_bibliodiversite, df=df, dossier=nom_dossier,
+                            annee=annee, annees=annees)
+
+
+def fonctions_multiples(func, df, dossier, annee, annees):
+    func(df=df, dossier=dossier)
+    func(df=df, annee=annee, dossier=dossier)
+    func(df=df, annee=annees, dossier=dossier)
