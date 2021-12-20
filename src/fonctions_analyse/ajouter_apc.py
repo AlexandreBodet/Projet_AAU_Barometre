@@ -58,7 +58,7 @@ def track_apc(doi, ligne, open_apc_dois, openapc_journals, doaj_apc_journals):
     if ligne.oa_status == "hybrid":
         return {"apc_tracking": "journal_is_hybrid"}
 
-    # Si le journal est dans le DOAJ extraire les données d' APC du DOAJ
+    # Si le journal est dans le DOAJ extraire les données d'APC du DOAJ
     cols = ["Journal ISSN (print version)", "Journal EISSN (online version)"]
     for item in issns:
         for col in cols:
@@ -94,7 +94,7 @@ def check_suspicious_j(ligne, suspiciousIssns):
 
 def clean_pub_year(x):
     """
-    Donne l'année mais en entier.
+    Donne l'année, mais en entier.
 
     :param str x: année en entrée
     :return int: année en sortie

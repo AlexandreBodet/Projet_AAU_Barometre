@@ -41,15 +41,15 @@ def deduce_diamond(row):
 
 def graphique_evolution_type_oa(df, annees, dossier):
     """
-    Evolution des types d'accès ouvert green à diamond.
-    :param df:
-    :param annees:
+    Evolution des types d'accès ouvert green à diamond sur une période donnée.
+
+    :param pd.Dataframe df: dataframe d'entrée
+    :param list annees: Désigne les années à sélectionner
     :param str dossier: dossier unique dans lequel enregistrer les résultats
-    :return:
     """
-    df = df.loc[df["published_year"].isin(annees), :]
-    print("doc a traiter", len(df))
-    print("doc en oa", len(df[df["is_oa"]]))
+    df = df[df["published_year"].isin(annees)].copy()
+    df.fillna(value={"apc_tracking": ""}, inplace=True)
+    print("graphique d'évolution du type d'OA")
 
     # Récupérer les données
     # repo only = repo and not suspicious
@@ -77,8 +77,9 @@ def graphique_evolution_type_oa(df, annees, dossier):
                     "diamond": "bool",
                     "suspicious_journal": "bool"})
 
-    dfoatype = pd.DataFrame(df.groupby(["published_year"])[
-                            ["green", "suspicious_journal", "bronze", "hybrid", "gold", "diamond"]].agg(["count", np.mean])).reset_index()
+    dfoatype = pd.DataFrame(
+        df.groupby(["published_year"])[["green", "suspicious_journal", "bronze", "hybrid", "gold", "diamond"]].agg(
+            ["count", np.mean])).reset_index()
 
     dfoatype.columns = [
         "published_year",
@@ -95,15 +96,14 @@ def graphique_evolution_type_oa(df, annees, dossier):
         "nb6",
         "diamond"]
 
-    # ajout du nombre de publications pour l"abscisse
-    dfoatype["year_label"] = dfoatype.apply(lambda x: "{}\n({} publications)".format(
-        str(x.published_year), int(x.nb1)), axis=1)
+    # ajout du nombre de publications pour l'abscisse
+    dfoatype["year_label"] = dfoatype.apply(lambda x: "{}\n{} publications".format(
+        int(x.published_year), int(x.nb1)), axis=1)
     dfoatype = dfoatype.sort_values(by="published_year", ascending=True)
 
     # ____1____ passer les données dans le modèle de representation graphique
 
-    fig, (ax) = plt.subplots(figsize=(12, 7),
-                             dpi=100, facecolor="w", edgecolor="k")
+    fig, (ax) = plt.subplots(figsize=(12, 7), dpi=100, facecolor="w", edgecolor="k")
 
     ax.bar(
         dfoatype.year_label,
@@ -170,8 +170,10 @@ def graphique_evolution_type_oa(df, annees, dossier):
     ax.spines["left"].set_visible(False)
     # tracer les grilles
     ax.yaxis.grid(ls="--", alpha=0.2)
+    ax.set_xticks(np.arange(len(dfoatype["year_label"])))
+    ax.set_xticklabels(dfoatype["year_label"].tolist(), fontsize=12, rotation=30)
     # preciser legend pour Y
-    ax.set_ylim([0, .8])
+    ax.set_ylim([0, 1])
     ax.yaxis.set_major_locator(mticker.FixedLocator(ax.get_yticks().tolist()))
     ax.set_yticklabels(
         [f"{int(round(x * 100))} %" for x in ax.get_yticks()], fontsize=10)
@@ -209,5 +211,6 @@ def graphique_evolution_type_oa(df, annees, dossier):
 
     plt.title("Évolution des types d'accès ouvert",
               fontsize=18, x=0.5, y=1.05, alpha=0.8)
-    plt.savefig("./resultats/img/"+dossier+"/oa_type_evolution.png", dpi=100,
-                bbox_inches="tight")  # , pad_inches=0.1)
+    plt.savefig("./resultats/img/" + dossier + "/" + str(annees[0]) + "-" + str(annees[-1]) + "/oa_type_evolution.png",
+                dpi=100, bbox_inches="tight")  # , pad_inches=0.1)
+    plt.close()

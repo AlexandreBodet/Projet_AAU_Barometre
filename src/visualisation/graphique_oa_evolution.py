@@ -7,6 +7,7 @@ from datetime import date
 def graphique_oa_evolution(df, annees, dossier, doi_only=False):
     """
     Graphique de l'évolution d'open access.
+
     :param pd.Dataframe df: dataframe d'entrée
     :param list annees: Désigne les années à sélectionner
     :param str dossier: dossier unique dans lequel enregistrer les résultats
@@ -39,7 +40,7 @@ def graphique_oa_evolution(df, annees, dossier, doi_only=False):
                     "oa_publisher_mean", "nb_doi3", "oa_unk_mean", "nb_doi4", "oa_publisher_repository_mean"]
 
     dfoa["year_label"] = dfoa.apply(lambda x: "{}\n{} publications".format(
-        str(x.published_year), int(x.nb_doi)), axis=1)
+        int(x.published_year), int(x.nb_doi)), axis=1)
     dfoa = dfoa.sort_values(by="published_year", ascending=True)
 
     # ____1____ passer les données dans le modèle de representation
