@@ -6,6 +6,7 @@ from datetime import date
 def graphique_discipline_oa(df, dossier, annee=None):
     """
     Graphique d'open access par discipline
+
     :param pd.Dataframe df: dataframe d'entrée
     :param str dossier: dossier unique dans lequel enregistrer les résultats
     :param annee: int, list ou None. Désigne les années à sélectionner. None laisse toutes les publications
@@ -47,12 +48,18 @@ def graphique_discipline_oa(df, dossier, annee=None):
     df_oa_discipline = df_oa_discipline.T
     df_oa_discipline["Total"] = publications_par_domaine
     df_oa_discipline["y_label"] = df_oa_discipline.index + "\n" + df_oa_discipline["Total"].apply(str) + " publications"
-    df_oa_discipline.index = df_oa_discipline["y_label"]
 
-    df_oa_discipline.sort_index(ascending=False, inplace=True)
+    pour_graphe = df_oa_discipline[~df_oa_discipline.index.isin(["Autres"])].copy()  # tout sauf Autres
+    pour_graphe.sort_values("Total", ascending=True,
+                            inplace=True)  # plus de publications = à la fin (en haut du graphique)
+    pour_graphe.reset_index(inplace=True)
+    pour_graphe.loc[-1] = df_oa_discipline.loc["Autres"]  # rajout de Autres au début
+    pour_graphe.loc[-1, "scientific_field"] = "Autres"
+    pour_graphe.sort_index(inplace=True)
+    pour_graphe.index = pour_graphe["y_label"]
 
-    ax = df_oa_discipline.drop(["Total", "y_label"], axis=1).plot(kind="barh", stacked=True, figsize=(14, 10),
-                                                                  color=["tomato", "gold", "greenyellow", "seagreen"])
+    ax = pour_graphe.drop(["Total", "y_label"], axis=1).plot(kind="barh", stacked=True, figsize=(14, 10),
+                                                             color=["tomato", "gold", "greenyellow", "seagreen"])
     # ax.xaxis.set_major_formatter(mtick.PercentFormatter())
 
     # Configurer l'affichage
@@ -68,9 +75,9 @@ def graphique_discipline_oa(df, dossier, annee=None):
         labelbottom=False)  # pas de labels en bas
 
     labels = []
-    for j in df_oa_discipline.columns:
-        for i in df_oa_discipline.index:
-            label = df_oa_discipline.loc[i][j]
+    for j in pour_graphe.columns:
+        for i in pour_graphe.index:
+            label = pour_graphe.loc[i][j]
             if not isinstance(label, str):
                 # pour un meilleur affichage : si ce n'est pas la discipline on arrondit
                 label = str(round(label))

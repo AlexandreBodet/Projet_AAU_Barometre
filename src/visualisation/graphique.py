@@ -114,10 +114,13 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
                             annee=annee, annees=annees)
 
     # APCs
-    if apc_evolution:  # peut-être pas utile, à modifier # je n'ai encore pu regarder ça 
+    if apc_evolution:
         graphique_apc_evolution.graphique_apc_evolution(df=df, annees=annees, dossier=nom_dossier)
-    if apc_discipline:  # donner la possibilité de faire sur plusieurs années
-        graphique_apc_discipline.graphique_apc_discipline(df=df, annee=annee, dossier=nom_dossier)
+
+    if apc_discipline:
+        fonctions_multiples(func=graphique_apc_discipline.graphique_apc_discipline, df=df, dossier=nom_dossier,
+                            annee=annee, annees=annees)
+    return nom_dossier
 
 
 def fonctions_multiples(func, df, dossier, annee, annees):

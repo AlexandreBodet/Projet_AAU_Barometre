@@ -28,8 +28,6 @@ Titre;Réf. HAL;DOI
 ['UDMV16: Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068689;
 "[""Écologie sociale de l'oreille. Enquêtes d'expérience musicale""]";hal-03290511;
 ['Des jardins pour ménager les bords de route et de voie ferrée. Actes du Séminaire de recherche, Grenoble, 17 décembre 2012'];hal-00993760;
-['Réalité virtuelle et réalité augmentée : mythes et réalités'];hal-01963014;
-['Virtual Reality, Augmented Reality: myths and realities'];hal-01812771;
 ['La qualité sonore des espaces habités / Sonic quality in the living environment'];hal-01373799;
 ['Matérialités contemporaines = Materiality in its contemporary forms : architecture, perception, fabrication, conception. MC 2012 Symposium, Villefontaine, novembre 2012'];hal-00993761;
 ['Ambiances urbaines en partage. Pour une écologie sociale de la ville sensible'];hal-00993765;
@@ -56,6 +54,9 @@ Titre;Réf. HAL;DOI
 ['Amiens 2030 - Le quotidien en projets'];hal-00975415;
 ['De l’incertitude des savoirs aux nouvelles fabriques de l’expertise'];hal-03254766;
 ['La ville mot à mot'];hal-03334500;
+['Réalité virtuelle et réalité augmentée : mythes et réalités'];hal-01963014;
+['Virtual Reality, Augmented Reality: myths and realities'];hal-01812771;
+['Poética do Condomínio Barão de Mauá. Como restituir a persistência do meio de vida em uma área contaminada?', 'Poetics of Condomínio Barão de Mauá. How to restore livelihood persistence in a contaminated area?', 'Poétique du condominium Barão de Mauá. Comment restituer la persistance du milieu de vie dans une zone contaminée?'];halshs-02943484;
 ['Environmental impact assessment of urban mobility plan: a methodology including socio-economic consequences'];hal-01347313;10.1007/978-94-007-2540-9_2
 ['Measuring Surrounding Space to Assess the Pedestrian Visual Aperture Angle in the Urban Fabric: Toward a Kurtosis-Based Isovist Indicator'];hal-01347331;10.1007/978-3-642-19766-6_11
 "[""Parcourir pour projeter A l'entour du cimetière, un parcours au Crêt-de-Roch (Saint-Etienne) Lectures du site & enjeux de projet""]";hal-01653048;
@@ -141,13 +142,13 @@ Titre;Réf. HAL;DOI
 ['The Atmospherization of Everyday Experience'];halshs-02181915;
 ['Listening to atmospheres'];hal-03244547;
 ['Introduction'];hal-00923807;
+['De la condition habitante à la vision administrative du pays de Brest. Un décalage entre les territoires administratif et vécu, pratiqué, habité ?'];hal-03197714;
 "[""Le mouvement : un révélateur des potentialités esthétiques de l'architecture ordinaire ?""]";halshs-00605300;
 "[""La ville à l'épreuve du mouvement""]";halshs-00354155;
 ['Morale et politique dans le monument historique'];hal-00911154;
 "['Maracanã, a potência de uma ambiência', ""Maracanã, la puissance d'une ambiance""]";halshs-03137452;
 "[""Inscription de l'architecture commerciale""]";hal-01213565;
 "[""Concevoir l'architecture commerciale à partir des ambiances""]";hal-01213548;
-['Scientific and Technical Prospects'];hal-01946504;10.1002/9781119341031.ch5
 "[""De l'ambiance héritée à l'ambiance programmée Les leçons d'une expérience""]";halshs-00390170;
 ['Atmosphären. Konzept für einen nicht repräsentationellen Zugang zum Raum'];hal-00995473;
 ['Vers une culturalisation de la recherche sur les ambiances'];hal-00995478;
@@ -286,7 +287,6 @@ Titre;Réf. HAL;DOI
 ['Le handicap, miroir de la vulnérabilité de notre ordinaire'];hal-00995458;
 "[""L'interaction""]";hal-00995454;
 "[""L'utilitarisme idéal de Moore : un conséquentialisme non hédoniste""]";hal-00995455;
-['De la condition habitante à la vision administrative du pays de Brest. Un décalage entre les territoires administratif et vécu, pratiqué, habité ?'];hal-03197714;
 ['Le Parlons-en comme espace de circulation'];halshs-01775326;
 ['Trajets quotidiens : utopies ordinaires ?'];hal-03257500;
 ['Les compositions gravées en Bourgogne'];hal-01935161;
@@ -320,7 +320,6 @@ Titre;Réf. HAL;DOI
 ['Ménager des oasis urbaines : des représentations à la fabrication'];hal-03258578;
 ['Effets odorants dans les « scénezgraphies » du côté de chez Swann'];hal-02462066;
 ['Pulse. Dwelling in Sound'];hal-02568178;
-['Poética do Condomínio Barão de Mauá. Como restituir a persistência do meio de vida em uma área contaminada?', 'Poetics of Condomínio Barão de Mauá. How to restore livelihood persistence in a contaminated area?', 'Poétique du condominium Barão de Mauá. Comment restituer la persistance du milieu de vie dans une zone contaminée?'];halshs-02943484;
 ['Urbanités, entre liberté et sécurité'];hal-03109498;
 ['Les deux premières thèses de la chaire Habitat du futur'];hal-03283242;
 "[""A l'écoute des atmosphères""]";hal-01879789;
@@ -377,11 +376,16 @@ Titre;Réf. HAL;DOI
 ['Des ateliers exploratoires face à un monde découvert. Fabriquer des cohabitations scientifiques'];hal-03248193;
 ['Un aperçu de l’héritage et du devenir des oasis sahariennes'];hal-03248263;
 "['Balcony form; An approach to reduce sound pressure level into the building façade']";hal-01555295;
-['Complexity and Scientific Challenges'];hal-01944915;10.1002/9781119341031.ch3
-['Towards VE that are More Closely Related to the Real World'];hal-01735022;10.1002/9781119341031.ch4
 "[""Entre urbanité, ambiances et pragmatisme : une écologie de l'ordre public""]";hal-01640639;
 ['Les espaces-temps de la mobilité labile'];hal-01640585;
 ['Du Substrat-innovant à la Forme-innovée en architecture', 'Innovative Substrate to Form-innovated in architecture'];hal-03252703;
+['Scientific and Technical Prospects'];hal-01946504;10.1002/9781119341031.ch5
+['Towards VE that are More Closely Related to the Real World'];hal-01735022;10.1002/9781119341031.ch4
+['Complexity and Scientific Challenges'];hal-01944915;10.1002/9781119341031.ch3
+['Skyline Matching: A robust registration method between Video and GIS'];hal-00768494;10.1051/3u3d/201203007
+['Stratégies d’incitation au dépôt dans HAL par les chercheurs : deux retours d’expérience'];hal-03494414;
+['A Study of Virtual Visual Servoing Sensitivity in the Context of Image/GIS Registration for Urban Environments'];hal-01526972;10.23919/MVA.2017.7986915
+['Video/GIS registration system based on skyline matching method'];hal-01296969;10.1109/ICIP.2013.6738749
 ['Towards a new semantically enriched geoprocessing tool adapted to the Territorial Intelligence and socio-ecological foresight main thematics.'];halshs-00938242;
 ['HAUP\xa0: L’hyperambiotope urbain participatif. Une interface de composition du paysage sonore pour une nouvelle médiation des territoires'];hal-01414019;
 ['Towards a landscape potential'];hal-00634042;
@@ -404,7 +408,6 @@ Titre;Réf. HAL;DOI
 ['Urban Transects'];hal-00993642;
 ['Street listening'];hal-01789482;
 ['Describing/Modelling the Dynamics of Pedestrian Behaviour - From the Role of Ambiance to a Hypotesis for a Physical Model'];hal-00439267;
-['Video/GIS registration system based on skyline matching method'];hal-01296969;10.1109/ICIP.2013.6738749
 ['St. Pancras experiment: St Pancras Surveillance Guided Tour’ and other sound walks'];hal-02460793;
 ['Les ambiances du projet urbain à travers les outils numériques mobiles'];hal-01521552;
 ['Cris et murmures de lieux'];hal-00993665;
@@ -629,7 +632,6 @@ Titre;Réf. HAL;DOI
 "[""Pour une convergence des expertises. L'ambiance, au croisement du vécu, de la recherche et de l'art""]";halshs-00744911;
 "[""Les partages de l'ambiance en institution gériatrique""]";halshs-00745874;
 "[""Choubrah entre le passé et le présent : le palimpseste des ambiances d'un quartier populaire au Caire""]";halshs-00745879;
-['Skyline Matching: A robust registration method between Video and GIS'];hal-00768494;10.1051/3u3d/201203007
 ['Dense Stereo Matching using a quarter of Wavelet Transform'];hal-00605240;
 ['Psychophysique et techniques de la vision stéréoscopique'];hal-00786603;
 ['Musiciens en mouvement. Pratiques sonores en métro'];halshs-00441991;
@@ -989,7 +991,6 @@ Titre;Réf. HAL;DOI
 ['Caractérisation et restitution vidéographique des ambiances urbaines'];hal-01944413;10.1051/shsconf/20184701012
 ['Prototyper les ambiances de demain. Le prototype\xa0: expérience de pensée, expérience physique, expérience sensible'];hal-01404382;
 ['A data model for simulation models relying on spatio-temporal urban data'];hal-01521335;10.2312/udmv.20161413
-['A Study of Virtual Visual Servoing Sensitivity in the Context of Image/GIS Registration for Urban Environments'];hal-01526972;10.23919/MVA.2017.7986915
 ['Un espace en suspens : les jardins potagers historiques de Yedikule (Istanbul) sous pression urbaine', 'An outstanding space : the historical vegetable gardens of Yedikule (Istanbul) under urban pressure'];hal-02562925;
 ['Representational Ecosystems in Architectural Design Studio Critiques: Do changes in the representational ecosystem affect tutors and students behaviors during design critiques?'];hal-01916562;
 ['L’archive filmique : un regard rétrospective sur la ville'];hal-02044993;
@@ -1062,6 +1063,9 @@ Titre;Réf. HAL;DOI
 ['Environmental impact assessment of urban mobility plan : a methodology including socio-economic consequences'];hal-00635714;
 ['Urban mobility plan environmental impacts assessment: a methodology including socio-economic consequences - The Eval-PDU project'];hal-00614951;
 ['L’artefact, Morphologie d’un conflit …Du Substrat-matière à la matérialisation d’un Substrat', 'The Artefact, Morphology of Conflict ... From the material Substrate to the materialization of a Substrate'];hal-03259827;
+['An attempt to define perceptive and sensitive mapping through lived space experiments'];hal-03485599;10.5194/ica-abs-3-70-2021
+"[""Impact of KIR/HLA genetic combinations on double umbilical cord blood transplantation outcomes. Results of a French multicentric retrospective study on behalf of the Société Francophone de Greffe de Moelle et de Thérapie Cellulaire (SFGM-TC) and the Société Francophone d'Histocompatibilité et d'Immunogénétique (SFHI).""]";hal-01331582;10.1038/bmt.2016.151
+['How building energy models take the local climate into account in an urban context – A review'];hal-03489027;10.1016/j.rser.2019.109390
 ['Je - tu- il, la marche aux trois personnes'];halshs-00502589;
 "[""Libérez les sciences sociales avant qu'elles n'étouffent ! Enquête sur le libre-savoir scientifique""]";halshs-00623175;
 ['Usage de la morphométrie dans la révélation des préférences de mobilité. Application aux cheminements piétons'];hal-01345703;10.3166/rig.24.101-130
@@ -1188,7 +1192,6 @@ Titre;Réf. HAL;DOI
 ['Paroles données, paroles rendues. La marche collective comme écriture du projet urbain'];hal-01518176;
 "[""La « Route de l'esclave » de Ouidah (Bénin) : espace de négociation des mémoires collectives des traites négrières et de l'esclavage""]";hal-01826345;
 ['Une formation en urbanisme sans institut, and so what\xa0? Réflexion à partir d’un éternel horizon nantais', 'A learning program in Urban Planning but no Institute, so what? Consideration from an eternal horizon in Nantes'];hal-02426685;10.4000/tem.4661
-"[""Impact of KIR/HLA genetic combinations on double umbilical cord blood transplantation outcomes. Results of a French multicentric retrospective study on behalf of the Société Francophone de Greffe de Moelle et de Thérapie Cellulaire (SFGM-TC) and the Société Francophone d'Histocompatibilité et d'Immunogénétique (SFHI).""]";hal-01331582;10.1038/bmt.2016.151
 ['Habitations Légèrement Modifiées'];halshs-00834404;
 ['Dense stereo correspondence using quarters of wavelets transform'];hal-00605233;
 "[""La fabrique de la rue en marche. Essai sur l'altération des ambiances urbaines""]";hal-00978341;
@@ -1463,6 +1466,8 @@ Titre;Réf. HAL;DOI
 ['Réhabiliter les façades légères dans l’habitat du XXe siècle\u202f: l’exemple d’une façade de Jean Prouvé à Lyon'];hal-03283225;
 ['Camera Pose Estimation Using Collaborative Databases and Single Building Image'];hal-03060116;10.4236/jgis.2020.126036
 ['A framework for studying design thinking through measuring designers’ minds, bodies and brains'];hal-02898072;10.1017/dsj.2020.15
+['Le stage de formation pratique en cycle master, dispositif plébiscité ou déprécié ? Le cas de l’école nationale supérieure d’architecture de Nantes (ensa Nantes)'];hal-03463040;
+['Lived and perceived space during lock-down in a sensitive map approach'];hal-03496341;10.5194/ica-proc-4-50-2021
 ['Modeling the influence of vegetation and water pond on urban microclimate'];hal-00285896;
 ['Microclimatic coupling as a solution to improve building energy simulation in an urban context'];hal-01870609;10.1016/j.enbuild.2011.02.010
 "[""L'équation managementale""]";halshs-03274064;
@@ -1472,9 +1477,10 @@ Titre;Réf. HAL;DOI
 ['Real-time adaptive blur for reducing eye strain in stereoscopic displays'];hal-00783076;10.1145/2207216.2207220
 ['Cairo behind the gates', 'Le Caire derrière les murs'];hal-01324053;
 ['Working Modes with a Declarative Modeler'];hal-00816837;10.1016/S0169-7552(98)00176-7
-['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315
 ['Smart system to generate the optimal authorized bounding volume'];hal-03451894;10.1108/OHI-02-2021-0039
 "[""Définir l'ingénierie par sa pratique""]";hal-03477197;
 ['Permanent Genetic Resources added to Molecular Ecology Resources Database 1 June 2010 - 31 July 2010'];hal-01094222;10.1111/j.1755-0998.2010.02916.x
 ['Vers une grammaire narrative à 360° : Ou comment la construction d’un décor réel vient dynamiser les questionnements théoriques'];hal-02886073;
 ['A numerical exercise for turbulent natural convection and pollutant diffusion in a two-dimensional partially partitioned cavity'];hal-00285872;
+['Une critique de l’urbain depuis le champ des ambiances. Perspectives', 'A critique of the urban from the field of ambiences. Perspectives'];hal-03455577;10.4000/ambiances.3805
+['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315

@@ -201,8 +201,8 @@ def enrich_df(df, email, match_ref, progression_denominateur):
     :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
     :param str email: email utilisé pour la requête Unpaywall avec l'API
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes
-    :param dataframe df: dataframe auquel ajouter les métadonnées
-    :return dataframe: dataframe modifié
+    :param pd.Dataframe df: dataframe auquel ajouter les métadonnées
+    :return pd.Dataframe: dataframe modifié
     """
     buffer_folder = "./resultats/fichiers_csv/buffer/"
     buffer = "buffer_recuperer_data.csv"
@@ -271,9 +271,9 @@ def enrich_to_csv(df, email, match_ref="match_referentials.json", progression_de
 
     :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
     :param str email: email utilisé pour la requête à l'API Unpaywall
-    :param dataframe df: dataframe auquel ajouter les métadonnées
+    :param pd.Dataframe df: dataframe auquel ajouter les métadonnées
     :param progression_denominateur: dénominateur pour afficher les intervalles des étapes dans enrich_df
-    :return dataframe: dataframe avec métadonnées ajoutées
+    :return pd.Dataframe: dataframe avec métadonnées ajoutées
     """
     df.reset_index(drop=True, inplace=True)
     df = enrich_df(df, email, match_ref, progression_denominateur)

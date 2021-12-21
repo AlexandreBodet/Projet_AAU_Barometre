@@ -5,23 +5,21 @@ import numpy as np
 
 def graphique_apc_evolution(df, annees, dossier):
     """
-    Evolution des APC
-    :param annees:
-    :param df:
+    Evolution du taux d'APC
+
+    :param pd.Dataframe df: dataframe d'entrée
+    :param list annees: Désigne les années à sélectionner
     :param str dossier: dossier unique dans lequel enregistrer les résultats
-    :return:
     """
     # Récupérer les données
     dfyears = df.loc[df["published_year"].isin(annees), :]
-    print("nb publications a traiter", len(dfyears), "\n\n")
+    print("graphique évolution des APC")
     pd.set_option("mode.chained_assignment", None)
     df_gold = dfyears.loc[dfyears["oa_type"].str.contains(
         "publisher", regex=False), :]
-    # print(df_gold["oa_type"].value_counts())
-
+    df_gold["apc_tracking"].fillna("", inplace=True)
     df_gold["has_apc"] = df_gold["apc_tracking"] != ""
     df_gold = df_gold.astype({"has_apc": "bool"})
-    print("nb public avec  APC", len(df_gold[df_gold["has_apc"]]))
 
     # Produire le tableau
     df_apc = pd.DataFrame(df_gold.groupby(["published_year"])[
@@ -32,7 +30,6 @@ def graphique_apc_evolution(df, annees, dossier):
         int(x.published_year), int(x.nb)), axis=1)
 
     df_apc.sort_values(by="published_year", ascending=True, inplace=True)
-    print(df_apc)
 
     # Passer les données dans le modèle de representation
     fig, (ax) = plt.subplots(figsize=(15, 10),
@@ -71,8 +68,6 @@ def graphique_apc_evolution(df, annees, dossier):
                         for x in ax.get_yticks()], fontsize=10)
 
     apc_percent = df_apc["has_apc_mean"].tolist()
-    print(apc_percent)
-    print(range(len(df_apc.label)))
 
     # ajout du label sur les hist
     for year_ix in range(len(df_apc.label)):
@@ -89,10 +84,10 @@ def graphique_apc_evolution(df, annees, dossier):
         "Estimation du pourcentage de publications en accès ouvert \nchez l'éditeur avec frais de publications (APC)",
         fontsize=25,
         x=0.5,
-        y=1,
+        y=1.1,
         alpha=0.6)
     plt.savefig(
-        "./resultats/img/" + dossier + + "/" + str(annees[0]) + "-" + str(annees[-1]) + "/apc_evolution.png",
+        "./resultats/img/" + dossier + "/" + str(annees[0]) + "-" + str(annees[-1]) + "/apc_evolution.png",
         dpi=100,
         bbox_inches="tight",
         pad_inches=0.1)

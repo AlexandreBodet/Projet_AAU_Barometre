@@ -59,13 +59,13 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
     scifield.columns = ["not_oa", "is_oa"]
     scifield["total"] = scifield["not_oa"] + scifield["is_oa"]
 
-    # Passer les données dans le modèle de representation
-    fig, (ax) = plt.subplots(figsize=(12, 7),
-                             dpi=100, facecolor="w", edgecolor="k")
-
     pour_graphe = scifield[~scifield.index.isin(["Autres"])].copy()  # tout sauf Autres
     pour_graphe.sort_values("total", ascending=False, inplace=True)  # plus de publications = au début
     pour_graphe = pour_graphe[:8].append(scifield.loc["Autres"])  # On remet autres à la fin
+
+    # Passer les données dans le modèle de representation
+    fig, (ax) = plt.subplots(figsize=(12, 7),
+                             dpi=100, facecolor="w", edgecolor="k")
 
     ax.bar(
         pour_graphe.index,
