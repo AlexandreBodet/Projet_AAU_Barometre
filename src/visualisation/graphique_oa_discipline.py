@@ -53,9 +53,10 @@ def graphique_discipline_oa(df, dossier, annee=None):
     pour_graphe.sort_values("Total", ascending=True,
                             inplace=True)  # plus de publications = à la fin (en haut du graphique)
     pour_graphe.reset_index(inplace=True)
-    pour_graphe.loc[-1] = df_oa_discipline.loc["Autres"]  # rajout de Autres au début
-    pour_graphe.loc[-1, "scientific_field"] = "Autres"
-    pour_graphe.sort_index(inplace=True)
+    if "Autres" in df_oa_discipline.index:
+        pour_graphe.loc[-1] = df_oa_discipline.loc["Autres"]  # rajout de Autres au début
+        pour_graphe.loc[-1, "scientific_field"] = "Autres"
+        pour_graphe.sort_index(inplace=True)
     pour_graphe.index = pour_graphe["y_label"]
 
     ax = pour_graphe.drop(["Total", "y_label"], axis=1).plot(kind="barh", stacked=True, figsize=(14, 10),

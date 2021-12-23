@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module src.fonctions_analyse.recuperer_data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="src.html"><font color="#ffffff">src</font></a>.<a href="src.fonctions_analyse.html"><font color="#ffffff">fonctions_analyse</font></a>.recuperer_data</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cdocuments_d%5Cprojets_github%5Cprojet_aau_barometre%5Csrc%5Cfonctions_analyse%5Crecuperer_data.py">d:\documents_d\projets_github\projet_aau_barometre\src\fonctions_analyse\recuperer_data.py</a></font></td></tr></table>
+    <p><tt>Fonctions&nbsp;pour&nbsp;récupérer&nbsp;les&nbsp;métadonnées&nbsp;associées&nbsp;aux&nbsp;publications</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="json.html">json</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="pandas.html">pandas</a><br>
+</td><td width="25%" valign=top><a href="requests.html">requests</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-enrich_df"><strong>enrich_df</strong></a>(df, email, match_ref, progression_denominateur)</dt><dd><tt>Pour&nbsp;chaque&nbsp;publication&nbsp;lancer&nbsp;les&nbsp;requêtes&nbsp;et&nbsp;ajouter&nbsp;les&nbsp;métadonnées.<br>
+&nbsp;<br>
+:param&nbsp;str&nbsp;match_ref:&nbsp;nom&nbsp;du&nbsp;fichier&nbsp;qui&nbsp;contient&nbsp;le&nbsp;dictionnaire&nbsp;pour&nbsp;match&nbsp;les&nbsp;références<br>
+:param&nbsp;str&nbsp;email:&nbsp;email&nbsp;utilisé&nbsp;pour&nbsp;la&nbsp;requête&nbsp;Unpaywall&nbsp;avec&nbsp;l'API<br>
+:param&nbsp;progression_denominateur:&nbsp;dénominateur&nbsp;pour&nbsp;afficher&nbsp;les&nbsp;intervalles&nbsp;des&nbsp;étapes<br>
+:param&nbsp;pd.Dataframe&nbsp;df:&nbsp;dataframe&nbsp;auquel&nbsp;ajouter&nbsp;les&nbsp;métadonnées<br>
+:return&nbsp;pd.Dataframe:&nbsp;dataframe&nbsp;modifié</tt></dd></dl>
+ <dl><dt><a name="-enrich_to_csv"><strong>enrich_to_csv</strong></a>(df, email, match_ref='match_referentials.json', progression_denominateur=100)</dt><dd><tt>Enrichi&nbsp;en&nbsp;métadonnées&nbsp;et&nbsp;enregistre&nbsp;en&nbsp;csv.<br>
+&nbsp;<br>
+:param&nbsp;str&nbsp;match_ref:&nbsp;nom&nbsp;du&nbsp;fichier&nbsp;qui&nbsp;contient&nbsp;le&nbsp;dictionnaire&nbsp;pour&nbsp;match&nbsp;les&nbsp;références<br>
+:param&nbsp;str&nbsp;email:&nbsp;email&nbsp;utilisé&nbsp;pour&nbsp;la&nbsp;requête&nbsp;à&nbsp;l'API&nbsp;Unpaywall<br>
+:param&nbsp;pd.Dataframe&nbsp;df:&nbsp;dataframe&nbsp;auquel&nbsp;ajouter&nbsp;les&nbsp;métadonnées<br>
+:param&nbsp;progression_denominateur:&nbsp;dénominateur&nbsp;pour&nbsp;afficher&nbsp;les&nbsp;intervalles&nbsp;des&nbsp;étapes&nbsp;dans&nbsp;enrich_df<br>
+:return&nbsp;pd.Dataframe:&nbsp;dataframe&nbsp;avec&nbsp;métadonnées&nbsp;ajoutées</tt></dd></dl>
+ <dl><dt><a name="-get_hal_data"><strong>get_hal_data</strong></a>(doi, hal_id, match_ref)</dt><dd><tt>Récupérer&nbsp;les&nbsp;métadonnées&nbsp;de&nbsp;HAL.<br>
+Si&nbsp;le&nbsp;DOI&nbsp;est&nbsp;dans&nbsp;unpaywall&nbsp;les&nbsp;métadonnées&nbsp;de&nbsp;HAL&nbsp;communes&nbsp;seront&nbsp;écrasées.<br>
+&nbsp;<br>
+:param&nbsp;str&nbsp;match_ref:&nbsp;nom&nbsp;du&nbsp;fichier&nbsp;qui&nbsp;contient&nbsp;le&nbsp;dictionnaire&nbsp;pour&nbsp;match&nbsp;les&nbsp;références<br>
+:param&nbsp;str&nbsp;doi:&nbsp;doi&nbsp;dont&nbsp;les&nbsp;données&nbsp;sont&nbsp;à&nbsp;récupérer<br>
+:param&nbsp;str&nbsp;hal_id:&nbsp;hal&nbsp;id&nbsp;dont&nbsp;les&nbsp;données&nbsp;sont&nbsp;à&nbsp;récupérer<br>
+:return&nbsp;dict:&nbsp;dictionnaire&nbsp;des&nbsp;métadonnées&nbsp;récupérées</tt></dd></dl>
+ <dl><dt><a name="-get_upw_data"><strong>get_upw_data</strong></a>(doi, email)</dt><dd><tt>Récupérer&nbsp;les&nbsp;métadonnées&nbsp;de&nbsp;Unpaywall.<br>
+&nbsp;<br>
+:param&nbsp;str&nbsp;email:&nbsp;email&nbsp;utilisé&nbsp;pour&nbsp;faire&nbsp;la&nbsp;requête&nbsp;à&nbsp;l'API<br>
+:param&nbsp;str&nbsp;doi:&nbsp;doi&nbsp;dont&nbsp;les&nbsp;métadonnées&nbsp;doivent&nbsp;être&nbsp;récupérées<br>
+:return&nbsp;dict:&nbsp;dictionnaire&nbsp;des&nbsp;métadonnées&nbsp;récupérées</tt></dd></dl>
+ <dl><dt><a name="-req_to_json"><strong>req_to_json</strong></a>(url)</dt><dd><tt>S'assurer&nbsp;que&nbsp;la&nbsp;réponse&nbsp;de&nbsp;l'API&nbsp;est&nbsp;en&nbsp;JSON.<br>
+&nbsp;<br>
+:param&nbsp;str&nbsp;url:&nbsp;url&nbsp;de&nbsp;la&nbsp;requête<br>
+:return&nbsp;dict&nbsp;res:&nbsp;résultat&nbsp;json&nbsp;de&nbsp;la&nbsp;requête&nbsp;sql</tt></dd></dl>
+</td></tr></table>
+</body></html>

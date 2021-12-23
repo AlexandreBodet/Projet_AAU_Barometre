@@ -1,5 +1,5 @@
 """
-Fonctions pour analyser les métadonnées associés aux publications.
+Fonctions pour analyser les métadonnées associées aux publications.
 Pour l'instant, seulement pour les données sortant de hal.
 """
 
@@ -14,7 +14,8 @@ def deduce_oa(row):
     :param row: ligne du dataframe à traiter
     :return bool: publication en open access
     """
-    if (row["hal_location"] == "file" and row["hal_openAccess_bool"]) or (row["hal_location"] == "arxiv") or (row["hal_location"] == "pubmedcentral") or (row["upw_coverage"] == "oa"):
+    if (row["hal_location"] == "file" and row["hal_openAccess_bool"]) or (row["hal_location"] == "arxiv") or (
+            row["hal_location"] == "pubmedcentral") or (row["upw_coverage"] == "oa"):
         return True
     else:
         return False
@@ -31,10 +32,10 @@ def deduce_oa_type(row):
         loc.extend(row["upw_location"].split(";"))
 
     # si unpaywall n'a pas trouvé de "repository" mais que c'est dans HAL : s'assurer que c'est sans embargo puis ajouter repository
-    if "repository" not in loc and\
-        ((row["hal_location"] == "file" and row["hal_openAccess_bool"]) or
-         row["hal_location"] == "arxiv" or
-         row["hal_location"] == "pubmedcentral"):
+    if "repository" not in loc and \
+            ((row["hal_location"] == "file" and row["hal_openAccess_bool"]) or
+             row["hal_location"] == "arxiv" or
+             row["hal_location"] == "pubmedcentral"):
         loc.append("repository")
     if loc:
         loc.sort()
@@ -66,13 +67,15 @@ def align_doctype(row, match_ref):
 def align_domain(row, match_ref, choixDomain):
     """
     Donne la liste des domaines correspondants
+
     :param row: ligne à traiter
     :param dict match_ref: noms des domaines et de type de documents
+    :param dict choixDomain: dictionnaire des settings choisis dans les settings
     :return list: la liste des domaines
     """
     res = []
     for e in row["hal_domain"]:
-        if(choixDomain[match_ref["domain"][e]]):
+        if choixDomain[match_ref["domain"][e]]:
             res.append(match_ref["domain"][e])
         else:
             res.append("Autres")
@@ -84,11 +87,12 @@ def align_shsdomain(row, match_ref, choixShsDomain):
     Donne la liste des domaines correspondants
     :param row: ligne à traiter
     :param dict match_ref: noms des domaines et de type de documents
+    :param dict choixShsDomain: dictionnaire des sous-domaines shs choisis dans les settings
     :return list: la liste des domaines
     """
     res = []
     for e in row["hal_shsdomain"]:
-        if(choixShsDomain[match_ref["shsdomain"][e]]):
+        if choixShsDomain[match_ref["shsdomain"][e]]:
             res.append(match_ref["shsdomain"][e])
         else:
             res.append("Autres")
@@ -98,8 +102,10 @@ def align_shsdomain(row, match_ref, choixShsDomain):
 def align_infodomain(row, match_ref, choixInfoDomain):
     """
     Donne la liste des domaines correspondants
+
     :param row: ligne à traiter
     :param dict match_ref: noms des domaines et de type de documents
+    :param dict choixInfoDomain: dictionnaire des sous-domaines infos choisis dans les settings
     :return list: la liste des domaines
     """
     res = []
@@ -113,16 +119,19 @@ def align_infodomain(row, match_ref, choixInfoDomain):
 
 def aligner(referentials, choixDomaines, df=None):
     """
-    Aligne les données dans les bonnes colonnes. Open_access ou non, le type d'oa,
+    Aligne les données dans les bonnes colonnes. Open_access ou non, le type d'oa
+
     :param str referentials: str du nom de fichier json pour les noms des domaines et de type de documents
-    :param df: dataframe en sortie de ajout_apc()
+    :param dict choixDomaines: dictionnaire des choix de domaines effectués dans les settings
+    :param df: dataframe en sortie de ajout_apc() ou enrich_to_csv()
+    :return pd.Dataframe: dataframe modifié
     """
     if df is None:
         df = pd.read_csv(
             "./resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
 
     # alignement avec les données de hal
-    match_ref = j.load(open("./data/"+referentials))
+    match_ref = j.load(open("./data/" + referentials))
 
     if type(df.hal_domain[0]) == str:
         df.hal_domain = df.hal_domain.apply(literal_eval)
@@ -130,7 +139,7 @@ def aligner(referentials, choixDomaines, df=None):
         df.hal_shsdomain = df.hal_shsdomain.apply(literal_eval)
     if type(df.hal_infodomain[0]) == str:
         df.hal_infodomain = df.hal_infodomain.apply(literal_eval)
-    
+
     df["is_oa"] = df.apply(lambda row: deduce_oa(row), axis=1)
     df["oa_type"] = df.apply(lambda row: deduce_oa_type(row), axis=1)
     df["genre"] = df.apply(lambda row: align_doctype(row, match_ref), axis=1)

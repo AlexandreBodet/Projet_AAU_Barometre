@@ -11,41 +11,59 @@ from ast import literal_eval
 
 """
 Fichier pour la fonction graphique qui a pour but de lancer les fonctions du package visualisation en se servant du 
-dataframe donné en entrée.
+dataframe donné en entrée et des parametres de settings.json
 """
 
 
-def graphique(df_raw=None, annee=date.today().year, annees=None,
-              rec_base=True, rec_disciplines=True, rec_genre=True,
-              oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=True,
-              apc_evolution=True, apc_discipline=True, bibliodiversite=True,
-              oa_type_evolution=True, domain=False, domain_shs=False, domain_info=False):
+def graphique(df_raw=None, parametres=None):
     """
     Fonction principale pour générer les graphiques.
     :param dataframe df_raw: le dataframe à utiliser
-    :param int annee: année utilisée pour certains graphiques
-    :param list annees: liste des années pour les graphiques d'évolution
-    :param bool domain: dit s'il doit y avoir un recapitulatif de discipline qui inclue tous les domaines
-    :param bool domain_shs: même chose avec les sous-domaines des shs
-    :param bool domain_info: même chose avec les sous-domaines informatiques
-    :param bool rec_base: récapitulatif des bases
-    :param bool rec_disciplines: récapitulatif des disciplines
-    :param bool rec_genre: récapitulatif des genres
-    :param bool oa_circulaire: graphique open access circulaire
-    :param bool oa_discipline: open access par discipline
-    :param bool oa_evolution: évolution de l'open access
-    :param bool oa_editeur: open access par éditeur
-    :param bool apc_evolution: évolution des apc
-    :param bool apc_discipline: apc par discipline
-    :param bool bibliodiversite:
-    :param bool oa_type_evolution: evolution de chaque type d'open access
-    :return:
+    :param dict parametres: dict de tous les paramètres donnés par settings.json. Contient :
+        calcul_APC: dit si les apc ont été calculés
+        graphique: dict des paramètres des graphiques
+            int annee: année utilisée pour certains graphiques
+            int annees_debut: début de la liste des années pour les graphiques d'évolution
+            int annees_fin: fin de la liste des années pour les graphiques d'évolution
+            rec_base: récapitulatif des bases
+            rec_disciplines: récapitulatif des disciplines
+            domain_rec_disciplines: dit s'il doit y avoir un recapitulatif de discipline qui inclue tous les domaines
+            domain_shs_rec_disciplines: même chose avec les sous-domaines des shs
+            domain_info_rec_disciplines: même chose avec les sous-domaines informatiques
+            rec_genre: récapitulatif des genres
+            oa_circulaire: graphique open access circulaire
+            oa_discipline: open access par discipline
+            oa_evolution: évolution de l'open access
+            oa_editeur: open access par éditeur
+            apc_evolution: évolution des apc
+            apc_discipline: apc par discipline
+            bibliodiversite:
+            oa_type_evolution: evolution de chaque type d'open access
+    :return nom_dossier: nom du dossier où les images sont enregistrées pour l'affichage
     """
-    if annees is None:
+    graphiques = parametres["graphiques"]
+
+    if graphiques["annees_debut"] is None and graphiques["annees_fin"] is None:
         annees = [i for i in range(2016, date.today().year + 1)]
+    elif graphiques["annees_debut"] is None:
+        annees = [i for i in range(2016, graphiques["annees_fin"] + 1)]
+    elif graphiques["annees_fin"] is None:
+        annees = [i for i in range(graphiques["annees_debut"], date.today().year + 1)]
+    else:
+        annees = [i for i in range(graphiques["annees_debut"], graphiques["annees_fin"] + 1)]
+
+    if graphiques["annee"] is None:
+        annee = date.today().year
+    else:
+        annee = graphiques["annee"]
+
     if df_raw is None:
-        print("Pas de dataframe chargé. Impossible de générer les graphiques.")
-        return None
+        if os.path.exists("./resultats/fichiers_csv/data_complete.csv"):
+            print("\n[Dataframe data_complete.csv chargé à partir de résultats précédents !!!]\n")
+            df_raw = pd.read_csv("./resultats/fichiers_csv/data_complete.csv")
+        else:
+            print("Pas de dataframe chargé. Impossible de générer les graphiques.")
+            return None
 
     # Création du dossier et des sous-dossiers
     nom_dossier = datetime.now().isoformat(
@@ -67,57 +85,57 @@ def graphique(df_raw=None, annee=date.today().year, annees=None,
         df.info_field = df.info_field.apply(literal_eval)
 
     # Récapitulatifs
-    if rec_disciplines:
-        if domain:
-            graphique_rec_discipline.graphique_discipline(df, domain=True, dossier=nom_dossier)
-            graphique_rec_discipline.graphique_discipline(df, annee=annee, domain=True,
+    if graphiques["rec_discipline"]:
+        if graphiques["domain_rec_discipline"]:
+            graphique_rec_discipline.graphique_discipline(df=df, domain=True, dossier=nom_dossier)
+            graphique_rec_discipline.graphique_discipline(df=df, annee=annee, domain=True,
                                                           dossier=nom_dossier)  # Sur une seule année
-            graphique_rec_discipline.graphique_discipline(df, annee=annees, domain=True,
+            graphique_rec_discipline.graphique_discipline(df=df, annee=annees, domain=True,
                                                           dossier=nom_dossier)  # Liste d'années
-        if domain_shs:
-            graphique_rec_discipline.graphique_discipline(df, domain_shs=True, dossier=nom_dossier)
-            graphique_rec_discipline.graphique_discipline(df, annee=annee, domain_shs=True, dossier=nom_dossier)
-            graphique_rec_discipline.graphique_discipline(df, annee=annees, domain_shs=True, dossier=nom_dossier)
-        if domain_info:
-            graphique_rec_discipline.graphique_discipline(df, domain_info=True, dossier=nom_dossier)
-            graphique_rec_discipline.graphique_discipline(df, annee=annee, domain_info=True, dossier=nom_dossier)
-            graphique_rec_discipline.graphique_discipline(df, annee=annees, domain_info=True, dossier=nom_dossier)
+        if graphiques["domain_shs_rec_discipline"]:
+            graphique_rec_discipline.graphique_discipline(df=df, domain_shs=True, dossier=nom_dossier)
+            graphique_rec_discipline.graphique_discipline(df=df, annee=annee, domain_shs=True, dossier=nom_dossier)
+            graphique_rec_discipline.graphique_discipline(df=df, annee=annees, domain_shs=True, dossier=nom_dossier)
+        if graphiques["domain_info_rec_discipline"]:
+            graphique_rec_discipline.graphique_discipline(df=df, domain_info=True, dossier=nom_dossier)
+            graphique_rec_discipline.graphique_discipline(df=df, annee=annee, domain_info=True, dossier=nom_dossier)
+            graphique_rec_discipline.graphique_discipline(df=df, annee=annees, domain_info=True, dossier=nom_dossier)
 
-    if rec_base:  # proportion doi/no-doi par base
+    if graphiques["rec_base"]:  # proportion doi/no-doi par base
         graphique_rec_base.graphique_comparaison_bases(dossier=nom_dossier)
 
-    if rec_genre:  # NEW -- à voir si tu trouves ça pertinent
+    if graphiques["rec_genre"]:
         fonctions_multiples(func=graphique_rec_genre.graphique_genre, df=df, dossier=nom_dossier,
                             annee=annee, annees=annees)
 
     # Taux d'Open Access
-    if oa_circulaire:
+    if graphiques["oa_circulaire"]:
         fonctions_multiples(func=graphique_oa_circulaire.graphique_circulaire_oa, df=df, dossier=nom_dossier,
                             annee=annee, annees=annees)
 
-    if oa_discipline:
+    if graphiques["oa_discipline"]:
         fonctions_multiples(func=graphique_oa_discipline.graphique_discipline_oa, df=df, dossier=nom_dossier,
                             annee=annee, annees=annees)
 
-    if oa_evolution:
+    if graphiques["oa_evolution"]:
         graphique_oa_evolution.graphique_oa_evolution(df=df, annees=annees, dossier=nom_dossier, doi_only=False)
 
-    if oa_editeur:
+    if graphiques["oa_editeur"]:
         fonctions_multiples(func=graphique_oa_editeur.graphique_oa_editeur, df=df, dossier=nom_dossier,
                             annee=annee, annees=annees)
 
-    if oa_type_evolution:
+    if graphiques["oa_type_evolution"]:
         graphique_oa_type_evolution.graphique_evolution_type_oa(df=df, annees=annees, dossier=nom_dossier)
 
-    if bibliodiversite:
+    if graphiques["bibliodiversite"]:
         fonctions_multiples(func=graphique_bibliodiversite.graphique_bibliodiversite, df=df, dossier=nom_dossier,
                             annee=annee, annees=annees)
 
     # APCs
-    if apc_evolution:
+    if graphiques["apc_evolution"] and parametres["calcul_APC"]:
         graphique_apc_evolution.graphique_apc_evolution(df=df, annees=annees, dossier=nom_dossier)
 
-    if apc_discipline:
+    if graphiques["apc_discipline"] and parametres["calcul_APC"]:
         fonctions_multiples(func=graphique_apc_discipline.graphique_apc_discipline, df=df, dossier=nom_dossier,
                             annee=annee, annees=annees)
     return nom_dossier

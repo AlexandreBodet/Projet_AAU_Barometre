@@ -41,7 +41,7 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
         var = ""
         titre = ""
 
-    print("graphique récapitulatif ", titre, annee)
+    print("graphique récapitulatif", titre, annee)
 
     allyear = year[[var, "is_oa"]].copy()
 
@@ -61,7 +61,8 @@ def graphique_discipline(df, dossier, annee=None, domain=False, domain_shs=False
 
     pour_graphe = scifield[~scifield.index.isin(["Autres"])].copy()  # tout sauf Autres
     pour_graphe.sort_values("total", ascending=False, inplace=True)  # plus de publications = au début
-    pour_graphe = pour_graphe[:8].append(scifield.loc["Autres"])  # On remet autres à la fin
+    if "Autres" in scifield.index:
+        pour_graphe = pour_graphe[:8].append(scifield.loc["Autres"])  # On remet autres à la fin
 
     # Passer les données dans le modèle de representation
     fig, (ax) = plt.subplots(figsize=(12, 7),

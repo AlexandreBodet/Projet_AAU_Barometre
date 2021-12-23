@@ -40,21 +40,29 @@
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-graphique"><strong>graphique</strong></a>(df_raw=None, annee=2021, annees=None, rec_base=True, rec_disciplines=True, rec_genre=True, oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=True, apc_evolution=True, apc_discipline=True, bibliodiversite=True, oa_type_evolution=True)</dt><dd><tt>Fonction&nbsp;principale&nbsp;pour&nbsp;générer&nbsp;les&nbsp;graphiques.<br>
+<td width="100%"><dl><dt><a name="-fonctions_multiples"><strong>fonctions_multiples</strong></a>(func, df, dossier, annee, annees)</dt></dl>
+ <dl><dt><a name="-graphique"><strong>graphique</strong></a>(df_raw=None, parametres=None)</dt><dd><tt>Fonction&nbsp;principale&nbsp;pour&nbsp;générer&nbsp;les&nbsp;graphiques.<br>
 :param&nbsp;dataframe&nbsp;df_raw:&nbsp;le&nbsp;dataframe&nbsp;à&nbsp;utiliser<br>
-:param&nbsp;int&nbsp;annee:&nbsp;année&nbsp;utilisée&nbsp;pour&nbsp;certains&nbsp;graphiques<br>
-:param&nbsp;list&nbsp;annees:&nbsp;liste&nbsp;des&nbsp;années&nbsp;pour&nbsp;les&nbsp;graphiques&nbsp;d'évolution<br>
-:param&nbsp;bool&nbsp;rec_base:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;rec_disciplines:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;rec_genre:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;oa_circulaire:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;oa_discipline:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;oa_evolution:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;oa_editeur:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;apc_evolution:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;apc_discipline:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;bibliodiversite:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:param&nbsp;bool&nbsp;oa_type_evolution:&nbsp;dit&nbsp;si&nbsp;le&nbsp;graphique&nbsp;doit&nbsp;être&nbsp;fait<br>
-:return:</tt></dd></dl>
+:param&nbsp;dict&nbsp;parametres:&nbsp;dict&nbsp;de&nbsp;tous&nbsp;les&nbsp;paramètres&nbsp;donnés&nbsp;par&nbsp;settings.json.&nbsp;Contient&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;calcul_APC:&nbsp;dit&nbsp;si&nbsp;les&nbsp;apc&nbsp;ont&nbsp;été&nbsp;calculés<br>
+&nbsp;&nbsp;&nbsp;&nbsp;graphique:&nbsp;dict&nbsp;des&nbsp;paramètres&nbsp;des&nbsp;graphiques<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;annee:&nbsp;année&nbsp;utilisée&nbsp;pour&nbsp;certains&nbsp;graphiques<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;annees_debut:&nbsp;début&nbsp;de&nbsp;la&nbsp;liste&nbsp;des&nbsp;années&nbsp;pour&nbsp;les&nbsp;graphiques&nbsp;d'évolution<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;annees_fin:&nbsp;fin&nbsp;de&nbsp;la&nbsp;liste&nbsp;des&nbsp;années&nbsp;pour&nbsp;les&nbsp;graphiques&nbsp;d'évolution<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rec_base:&nbsp;récapitulatif&nbsp;des&nbsp;bases<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rec_disciplines:&nbsp;récapitulatif&nbsp;des&nbsp;disciplines<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;domain_rec_disciplines:&nbsp;dit&nbsp;s'il&nbsp;doit&nbsp;y&nbsp;avoir&nbsp;un&nbsp;recapitulatif&nbsp;de&nbsp;discipline&nbsp;qui&nbsp;inclue&nbsp;tous&nbsp;les&nbsp;domaines<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;domain_shs_rec_disciplines:&nbsp;même&nbsp;chose&nbsp;avec&nbsp;les&nbsp;sous-domaines&nbsp;des&nbsp;shs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;domain_info_rec_disciplines:&nbsp;même&nbsp;chose&nbsp;avec&nbsp;les&nbsp;sous-domaines&nbsp;informatiques<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rec_genre:&nbsp;récapitulatif&nbsp;des&nbsp;genres<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oa_circulaire:&nbsp;graphique&nbsp;open&nbsp;access&nbsp;circulaire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oa_discipline:&nbsp;open&nbsp;access&nbsp;par&nbsp;discipline<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oa_evolution:&nbsp;évolution&nbsp;de&nbsp;l'open&nbsp;access<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oa_editeur:&nbsp;open&nbsp;access&nbsp;par&nbsp;éditeur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apc_evolution:&nbsp;évolution&nbsp;des&nbsp;apc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apc_discipline:&nbsp;apc&nbsp;par&nbsp;discipline<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bibliodiversite:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oa_type_evolution:&nbsp;evolution&nbsp;de&nbsp;chaque&nbsp;type&nbsp;d'open&nbsp;access<br>
+:return&nbsp;nom_dossier:&nbsp;nom&nbsp;du&nbsp;dossier&nbsp;où&nbsp;les&nbsp;images&nbsp;sont&nbsp;enregistrées&nbsp;pour&nbsp;l'affichage</tt></dd></dl>
 </td></tr></table>
 </body></html>

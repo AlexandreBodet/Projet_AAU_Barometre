@@ -9,7 +9,7 @@
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="src.html"><font color="#ffffff">src</font></a>.<a href="src.fonctions_analyse.html"><font color="#ffffff">fonctions_analyse</font></a>.aligner_data</strong></big></big></font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cdocuments_d%5Cprojets_github%5Cprojet_aau_barometre%5Csrc%5Cfonctions_analyse%5Caligner_data.py">d:\documents_d\projets_github\projet_aau_barometre\src\fonctions_analyse\aligner_data.py</a></font></td></tr></table>
-    <p><tt>Fonctions&nbsp;pour&nbsp;analyser&nbsp;les&nbsp;métadonnées&nbsp;associés&nbsp;aux&nbsp;publications.<br>
+    <p><tt>Fonctions&nbsp;pour&nbsp;analyser&nbsp;les&nbsp;métadonnées&nbsp;associées&nbsp;aux&nbsp;publications.<br>
 Pour&nbsp;l'instant,&nbsp;seulement&nbsp;pour&nbsp;les&nbsp;données&nbsp;sortant&nbsp;de&nbsp;hal.</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -31,13 +31,29 @@ Pour&nbsp;l'instant,&nbsp;seulement&nbsp;pour&nbsp;les&nbsp;données&nbsp;sortan
 :param&nbsp;row:&nbsp;ligne&nbsp;à&nbsp;traiter<br>
 :param&nbsp;dict&nbsp;match_ref:&nbsp;noms&nbsp;des&nbsp;domaines&nbsp;et&nbsp;de&nbsp;type&nbsp;de&nbsp;documents<br>
 :return:</tt></dd></dl>
- <dl><dt><a name="-align_domain"><strong>align_domain</strong></a>(row, match_ref)</dt><dd><tt>Donne&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines&nbsp;correspondants<br>
+ <dl><dt><a name="-align_domain"><strong>align_domain</strong></a>(row, match_ref, choixDomain)</dt><dd><tt>Donne&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines&nbsp;correspondants<br>
+&nbsp;<br>
 :param&nbsp;row:&nbsp;ligne&nbsp;à&nbsp;traiter<br>
 :param&nbsp;dict&nbsp;match_ref:&nbsp;noms&nbsp;des&nbsp;domaines&nbsp;et&nbsp;de&nbsp;type&nbsp;de&nbsp;documents<br>
+:param&nbsp;dict&nbsp;choixDomain:&nbsp;dictionnaire&nbsp;des&nbsp;settings&nbsp;choisis&nbsp;dans&nbsp;les&nbsp;settings<br>
 :return&nbsp;list:&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines</tt></dd></dl>
- <dl><dt><a name="-aligner"><strong>aligner</strong></a>(referentials, df=None)</dt><dd><tt>Aligne&nbsp;les&nbsp;données&nbsp;dans&nbsp;les&nbsp;bonnes&nbsp;colonnes.&nbsp;Open_access&nbsp;ou&nbsp;non,&nbsp;le&nbsp;type&nbsp;d'oa,<br>
+ <dl><dt><a name="-align_infodomain"><strong>align_infodomain</strong></a>(row, match_ref, choixInfoDomain)</dt><dd><tt>Donne&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines&nbsp;correspondants<br>
+&nbsp;<br>
+:param&nbsp;row:&nbsp;ligne&nbsp;à&nbsp;traiter<br>
+:param&nbsp;dict&nbsp;match_ref:&nbsp;noms&nbsp;des&nbsp;domaines&nbsp;et&nbsp;de&nbsp;type&nbsp;de&nbsp;documents<br>
+:param&nbsp;dict&nbsp;choixInfoDomain:&nbsp;dictionnaire&nbsp;des&nbsp;sous-domaines&nbsp;infos&nbsp;choisis&nbsp;dans&nbsp;les&nbsp;settings<br>
+:return&nbsp;list:&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines</tt></dd></dl>
+ <dl><dt><a name="-align_shsdomain"><strong>align_shsdomain</strong></a>(row, match_ref, choixShsDomain)</dt><dd><tt>Donne&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines&nbsp;correspondants<br>
+:param&nbsp;row:&nbsp;ligne&nbsp;à&nbsp;traiter<br>
+:param&nbsp;dict&nbsp;match_ref:&nbsp;noms&nbsp;des&nbsp;domaines&nbsp;et&nbsp;de&nbsp;type&nbsp;de&nbsp;documents<br>
+:param&nbsp;dict&nbsp;choixShsDomain:&nbsp;dictionnaire&nbsp;des&nbsp;sous-domaines&nbsp;shs&nbsp;choisis&nbsp;dans&nbsp;les&nbsp;settings<br>
+:return&nbsp;list:&nbsp;la&nbsp;liste&nbsp;des&nbsp;domaines</tt></dd></dl>
+ <dl><dt><a name="-aligner"><strong>aligner</strong></a>(referentials, choixDomaines, df=None)</dt><dd><tt>Aligne&nbsp;les&nbsp;données&nbsp;dans&nbsp;les&nbsp;bonnes&nbsp;colonnes.&nbsp;Open_access&nbsp;ou&nbsp;non,&nbsp;le&nbsp;type&nbsp;d'oa<br>
+&nbsp;<br>
 :param&nbsp;str&nbsp;referentials:&nbsp;str&nbsp;du&nbsp;nom&nbsp;de&nbsp;fichier&nbsp;json&nbsp;pour&nbsp;les&nbsp;noms&nbsp;des&nbsp;domaines&nbsp;et&nbsp;de&nbsp;type&nbsp;de&nbsp;documents<br>
-:param&nbsp;df:&nbsp;dataframe&nbsp;en&nbsp;sortie&nbsp;de&nbsp;ajout_apc()</tt></dd></dl>
+:param&nbsp;dict&nbsp;choixDomaines:&nbsp;dictionnaire&nbsp;des&nbsp;choix&nbsp;de&nbsp;domaines&nbsp;effectués&nbsp;dans&nbsp;les&nbsp;settings<br>
+:param&nbsp;df:&nbsp;dataframe&nbsp;en&nbsp;sortie&nbsp;de&nbsp;ajout_apc()&nbsp;ou&nbsp;enrich_to_csv()<br>
+:return&nbsp;pd.Dataframe:&nbsp;dataframe&nbsp;modifié</tt></dd></dl>
  <dl><dt><a name="-deduce_oa"><strong>deduce_oa</strong></a>(row)</dt><dd><tt>Déduit&nbsp;si&nbsp;la&nbsp;publication&nbsp;est&nbsp;en&nbsp;open&nbsp;access<br>
 :param&nbsp;row:&nbsp;ligne&nbsp;du&nbsp;dataframe&nbsp;à&nbsp;traiter<br>
 :return&nbsp;bool:&nbsp;publication&nbsp;en&nbsp;open&nbsp;access</tt></dd></dl>

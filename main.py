@@ -23,7 +23,7 @@ if __name__ == "__main__":
     if donnees["parametres"]["utilise_api_hal"]:
         api_to_csv(fichier_hal=donnees["data"]["dois"]["hal_fichier_api"], donnees_api=donnees["api_hal"])
         print("\n[FINI] Récupération des données hal par api\n")
-
+    
     stats, df_charge = chargement_tout(donnees=donnees["data"]["dois"],
                                        recherche_erreur=donnees["parametres"]["recherche_erreurs"],
                                        utilise_api_hal=donnees["parametres"]["utilise_api_hal"])
@@ -40,15 +40,9 @@ if __name__ == "__main__":
         print("\n[FINI] Ajout apc fini\n")
 
     df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"], choixDomaines=donnees["choixDomaines"])
+    print("\n[FINI] Alignement du dataframe fini")
 
-    # df_charge = pd.read_csv("./resultats/fichiers_csv/data_complete.csv")
+    nom_dossier = graphique(df_raw=df_charge, parametres=donnees["parametres"])  # génération des graphiques
+    print("\n[FINI] Génération des graphiques fini")
 
-    annees = [i for i in range(2010, date.today().year + 1)]
-    nom_dossier = graphique(df_raw=df_charge, annee=2020, annees=annees, rec_base=True, rec_disciplines=True,
-                            rec_genre=True, oa_circulaire=True, oa_discipline=True, oa_evolution=True, oa_editeur=True,
-                            apc_evolution=donnees["parametres"]["calcul_APC"] and True,
-                            apc_discipline=donnees["parametres"]["calcul_APC"] and True, bibliodiversite=True,
-                            oa_type_evolution=True, domain=True, domain_shs=True, domain_info=True)
-    print("\n[FINI] Génération des graphiques fini\n")
-
-    print("Dossier des images générées : ./resultats/img/", nom_dossier)
+    print("Dossier des images générées : ./resultats/img/" + nom_dossier)

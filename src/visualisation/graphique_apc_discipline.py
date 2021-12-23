@@ -50,9 +50,10 @@ def graphique_apc_discipline(df, dossier, annee=None):
     pour_graphe.sort_values("total", ascending=True,
                             inplace=True)  # plus de publications = à la fin (en haut du graphique)
     pour_graphe.reset_index(inplace=True)
-    pour_graphe.loc[-1] = df_apc_discipline.loc["Autres"]  # rajout de Autres au début
-    pour_graphe.loc[-1, "scientific_field"] = "Autres"
-    pour_graphe.sort_index(inplace=True)
+    if "Autres" in df_apc_discipline.index:
+        pour_graphe.loc[-1] = df_apc_discipline.loc["Autres"]  # rajout de Autres au début
+        pour_graphe.loc[-1, "scientific_field"] = "Autres"
+        pour_graphe.sort_index(inplace=True)
     pour_graphe.index = pour_graphe["y_label"]
     pour_graphe.drop(
         ["has_apc", "no_apc", "total", "y_label"], axis=1, inplace=True)

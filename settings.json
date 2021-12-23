@@ -24,7 +24,26 @@
   "parametres": {
     "utilise_api_hal" : true,
     "recherche_erreurs": true,
-    "calcul_APC": true
+    "calcul_APC": true,
+    "graphiques": {
+      "annee": 2020,
+      "annees_debut": 2016,
+      "annees_fin": 2020,
+      "rec_discipline": true,
+      "domain_rec_discipline": true,
+      "domain_shs_rec_discipline": true,
+      "domain_info_rec_discipline": true,
+      "rec_base": true,
+      "rec_genre": true,
+      "oa_circulaire": true,
+      "oa_discipline": true,
+      "oa_evolution": true,
+      "oa_editeur": true,
+      "oa_type_evolution": true,
+      "bibliodiversite": true,
+      "apc_evolution": true,
+      "apc_discipline": true
+    }
   },
   "choixDomaines":{
       "domain": {

@@ -1,4 +1,5 @@
 import json
+import os
 import pandas as pd
 from datetime import date
 
@@ -17,9 +18,9 @@ def track_apc(doi, ligne, open_apc_dois, openapc_journals, doaj_apc_journals):
 
     # Vérifier si le DOI est dans openapc
     if doi and open_apc_dois["doi"].str.contains(doi, regex=False).any():
-        try:
+        if "apc_amount_euros" in open_apc_dois:
             apc_amount = open_apc_dois.loc[open_apc_dois["doi"] == doi, "apc_amount_euros"].item()
-        except:  # Changer ça
+        else:
             apc_amount = "unknown"
         return {
             "apc_tracking": "doi_in_openapc",
@@ -132,13 +133,22 @@ def transformation_df(df):
     return None
 
 
-def ajout_apc(df, data_apc):
+def ajout_apc(df=None, data_apc=None):
     """
     Ajoute les APC au dataframe.
 
     :param dataframe df: dataframe où ajouter les apc
     :param dict data_apc: dictionnaire des noms de fichiers à utiliser
     """
+    if data_apc is None:
+        raise Exception("Erreur : Pas de fichier spécifiés en entré pour les APC")
+    if df is None:
+        if os.path.exists("./resultats/fichiers_csv/df_metadonnees.csv"):
+            df = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
+            print("Pas de dataframe en entrée de ajout_apc(). Ancien fichier df_metadonnees.csv chargé à la place")
+        else:
+            raise Exception("Erreur : pas de dataframe spécifié en entrée de ajout_apc()")
+
     openapc_dois = pd.read_csv("./data/apc_tracking/" + data_apc["openapc_dois"], na_filter=False)
     openapc_journals = pd.read_csv("./data/apc_tracking/" + data_apc["openapc_journals"], na_filter=False)
     doaj_apc_journals = pd.read_csv("./data/apc_tracking/" + data_apc["doaj_apc_journals"], na_filter=False)
