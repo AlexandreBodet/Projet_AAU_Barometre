@@ -1,28 +1,28 @@
 {
-  "data":{
-    "dois":{
-      "hal_fichier_api" : "hal_from_api.csv",
-      "hal_manuel" : "extractionHAL.csv",
-      "scopus_fichier" : "",
-      "pubmed_fichier" : "",
-      "wos_fichier" : "",
-      "lens_fichier" : ""
+  "data": {
+    "dois": {
+      "hal_fichier_api": "hal_from_api.csv",
+      "hal_manuel": "extractionHAL.csv",
+      "scopus_fichier": "",
+      "pubmed_fichier": "",
+      "wos_fichier": "",
+      "lens_fichier": ""
     },
     "apc_tracking": {
-      "openapc_dois" : "openapc_dois.csv",
-      "openapc_journals" : "openapc_journals.csv",
-      "doaj_apc_journals" : "doaj_apc_journals.csv",
-      "suspiciousIssns" : "suspiciousIssns.json"
+      "openapc_dois": "openapc_dois.csv",
+      "openapc_journals": "openapc_journals.csv",
+      "doaj_apc_journals": "doaj_apc_journals.csv",
+      "suspiciousIssns": "suspiciousIssns.json"
     },
     "match_ref": "match_referentials.json"
   },
-  "mail" : "alexandre.bodet@eleves.ec-nantes.fr",
+  "mail": "alexandre.bodet@eleves.ec-nantes.fr",
   "api_hal": {
     "nom_labo": "AAU",
     "nombre_lignes_api": 2000
   },
   "parametres": {
-    "utilise_api_hal" : true,
+    "utilise_api_hal": true,
     "recherche_erreurs": true,
     "calcul_APC": true,
     "graphiques": {
@@ -45,54 +45,53 @@
       "apc_discipline": true
     }
   },
-  "choixDomaines":{
-      "domain": {
-        "Biology (fond.)":false,
-        "Sciences de l'ingenieur": true,
-        "Acoustique": false,
-        "Social sciences": true,
-        "Mathematics": false,
-        "Chemistry": false,
-        "Medical research": false,
-        "Physical sciences, Astronomy": false,
-        "Sciences de l'environnement": true,
-        "Environnement et Societe": false,
-        "Earth, Ecology, \nEnergy and applied biology": false,
-        "Sciences de l'Homme et de la Societe": true,
-        "Computer and \n information sciences": true,
-        "Sciences Cognitives": false,
-        "Psychologie": false
-        },
+  "choixDomaines": {
+    "domain": {
+      "Biology (fond.)": false,
+      "Sciences de l'ingénieur": true,
+      "Acoustique": false,
+      "Social sciences": true,
+      "Mathematics": false,
+      "Chemistry": false,
+      "Medical research": false,
+      "Physical sciences, Astronomy": false,
+      "Sciences de l'environnement": true,
+      "Environnement et Société": false,
+      "Earth, Ecology, \nEnergy and applied biology": false,
+      "Sciences de l'Homme et de la Société": true,
+      "Computer and \n information sciences": true,
+      "Sciences Cognitives": false,
+      "Psychologie": false
+    },
     "shsdomain": {
-        "Architecture, amenagement de l'espace": true,
-        "Art et histoire de l'art": true,
-        "Science politique": true,
-        "Sociologie": true,
-        "Histoire": false,
-        "Geographie": true,
-        "Anthropo": true,
-        "Archeologie et Prehistoire": false,
-        "Etudes de l'environnement": false,
-        "Philosophie": true,
-        "Heritage culturel et museologie": true,
-        "Education": false,
-        "Sciences de l'information et de la communication": false,
-        "Methodes et statistiques": false,
-        "Histoire, Philosophie et Sociologie des sciences": false,
-        "Musique, musicologie et arts de la scene": false,
-        "Anthropologie biologique": false,
-        "Gestion et management": false,
-        "Psychologie": false,
-        "Litteratures": false
-        },
+      "Architecture, aménagement de l'espace": true,
+      "Art et histoire de l'art": true,
+      "Science politique": true,
+      "Sociologie": true,
+      "Histoire": false,
+      "Géographie": true,
+      "Anthropo": true,
+      "Archéologie et Préhistoire": false,
+      "Etudes de l'environnement": false,
+      "Philosophie": true,
+      "Héritage culturel et muséologie": true,
+      "Education": false,
+      "Sciences de l'information et de la communication": false,
+      "Méthodes et statistiques": false,
+      "Histoire, Philosophie et Sociologie des sciences": false,
+      "Musique, musicologie et arts de la scène": false,
+      "Anthropologie biologique": false,
+      "Gestion et management": false,
+      "Psychologie": false,
+      "Littératures": false
+    },
     "infodomain": {
-        "Modelisation et simulation": true,
-        "Synthese d'image et realite virtuelle": true,
-         "Biotechnologie": false,
-        "Apprentissage": false,
-         "Interface homme-machine": true,
-         "Vision par ordinateur et reconnaissance de formes": true
-        }
+      "Modélisation et simulation": true,
+      "Synthèse d'image et réalité virtuelle": true,
+      "Biotechnologie": false,
+      "Apprentissage": false,
+      "Interface homme-machine": true,
+      "Vision par ordinateur et reconnaissance de formes": true
     }
-
+  }
 }

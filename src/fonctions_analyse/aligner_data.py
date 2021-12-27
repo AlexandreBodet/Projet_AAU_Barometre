@@ -131,7 +131,8 @@ def aligner(referentials, choixDomaines, df=None):
             "./resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
 
     # alignement avec les données de hal
-    match_ref = j.load(open("./data/" + referentials))
+    with open("./data/"+referentials, "r", encoding="utf-8") as json_file:
+        match_ref = j.load(json_file)
 
     if type(df.hal_domain[0]) == str:
         df.hal_domain = df.hal_domain.apply(literal_eval)

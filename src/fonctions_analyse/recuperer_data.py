@@ -27,12 +27,12 @@ def req_to_json(url):
     return res
 
 
-def get_hal_data(doi, hal_id, match_ref):
+def get_hal_data(doi, hal_id, match):
     """
     Récupérer les métadonnées de HAL.
     Si le DOI est dans unpaywall les métadonnées de HAL communes seront écrasées.
 
-    :param str match_ref: nom du fichier qui contient le dictionnaire pour match les références
+    :param str match: dictionnaire pour match les références
     :param str doi: doi dont les données sont à récupérer
     :param str hal_id: hal id dont les données sont à récupérer
     :return dict: dictionnaire des métadonnées récupérées
@@ -52,22 +52,22 @@ def get_hal_data(doi, hal_id, match_ref):
                       )
 
     # Si l'API renvoie une erreur ou bien si aucun document n'est trouvé
-    if res.get("error") or res['response']['numFound'] == 0:
+    if res.get("error") or res["response"]["numFound"] == 0:
         return {
-            'hal_coverage': 'missing'
+            "hal_coverage": "missing"
         }
 
-    res = res['response']['docs'][0]
+    res = res["response"]["docs"][0]
     # print(json.dumps(res, indent = 2))
 
     # déduire hal_location
-    if res['submitType_s'] == 'file':
-        hal_location = 'file'  # primauté sur les fichiers de HAL comparé a Arxiv ou pubmed
-    elif res['submitType_s'] == 'notice' and (
-            res.get('linkExtId_s') == 'arxiv' or res.get('linkExtId_s') == 'pubmedcentral'):
-        hal_location = res['linkExtId_s']
+    if res["submitType_s"] == "file":
+        hal_location = "file"  # primauté sur les fichiers de HAL comparé a Arxiv ou pubmed
+    elif res["submitType_s"] == "notice" and (
+            res.get("linkExtId_s") == "arxiv" or res.get("linkExtId_s") == "pubmedcentral"):
+        hal_location = res["linkExtId_s"]
     else:
-        hal_location = 'notice'
+        hal_location = "notice"
 
     # déduire les ISSNs
     issn = [res.get("journalIssn_s"), res.get("journalEissn_s")]
@@ -79,15 +79,14 @@ def get_hal_data(doi, hal_id, match_ref):
     domain = []
     shsdomain = []
     infodomain = []
-    match = j.load(open("./data/"+match_ref))
-    if res.get('level0_domain_s'):
-        for e in res['level0_domain_s']:
+    if res.get("level0_domain_s"):
+        for e in res["level0_domain_s"]:
             e = "0."+e
             if e in match["domain"]:
                 if e not in domain:
                     domain.append(e)
-    if res.get('level1_domain_s'):
-        for e in res['level1_domain_s']:
+    if res.get("level1_domain_s"):
+        for e in res["level1_domain_s"]:
             e = "1."+e
             if e in match["shsdomain"]:
                 if e not in shsdomain:
@@ -98,29 +97,29 @@ def get_hal_data(doi, hal_id, match_ref):
 
     auth_count = False
     if res.get("authFullName_s"):
-        auth_count = len(res['authFullName_s'])
+        auth_count = len(res["authFullName_s"])
 
     return {
         # Métadonnées partagées avec unpaywall
-        'title': res['title_s'][0],
-        'author_count': auth_count,
-        'published_date': res.get('publicationDate_s'),
-        'published_year': res.get('publicationDateY_i'),
-        'journal_name': res.get('journalTitle_s'),
-        'journal_issns': issn,
-        'publisher': res.get('journalPublisher_s'),
+        "title": res["title_s"][0],
+        "author_count": auth_count,
+        "published_date": res.get("publicationDate_s"),
+        "published_year": res.get("publicationDateY_i"),
+        "journal_name": res.get("journalTitle_s"),
+        "journal_issns": issn,
+        "publisher": res.get("journalPublisher_s"),
         # métadonnées propres à HAL
-        'halId': res.get('halId_s'),
-        'hal_coverage': 'in',
-        'hal_submittedDate': res.get('submittedDate_s'),
-        'hal_location': hal_location,
-        'hal_openAccess_bool': res.get("openAccess_bool"),
-        'hal_licence': res.get('licence_s'),
-        'hal_selfArchiving': res.get("selfArchiving_bool"),
-        'hal_docType': res.get('docType_s'),
-        'hal_domain': domain,
-        'hal_shsdomain': shsdomain,
-        'hal_infodomain': infodomain
+        "halId": res.get("halId_s"),
+        "hal_coverage": "in",
+        "hal_submittedDate": res.get("submittedDate_s"),
+        "hal_location": hal_location,
+        "hal_openAccess_bool": res.get("openAccess_bool"),
+        "hal_licence": res.get("licence_s"),
+        "hal_selfArchiving": res.get("selfArchiving_bool"),
+        "hal_docType": res.get("docType_s"),
+        "hal_domain": domain,
+        "hal_shsdomain": shsdomain,
+        "hal_infodomain": infodomain
 
     }
 
@@ -153,12 +152,12 @@ def get_upw_data(doi, email):
         upw_coverage = "closed"
 
     # Facultatif : déduire nombre auteurs
-    author_count = len(res['z_authors']) if res.get('z_authors') else False
+    author_count = len(res["z_authors"]) if res.get("z_authors") else False
 
     # Déduire upw_location
     location = licence = version = None
-    if res.get('oa_locations'):
-        oa_loc = res.get('oa_locations')
+    if res.get("oa_locations"):
+        oa_loc = res.get("oa_locations")
         location = list(set(
             [loc["host_type"] for loc in oa_loc]))
         location = ";".join(location)
@@ -208,8 +207,8 @@ def enrich_df(df, email, match_ref, progression_denominateur):
     buffer = "buffer_recuperer_data.csv"
     try:
         # Buffer si la connexion crashe pendant la récupération des données
-        df_traite = pd.read_csv(buffer_folder + buffer, converters={'doi': str}, na_filter=False,
-                                encoding='utf8')
+        df_traite = pd.read_csv(buffer_folder + buffer, converters={"doi": str}, na_filter=False,
+                                encoding="utf8")
         df_traite.replace("", np.nan, inplace=True)  # Pour empêcher le merge de supprimer des lignes à cause de la lecture du nan comme ""
         df.replace("", np.nan, inplace=True)
         df = pd.merge(df, df_traite, on=["doi", "halId"])
@@ -220,6 +219,9 @@ def enrich_df(df, email, match_ref, progression_denominateur):
         df["df_data_traite"] = False
         if not os.path.isdir(buffer_folder):
             os.mkdir(buffer_folder)
+
+    with open("./data/"+match_ref, "r", encoding="utf-8") as json_file:
+        match = j.load(json_file)
 
     for row in df.itertuples():
         if df.loc[row.Index, "df_data_traite"]:
@@ -232,7 +234,7 @@ def enrich_df(df, email, match_ref, progression_denominateur):
             df.to_csv(buffer_folder + buffer, index=False)
 
         # Récupérer les métadonnées de HAL
-        md = get_hal_data(row.doi, row.halId, match_ref)
+        md = get_hal_data(row.doi, row.halId, match)
 
         # S'il y a un DOI, prendre les données de Unpaywall.
         # Les métadonnées de HAL communes avec Unpaywall seront écrasées.
@@ -243,12 +245,12 @@ def enrich_df(df, email, match_ref, progression_denominateur):
 
         # Ajouter les métadonnées au dataframe
         for field in md:
-            if field == 'hal_domain':
-                new_domain = pd.Series([md[field]], index=[row.Index], dtype='object')
-                df.loc[[row.Index], 'hal_domain'] = new_domain
-            elif field == 'hal_shsdomain':
+            if field == "hal_domain":
+                new_domain = pd.Series([md[field]], index=[row.Index], dtype="object")
+                df.loc[[row.Index], "hal_domain"] = new_domain
+            elif field == "hal_shsdomain":
                 new_domain = pd.Series([md[field]], index=[
-                                       row.Index], dtype='object')
+                                       row.Index], dtype="object")
                 df.loc[[row.Index], 'hal_shsdomain'] = new_domain
             elif field == 'hal_infodomain':
                 new_domain = pd.Series([md[field]], index=[

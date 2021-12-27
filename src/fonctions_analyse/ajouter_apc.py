@@ -144,7 +144,7 @@ def ajout_apc(df=None, data_apc=None):
         raise Exception("Erreur : Pas de fichier spécifiés en entré pour les APC")
     if df is None:
         if os.path.exists("./resultats/fichiers_csv/df_metadonnees.csv"):
-            df = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv")
+            df = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv", encoding="utf8")
             print("Pas de dataframe en entrée de ajout_apc(). Ancien fichier df_metadonnees.csv chargé à la place")
         else:
             raise Exception("Erreur : pas de dataframe spécifié en entrée de ajout_apc()")
@@ -174,5 +174,5 @@ def ajout_apc(df=None, data_apc=None):
         for field in md:
             df.loc[row.Index, field] = md[field]
 
-    df.to_csv("./resultats/fichiers_csv/ajout_apc.csv", index=False)
+    df.to_csv("./resultats/fichiers_csv/ajout_apc.csv", index=False, encoding="utf8")
     return df

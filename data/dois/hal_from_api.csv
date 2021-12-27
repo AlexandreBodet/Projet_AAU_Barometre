@@ -115,6 +115,8 @@ Titre;Réf. HAL;DOI
 ['Barcelona en Comù: Questions Facing a New Brand of Political Action'];hal-02475580;
 ['Réalité virtuelle - Concepts et outils'];hal-00968248;
 ['La réalité virtuelle'];hal-00785613;
+['Towards VE that are More Closely Related to the Real World'];hal-01735022;10.1002/9781119341031.ch4
+['Complexity and Scientific Challenges'];hal-01944915;10.1002/9781119341031.ch3
 "[""L'accompagnement des auto-réhabilitateurs par les magasins de bricolage : vision prospective pour l'amélioration énergétique de l'habitat""]";halshs-01501479;
 "[""L'espace sonore en action""]";halshs-01295498;
 ['Prises et emprises de la ville sonore'];hal-01879793;
@@ -380,8 +382,6 @@ Titre;Réf. HAL;DOI
 ['Les espaces-temps de la mobilité labile'];hal-01640585;
 ['Du Substrat-innovant à la Forme-innovée en architecture', 'Innovative Substrate to Form-innovated in architecture'];hal-03252703;
 ['Scientific and Technical Prospects'];hal-01946504;10.1002/9781119341031.ch5
-['Towards VE that are More Closely Related to the Real World'];hal-01735022;10.1002/9781119341031.ch4
-['Complexity and Scientific Challenges'];hal-01944915;10.1002/9781119341031.ch3
 ['Skyline Matching: A robust registration method between Video and GIS'];hal-00768494;10.1051/3u3d/201203007
 ['Stratégies d’incitation au dépôt dans HAL par les chercheurs : deux retours d’expérience'];hal-03494414;
 ['A Study of Virtual Visual Servoing Sensitivity in the Context of Image/GIS Registration for Urban Environments'];hal-01526972;10.23919/MVA.2017.7986915
@@ -1339,7 +1339,6 @@ Titre;Réf. HAL;DOI
 ['Usages de la mémoire dans les projets de renouvellement urbain: le cas des espaces hérités de l’industrie française'];halshs-01316532;10.4000/articulo.2464
 "[""Un héritage prospectif ? Deux ou trois choses que j'ai apprises de ce laboratoire""]";halshs-01711029;
 ['« Les cultures visuelles des auditeurs-baladeurs »'];halshs-00450039;
-['The urban boundary-layer field campaign in Marseille (UBL/CLU-ESCOMPTE): set-up and first results'];hal-00111637;10.1007/s10546-004-9241-4
 ['La trace : notion partagée pour une recherche interdisciplinaire sur la mobilité des enfants'];halshs-03098741;10.26151/esapcestemps.net-1c2y-xb79
 ['Quelle place du sonore dans la production urbaine\xa0? Éclairage par les postures et pratiques professionnelles dans le cadre du diagnostic sonore urbain'];hal-02948549;10.4000/vertigo.23818
 ['The Recording and Representation of Neolithic Engravings in the Déhus Passage Grave (Vale, Guernsey)'];hal-01880375;10.1017/ppr.2015.3
@@ -1454,6 +1453,7 @@ Titre;Réf. HAL;DOI
 "[""Les mises en ambiance de la ville apaisée. Paradoxes et risques d'une aseptisation programmée""]";hal-03174902;
 ['Enseignement de l’architecture : pratiques à inventer'];hal-02648646;
 ['Participate and transform territories: Interactions between inhabitants, techniques and milieux using the notion of «\xa0citizen as sensor\xa0»', 'Participer et transformer les territoires'];hal-01712477;10.4000/netcom.2668
+['The urban boundary-layer field campaign in Marseille (UBL/CLU-ESCOMPTE): set-up and first results'];hal-00111637;10.1007/s10546-004-9241-4
 "[""De l'aura à l'atmosphère. Penser la dimension politique des paysages urbains avec Walter Benjamin""]";hal-02397480;10.4000/cps.3251
 ['Le transect : un opérateur abductif'];hal-01518175;
 ['Echapper à l’emprise commerciale entre «\xa0les boîtes\xa0»'];hal-02474323;
