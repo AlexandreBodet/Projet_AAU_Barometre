@@ -19,16 +19,16 @@
   "mail": "alexandre.bodet@eleves.ec-nantes.fr",
   "api_hal": {
     "nom_labo": "AAU",
-    "nombre_lignes_api": 2000
+    "nombre_lignes_api": 10000
   },
   "parametres": {
     "utilise_api_hal": true,
     "recherche_erreurs": true,
     "calcul_APC": true,
+    "annee": 2021,
+    "annees_debut": 2015,
+    "annees_fin": 2021,
     "graphiques": {
-      "annee": 2020,
-      "annees_debut": 2016,
-      "annees_fin": 2020,
       "rec_discipline": true,
       "domain_rec_discipline": true,
       "domain_shs_rec_discipline": true,

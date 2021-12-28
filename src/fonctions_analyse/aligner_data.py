@@ -153,5 +153,5 @@ def aligner(referentials, choixDomaines, df=None):
 
     df["hal_coverage"].fillna("missing", inplace=True)
     df["upw_coverage"].fillna("missing", inplace=True)
-    df.to_csv("./resultats/fichiers_csv/data_complete.csv", index=False)
+    df.to_csv("./resultats/fichiers_csv/data_complete.csv", index=False, encoding="utf8")
     return df

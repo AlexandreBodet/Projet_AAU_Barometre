@@ -43,19 +43,19 @@ def graphique(df_raw=None, parametres=None):
     """
     graphiques = parametres["graphiques"]
 
-    if graphiques["annees_debut"] is None and graphiques["annees_fin"] is None:
+    if parametres["annees_debut"] is None and parametres["annees_fin"] is None:
         annees = [i for i in range(2016, date.today().year + 1)]
-    elif graphiques["annees_debut"] is None:
-        annees = [i for i in range(2016, graphiques["annees_fin"] + 1)]
-    elif graphiques["annees_fin"] is None:
-        annees = [i for i in range(graphiques["annees_debut"], date.today().year + 1)]
+    elif parametres["annees_debut"] is None:
+        annees = [i for i in range(2016, parametres["annees_fin"] + 1)]
+    elif parametres["annees_fin"] is None:
+        annees = [i for i in range(parametres["annees_debut"], date.today().year + 1)]
     else:
-        annees = [i for i in range(graphiques["annees_debut"], graphiques["annees_fin"] + 1)]
+        annees = [i for i in range(parametres["annees_debut"], parametres["annees_fin"] + 1)]
 
-    if graphiques["annee"] is None:
+    if parametres["annee"] is None:
         annee = date.today().year
     else:
-        annee = graphiques["annee"]
+        annee = parametres["annee"]
 
     if df_raw is None:
         if os.path.exists("./resultats/fichiers_csv/data_complete.csv"):
@@ -124,12 +124,12 @@ def graphique(df_raw=None, parametres=None):
         fonctions_multiples(func=graphique_oa_editeur.graphique_oa_editeur, df=df, dossier=nom_dossier,
                             annee=annee, annees=annees)
 
-    if graphiques["oa_type_evolution"]:
-        graphique_oa_type_evolution.graphique_evolution_type_oa(df=df, annees=annees, dossier=nom_dossier)
-
     if graphiques["bibliodiversite"]:
         fonctions_multiples(func=graphique_bibliodiversite.graphique_bibliodiversite, df=df, dossier=nom_dossier,
                             annee=annee, annees=annees)
+
+    if graphiques["oa_type_evolution"] and parametres["calcul_APC"]:  # a besoin des APC
+        graphique_oa_type_evolution.graphique_evolution_type_oa(df=df, annees=annees, dossier=nom_dossier)
 
     # APCs
     if graphiques["apc_evolution"] and parametres["calcul_APC"]:

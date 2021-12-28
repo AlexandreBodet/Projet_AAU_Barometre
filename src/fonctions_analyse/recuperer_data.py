@@ -81,13 +81,13 @@ def get_hal_data(doi, hal_id, match):
     infodomain = []
     if res.get("level0_domain_s"):
         for e in res["level0_domain_s"]:
-            e = "0."+e
+            e = "0." + e
             if e in match["domain"]:
                 if e not in domain:
                     domain.append(e)
     if res.get("level1_domain_s"):
         for e in res["level1_domain_s"]:
-            e = "1."+e
+            e = "1." + e
             if e in match["shsdomain"]:
                 if e not in shsdomain:
                     shsdomain.append(e)
@@ -209,7 +209,8 @@ def enrich_df(df, email, match_ref, progression_denominateur):
         # Buffer si la connexion crashe pendant la récupération des données
         df_traite = pd.read_csv(buffer_folder + buffer, converters={"doi": str}, na_filter=False,
                                 encoding="utf8")
-        df_traite.replace("", np.nan, inplace=True)  # Pour empêcher le merge de supprimer des lignes à cause de la lecture du nan comme ""
+        df_traite.replace("", np.nan,
+                          inplace=True)  # Pour empêcher le merge de supprimer des lignes à cause de la lecture du nan comme ""
         df.replace("", np.nan, inplace=True)
         df = pd.merge(df, df_traite, on=["doi", "halId"])
     except FileNotFoundError:
@@ -220,7 +221,7 @@ def enrich_df(df, email, match_ref, progression_denominateur):
         if not os.path.isdir(buffer_folder):
             os.mkdir(buffer_folder)
 
-    with open("./data/"+match_ref, "r", encoding="utf-8") as json_file:
+    with open("./data/" + match_ref, "r", encoding="utf-8") as json_file:
         match = j.load(json_file)
 
     for row in df.itertuples():
@@ -230,7 +231,8 @@ def enrich_df(df, email, match_ref, progression_denominateur):
         # À chaque étape selon l'espacement entre les affichages voulu, afficher la progression et enregistrer un buffer
         # Le dénominateur impacte l'intervalle des étapes : 100 une étape tout les 1%, etc
         if row.Index > 0 and row.Index % int(len(df) / progression_denominateur) == 0:
-            print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ", round(row.Index / len(df) * progression_denominateur, 1), "%")
+            print("Ligne : ", row.Index, "Progression de la récupération des métadonnées : ",
+                  round(row.Index / len(df) * progression_denominateur, 1), "%")
             df.to_csv(buffer_folder + buffer, index=False)
 
         # Récupérer les métadonnées de HAL
@@ -250,18 +252,18 @@ def enrich_df(df, email, match_ref, progression_denominateur):
                 df.loc[[row.Index], "hal_domain"] = new_domain
             elif field == "hal_shsdomain":
                 new_domain = pd.Series([md[field]], index=[
-                                       row.Index], dtype="object")
-                df.loc[[row.Index], 'hal_shsdomain'] = new_domain
-            elif field == 'hal_infodomain':
+                    row.Index], dtype="object")
+                df.loc[[row.Index], "hal_shsdomain"] = new_domain
+            elif field == "hal_infodomain":
                 new_domain = pd.Series([md[field]], index=[
-                                       row.Index], dtype='object')
-                df.loc[[row.Index], 'hal_infodomain'] = new_domain
+                    row.Index], dtype="object")
+                df.loc[[row.Index], "hal_infodomain"] = new_domain
             else:
                 df.loc[row.Index, field] = md[field]
         df.loc[row.Index, "df_data_traite"] = True  # Utile pour le buffer
 
     # on supprime les données utilisées par le buffer
-    os.remove(buffer_folder+buffer)
+    os.remove(buffer_folder + buffer)
     os.rmdir(buffer_folder)
     df.drop(["df_data_traite"], axis=1, inplace=True)
     return df
@@ -281,9 +283,9 @@ def enrich_to_csv(df, email, match_ref="match_referentials.json", progression_de
     df = enrich_df(df, email, match_ref, progression_denominateur)
     df_reorder = df[
         ["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location", "hal_openAccess_bool",
-         "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "hal_shsdomain", "hal_infodomain", "published_date", "published_year",
-         "journal_name", "journal_issns", "publisher", "genre", "journal_issn_l", "oa_status", "upw_location",
-         "version",
-         "suspicious_journal", "licence", "journal_is_in_doaj", "journal_is_oa", "author_count", "is_paratext"]]
-    df_reorder.to_csv("./resultats/fichiers_csv/df_metadonnees.csv", index=False)
-    return df
+         "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "hal_shsdomain", "hal_infodomain",
+         "published_date", "published_year", "journal_name", "journal_issns", "publisher", "genre", "journal_issn_l",
+         "oa_status", "upw_location", "version", "suspicious_journal", "licence", "journal_is_in_doaj", "journal_is_oa",
+         "author_count", "is_paratext"]]
+    df_reorder.to_csv("./resultats/fichiers_csv/df_metadonnees.csv", index=False, encoding="utf8")
+    return df_reorder
