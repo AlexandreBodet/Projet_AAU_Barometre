@@ -582,7 +582,6 @@ Titre;Réf. HAL;DOI
 "[""Esquis'Sons ! Sketching soundscapes by using parametric tools: application to the design of balconies, loggias, terraces and corridors of building facades""]";halshs-01807918;
 ['L’islam sans les ambiances. Reflexions à partir de deux mosquées à Nantes'];hal-01404441;
 ['Parametric modeling, rapid prototyping and 3D printing of an interactive façade'];hal-01973489;
-"[""Méthodologie de reconstitution de la température d'air d'un site urbain à partir de données météorologiques de site rural et de données géographiques""]";hal-01585326;
 "[""Esquis'sons ! Sound Sketch : A Parametric Tool to Design Sustainable Soundscapes""]";hal-01361440;
 ['Les élus locaux face au développement résidentiel en région de Saint Nazaire'];hal-02472973;
 ['Το παιχνίδι με τις ατμόσφαιρες στην πόλη', 'Playing with the ambiances in the city', 'Jouer avec les ambiances en ville'];halshs-01700384;
@@ -886,14 +885,10 @@ Titre;Réf. HAL;DOI
 "[""Etude expérimentale et modélisation des effets directionnels dans l'IRT en zone urbaine""]";hal-02762825;
 ['INFLUENCE OF URBAN FEATURES ON INTRA-URBAN NOCTURNAL COOLING: AN EMPIRICAL APPROACH USING CLIMATIC MAPPING'];hal-01983492;
 ['From expert to consultant:\u200b the organizational and political work beyond technique in French engineering and consulting firms'];hal-03395037;
-['Modélisation des interactions ville-climat-énergie'];hal-01164452;
 ['Thermoregulatory effect of green spaces and wetlands in Paris'];hal-01221384;
 ['Comment sonne le monde ?'];hal-03227838;
 ['Résiliences commerciales'];hal-03227839;
 ['Explorations urbaines sur internet'];hal-03227842;
-['Evaluating the urban climate using geo-database – GEOCLIM TOOL'];halshs-01192784;
-['Urban heat island and inertial effects : analyse from field data to spatial analysis'];hal-01164456;
-['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];halshs-01093332;
 ['What tools and modes of representation to reflect an architectural atmosphere?'];hal-01275083;
 ['CFD prediction of the daytime climate evolution inside a greenhouse taking account of the crop interaction, sun path and ground conduction'];hal-02505438;10.17660/ActaHortic.2017.1170.6
 ['Can Retinal Projection Displays Improve Spatial Perception in Augmented Reality?'];hal-02911740;10.1109/ISMAR50242.2020.00028
@@ -1023,7 +1018,6 @@ Titre;Réf. HAL;DOI
 ['Ascolto il tuo cuore, citta. Listening to My City at the Time of COVID-19'];hal-03220329;10.48537/hal-03220329
 ['Chronique du quotidien à la Villeneuve de Grenoble'];halshs-02299122;
 ['Connectivity and place-making Blue-green transects: prospective potentialities towards social sustainability'];hal-02044920;
-['A semi-empirical model to characterize the error of air temperature measurement induced by the shelter used'];hal-01868782;
 ['Transect urbains et récits du lieu. Des ambiances au projet'];hal-01518311;
 ['Practical and precise projector-camera calibration'];hal-01389076;
 ['A study on the use of an immersive Virtual Reality store to investigate consumer perceptions and purchase behavior toward non-standard fruits and vegetables'];hal-01619314;10.1109/VR.2017.7892231
@@ -1035,7 +1029,6 @@ Titre;Réf. HAL;DOI
 ['Attuning data: elements on survey, spaces, scales and context in Archeology'];hal-01894636;
 ['At the Edges of the Phenomenal, The Design of Architectural and Urban Ambiances as a Reconciliation Between Ourselves and the World'];hal-03220249;10.48537/hal-03220249
 ['Enquêter sur les pratiques de projet dans les espaces périurbains'];hal-02472549;
-['Climats et espaces végétalisés en ville : quels enjeux pour les services écosystémiques ?'];hal-01585308;
 ['Marcher, décrire, projeter'];hal-01735452;
 ['La densification douce des zones pavillonnaires\xa0: formes, vécues et perspectives politiques'];hal-01404360;
 ['Pyramid Escape: Design of Novel Passive Haptics Interactions for an Immersive and Modular Scenario'];hal-02284129;10.1109/VR.2019.8797848
@@ -1064,6 +1057,13 @@ Titre;Réf. HAL;DOI
 ['Urban mobility plan environmental impacts assessment: a methodology including socio-economic consequences - The Eval-PDU project'];hal-00614951;
 ['L’artefact, Morphologie d’un conflit …Du Substrat-matière à la matérialisation d’un Substrat', 'The Artefact, Morphology of Conflict ... From the material Substrate to the materialization of a Substrate'];hal-03259827;
 ['An attempt to define perceptive and sensitive mapping through lived space experiments'];hal-03485599;10.5194/ica-abs-3-70-2021
+"[""Méthodologie de reconstitution de la température d'air d'un site urbain à partir de données météorologiques de site rural et de données géographiques""]";hal-01585326;
+['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];halshs-01093332;
+['Urban heat island and inertial effects : analyse from field data to spatial analysis'];hal-01164456;
+['Modélisation des interactions ville-climat-énergie'];hal-01164452;
+['A semi-empirical model to characterize the error of air temperature measurement induced by the shelter used'];hal-01868782;
+['Climats et espaces végétalisés en ville : quels enjeux pour les services écosystémiques ?'];hal-01585308;
+['Evaluating the urban climate using geo-database – GEOCLIM TOOL'];halshs-01192784;
 "[""Impact of KIR/HLA genetic combinations on double umbilical cord blood transplantation outcomes. Results of a French multicentric retrospective study on behalf of the Société Francophone de Greffe de Moelle et de Thérapie Cellulaire (SFGM-TC) and the Société Francophone d'Histocompatibilité et d'Immunogénétique (SFHI).""]";hal-01331582;10.1038/bmt.2016.151
 ['How building energy models take the local climate into account in an urban context – A review'];hal-03489027;10.1016/j.rser.2019.109390
 ['Je - tu- il, la marche aux trois personnes'];halshs-00502589;
@@ -1375,15 +1375,11 @@ Titre;Réf. HAL;DOI
 ['New architectural forms to increase dew collection'];hal-00978323;
 "['Raison technique et ""phantaisie"" quotidienne']";hal-01505444;
 ['CFD simulations of the night-time condensation inside a closed glasshouse: Sensitivity analysis to outside external conditions, heating and glass properties'];hal-01526013;10.1016/j.biosystemseng.2014.08.017
-['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];hal-01141712;10.1016/j.uclim.2015.04.001
-['Radiative properties of the urban fabric derived from surface form analysis: A simplified solar balance model'];hal-01251355;10.1016/jsolener.2015.08.031
 ['SOLENE-microclimate: A Tool to Evaluate Envelopes Efficiency on Energy Consumption at District Scale.'];hal-01799920;10.1016/j.egypro.2015.11.088
 ['L’ingénierie privée en aménagement et urbanisme\u202f: une prothèse de l’ingénierie publique\u202f?'];halshs-03274055;
-['Modeling methods to assess urban fluxes and heat island mitigation measures from street to city scale'];hal-01145181;10.1093/ijlct/ctt049
 ['Gérer les informations temporelles dans et par les modèles informatiques'];hal-01259330;10.3166/RIG.25.415-436
 ['Comment les consommateurs réagissent-ils, en situation d’achat, face à des fruits et légumes difformes\xa0? Premiers résultats d’une étude menée en magasin laboratoire virtuel immersif'];hal-02556606;10.3917/ror.141.0050
 "[""Voir l'invisible : de la vision par ordinateur aux réalités augmentée et Virtuelle""]";hal-01826891;
-['Urban heat island temporal and spatial variations: Empirical modeling from geographical and meteorological data'];hal-01630175;10.1016/j.buildenv.2017.08.009
 ['High resolution thermo-radiative modeling of an urban fragment in Marseilles city center during the UBL-ESCOMPTE campaign'];hal-01145124;10.1016/j.buildenv.2011.02.001
 ['An application of the thermo-radiative model SOLENE for the evaluation of street canyon energy balance'];hal-01145095;10.1016/j.buildenv.2009.11.011
 ['Standardisation de la conception et sur mesure organisationnel : la sous-traitance de l’ingénierie urbaine'];halshs-02103422;10.3406/aru.2018.3270
@@ -1484,3 +1480,8 @@ Titre;Réf. HAL;DOI
 ['A numerical exercise for turbulent natural convection and pollutant diffusion in a two-dimensional partially partitioned cavity'];hal-00285872;
 ['Une critique de l’urbain depuis le champ des ambiances. Perspectives', 'A critique of the urban from the field of ambiences. Perspectives'];hal-03455577;10.4000/ambiances.3805
 ['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315
+['B-AIR : L’art infini de la Radio'];hal-03504295;
+['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];hal-01141712;10.1016/j.uclim.2015.04.001
+['Radiative properties of the urban fabric derived from surface form analysis: A simplified solar balance model'];hal-01251355;10.1016/jsolener.2015.08.031
+['Urban heat island temporal and spatial variations: Empirical modeling from geographical and meteorological data'];hal-01630175;10.1016/j.buildenv.2017.08.009
+['Modeling methods to assess urban fluxes and heat island mitigation measures from street to city scale'];hal-01145181;10.1093/ijlct/ctt049
