@@ -77,7 +77,8 @@ def modification_settings():
         print("Adresse mail modifiée en : " + entree + "\n")
 
     print("Utilisation actuelle de l'API de hal : " + str(donnees["parametres"]["utilise_api_hal"]))
-    entree = input("Utilisation de l'API hal? [y/n]\n")
+    entree = input(
+        "Attention, le calcul ne fonctionne que si l'année utilisée pour les graphiques est présente dans le fichier openapc_journals.csv.\nUtilisation de l'API hal? [y/n]\n")
     if entree == "y":
         donnees["parametres"]["utilise_api_hal"] = True
         print("API hal utilisée!\n")

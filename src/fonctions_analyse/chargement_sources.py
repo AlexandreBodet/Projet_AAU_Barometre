@@ -234,7 +234,7 @@ def chargement_tout(donnees, recherche_erreur=True, utilise_api_hal=True):
     final_df.to_csv("./resultats/fichiers_csv/consolider_doi_hal_id.csv",
                     index=False, encoding="utf8")
 
-    return stat_table, final_df
+    return final_df
 
 
 def identifie_hal_sans_doi_to_csv(rawdf):

@@ -1,4 +1,6 @@
 Titre;Réf. HAL;DOI
+['Construire ! Entre Antiquité et Époque contemporaine, actes du 3e Congrès francophone d’histoire de la construction'];hal-02444013;
+['Soundspaces'];hal-01535908;
 ['Ambiance(s). Ville, architecture, paysages. [coord. du dossier, N° 113 de Culture et Recherche]'];hal-00993763;
 ['Ambiances en débats'];halshs-01295544;
 "[""Marcher en ville : livret audio. Actes sonores du séminaire tenu à l'ENSAG les 3 juillet 2007, 13 novembre 2007 et 15 janvier 2008""]";hal-00993764;
@@ -9,13 +11,11 @@ Titre;Réf. HAL;DOI
 ['Ambiance et histoire de l’architecture : l’expérience et l’imaginaire sensibles de l’environnement construit', 'Ambiance and history of architecture: the built environment in our sensory expérience and imagination'];halshs-01995875;10.4000/ambiances.738
 ['SHS Web of Conferences - Proceedings SCAN’18 – 8e Séminaire de Conception Architecturale Numérique'];hal-01913383;
 ['Usage, Usability, and Utility of 3D City Models – European COST Action TU0801'];hal-01347580;
-['La ville mot à mot'];hal-03334500;
 ['Architecture et Numérique : l’usage contemporain des technologies de liaisons'];hal-02016753;
 ['Architectures des milieux hyper-conditionnés / Architectures of hyper-conditioned environments'];hal-02474409;10.4000/craup.2546
 "[""Dockers à Nantes. L'expérience des itinéraires""]";hal-01846886;
 ['Atmospheres and Mobilities', 'Atmosphären und Mobilität', 'Ambiances et Mobilités'];hal-02472437;
 "[""Archives, acteurs et institutions : actes des journées d'étude des 15 et 16 octobre 2015""]";halshs-03204205;
-['Soundspaces'];hal-01535908;
 ['Marche et environnements urbains contrastés. Perspectives internationales et interdisciplinaires'];hal-01241177;
 ['Traversées urbaines'];hal-01488320;
 ['UDMV15: Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068684;
@@ -28,18 +28,14 @@ Titre;Réf. HAL;DOI
 ['UDMV16: Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068689;
 "[""Écologie sociale de l'oreille. Enquêtes d'expérience musicale""]";hal-03290511;
 ['Des jardins pour ménager les bords de route et de voie ferrée. Actes du Séminaire de recherche, Grenoble, 17 décembre 2012'];hal-00993760;
-['Réalité virtuelle et réalité augmentée : mythes et réalités'];hal-01963014;
-['Virtual Reality, Augmented Reality: myths and realities'];hal-01812771;
-['De l’incertitude des savoirs aux nouvelles fabriques de l’expertise'];hal-03254766;
-['Construire ! Entre Antiquité et Époque contemporaine, actes du 3e Congrès francophone d’histoire de la construction'];hal-02444013;
 ['La qualité sonore des espaces habités / Sonic quality in the living environment'];hal-01373799;
 ['Matérialités contemporaines = Materiality in its contemporary forms : architecture, perception, fabrication, conception. MC 2012 Symposium, Villefontaine, novembre 2012'];hal-00993761;
 ['Ambiances urbaines en partage. Pour une écologie sociale de la ville sensible'];hal-00993765;
 "[""Ce qu'il reste""]";hal-00993762;
 ['Sonic experience, a guide to everyday sounds'];hal-00993768;
 ['Les bruits de la ville'];hal-00993766;
-"[""La ville durable au risque de l'histoire.""]";hal-00488996;
 ['Séminaire Vidéo & Ambiance : Approches vidéographiques dans la recherche urbaine à travers le rythme'];hal-02447202;
+"[""La ville durable au risque de l'histoire.""]";hal-00488996;
 ['Forms of Experienced Environments: Questioning Relations Between Humans, Aesthetics, and Sciences'];halshs-02530943;
 ['UDMV14: Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068673;
 ['Eurographics Workshop on Urban Data Modelling and Visualisation'];hal-02068666;
@@ -56,6 +52,13 @@ Titre;Réf. HAL;DOI
 ['Machine learning for optimized buildings morphosis'];hal-03258021;10.1145/3423603.3424057
 ['Résonances oasiennes. Approches sensibles de l’urbain au Sahara'];hal-03250069;
 ['Amiens 2030 - Le quotidien en projets'];hal-00975415;
+['De l’incertitude des savoirs aux nouvelles fabriques de l’expertise'];hal-03254766;
+['La ville mot à mot'];hal-03334500;
+['Réalité virtuelle et réalité augmentée : mythes et réalités'];hal-01963014;
+['Virtual Reality, Augmented Reality: myths and realities'];hal-01812771;
+['Poética do Condomínio Barão de Mauá. Como restituir a persistência do meio de vida em uma área contaminada?', 'Poetics of Condomínio Barão de Mauá. How to restore livelihood persistence in a contaminated area?', 'Poétique du condominium Barão de Mauá. Comment restituer la persistance du milieu de vie dans une zone contaminée?'];halshs-02943484;
+['Environmental impact assessment of urban mobility plan: a methodology including socio-economic consequences'];hal-01347313;10.1007/978-94-007-2540-9_2
+['Measuring Surrounding Space to Assess the Pedestrian Visual Aperture Angle in the Urban Fabric: Toward a Kurtosis-Based Isovist Indicator'];hal-01347331;10.1007/978-3-642-19766-6_11
 "[""Parcourir pour projeter A l'entour du cimetière, un parcours au Crêt-de-Roch (Saint-Etienne) Lectures du site & enjeux de projet""]";hal-01653048;
 ['Parcours de lecture de la place Sainte-Claire'];hal-01518097;
 ['The recuperation of public space : a closer look at Bogotá, Colombia'];hal-00995507;
@@ -79,6 +82,7 @@ Titre;Réf. HAL;DOI
 "[""L'énigme des ambiances en partage""]";hal-01113932;
 ['Architectural and urban atmospheres: shaping the way we walk in town'];halshs-00596763;
 ['John Langshaw Austin, la perception et son ethnographie'];halshs-00715945;
+['Ateliers promenades, vers une connaissance sensible'];hal-03448945;
 ['Déploiement du champ sensoriel d’une source sacrée et réappropriation ludique d’une architecture'];hal-03248205;
 ['Terre chaude – Terre de Saint'];hal-03248218;
 ['Un soulèvement. Occupation critique de l’espace et architecture de champs sensoriels'];hal-03248174;
@@ -95,15 +99,11 @@ Titre;Réf. HAL;DOI
 ['Dans l’ambiance d’une bergerie urbaine'];halshs-03083997;
 ['Motion Perspectives Integration in the Qualification of the Urban Spaces: Towards a 2D- and a 3D-Enrichment of the S-Partition Method'];hal-01491469;10.1007/978-3-319-51804-6_6
 ['Towards a mixed approach combining visibility and mobility studies to analyze the Eleftheria Square, Nicosia (CY)'];hal-01347499;
-['Towards a Spatial Semantics to Analyze the Visual Dynamics of the Pedestrian Mobility in the Urban Fabric'];hal-01347345;10.1007/978-3-642-12326-9_13
 ['Towards a “typification” of the Pedestrian Surrounding Space: Analysis of the Isovist Using Digital Signal processing Method'];hal-01347341;10.1007/978-3-642-19789-5_14
 ['Towards Urban Fabrics Characterization Based on Buildings Footprints'];hal-01347299;10.1007/978-3-642-29063-3_18
 ['A New Method to Characterize Density Adapted to a Coarse City Model'];hal-01347216;10.1007/978-3-642-31833-7_16
-['Pour une approche du paysage sonore par analogie au visuel - si le son donne à voir, le champ de vision donne-t-il à entendre ?'];hal-01347179;
 ['Mesure et représentation cartographique de l’impression de confinement d’un piéton immergé dans la ville'];hal-01903328;10.1051/shsconf/20184701011
 ['GDMS-R: A mixed SQL to manage raster and vector data'];halshs-01093211;
-['Measuring Surrounding Space to Assess the Pedestrian Visual Aperture Angle in the Urban Fabric: Toward a Kurtosis-Based Isovist Indicator'];hal-01347331;10.1007/978-3-642-19766-6_11
-['Environmental impact assessment of urban mobility plan: a methodology including socio-economic consequences'];hal-01347313;10.1007/978-94-007-2540-9_2
 ['Die Bedeutung von Alltagsästhetik im Kontext der Polarisierung und Hybridisierung von Städten - eine Spurensuche'];hal-02558010;10.1007/978-3-658-11492-3_11
 "[""Déplacement des mégalithes extraordinaires sur le littoral morbihanais, modèles d'embarcations et questions relatives à la navigation atlantique dès le V ème millénaire AVJC""]";hal-01906640;
 ['The effects of atmospheres'];hal-02557981;10.1108/S1871-317320190000016014
@@ -111,11 +111,12 @@ Titre;Réf. HAL;DOI
 ['Die Atmosphärisierung der Alltagserfahrung'];halshs-02181923;
 ['Le transect urbain. Pour une écriture corrélée des ambiances et de l’environnement'];hal-01518091;
 ['La Ciudad y los niños. Juego y creatividad arquitectónica trente a la emergencia de la ciudad garantizada'];hal-03248300;
-['Les compositions gravées en Beauce et Gâtinais'];hal-01935153;
 ['Urbanisme sur mesure, urbanisme en mesure'];halshs-02186843;
 ['Barcelona en Comù: Questions Facing a New Brand of Political Action'];hal-02475580;
 ['Réalité virtuelle - Concepts et outils'];hal-00968248;
 ['La réalité virtuelle'];hal-00785613;
+['Towards VE that are More Closely Related to the Real World'];hal-01735022;10.1002/9781119341031.ch4
+['Complexity and Scientific Challenges'];hal-01944915;10.1002/9781119341031.ch3
 "[""L'accompagnement des auto-réhabilitateurs par les magasins de bricolage : vision prospective pour l'amélioration énergétique de l'habitat""]";halshs-01501479;
 "[""L'espace sonore en action""]";halshs-01295498;
 ['Prises et emprises de la ville sonore'];hal-01879793;
@@ -140,19 +141,16 @@ Titre;Réf. HAL;DOI
 ['A World of Attunements'];halshs-02181950;
 ['The Soundscape of a City in the Nineteenth Century'];hal-02164588;
 ['Pasajes de la vida'];halshs-01704465;
-['Measuring distance in the monumentalities of the Neolithic in Western France'];hal-02172195;
 ['The Atmospherization of Everyday Experience'];halshs-02181915;
 ['Listening to atmospheres'];hal-03244547;
 ['Introduction'];hal-00923807;
+['De la condition habitante à la vision administrative du pays de Brest. Un décalage entre les territoires administratif et vécu, pratiqué, habité ?'];hal-03197714;
 "[""Le mouvement : un révélateur des potentialités esthétiques de l'architecture ordinaire ?""]";halshs-00605300;
 "[""La ville à l'épreuve du mouvement""]";halshs-00354155;
 ['Morale et politique dans le monument historique'];hal-00911154;
 "['Maracanã, a potência de uma ambiência', ""Maracanã, la puissance d'une ambiance""]";halshs-03137452;
 "[""Inscription de l'architecture commerciale""]";hal-01213565;
 "[""Concevoir l'architecture commerciale à partir des ambiances""]";hal-01213548;
-['Les espaces-temps de la mobilité labile'];hal-01640585;
-"[""Entre urbanité, ambiances et pragmatisme : une écologie de l'ordre public""]";hal-01640639;
-['Scientific and Technical Prospects'];hal-01946504;10.1002/9781119341031.ch5
 "[""De l'ambiance héritée à l'ambiance programmée Les leçons d'une expérience""]";halshs-00390170;
 ['Atmosphären. Konzept für einen nicht repräsentationellen Zugang zum Raum'];hal-00995473;
 ['Vers une culturalisation de la recherche sur les ambiances'];hal-00995478;
@@ -164,7 +162,6 @@ Titre;Réf. HAL;DOI
 ['Qualité des ambiances et processus de conception'];halshs-00567910;
 ['Sympathique maison ensoleillée de 4 chambres ...'];halshs-00576022;
 ['Les petites annonces de la maison individuelle'];halshs-00572413;
-"['Balcony form; An approach to reduce sound pressure level into the building façade']";hal-01555295;
 ['Acoustic diffraction patterns from regular to fractal structures: application to the Sierpinski carpet'];hal-01555279;10.1007/1-84628-048-6_7
 ['Fractal scattering indicators for urban sound diffusion'];hal-01552973;10.1142/9789812702746_0018
 ['Le Corbusier Plans. 1950 - Climate Chart (Chandigarh). English version'];halshs-01249644;
@@ -292,9 +289,16 @@ Titre;Réf. HAL;DOI
 ['Le handicap, miroir de la vulnérabilité de notre ordinaire'];hal-00995458;
 "[""L'interaction""]";hal-00995454;
 "[""L'utilitarisme idéal de Moore : un conséquentialisme non hédoniste""]";hal-00995455;
-['De la condition habitante à la vision administrative du pays de Brest. Un décalage entre les territoires administratif et vécu, pratiqué, habité ?'];hal-03197714;
 ['Le Parlons-en comme espace de circulation'];halshs-01775326;
 ['Trajets quotidiens : utopies ordinaires ?'];hal-03257500;
+['Les compositions gravées en Bourgogne'];hal-01935161;
+['Les compositions gravées en Beauce et Gâtinais'];hal-01935153;
+['Naexus : dispositif immersif mobile pour la valorisation du patrimoine'];halshs-01502339;
+['Pratiques scientifiques et opérationnelles autour du paysage sonore : dépassements disciplinaires et croisements professionnels'];hal-01890256;
+['Les déchets nantais : exportations et flux cachés du métabolisme urbain'];halshs-02479825;
+['Towards a Spatial Semantics to Analyze the Visual Dynamics of the Pedestrian Mobility in the Urban Fabric'];hal-01347345;10.1007/978-3-642-12326-9_13
+['Measuring distance in the monumentalities of the Neolithic in Western France'];hal-02172195;
+['Pour une approche du paysage sonore par analogie au visuel - si le son donne à voir, le champ de vision donne-t-il à entendre ?'];hal-01347179;
 "[""Du son quotidien au quotidien de l'autre. L'expérience des écoutes partagées""]";hal-00993632;
 ['Habiter, dénaturer'];hal-03257936;
 ['Penser hors les cadres. La recherche (sur, par et avec le) sensible comme ouverture pour des professionnalités de l’«entre deux» »'];hal-03080129;
@@ -303,11 +307,12 @@ Titre;Réf. HAL;DOI
 "[""Le bien-être des écoquartiers à l'épreuve du paysage multisensoriel""]";halshs-01418064;
 ['Penser le territoire pour (ne pas) penser la qualité'];hal-03249359;
 ['Introduction'];halshs-03242870;
-['Pratiques scientifiques et opérationnelles autour du paysage sonore : dépassements disciplinaires et croisements professionnels'];hal-01890256;
 "[""Métaphore théâtrale et théorie des jeux dans l'œuvre d'Erving Goffman : des paradigmes individualistes ou situationnistes""]";hal-00995456;
 "[""Que nous apprend l'interactionnisme des normes ? Une approche philosophique de l’interactionnisme symbolique et de l’interactionnisme réaliste""]";hal-01625607;
 ['Cartophonies sensibles\u202f: la construction d’une mémoire des lieux'];hal-01220526;
 ['Comprendre la catégorie d’ « adolescent » dans les sociétés méditerranéennes'];hal-03249279;
+"['Discours et pratiques de créativité dans l’ingénierie en aménagement : une injonction du ""projet"" ?']";hal-02487818;
+['Ce que nous dit le jeu de « l’approche globale » sur les projets et leurs bureaux d’études'];hal-01698958;
 ['Institutionnal dynamics and barriers to sustainable construction in France, the United Kingdom and the Netherlands'];halshs-00380126;
 "[""Les phonurgies historiques au service de l'imaginaire des habitants futurs""]";hal-02164429;
 ['Institutionnal dynamics and barriers toward sustainable construction in France, Great-Britain and the Netherlands'];halshs-00389235;
@@ -315,10 +320,8 @@ Titre;Réf. HAL;DOI
 ['Thinking from the border. Introduction'];hal-02506655;
 ['Towards an Art of Impregnation'];hal-01879781;
 ['Ménager des oasis urbaines : des représentations à la fabrication'];hal-03258578;
-['Les compositions gravées en Bourgogne'];hal-01935161;
 ['Effets odorants dans les « scénezgraphies » du côté de chez Swann'];hal-02462066;
 ['Pulse. Dwelling in Sound'];hal-02568178;
-['Poética do Condomínio Barão de Mauá. Como restituir a persistência do meio de vida em uma área contaminada?', 'Poetics of Condomínio Barão de Mauá. How to restore livelihood persistence in a contaminated area?', 'Poétique du condominium Barão de Mauá. Comment restituer la persistance du milieu de vie dans une zone contaminée?'];halshs-02943484;
 ['Urbanités, entre liberté et sécurité'];hal-03109498;
 ['Les deux premières thèses de la chaire Habitat du futur'];hal-03283242;
 "[""A l'écoute des atmosphères""]";hal-01879789;
@@ -345,7 +348,6 @@ Titre;Réf. HAL;DOI
 ['Cutting the city in half : ambiences, transects and projects'];halshs-02975192;
 ['Cortar a Cidade pelo meio. Ambiências, transectos e projetos'];halshs-02965884;
 ['Building a Brazilian climate in Paris: the Case of the House of Brazil (1953-1959)'];halshs-01962310;10.1515/9783035615159-134
-['Les déchets nantais : exportations et flux cachés du métabolisme urbain'];halshs-02479825;
 ['Für ein alltagsästhetisches Verständnis von Heimat'];hal-02557991;10.1007/978-3-658-24161-2_5
 ['Living in a Harbour – Nantes - France'];hal-02185041;
 ['The Guaranteed City. The Ruin of Urban Criticism ?'];hal-03248272;
@@ -359,7 +361,6 @@ Titre;Réf. HAL;DOI
 ['Accessibility of public urban space: considering the diversity of ordinary pedestrian practices'];halshs-02935201;10.4337/9781789908619.00018
 ['La maquette in situ comme pédagogie immersive du projet urbain', 'The in situ model as an immersive pedagogy of the urban project'];hal-02475064;
 "[""La trame verte et bleue, un projet partagé. Récit de l'expérience pédagogique du chemin Gabugy menée à l'Ecole d'Architecture de Lyon ( 2012)""]";halshs-01592817;
-['Naexus : dispositif immersif mobile pour la valorisation du patrimoine'];halshs-01502339;
 ['Big cities, smart data\xa0? Les conséquences épistémologiques et pratiques de la généralisation des univers numériques pour la recherche urbaine'];hal-03107657;10.4000/books.editionscnrs.37008
 ['Da cidade pacífica à asseptização das atmosferas urbanas: modulações do sensorium humano'];hal-02962796;
 ['Towards an ambient ecology of the urban'];halshs-02982219;
@@ -373,14 +374,30 @@ Titre;Réf. HAL;DOI
 "[""Considérations sur l'espace sonore d'une source sacrée""]";hal-03424042;
 "[""Marcher à l'écoute de la médina""]";hal-03424019;
 ['Vers une participation expérientielle et sensible'];hal-03249378;
-"['Discours et pratiques de créativité dans l’ingénierie en aménagement : une injonction du ""projet"" ?']";hal-02487818;
-['Ce que nous dit le jeu de « l’approche globale » sur les projets et leurs bureaux d’études'];hal-01698958;
 ['Oasis en présence : introduction'];hal-03384835;
 ['Des ateliers exploratoires face à un monde découvert. Fabriquer des cohabitations scientifiques'];hal-03248193;
 ['Un aperçu de l’héritage et du devenir des oasis sahariennes'];hal-03248263;
-['Complexity and Scientific Challenges'];hal-01944915;10.1002/9781119341031.ch3
-['Towards VE that are More Closely Related to the Real World'];hal-01735022;10.1002/9781119341031.ch4
-['Ateliers promenades, vers une connaissance sensible'];hal-03448945;
+"['Balcony form; An approach to reduce sound pressure level into the building façade']";hal-01555295;
+"[""Entre urbanité, ambiances et pragmatisme : une écologie de l'ordre public""]";hal-01640639;
+['Les espaces-temps de la mobilité labile'];hal-01640585;
+['Du Substrat-innovant à la Forme-innovée en architecture', 'Innovative Substrate to Form-innovated in architecture'];hal-03252703;
+['Scientific and Technical Prospects'];hal-01946504;10.1002/9781119341031.ch5
+['Skyline Matching: A robust registration method between Video and GIS'];hal-00768494;10.1051/3u3d/201203007
+['Stratégies d’incitation au dépôt dans HAL par les chercheurs : deux retours d’expérience'];hal-03494414;
+['A Study of Virtual Visual Servoing Sensitivity in the Context of Image/GIS Registration for Urban Environments'];hal-01526972;10.23919/MVA.2017.7986915
+['Video/GIS registration system based on skyline matching method'];hal-01296969;10.1109/ICIP.2013.6738749
+['Towards a new semantically enriched geoprocessing tool adapted to the Territorial Intelligence and socio-ecological foresight main thematics.'];halshs-00938242;
+['HAUP\xa0: L’hyperambiotope urbain participatif. Une interface de composition du paysage sonore pour une nouvelle médiation des territoires'];hal-01414019;
+['Towards a landscape potential'];hal-00634042;
+['urbSAT: from spatial SQL to urban indicators'];hal-00329505;
+"['Un outil pour la résilience des paysages sonores ""low-fi"" des centre-villes, application à la qualification multi-sources de la commune de Bruz (35).']";halshs-01025074;
+['Croiser habitudes et expérimentations pour un diagnostic partagé du paysage sonore'];hal-01404359;
+['Crossing Professional Habits for more Global. Analysis of Urban Soundscapes'];hal-01890090;
+['Urban Soundmarks Psychophysical Geodimensioning: Towards Ambient Pointers Geosystemic computation'];hal-00486905;
+['A landscape potential characterization: spatial template of pedestrian ambient fields within the urban fabric'];hal-00634058;
+['Sensitivity of spatial indicators for urban terrain characterization'];hal-00329504;
+"['Un outil pour la résilience des paysages sonores ""low-fi"" des centre-villes, application à la qualification multi-sources de la commune de Bruz (35).']";hal-01545627;
+"[""Morphométrie des espaces urbains et expression d'un ressenti d'agrément\xa0: approche de la notion de bien-être par la quantification informationnelle du bassin de visibilité du piéton""]";hal-01535997;
 ['Espaces publics, temps publics, corps publics'];hal-00993697;
 ['Formal Modulation for Acoustic Performances of a Bridge'];hal-00993625;
 ['Dew architectures - Dew annouces the good weather'];hal-00993656;
@@ -391,7 +408,6 @@ Titre;Réf. HAL;DOI
 ['Urban Transects'];hal-00993642;
 ['Street listening'];hal-01789482;
 ['Describing/Modelling the Dynamics of Pedestrian Behaviour - From the Role of Ambiance to a Hypotesis for a Physical Model'];hal-00439267;
-['Video/GIS registration system based on skyline matching method'];hal-01296969;10.1109/ICIP.2013.6738749
 ['St. Pancras experiment: St Pancras Surveillance Guided Tour’ and other sound walks'];hal-02460793;
 ['Les ambiances du projet urbain à travers les outils numériques mobiles'];hal-01521552;
 ['Cris et murmures de lieux'];hal-00993665;
@@ -427,6 +443,7 @@ Titre;Réf. HAL;DOI
 ['Spectacles de rue et espaces publics urbains : le sonore en jeu.'];hal-01598512;
 ['Dispositifs vidéographiques et paysage urbain. L’utilisation de la vidéo chez William H Whyte dans l’analyse de la vie sociale des petits espaces publics urbains.'];hal-01194465;
 ['Un renouveau des pratiques muséographiques grâce au virtuel : un support à des applications pluridisciplinaires en pédagogie active'];hal-01521549;
+['Mapping Ambiances: a synopsis of theory and practices in an interdisciplinary perspective'];hal-01414063;
 ['La métropole relationnelle en train de se faire : débattre des politiques de mobilités dans la ville diffuse (le cas du Pays de Brest)'];hal-03197707;
 ['Effect of Immersive VR on Communication Patterns in Architectural Design Critiques'];hal-03321727;
 "[""Transformations et reconfigurations des mondes professionnels de l'aménagement périurbain""]";hal-03343653;
@@ -434,40 +451,26 @@ Titre;Réf. HAL;DOI
 ['Hybrid Visual and Inertial Position and Orientation Estimation based on Known Urban 3D Models'];hal-01451468;10.1109/IPIN.2016.7743619
 "['Quand l’ingénierie territoriale cherche à appréhender la complexité : le cas de ""l’approche globale']";hal-01972769;
 "[""Visibilité et prévisibilité : cartographie de la part cachée d'un paysage urbain""]";hal-01347228;
-"[""ENVIRONNEMENT BATI ET MOBILITE PIETONNE ANALYSE MORPHOMETRIQUE DES ESPACES DE VISIBILITE ET CHOIX D'ITINERAIRES PEDESTRES""]";hal-01545632;
-['Environnement bâti et mobilité piétonne', 'Built environment and pedestrian mobility: A morphometric analysis of visibility and itineraries'];hal-01347252;
 ['Sharing geospatial knowledge : ”The geocognition project”'];halshs-01093171;
 ['Approche socio-spatiale de l’intermodalité dans les espaces gares'];halshs-01196231;
 ['Ego-city. Automatic textual description of urban ambiences’ factors'];hal-01404442;
-"['Un outil pour la résilience des paysages sonores ""low-fi"" des centre-villes, application à la qualification multi-sources de la commune de Bruz (35).']";halshs-01025074;
 "[""De l'influence de la végétation et du relief dans la simulation de la ville à l'échelle du quartier""]";hal-01363682;
 ['Implementation of a solar model and shadow plotting in the context of a 2D GIS: challenges and applications for the cooling effect of tree-covered based greening solutions in urban public spaces'];hal-03368426;
 ['The space-time cube as an effective way of representing and analysing the streetscape along a pedestrian route in an urban environment'];hal-02273348;10.1051/shsconf/20196403005
-['Urban Soundmarks Psychophysical Geodimensioning: Towards Ambient Pointers Geosystemic computation'];hal-00486905;
 "[""OrbisGIS\xa0: un SIG du domaine public pour exploiter la composante spatiale d'un Système d'Information de campus""]";hal-00485141;
 ['GDMS-R: A mixed SQL to manage raster and vector data'];hal-00358740;
-['Towards a new semantically enriched geoprocessing tool adapted to the Territorial Intelligence and socio-ecological foresight main thematics.'];halshs-00938242;
 ['Efficient Constrained Delaunay Triangulation implementation in Java for spatial hydrological analysis'];hal-00329503;
 ['GearScape: an extensible free and open-source GIS adapted to the European Network of Territorial Intelligence main thematic'];halshs-00784703;
-['Environmental impact assessment of urban mobility plan : a methodology including socio-economic consequences'];hal-00635714;
 ['A visibility based method to assess the shrinkage feeling in downtown Detroit'];halshs-00745882;
 ['Isovist computation of outdoor environment with semi-dense line SLAM and monocular camera'];hal-03368466;
 ['A structural analysis of the streets’ network to urban fabric characterization'];hal-01347325;
-['Urban mobility plan environmental impacts assessment: a methodology including socio-economic consequences - The Eval-PDU project'];hal-00614951;
 "[""T4SU\xa0: analyses et représentations des vues du ciel, du soleil et des saillances paysagères dans le contexte d'un outil de CAO""]";hal-01402727;
 ['GDMS: An abstraction layer to enhance Spatial Data Infrastructures usability'];hal-00329500;
-['Sensitivity of spatial indicators for urban terrain characterization'];hal-00329504;
-['urbSAT: from spatial SQL to urban indicators'];hal-00329505;
-"['Vers un modèle de décision environnementale de la mobilité douce; application aux parcours piétonniers en milieu urbain.']";halshs-00771660;
 "[""Limiting the buildings' envelopes in order to prevent the surrounding mask effect: towards an efficient implementation in the context of SketchUp""]";hal-01579455;
-['Towards a landscape potential'];hal-00634042;
-['A landscape potential characterization: spatial template of pedestrian ambient fields within the urban fabric'];hal-00634058;
 ['A Review on interdisciplinary methods for the characterization of thermal perception in public spaces'];hal-02372284;10.1088/1742-6596/1343/1/012007
 ['Geoprocesamiento con SQL en OrbisGIS'];halshs-01093395;
 ['immersion - émersion'];hal-01903325;10.1051/shsconf/20184700001
 "['How far is far enough? Towards an adaptive and "" site-centric "" modelling integrating co-visibility constraints for optimal land use']";hal-01347157;
-"[""Morphométrie des espaces urbains et expression d'un ressenti d'agrément\xa0: approche de la notion de bien-être par la quantification informationnelle du bassin de visibilité du piéton""]";hal-01535997;
-"['Un outil pour la résilience des paysages sonores ""low-fi"" des centre-villes, application à la qualification multi-sources de la commune de Bruz (35).']";hal-01545627;
 ['Intermodal public transit and spatio-temporal activity of passengers during transfers'];halshs-01196227;
 ['Physical/Digital Spaces Collisions. So What? Session 9 – Introduction'];hal-03220354;10.48537/hal-03220354
 ['Towards a QGIS-based Graph Carrier of Urban Information and Spotting Wind Behavior at the Pedestrian Level'];hal-01977551;
@@ -477,8 +480,6 @@ Titre;Réf. HAL;DOI
 ['Chercheurs et processus de projet'];hal-03448645;
 ['Crossing professional habits for global analysis of urban soundscapes'];hal-03448732;
 "[""Ambiance(s) : retro-prospective d'un champ de recherche""]";hal-03448335;
-['Implementing Plural Analysis of Urban Soundscapes'];hal-03233772;10.48465/fa.2020.1048
-['Croiser habitudes et expérimentations pour un diagnostic partagé du paysage sonore'];hal-01404359;
 "[""Du projet à l'en-projet, des représentations au récit : chronique d'un projet ouvert""]";hal-01891025;
 ['Concentration d’ambiances. Superposition d’activités commerciales et sportives au cœur d’une ville'];hal-01404373;
 ['Un carnet Hypothèses\u202f: un incontournable de la recherche en SHS\u202f?'];hal-01578697;
@@ -520,8 +521,6 @@ Titre;Réf. HAL;DOI
 ['A la recherche d’un renouvellement des pratiques professionnelles : le prétexte d’une enquête'];hal-01972764;
 "['Discours et pratiques de créativité dans l’ingénierie en aménagement : une injonction du ""projet"" ?']";hal-01972772;
 ['Shaping the image of a city : Nantes (Fr) a case study.'];hal-01508976;
-"[""Sites de passage (3). La représentation de l'arc au cours du Ve millénaire d'après les stèles de Bretagne, des îles Anglo-Normandes et de l'Alentejo""]";hal-01907489;
-['Naexus : dispositif immersif mobile pour la valorisation du patrimoine'];hal-02540057;
 ['Imaginaire de jardins en discussions.'];hal-01315220;
 ['Vers un outil d’évaluation et de conception des ambiances sonores architecturales'];hal-01274934;
 "['Les enjeux d’une ""approche globale"" : quand les études cherchent leur place : expertise, conseil ou conception ?']";hal-01972765;
@@ -583,7 +582,6 @@ Titre;Réf. HAL;DOI
 "[""Esquis'Sons ! Sketching soundscapes by using parametric tools: application to the design of balconies, loggias, terraces and corridors of building facades""]";halshs-01807918;
 ['L’islam sans les ambiances. Reflexions à partir de deux mosquées à Nantes'];hal-01404441;
 ['Parametric modeling, rapid prototyping and 3D printing of an interactive façade'];hal-01973489;
-"[""Méthodologie de reconstitution de la température d'air d'un site urbain à partir de données météorologiques de site rural et de données géographiques""]";hal-01585326;
 "[""Esquis'sons ! Sound Sketch : A Parametric Tool to Design Sustainable Soundscapes""]";hal-01361440;
 ['Les élus locaux face au développement résidentiel en région de Saint Nazaire'];hal-02472973;
 ['Το παιχνίδι με τις ατμόσφαιρες στην πόλη', 'Playing with the ambiances in the city', 'Jouer avec les ambiances en ville'];halshs-01700384;
@@ -633,7 +631,6 @@ Titre;Réf. HAL;DOI
 "[""Pour une convergence des expertises. L'ambiance, au croisement du vécu, de la recherche et de l'art""]";halshs-00744911;
 "[""Les partages de l'ambiance en institution gériatrique""]";halshs-00745874;
 "[""Choubrah entre le passé et le présent : le palimpseste des ambiances d'un quartier populaire au Caire""]";halshs-00745879;
-['Skyline Matching: A robust registration method between Video and GIS'];hal-00768494;10.1051/3u3d/201203007
 ['Dense Stereo Matching using a quarter of Wavelet Transform'];hal-00605240;
 ['Psychophysique et techniques de la vision stéréoscopique'];hal-00786603;
 ['Musiciens en mouvement. Pratiques sonores en métro'];halshs-00441991;
@@ -680,7 +677,6 @@ Titre;Réf. HAL;DOI
 ['What real-estate ads tell about the evolution of the house'];halshs-00573354;
 "[""Controverses autour de l'axe héliothermique""]";halshs-00573755;
 ['Daylight at home'];halshs-00575912;
-['Working Modes with a Declarative Modeler'];hal-00816857;
 ['Communication multimodale et collaboration instrumentée pour le design urbain : opportunités et risques des outils mobiles analysés à travers l’expérience du workshop MOBIANCE'];halshs-01246940;
 ['Visual urban space assessment from sky shape analysis'];halshs-02472366;
 "[""Constitution d'un espace d'enfermement""]";hal-00380100;
@@ -690,7 +686,6 @@ Titre;Réf. HAL;DOI
 ['Inverse simulation of sunlighting: a geometrical framework for architectural and urban design'];halshs-02472154;
 ['Visual Analysis of Urban Environment'];halshs-02472303;
 ['An Image-based and Knowledge-based System for Efficient Architectural and Urban Modeling'];hal-02475749;
-"[""Acoustical Effect Evaluation of Balconies' Ceiling Form in Protecting Buildings Facades Against Traffic Noise.""]";hal-01555296;10.13140/2.1.4715.2161
 ['Playing with Design Intents: Integrating Physical and Urban Constraints in CAD', 'Le jeu des intentions:intégration de contraintes physiques et urbaines en CAO'];hal-02562728;
 ['Svalabard: Une table à dessin virtuelle pour la modélisation 3D'];inria-00550691;10.1145/1148613.1148626
 ['Benefits and limits of GIS for managing heterogeneous environmental data in sustainable urban design: example of the ADEQUA project'];hal-02476255;
@@ -842,26 +837,32 @@ Titre;Réf. HAL;DOI
 ['The cemetery as figure of intimate public space'];halshs-01475032;
 ['Approche multi-agents de modélisation du volume englobant réglementaire'];hal-00993629;
 ['Performance de la forme architecturale au vue de la lumière du jour : cas de la grande mosquée de Kairouan'];hal-00993637;
-"[""L'émergence du développement durable au regard des mutations de l'histoire urbaine (XVIIIe-XXe siècles).""]";hal-00488978;
-['Introduction à une histoire du soleil dans la ville.'];hal-00488962;
 ['Where Virtual Enhances Physical Mock-Up: A Way to Understand our Heritage'];hal-00671976;
 ['Surveillance(s) en public : Présentation de l’axe 3 de la recherche MUSE'];hal-02461066;
 ['Vers une audio-tecture à l’ère du phonocène - Pièces d’écoute : articulations, limites et inclusions'];halshs-02319356;
 ['Les voix de la ville : effets sonores, espaces construits et ambiances urbaines'];halshs-02319363;
 ['Digital Materiality: an experiment with smart concrete'];hal-02016745;
+['Introduction à une histoire du soleil dans la ville.'];hal-00488962;
+"[""L'émergence du développement durable au regard des mutations de l'histoire urbaine (XVIIIe-XXe siècles).""]";hal-00488978;
+['Implementing Plural Analysis of Urban Soundscapes'];hal-03233772;10.48465/fa.2020.1048
+"[""Sites de passage (3). La représentation de l'arc au cours du Ve millénaire d'après les stèles de Bretagne, des îles Anglo-Normandes et de l'Alentejo""]";hal-01907489;
+['Naexus : dispositif immersif mobile pour la valorisation du patrimoine'];hal-02540057;
+['DIAGPART. Des postures et pratiques de groupes professionnels au diagnostic pluriel du paysage sonore urbain'];hal-03053936;
+"[""ENVIRONNEMENT BATI ET MOBILITE PIETONNE ANALYSE MORPHOMETRIQUE DES ESPACES DE VISIBILITE ET CHOIX D'ITINERAIRES PEDESTRES""]";hal-01545632;
+['Environnement bâti et mobilité piétonne', 'Built environment and pedestrian mobility: A morphometric analysis of visibility and itineraries'];hal-01347252;
+['Croiser habitudes et expérimentations pour un diagnostic partagé du paysage sonore'];hal-01890099;
+['Ambient Outlines of Children’s Urban Experience. A Look Back at an Interpretative Methodology'];hal-03220383;10.48537/hal-03220383
+['Crossing Professional Habits for Global Analysis of Urban Soundscapes'];hal-03244140;
+"['Vers un modèle de décision environnementale de la mobilité douce; application aux parcours piétonniers en milieu urbain.']";halshs-00771660;
 "[""Nouveaux usages de la couleur dans les espaces urbains ouverts - Relevés chromatiques urbains au croquis et constitution d'un outil générateur de discours""]";halshs-00745839;
 ['Intelligent Reverse-Engineering Segmentation: Automatic Semantic Recognition of Large 3D Digitalized Cloud of Points Dedicated to Heritage Objects'];hal-00817295;10.1115/ESDA2012-82824
 ['Un renouveau des pratiques muséographiques grâce au virtuel : un support à des applications pluridisciplinaire en pédagogie active'];hal-00585088;
 ['Historical Knowledge Management Through Virtual Reality: Theoretical Aspects and Experiment Proposal'];hal-01062341;
 ['A generalized approach for historical mock-up acquisition and data modelling: towards historically enriched 3D city models'];hal-00738193;10.1051/3u3d/201202009
 ['3D historical models: the case studies of Liege and Nantes'];hal-00736628;
-['Crossing Professional Habits for Global Analysis of Urban Soundscapes'];hal-03244140;
 ['La qualité environnementale urbaine : éléments de cadrage - Approches sensibles des espaces urbains'];hal-03257038;
 ['Paysage (multi)sensoriel en recherches urbaines. Trajectoires, fondements, enjeux'];hal-03244367;
-['Crossing Professional Habits for more Global. Analysis of Urban Soundscapes'];hal-01890090;
-['DIAGPART. Des postures et pratiques de groupes professionnels au diagnostic pluriel du paysage sonore urbain'];hal-03053936;
 ['Understanding sensory experiences from and for urban design'];hal-03244327;
-['Croiser habitudes et expérimentations pour un diagnostic partagé du paysage sonore'];hal-01890099;
 ['Infinite Atmospheres? Ethical Dimensions of and for the Design of Public Spaces. Session 7 – Introduction'];hal-03220330;10.48537/hal-03220330
 ['Sensory Experience, Environmental Experience and Political Engagement. Session 13 – Introduction'];hal-03220344;10.48537/hal-03220344
 ['Enquêter « LUCIE AUBRAC ». Questions interdisciplinaires, pédagogiques et politiques'];hal-03244350;
@@ -884,21 +885,27 @@ Titre;Réf. HAL;DOI
 "[""Etude expérimentale et modélisation des effets directionnels dans l'IRT en zone urbaine""]";hal-02762825;
 ['INFLUENCE OF URBAN FEATURES ON INTRA-URBAN NOCTURNAL COOLING: AN EMPIRICAL APPROACH USING CLIMATIC MAPPING'];hal-01983492;
 ['From expert to consultant:\u200b the organizational and political work beyond technique in French engineering and consulting firms'];hal-03395037;
+['Thermoregulatory effect of green spaces and wetlands in Paris'];hal-01221384;
 ['Comment sonne le monde ?'];hal-03227838;
 ['Résiliences commerciales'];hal-03227839;
 ['Explorations urbaines sur internet'];hal-03227842;
-['Ambient Outlines of Children’s Urban Experience. A Look Back at an Interpretative Methodology'];hal-03220383;10.48537/hal-03220383
-['Evaluating the urban climate using geo-database – GEOCLIM TOOL'];halshs-01192784;
-['Thermoregulatory effect of green spaces and wetlands in Paris'];hal-01221384;
-['Urban heat island and inertial effects : analyse from field data to spatial analysis'];hal-01164456;
-['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];halshs-01093332;
 ['What tools and modes of representation to reflect an architectural atmosphere?'];hal-01275083;
-['Modélisation des interactions ville-climat-énergie'];hal-01164452;
 ['CFD prediction of the daytime climate evolution inside a greenhouse taking account of the crop interaction, sun path and ground conduction'];hal-02505438;10.17660/ActaHortic.2017.1170.6
 ['Can Retinal Projection Displays Improve Spatial Perception in Augmented Reality?'];hal-02911740;10.1109/ISMAR50242.2020.00028
 ['Virtual Objects Look Farther on the Sides: The Anisotropy of Distance Perception in Virtual Reality'];hal-02084069;10.1109/VR.2019.8797826
 ['Generation of variability in shape, aspect and time of 3D Fruits and Vegetables'];hal-01625956;
 ['Perception of Multisensory Wind Representation in Virtual Reality'];hal-02924372;10.1109/ISMAR50242.2020.00024
+"['De la ""production urbaine"" technocratique à la ""fabrique urbaine"" transversale : l’ingénierie au travail de la frontière entre technique et politique']";hal-02486821;
+['Le jeune chercheur et son hybridité au-delà de la CIFRE : savoirs, espaces et professionnels de la recherche urbaine en question'];hal-02969607;
+['Redéfinition du travail dans les bureaux d’études en aménagement et environnement : l’intérêt général techniciste sous pression managériale'];halshs-01894703;
+['Les rapports d’études en aménagement : regard ethnographique sur l’imbrication entre rédaction technique et décision politique'];halshs-01972710;
+['Experts et consultants au service de l’action publique locale. Une approche pragmatique du travail de l’ingénierie privée'];hal-03395103;
+['Le retour de l’ingénieur-conseil face aux ambiguïtés de la commande publique : les bureaux d’études au secours du monde politique ?'];halshs-01972720;
+"['Ce que nous dit le jeu de ""l’approche globale"" sur les projets et leurs bureaux d’études']";halshs-01972715;
+['Une ingénierie réflexive ?'];halshs-01972713;
+"['Un nouvel esprit de l’ingénierie urbaine ? Reconfiguration des processus et acteurs de la production urbaine dans la ""cité par projets']";halshs-01925359;
+"['Les appropriations multiples de l\'injonction à ""l\'usager"" dans la mise en œuvre de l\'action publique urbaine : le retour d\'une ingénierie urbaine']";halshs-01972707;
+['Consulting reports in urban planning as technical tools : an ethnographic study of intricacy between technical writing and political decision'];halshs-01894705;
 "[""L'ambiance des stades de football.""]";halshs-00981527;
 "[""Citizen's words are not just idle talk: collecting stories for giving ground to the project""]";halshs-00395069;
 ['Dynamiques et entraves institutionnelles en construction durable'];halshs-00389261;
@@ -979,7 +986,6 @@ Titre;Réf. HAL;DOI
 ['Caractérisation et restitution vidéographique des ambiances urbaines'];hal-01944413;10.1051/shsconf/20184701012
 ['Prototyper les ambiances de demain. Le prototype\xa0: expérience de pensée, expérience physique, expérience sensible'];hal-01404382;
 ['A data model for simulation models relying on spatio-temporal urban data'];hal-01521335;10.2312/udmv.20161413
-['A Study of Virtual Visual Servoing Sensitivity in the Context of Image/GIS Registration for Urban Environments'];hal-01526972;10.23919/MVA.2017.7986915
 ['Un espace en suspens : les jardins potagers historiques de Yedikule (Istanbul) sous pression urbaine', 'An outstanding space : the historical vegetable gardens of Yedikule (Istanbul) under urban pressure'];hal-02562925;
 ['Representational Ecosystems in Architectural Design Studio Critiques: Do changes in the representational ecosystem affect tutors and students behaviors during design critiques?'];hal-01916562;
 ['L’archive filmique : un regard rétrospective sur la ville'];hal-02044993;
@@ -1007,13 +1013,11 @@ Titre;Réf. HAL;DOI
 ['Sensibilities to Lifeworlds'];hal-03220248;10.48537/hal-03220248
 ['Designing Intradiegetic and Extradiegetic Spaces for Virtual Reality'];hal-02943631;
 ['Public lighting and participatory democracy, the contribution of public transport drivers in Nantes Métropole to the evaluation of nocturnal urban ambiances', '(Ré)concilier éclairage urbain et environnement nocturne : les enjeux d’une controverse sociotechnique'];hal-02991958;
-['HAUP\xa0: L’hyperambiotope urbain participatif. Une interface de composition du paysage sonore pour une nouvelle médiation des territoires'];hal-01414019;
 ['From a sensitive Ecology to a Political Ecology of Ambiances. Issues and Challenges?'];hal-03220314;10.48537/hal-03220314
 ['Vers une co-production de l’habitat au sein des espaces périurbains, entre exploration et régulation : les apprentissages de deux démarches entre Nantes et Saint-Nazaire'];hal-03281206;
 ['Ascolto il tuo cuore, citta. Listening to My City at the Time of COVID-19'];hal-03220329;10.48537/hal-03220329
 ['Chronique du quotidien à la Villeneuve de Grenoble'];halshs-02299122;
 ['Connectivity and place-making Blue-green transects: prospective potentialities towards social sustainability'];hal-02044920;
-['A semi-empirical model to characterize the error of air temperature measurement induced by the shelter used'];hal-01868782;
 ['Transect urbains et récits du lieu. Des ambiances au projet'];hal-01518311;
 ['Practical and precise projector-camera calibration'];hal-01389076;
 ['A study on the use of an immersive Virtual Reality store to investigate consumer perceptions and purchase behavior toward non-standard fruits and vegetables'];hal-01619314;10.1109/VR.2017.7892231
@@ -1025,7 +1029,6 @@ Titre;Réf. HAL;DOI
 ['Attuning data: elements on survey, spaces, scales and context in Archeology'];hal-01894636;
 ['At the Edges of the Phenomenal, The Design of Architectural and Urban Ambiances as a Reconciliation Between Ourselves and the World'];hal-03220249;10.48537/hal-03220249
 ['Enquêter sur les pratiques de projet dans les espaces périurbains'];hal-02472549;
-['Climats et espaces végétalisés en ville : quels enjeux pour les services écosystémiques ?'];hal-01585308;
 ['Marcher, décrire, projeter'];hal-01735452;
 ['La densification douce des zones pavillonnaires\xa0: formes, vécues et perspectives politiques'];hal-01404360;
 ['Pyramid Escape: Design of Novel Passive Haptics Interactions for an Immersive and Modular Scenario'];hal-02284129;10.1109/VR.2019.8797848
@@ -1046,21 +1049,26 @@ Titre;Réf. HAL;DOI
 ['Amélioration des images stéréoscopiques'];hal-00786465;
 ['Tutorial : Visual Immersion for design'];hal-00786760;
 ['Virtual Reality in the Design Process: from design review to ergonomic studies'];hal-00785304;
-['A frame work for the haptic rendering of the human hand'];hal-00785288;
 "[""Décrire / Modéliser les dynamiques de cheminement : du rôle des ambiances à l'hypothèse d'un modèle physique""]";hal-00910659;
-"['De la ""production urbaine"" technocratique à la ""fabrique urbaine"" transversale : l’ingénierie au travail de la frontière entre technique et politique']";hal-02486821;
-['Le jeune chercheur et son hybridité au-delà de la CIFRE : savoirs, espaces et professionnels de la recherche urbaine en question'];hal-02969607;
-['Redéfinition du travail dans les bureaux d’études en aménagement et environnement : l’intérêt général techniciste sous pression managériale'];halshs-01894703;
-['Les rapports d’études en aménagement : regard ethnographique sur l’imbrication entre rédaction technique et décision politique'];halshs-01972710;
-['Experts et consultants au service de l’action publique locale. Une approche pragmatique du travail de l’ingénierie privée'];hal-03395103;
-['Le retour de l’ingénieur-conseil face aux ambiguïtés de la commande publique : les bureaux d’études au secours du monde politique ?'];halshs-01972720;
-"['Ce que nous dit le jeu de ""l’approche globale"" sur les projets et leurs bureaux d’études']";halshs-01972715;
-['Une ingénierie réflexive ?'];halshs-01972713;
-"['Un nouvel esprit de l’ingénierie urbaine ? Reconfiguration des processus et acteurs de la production urbaine dans la ""cité par projets']";halshs-01925359;
-"['Les appropriations multiples de l\'injonction à ""l\'usager"" dans la mise en œuvre de l\'action publique urbaine : le retour d\'une ingénierie urbaine']";halshs-01972707;
-['Consulting reports in urban planning as technical tools : an ethnographic study of intricacy between technical writing and political decision'];halshs-01894705;
-['Mapping Ambiances: a synopsis of theory and practices in an interdisciplinary perspective'];hal-01414063;
+['Working Modes with a Declarative Modeler'];hal-00816857;
+['A frame work for the haptic rendering of the human hand'];hal-00785288;
+"[""Acoustical Effect Evaluation of Balconies' Ceiling Form in Protecting Buildings Facades Against Traffic Noise.""]";hal-01555296;10.13140/2.1.4715.2161
+['Environmental impact assessment of urban mobility plan : a methodology including socio-economic consequences'];hal-00635714;
+['Urban mobility plan environmental impacts assessment: a methodology including socio-economic consequences - The Eval-PDU project'];hal-00614951;
+['L’artefact, Morphologie d’un conflit …Du Substrat-matière à la matérialisation d’un Substrat', 'The Artefact, Morphology of Conflict ... From the material Substrate to the materialization of a Substrate'];hal-03259827;
+['An attempt to define perceptive and sensitive mapping through lived space experiments'];hal-03485599;10.5194/ica-abs-3-70-2021
+"[""Méthodologie de reconstitution de la température d'air d'un site urbain à partir de données météorologiques de site rural et de données géographiques""]";hal-01585326;
+['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];halshs-01093332;
+['Urban heat island and inertial effects : analyse from field data to spatial analysis'];hal-01164456;
+['Modélisation des interactions ville-climat-énergie'];hal-01164452;
+['A semi-empirical model to characterize the error of air temperature measurement induced by the shelter used'];hal-01868782;
+['Climats et espaces végétalisés en ville : quels enjeux pour les services écosystémiques ?'];hal-01585308;
+['Evaluating the urban climate using geo-database – GEOCLIM TOOL'];halshs-01192784;
+"[""Impact of KIR/HLA genetic combinations on double umbilical cord blood transplantation outcomes. Results of a French multicentric retrospective study on behalf of the Société Francophone de Greffe de Moelle et de Thérapie Cellulaire (SFGM-TC) and the Société Francophone d'Histocompatibilité et d'Immunogénétique (SFHI).""]";hal-01331582;10.1038/bmt.2016.151
+['How building energy models take the local climate into account in an urban context – A review'];hal-03489027;10.1016/j.rser.2019.109390
 ['Je - tu- il, la marche aux trois personnes'];halshs-00502589;
+"[""Libérez les sciences sociales avant qu'elles n'étouffent ! Enquête sur le libre-savoir scientifique""]";halshs-00623175;
+['Usage de la morphométrie dans la révélation des préférences de mobilité. Application aux cheminements piétons'];hal-01345703;10.3166/rig.24.101-130
 "[""L'usage des ambiances""]";hal-00995572;
 ['Produire avec Perec'];hal-01520078;
 ['Konturen einer situativen Umweltästhetik'];hal-00978334;
@@ -1105,24 +1113,19 @@ Titre;Réf. HAL;DOI
 "[""Des densités aux rugosités. Les modalités instrumentales d'une transposition""]";halshs-03204360;10.3406/aru.1995.1884
 ['La recherche sur les ambiances, récit d’un fondateur : Entretien avec Jean-Pierre Péneau'];halshs-03204150;
 "[""Les chorographies de l'urbanité sonore""]";halshs-00380022;
-['Usage de la morphométrie dans la révélation des préférences de mobilité. Application aux cheminements piétons'];hal-01345703;10.3166/rig.24.101-130
 "[""Étude comparée de quatre indicateurs qualifiant le champ visuel d'un piéton en milieu urbain"", 'Comparative study of four indicators qualifying the pedestrian viewshed in the urban environment']";hal-01150201;10.3166/rig.25.75-98
 "['Le « vu -pas vu » comme dépassement de « la nécessaire politesse entre savoirs »', 'See or being seen... or not"" - How to overcome the essential Courtesy between Knowledges']";hal-01412287;
 ['Local climate zone approach on local and micro scales: Dividing the urban open space'];hal-02086327;10.1016/j.uclim.2019.100457
 ['Assessing the effects of urban street trees on building cooling energy needs: the role of foliage density and planting pattern'];hal-03046054;10.1016/j.scs.2020.102633
 ['Minimum-area ellipse bounding an isovist: towards a 2D GIS-based efficient implementation'];hal-02916059;10.1080/13658816.2020.1800017
-['Urban Soundmarks Psychophysical Geodimensioning: Towards Ambient Pointers Geosystemic computation'];hal-01345710;10.4236/jssm.2010.34049
 ['Pour une forme urbaine facteur de bien-être : analyse des bassins de visibilité et objectivation de la perception sensible', 'For urban forms as a factor of well-being: viewshed analysis and objectification of sensory perception'];hal-01347164;10.1684/ers.2015.0797
 ['Seismic vulnerability assessment of urban environments in moderate-to-low seismic hazard regions using association rule learning and support vector machine methods'];hal-01121491;10.1007/s11069-014-1538-0
-['PirVE AMBIOFLUX. Caractérisation interdisciplinaire et intersectorielle des attracteurs paysagers des ambiances piétonnes du quartier de Hautepierre à Strasbourg'];hal-01491479;
 ['Caractérisation des tissus urbains à partir de l’analyse structurelle des réseaux viaires'];halshs-01345699;10.4000/cybergeo.25009
 ['The automatic classification of urban open space by a pattern-matching method of the viewshed at intersections'];hal-01945663;10.1177/2399808318816994
 ['Les enjeux de la narration dans l’immersion 3D archéologique', 'Narration issues in archaeological 3D immersion'];hal-02874766;10.4000/insitu.27623
-['Recent Excavation and Recording at the New Neolithic Rock Art Site of Vallée Aux Noirs, Buthiers (Seine-et-Marne, France)'];hal-01869312;10.1111/ojoa.12133
 ['Urban cooling strategies as interaction opportunities in the public space: a methodological proposal'];hal-03445642;10.1088/1742-6596/2042/1/012128
 ['Pour une conception modale des ambiances architecturales'];halshs-00932872;
 ['Le port de Bosa\xa0: l’unité italienne au reflet d’un projet en échec', 'The Port of Bosa: Italian Unity as a reflection of a failed project'];hal-03402423;10.4000/craup.8625
-['La trace : notion partagée pour une recherche interdisciplinaire sur la mobilité des enfants'];halshs-03098741;10.26151/esapcestemps.net-1c2y-xb79
 ['Couleurs et paysages\xa0: une nouvelle approche de planification de la couleur par les effets chromatiques', 'Colors and landscapes\xa0: a new approach in color planning through chromatic effects'];halshs-02294890;10.4000/vertigo.25106
 ['Co-ideation critique unfolded: an exploratory study of a co-design studio ‘crit’ based on the students’ experience'];hal-02083897;10.1080/15710882.2019.1572765
 ['Fusion of 3D GIS, Vision, Inertial and Magnetic Data for Improved Urban Pedestrian Navigation and Augmented Reality Applications'];hal-01896361;10.1002/navi.254
@@ -1145,10 +1148,7 @@ Titre;Réf. HAL;DOI
 ['Le scénographe, une figure émergente de La ville événementielle'];hal-02883354;
 "[""Lecture de Frédéric Barbe : Fabrication et usage des écoquartiers, essai critique sur la généralisation de l'aménagement durable en France de Vincent Renault, Lausanne, Presse polytechniques et universitaires romandes, collection « Espace en société », 2014, 122 p.""]";hal-02877881;
 ['The backstage of urban ambiances'];hal-01560172;
-['In search of a representation of the Gavrinis megalithic tomb (Morbihan, France)'];hal-01617643;10.4995/var.2013.4319
-['Intuition and analysis in the recording, interpretation and public translation of Neolithic engraved signs in western France'];hal-01617172;10.1016/j.daach.2015.02.002
 ['La mémoire faite trajet.'];hal-01226350;
-['The Recording and Representation of Neolithic Engravings in the Déhus Passage Grave (Vale, Guernsey)'];hal-01880375;10.1017/ppr.2015.3
 ['Détection des situations de danger rencontrées par les piétons presbyacousiques dans l’espace urbain : une approche via les textures audio'];halshs-03204170;10.4000/ambiances.485
 ['Pascale Pichon et Fanny Herbert avec Alissone Perdrix (eds.). 2014. Atlas des espaces publics : Saint-Etienne, une ville laboratoire.'];hal-01564787;
 ['Acteurs intermédiaires de la mobilisation territoriale\xa0: les enseignements des démarches de prospective-action'];halshs-01711126;10.7202/1030952ar
@@ -1172,7 +1172,6 @@ Titre;Réf. HAL;DOI
 ['Recherche sur une initiative de métrologie citoyenne de la qualité de l’air : le projet CapCi à Rennes', '[A research project on an air quality citizen sensing initiative: CapCi project in Rennes]'];hal-03094976;10.1684/ers.2020.1483
 ['Geographically masking addresses to study COVID-19 clusters'];hal-03374868;10.1080/15230406.2021.1977709
 ['Ecouter de la musique ensemble. Ethnographies des écoutes musicales collectives (introduction)'];halshs-01224237;
-['Étude sur un monolithe – la dalle S12 au sol du monument de Gavrinis (Larmor-Baden, Morbihan)', 'Die Untersuchung einer monolithischen Stele – Die Steinplatte S12 auf dem Boden des Grabmonumentes von Gavrinis (Larmor-Baden, Morbihan, Frankreich)', 'Case study on a monolith – The paving stone S12 on the ground of Gavrinis monument (Larmor-Baden, Morbihan)'];hal-01952651;
 "[""Géolocalisation en milieu urbain par appariement entre une collection d'images et un SIG 2D""]";hal-01521145;10.3166/isi.14.5.107-131
 ['Camera tracking by online learning of keypoint arrangements using LLAH in augmented reality applications'];hal-01521143;10.1007/s10055-010-0173-7
 ['Integration of immersive walking to analyze urban daylighting ambiences'];hal-00285945;
@@ -1180,7 +1179,6 @@ Titre;Réf. HAL;DOI
 ['Generic modeling of application and spatiotemporal data : application to the study of pedestrian behavior'];hal-01521142;10.3233/IDT-2011-0113
 ['Une image sonnante des urbanités sensibles. Fiction / politique'];hal-01483440;
 ['Rafraîchir les Observatoires par le son', 'Revitalising the Observatories through Sound'];halshs-01592907;10.4000/paysage.7362
-['Enregistrement et représentations de la stèle néolithique de L’Ouche de Beauce (Maisse, Essonne)', 'Recording and representations of the Neolithic stele of L’Ouche de Beauce (Maisse, Essonne)'];hal-01946755;
 ['L’eau dans les paysages de l’énergie. Le cas de la presqu’île de Grenoble'];hal-02102493;
 ['Building Artificial Climates. Thermal control and comfort in Modern Architecture (1930-1960)', 'La fabrique des climats artificiels. Régulation thermique et confort dans l’architecture moderne (1930-1960)'];halshs-01418310;
 ['Survey and Photogrammetry: Retreiving and Modeling Lost Data'];hal-02288691;
@@ -1194,7 +1192,6 @@ Titre;Réf. HAL;DOI
 ['Paroles données, paroles rendues. La marche collective comme écriture du projet urbain'];hal-01518176;
 "[""La « Route de l'esclave » de Ouidah (Bénin) : espace de négociation des mémoires collectives des traites négrières et de l'esclavage""]";hal-01826345;
 ['Une formation en urbanisme sans institut, and so what\xa0? Réflexion à partir d’un éternel horizon nantais', 'A learning program in Urban Planning but no Institute, so what? Consideration from an eternal horizon in Nantes'];hal-02426685;10.4000/tem.4661
-"[""Impact of KIR/HLA genetic combinations on double umbilical cord blood transplantation outcomes. Results of a French multicentric retrospective study on behalf of the Société Francophone de Greffe de Moelle et de Thérapie Cellulaire (SFGM-TC) and the Société Francophone d'Histocompatibilité et d'Immunogénétique (SFHI).""]";hal-01331582;10.1038/bmt.2016.151
 ['Habitations Légèrement Modifiées'];halshs-00834404;
 ['Dense stereo correspondence using quarters of wavelets transform'];hal-00605233;
 "[""La fabrique de la rue en marche. Essai sur l'altération des ambiances urbaines""]";hal-00978341;
@@ -1205,7 +1202,6 @@ Titre;Réf. HAL;DOI
 ['A Sonic Paradigm of Urban Ambiances'];hal-00980746;
 ['A brief archaeology of the notion of ambiance'];hal-02568186;
 ['Des formes environnementales en aménagement urbain : d’une perspective théorique aux études de cas'];halshs-02189179;
-['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315
 ['Typische Atmosphären städtischer Plätze. Auf dem Weg zu einer anwendungsorientierten Atmosphärenforschung'];hal-00978333;
 ['Unterwegs in fremden Umgebungen. Ein praxeologischer Zugang zum Wayfinding von Fußgängern'];hal-00978335;
 ['La condition grisante de la Cifre'];halshs-03234360;10.4000/craup.3057
@@ -1229,7 +1225,6 @@ Titre;Réf. HAL;DOI
 ['The acoustical influence of balcony depth and parapet form: Experiments and simulations'];hal-01555283;10.1016/j.apacoust.2004.09.004
 ['Rayonnement solaire et environnement urbain : de l’héliotropisme au désenchantement, histoire et enjeux d’une relation complexe'];halshs-01246933;10.4000/developpementdurable.9767
 ['Lighting Intention Materialization with a Light-Based Parametric Design Model'];hal-01502786;10.1260/1478-0771.8.4.507
-['Working Modes with a Declarative Modeler'];hal-00816837;10.1016/S0169-7552(98)00176-7
 ['Du complexe au simplexe : le modèle des objets ambiants'];halshs-02464640;
 ['Fractal modeling of diffusive urban configurations'];hal-01541215;10.1121/1.4777350
 ['Playing with design intents: integrating physical and urban constraints in CAD', 'Le jeu des intentions: intégration de contraintes physiques et urbaines en CAO'];hal-02562734;10.1016/S0926-5805(99)00046-1
@@ -1336,15 +1331,26 @@ Titre;Réf. HAL;DOI
 ['Immersion et Émergence'];halshs-00380151;
 ['De natures en artifices'];hal-01566792;
 ['Etre piéton à Salvador de Bahia et Caracas : une proximité fragilisée ?', 'Fuβgänger in Salvador de Bahia und Caracas: eine verletzliche Nähe ?', 'Being a pedestrian in Salvador de Bahia and Caracas : weakened closeness ?'];hal-01241194;
+"[""Quand l'Europe renie son passé""]";hal-03417670;10.3917/comm.107.0796
+['Genèse des formations en urbanisme en France : Grenoble un “laboratoire urbain” pas comme les autres\xa0?'];hal-01995855;10.4000/tem.4773
 ['Ambiances et civilité'];hal-01248567;
 ['Une chercheur dans un jury de HMONP'];hal-01356246;
-"[""L'émergence du développement durable au regard des mutations de l'histoire urbaine""]";halshs-00574278;
-"[""The ‘Historiated’ Neolithic Stele of Saint-Samson-sur-Rance (Côtes-d'Armor, France)""]";hal-01933083;10.1017/S0959774317000853
 ['Soleil, lumière et chaleur dans l’architecture moderne : excursions dans l’œuvre de Le Corbusier'];halshs-01246943;
 ['Usages de la mémoire dans les projets de renouvellement urbain: le cas des espaces hérités de l’industrie française'];halshs-01316532;10.4000/articulo.2464
 "[""Un héritage prospectif ? Deux ou trois choses que j'ai apprises de ce laboratoire""]";halshs-01711029;
 ['« Les cultures visuelles des auditeurs-baladeurs »'];halshs-00450039;
-['The urban boundary-layer field campaign in Marseille (UBL/CLU-ESCOMPTE): set-up and first results'];hal-00111637;10.1007/s10546-004-9241-4
+['La trace : notion partagée pour une recherche interdisciplinaire sur la mobilité des enfants'];halshs-03098741;10.26151/esapcestemps.net-1c2y-xb79
+['Quelle place du sonore dans la production urbaine\xa0? Éclairage par les postures et pratiques professionnelles dans le cadre du diagnostic sonore urbain'];hal-02948549;10.4000/vertigo.23818
+['The Recording and Representation of Neolithic Engravings in the Déhus Passage Grave (Vale, Guernsey)'];hal-01880375;10.1017/ppr.2015.3
+"[""The ‘Historiated’ Neolithic Stele of Saint-Samson-sur-Rance (Côtes-d'Armor, France)""]";hal-01933083;10.1017/S0959774317000853
+['Urban Soundmarks Psychophysical Geodimensioning: Towards Ambient Pointers Geosystemic computation'];hal-01345710;10.4236/jssm.2010.34049
+['Enregistrement et représentations de la stèle néolithique de L’Ouche de Beauce (Maisse, Essonne)', 'Recording and representations of the Neolithic stele of L’Ouche de Beauce (Maisse, Essonne)'];hal-01946755;
+['Intuition and analysis in the recording, interpretation and public translation of Neolithic engraved signs in western France'];hal-01617172;10.1016/j.daach.2015.02.002
+['In search of a representation of the Gavrinis megalithic tomb (Morbihan, France)'];hal-01617643;10.4995/var.2013.4319
+['Étude sur un monolithe – la dalle S12 au sol du monument de Gavrinis (Larmor-Baden, Morbihan)', 'Die Untersuchung einer monolithischen Stele – Die Steinplatte S12 auf dem Boden des Grabmonumentes von Gavrinis (Larmor-Baden, Morbihan, Frankreich)', 'Case study on a monolith – The paving stone S12 on the ground of Gavrinis monument (Larmor-Baden, Morbihan)'];hal-01952651;
+['PirVE AMBIOFLUX. Caractérisation interdisciplinaire et intersectorielle des attracteurs paysagers des ambiances piétonnes du quartier de Hautepierre à Strasbourg'];hal-01491479;
+"[""L'émergence du développement durable au regard des mutations de l'histoire urbaine""]";halshs-00574278;
+['Recent Excavation and Recording at the New Neolithic Rock Art Site of Vallée Aux Noirs, Buthiers (Seine-et-Marne, France)'];hal-01869312;10.1111/ojoa.12133
 "[""L'accessibilité des piétons à l'espace public urbain""]";halshs-00143380;
 "[""L'espace et son public : comment s'entendent-ils ?""]";halshs-01229580;
 ['Patrimoine et projet urbain : produire et valoriser la localité à Saint-Étienne, Nantes et Clermont-Ferrand'];halshs-01427608;10.3917/esp.152.0181
@@ -1357,23 +1363,28 @@ Titre;Réf. HAL;DOI
 ['How to Build an Embodiment Lab: Achieving Body Representation Illusions in Virtual Reality'];hal-01812797;10.3389/frobt.2014.00009
 ['Influence of Being Embodied in an Obese Virtual Body on Shopping Behavior and Products Perception in VR'];hal-01888990;10.3389/frobt.2018.00113
 ['Application of sensitivity analysis in building energy simulations: Combining first- and second-order elementary effects methods'];hal-00947577;10.1016/j.enbuild.2012.08.048
-"[""Libérez les sciences sociales avant qu'elles n'étouffent ! Enquête sur le libre-savoir scientifique""]";halshs-00623175;
 ['A pavement-watering thermal model for SOLENE-microclimat: development and evaluation'];hal-01790917;10.1016/j.uclim.2018.04.005
 ['ReBankment: Displacing Embankment Lines From Roads and Rivers With a Least Squares Adjustment'];hal-03411778;10.1080/23729333.2021.1972787
+['A hydrothermal model to assess the impact of green walls on urban microclimate and building energy consumption'];hal-01870606;10.1016/j.buildenv.2013.12.012
+['The use of SOLENE-microclimat model to assess adaptation strategies at the district scale'];hal-01667973;10.1016/j.uclim.2015.07.004
+['Microclimate and building energy consumption: study of different coupling methods'];hal-01799921;10.1080/17512549.2015.1043643
+['Direct and Indirect Impacts of Vegetation on Building Comfort: A Comparative Study of Lawns, Green Walls and Green Roofs'];hal-01583196;10.3390/en9010032
+['Simulation tools to assess microclimate and building energy – A case study on the design of a new district'];hal-01799917;10.1016/j.enbuild.2015.06.032
 ['Filmer les collections, déjouer les régimes de visibilité'];hal-03142025;
 ['Le « chef d’orchestre » au risque de « l’homme-orchestre » : les chefs de projet dans l’individualisation paradoxale du travail collectif'];halshs-03231390;10.3917/sopr.042.0021
 ['New architectural forms to increase dew collection'];hal-00978323;
 "['Raison technique et ""phantaisie"" quotidienne']";hal-01505444;
 ['CFD simulations of the night-time condensation inside a closed glasshouse: Sensitivity analysis to outside external conditions, heating and glass properties'];hal-01526013;10.1016/j.biosystemseng.2014.08.017
-['Microclimate and building energy consumption: study of different coupling methods'];hal-01799921;10.1080/17512549.2015.1043643
-['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];hal-01141712;10.1016/j.uclim.2015.04.001
-['Radiative properties of the urban fabric derived from surface form analysis: A simplified solar balance model'];hal-01251355;10.1016/jsolener.2015.08.031
 ['SOLENE-microclimate: A Tool to Evaluate Envelopes Efficiency on Energy Consumption at District Scale.'];hal-01799920;10.1016/j.egypro.2015.11.088
 ['L’ingénierie privée en aménagement et urbanisme\u202f: une prothèse de l’ingénierie publique\u202f?'];halshs-03274055;
-['Modeling methods to assess urban fluxes and heat island mitigation measures from street to city scale'];hal-01145181;10.1093/ijlct/ctt049
 ['Gérer les informations temporelles dans et par les modèles informatiques'];hal-01259330;10.3166/RIG.25.415-436
 ['Comment les consommateurs réagissent-ils, en situation d’achat, face à des fruits et légumes difformes\xa0? Premiers résultats d’une étude menée en magasin laboratoire virtuel immersif'];hal-02556606;10.3917/ror.141.0050
 "[""Voir l'invisible : de la vision par ordinateur aux réalités augmentée et Virtuelle""]";hal-01826891;
+['High resolution thermo-radiative modeling of an urban fragment in Marseilles city center during the UBL-ESCOMPTE campaign'];hal-01145124;10.1016/j.buildenv.2011.02.001
+['An application of the thermo-radiative model SOLENE for the evaluation of street canyon energy balance'];hal-01145095;10.1016/j.buildenv.2009.11.011
+['Standardisation de la conception et sur mesure organisationnel : la sous-traitance de l’ingénierie urbaine'];halshs-02103422;10.3406/aru.2018.3270
+"['Les enjeux d’une ""approche globale"" en aménagement : quand les études cherchent leur place entre expertise, conseil et conception']";hal-01419363;
+['Dans l’ombre de la décision\xa0: les fonctions multiples des rapports d’études dans la délégation marchande de l’expertise en politiques urbaines'];hal-03007006;10.3917/ripc.264.0083
 ['Un quartier en projet(s). La colline du Crêt-de-Roch (Saint-Etienne, Loire)'];halshs-00395083;
 ['La visite à Grenoble. Quand l’usine Aaton fabrique des images et des sons'];hal-03340366;
 ['Uma Brecha Crítica na “Cidade Garantida” ? Espaços Intermediáros e Arquiteturas de Uso', 'The Guaranteed City: The Ruin of Urban Criticism?'];hal-03384949;
@@ -1427,7 +1438,6 @@ Titre;Réf. HAL;DOI
 ['The Mountain Metropolis’s Land Design Project. Grenoble, from Plain to Slope', 'Le projet de sol de la métropole montagne\u202f: Grenoble, de plaines en pentes'];hal-01995848;10.4000/rga.4088
 "[""Effects of physical, non-immersive virtual, and immersive virtual store environments on consumers' perceptions and purchase behavior""]";hal-02551772;10.1016/j.chb.2020.106374
 ['How to Design a Park and Its Surrounding Urban Morphology to Optimize the Spreading of Cool Air?'];hal-01706788;10.3390/cli6010010
-['Direct and Indirect Impacts of Vegetation on Building Comfort: A Comparative Study of Lawns, Green Walls and Green Roofs'];hal-01583196;10.3390/en9010032
 ['The polyphonies which weave the city', 'As polifonias que tecem a cidade'];halshs-02181882;
 ['De la déconstruction philosophique au déconstructivisme architectural et vice-versa'];hal-02551762;
 ['Concept generation techniques change patterns of brain activation during engineering design'];hal-03039827;10.1017/dsj.2020.30
@@ -1438,14 +1448,13 @@ Titre;Réf. HAL;DOI
 "[""Les puissances d'imprégnation de l'ambiance""]";hal-01878786;
 "[""Les mises en ambiance de la ville apaisée. Paradoxes et risques d'une aseptisation programmée""]";hal-03174902;
 ['Enseignement de l’architecture : pratiques à inventer'];hal-02648646;
-['Vers une grammaire narrative à 360° : Ou comment la construction d’un décor réel vient dynamiser les questionnements théoriques'];hal-02886073;
 ['Participate and transform territories: Interactions between inhabitants, techniques and milieux using the notion of «\xa0citizen as sensor\xa0»', 'Participer et transformer les territoires'];hal-01712477;10.4000/netcom.2668
+['The urban boundary-layer field campaign in Marseille (UBL/CLU-ESCOMPTE): set-up and first results'];hal-00111637;10.1007/s10546-004-9241-4
 "[""De l'aura à l'atmosphère. Penser la dimension politique des paysages urbains avec Walter Benjamin""]";hal-02397480;10.4000/cps.3251
 ['Le transect : un opérateur abductif'];hal-01518175;
 ['Echapper à l’emprise commerciale entre «\xa0les boîtes\xa0»'];hal-02474323;
 ['Problématiques environnementales et outils numériques'];hal-02188465;
 ['Pensar a dignidade sem falar de linguagem da capacidade em agir'];hal-01578016;
-['Simulation tools to assess microclimate and building energy – A case study on the design of a new district'];hal-01799917;10.1016/j.enbuild.2015.06.032
 "[""Influence of virtual objects' shadows and lighting coherence on distance perception in optical see‐through augmented reality""]";hal-02200576;10.1002/jsid.832
 ['Visites touristiques et détournements du passé sur la Route de l’esclave à Ouidah', 'Tourist visits and misappropriations of the past on the Slave Route in Ouidah'];hal-02986884;10.3917/ethn.201.0065
 ['La plage urbaine spontanée, une nouvelle forme d’appropriation oisive de l’espace public', 'The urban spontaneous beach, a new kind of appropriation of the public space for idleness'];halshs-02900430;10.4000/craup.3647
@@ -1453,6 +1462,8 @@ Titre;Réf. HAL;DOI
 ['Réhabiliter les façades légères dans l’habitat du XXe siècle\u202f: l’exemple d’une façade de Jean Prouvé à Lyon'];hal-03283225;
 ['Camera Pose Estimation Using Collaborative Databases and Single Building Image'];hal-03060116;10.4236/jgis.2020.126036
 ['A framework for studying design thinking through measuring designers’ minds, bodies and brains'];hal-02898072;10.1017/dsj.2020.15
+['Le stage de formation pratique en cycle master, dispositif plébiscité ou déprécié ? Le cas de l’école nationale supérieure d’architecture de Nantes (ensa Nantes)'];hal-03463040;
+['Lived and perceived space during lock-down in a sensitive map approach'];hal-03496341;10.5194/ica-proc-4-50-2021
 ['Modeling the influence of vegetation and water pond on urban microclimate'];hal-00285896;
 ['Microclimatic coupling as a solution to improve building energy simulation in an urban context'];hal-01870609;10.1016/j.enbuild.2011.02.010
 "[""L'équation managementale""]";halshs-03274064;
@@ -1461,17 +1472,16 @@ Titre;Réf. HAL;DOI
 "[""Les fonds de recherche dans les écoles d'architecture : une politique documentaire en construction""]";hal-02124020;
 ['Real-time adaptive blur for reducing eye strain in stereoscopic displays'];hal-00783076;10.1145/2207216.2207220
 ['Cairo behind the gates', 'Le Caire derrière les murs'];hal-01324053;
-['The use of SOLENE-microclimat model to assess adaptation strategies at the district scale'];hal-01667973;10.1016/j.uclim.2015.07.004
-"[""Quand l'Europe renie son passé""]";hal-03417670;10.3917/comm.107.0796
-['Genèse des formations en urbanisme en France : Grenoble un “laboratoire urbain” pas comme les autres\xa0?'];hal-01995855;10.4000/tem.4773
-['Urban heat island temporal and spatial variations: Empirical modeling from geographical and meteorological data'];hal-01630175;10.1016/j.buildenv.2017.08.009
-['High resolution thermo-radiative modeling of an urban fragment in Marseilles city center during the UBL-ESCOMPTE campaign'];hal-01145124;10.1016/j.buildenv.2011.02.001
-['An application of the thermo-radiative model SOLENE for the evaluation of street canyon energy balance'];hal-01145095;10.1016/j.buildenv.2009.11.011
-['A hydrothermal model to assess the impact of green walls on urban microclimate and building energy consumption'];hal-01870606;10.1016/j.buildenv.2013.12.012
-['Standardisation de la conception et sur mesure organisationnel : la sous-traitance de l’ingénierie urbaine'];halshs-02103422;10.3406/aru.2018.3270
-"['Les enjeux d’une ""approche globale"" en aménagement : quand les études cherchent leur place entre expertise, conseil et conception']";hal-01419363;
-['Dans l’ombre de la décision\xa0: les fonctions multiples des rapports d’études dans la délégation marchande de l’expertise en politiques urbaines'];hal-03007006;10.3917/ripc.264.0083
-['A numerical exercise for turbulent natural convection and pollutant diffusion in a two-dimensional partially partitioned cavity'];hal-00285872;
-['Permanent Genetic Resources added to Molecular Ecology Resources Database 1 June 2010 - 31 July 2010'];hal-01094222;10.1111/j.1755-0998.2010.02916.x
-['Quelle place du sonore dans la production urbaine\xa0? Éclairage par les postures et pratiques professionnelles dans le cadre du diagnostic sonore urbain'];hal-02948549;10.4000/vertigo.23818
+['Working Modes with a Declarative Modeler'];hal-00816837;10.1016/S0169-7552(98)00176-7
 ['Smart system to generate the optimal authorized bounding volume'];hal-03451894;10.1108/OHI-02-2021-0039
+"[""Définir l'ingénierie par sa pratique""]";hal-03477197;
+['Permanent Genetic Resources added to Molecular Ecology Resources Database 1 June 2010 - 31 July 2010'];hal-01094222;10.1111/j.1755-0998.2010.02916.x
+['Vers une grammaire narrative à 360° : Ou comment la construction d’un décor réel vient dynamiser les questionnements théoriques'];hal-02886073;
+['A numerical exercise for turbulent natural convection and pollutant diffusion in a two-dimensional partially partitioned cavity'];hal-00285872;
+['Une critique de l’urbain depuis le champ des ambiances. Perspectives', 'A critique of the urban from the field of ambiences. Perspectives'];hal-03455577;10.4000/ambiances.3805
+['Optimal target localization for subthalamic stimulation in patients with Parkinson disease'];hal-01251658;10.1212/WNL.0000000000000315
+['B-AIR : L’art infini de la Radio'];hal-03504295;
+['Radiative and heat storage properties of the urban fabric derived from analysis of surface forms'];hal-01141712;10.1016/j.uclim.2015.04.001
+['Radiative properties of the urban fabric derived from surface form analysis: A simplified solar balance model'];hal-01251355;10.1016/jsolener.2015.08.031
+['Urban heat island temporal and spatial variations: Empirical modeling from geographical and meteorological data'];hal-01630175;10.1016/j.buildenv.2017.08.009
+['Modeling methods to assess urban fluxes and heat island mitigation measures from street to city scale'];hal-01145181;10.1093/ijlct/ctt049

@@ -25,13 +25,13 @@ if __name__ == "__main__":
         print("\n[FINI] Récupération des données hal par api\n")
 
     if step < 1:
-        stats, df_charge = chargement_tout(donnees=donnees["data"]["dois"],
-                                           recherche_erreur=donnees["parametres"]["recherche_erreurs"],
-                                           utilise_api_hal=donnees["parametres"]["utilise_api_hal"])
+        df_charge = chargement_tout(donnees=donnees["data"]["dois"],
+                                    recherche_erreur=donnees["parametres"]["recherche_erreurs"],
+                                    utilise_api_hal=donnees["parametres"]["utilise_api_hal"])
         print("\n[FINI] Chargement fini\n")
     elif step == 1:
-        df_charge = pd.read_csv("./resultats/fichiers_csv/consolider_doi_hal_id.csv", encoding="utf8")    
-    
+        df_charge = pd.read_csv("./resultats/fichiers_csv/consolider_doi_hal_id.csv", encoding="utf8")
+
     if step < 2:
         df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], match_ref=donnees["data"]["match_ref"],
                                   progression_denominateur=100)
@@ -47,7 +47,8 @@ if __name__ == "__main__":
             df_charge = pd.read_csv("./resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
 
     if step < 4:
-        df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"], choixDomaines=donnees["choixDomaines"])
+        df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"],
+                            choixDomaines=donnees["choixDomaines"])
         print("\n[FINI] Alignement du dataframe fini")
     elif step == 4:
         df_charge = pd.read_csv("./resultats/fichiers_csv/data_complete.csv", encoding="utf8")
