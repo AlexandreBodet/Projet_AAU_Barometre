@@ -1,6 +1,7 @@
 import sys
 import json
 import unittest
+import os
 import pandas as pd
 sys.path.append("../")
 from src import configuration
@@ -11,7 +12,7 @@ with open("./settings.json") as json_file:
 
 class TestConfiguration(unittest.TestCase):
     def test_dossiers_data(self):
-        configuration.dossier_data()
+        configuration.dossiers_data()
         self.assertTrue(os.path.isdir("./data"))
         self.assertTrue(os.path.isdir("./data/dois"))
         self.assertTrue(os.path.isdir("./data/apc_tracking"))

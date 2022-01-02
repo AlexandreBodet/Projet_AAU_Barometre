@@ -27,9 +27,6 @@ class TestRetrieveHal(unittest.TestCase):
         self.assertEqual(df.columns[1], "Réf. HAL")
         self.assertEqual(df.columns[2], "DOI")
 
-    def test_pandas_df(self):
-        pd_testing.assert_frame_equal(pd.DataFrame([0, 1, 0, 0]), pd.DataFrame([0, 0, 0, 0]))
-
 
 if __name__ == '__main__':
     unittest.main()
