@@ -33,11 +33,11 @@ if __name__ == "__main__":
         df_charge = pd.read_csv("./resultats/fichiers_csv/consolider_doi_hal_id.csv", encoding="utf8")
 
     if step < 2:
-        df_charge = enrich_to_csv(df=df_charge, email=donnees["mail"], match_ref=donnees["data"]["match_ref"],
-                                  progression_denominateur=100)
+        enrich_to_csv(df=df_charge, email=donnees["mail"], match_ref=donnees["data"]["match_ref"],
+                      progression_denominateur=100)
         print("\n[FINI] Enrichissement fini\n")
     elif step == 2:
-        df_charge = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv", encoding="utf8")
+        pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv", encoding="utf8")
 
     if donnees["parametres"]["calcul_APC"]:
         if step < 3:
@@ -47,7 +47,7 @@ if __name__ == "__main__":
             df_charge = pd.read_csv("./resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
 
     if step < 4:
-        df_charge = aligner(df=df_charge, referentials=donnees["data"]["match_ref"],
+        df_charge = aligner(referentials=donnees["data"]["match_ref"],
                             choixDomaines=donnees["choixDomaines"])
         print("\n[FINI] Alignement du dataframe fini")
     elif step == 4:

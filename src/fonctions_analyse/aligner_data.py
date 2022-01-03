@@ -6,6 +6,7 @@ Pour l'instant, seulement pour les données sortant de hal.
 import pandas as pd
 import json as j
 from ast import literal_eval
+import os
 
 
 def deduce_oa(row):
@@ -127,8 +128,10 @@ def aligner(referentials, choixDomaines, df=None):
     :return pd.Dataframe: dataframe modifié
     """
     if df is None:
-        df = pd.read_csv(
-            "./resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
+        if os.path.isfile("./resultats/fichiers_csv/ajout_apc.csv"):
+            df = pd.read_csv("./resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
+        else:
+            df = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv", encoding="utf8")
 
     # alignement avec les données de hal
     with open("./data/"+referentials, "r", encoding="utf-8") as json_file:

@@ -7,6 +7,7 @@ import numpy as np
 import requests as r
 import pandas as pd
 import json as j
+from ast import literal_eval
 
 
 def req_to_json(url):
@@ -281,11 +282,14 @@ def enrich_to_csv(df, email, match_ref="match_referentials.json", progression_de
     """
     df.reset_index(drop=True, inplace=True)
     df = enrich_df(df, email, match_ref, progression_denominateur)
-    df_reorder = df[
-        ["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location", "hal_openAccess_bool",
-         "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain", "hal_shsdomain", "hal_infodomain",
-         "published_date", "published_year", "journal_name", "journal_issns", "publisher", "genre", "journal_issn_l",
-         "oa_status", "upw_location", "version", "suspicious_journal", "licence", "journal_is_in_doaj", "journal_is_oa",
-         "author_count", "is_paratext"]]
+    try:
+        df_reorder = df[["doi", "halId", "hal_coverage", "upw_coverage", "title", "hal_docType", "hal_location",
+                         "hal_openAccess_bool", "hal_submittedDate", "hal_licence", "hal_selfArchiving", "hal_domain",
+                         "hal_shsdomain", "hal_infodomain", "published_date", "published_year", "journal_name",
+                         "journal_issns", "publisher", "genre", "journal_issn_l", "oa_status", "upw_location",
+                         "version", "suspicious_journal", "licence", "journal_is_in_doaj", "journal_is_oa",
+                         "author_count", "is_paratext"]]
+    except KeyError:
+        print("\n\n\n\n\n!!!\n!Vérifier l'adresse mail dans les settings, certaines informations sont manquantes!\n!!!\n")
+        df_reorder = df.copy()
     df_reorder.to_csv("./resultats/fichiers_csv/df_metadonnees.csv", index=False, encoding="utf8")
-    return df_reorder
