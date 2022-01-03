@@ -16,7 +16,7 @@ with open("./data/match_referentials.json") as json_file:
     match_referencial_expected = j.load(json_file)
 
 df_charge = pd.read_csv(
-    "../resultats/fichiers_csv/df_metadonnees.csv", encoding="utf8")
+    "./resultats/fichiers_csv/df_metadonnees.csv", encoding="utf8")
 class TestAlignerData(unittest.TestCase):
         # charger et exécuter. Vérifier les types
 
