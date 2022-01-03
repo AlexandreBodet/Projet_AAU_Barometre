@@ -31,11 +31,11 @@ def configurations():
     elif garder_donnees == "n":
         if os.path.isdir("./resultats/fichiers_csv"):
             shutil.rmtree("./resultats/fichiers_csv/")  # supprime récursivement le dossier des résultats en csv
-        changer_settings = None
-        while changer_settings != "y" and changer_settings != "n":
-            changer_settings = input("Souhaitez-vous changer les settings/paramètres? [y/n]\n")
-        if changer_settings == "y":
-            modification_settings()
+    changer_settings = None
+    while changer_settings != "y" and changer_settings != "n":
+        changer_settings = input("Souhaitez-vous changer les settings/paramètres? [y/n]\n")
+    if changer_settings == "y":
+        modification_settings(garder_donnees)
 
     dossiers_data()
     return step
@@ -61,7 +61,7 @@ def dossiers_data():
         os.mkdir("./resultats/img")
 
 
-def modification_settings():
+def modification_settings(garder_donnees):
     """
     Si l'utilisateur le veut, la fonction permet de modifier le fichier settings.json qui a tous les paramètres du projet.
     """
@@ -70,45 +70,46 @@ def modification_settings():
     print(
         "A chaque modification proposée, entrer quelque chose pour modifier et ne rien entrer pour ne rien modifier.\n")
 
-    print("Adresse mail actuelle pour les requêtes à l'API d'Unpaywall : " + donnees["mail"])
-    entree = input("Modification de l'adresse mail?\n")
-    if entree != "":
-        donnees["mail"] = entree
-        print("Adresse mail modifiée en : " + entree + "\n")
-
-    print("Utilisation actuelle de l'API de hal : " + str(donnees["parametres"]["utilise_api_hal"]))
-    entree = input(
-        "Attention, le calcul ne fonctionne que si l'année utilisée pour les graphiques est présente dans le fichier openapc_journals.csv.\nUtilisation de l'API hal? [y/n]\n")
-    if entree == "y":
-        donnees["parametres"]["utilise_api_hal"] = True
-        print("API hal utilisée!\n")
-        print("Nom du labo pour la requête à HAL : " + donnees["api_hal"]["nom_labo"])
-        entree = input("Nouveau nom de labo? :\n")
+    if garder_donnees == "n":
+        print("Adresse mail actuelle pour les requêtes à l'API d'Unpaywall : " + donnees["mail"])
+        entree = input("Modification de l'adresse mail?\n")
         if entree != "":
-            donnees["api_hal"]["nom_labo"] = entree
-            print("Nom du labo changé en : " + donnees["api_hal"]["nom_labo"] + " !\n")
-    elif entree == "n":
-        donnees["parametres"]["utilise_api_hal"] = False
-        print("Fichier hal manuel utilisé! Nom : " + donnees["data"]["doi"]["hal_manuel"] + "\n")
+            donnees["mail"] = entree
+            print("Adresse mail modifiée en : " + entree + "\n")
 
-    print("Chercher les erreurs (doublons de titres et hal sans doi) : " + str(
-        donnees["parametres"]["recherche_erreurs"]))
-    entree = input("Chercher les erreurs pour les mettre en csv? [y/n]\n")
-    if entree == "y":
-        donnees["parametres"]["recherche_erreurs"] = True
-        print("Les erreurs seront enregistrées!")
-    elif entree == "n":
-        donnees["parametres"]["recherche_erreurs"] = False
-        print("Les erreurs ne seront pas enregistrées!\n")
+        print("Utilisation actuelle de l'API de hal : " + str(donnees["parametres"]["utilise_api_hal"]))
+        entree = input(
+            "Attention, le calcul ne fonctionne que si l'année utilisée pour les graphiques est présente dans le fichier openapc_journals.csv.\nUtilisation de l'API hal? [y/n]\n")
+        if entree == "y":
+            donnees["parametres"]["utilise_api_hal"] = True
+            print("API hal utilisée!\n")
+            print("Nom du labo pour la requête à HAL : " + donnees["api_hal"]["nom_labo"])
+            entree = input("Nouveau nom de labo? :\n")
+            if entree != "":
+                donnees["api_hal"]["nom_labo"] = entree
+                print("Nom du labo changé en : " + donnees["api_hal"]["nom_labo"] + " !\n")
+        elif entree == "n":
+            donnees["parametres"]["utilise_api_hal"] = False
+            print("Fichier hal manuel utilisé! Nom : " + donnees["data"]["doi"]["hal_manuel"] + "\n")
 
-    print("Calcul des APC actuel : " + str(donnees["parametres"]["calcul_APC"]))
-    entree = input("Calculer les APC ? [y/n]\n")
-    if entree == "y":
-        donnees["parametres"]["calcul_APC"] = True
-        print("APC calculés\n")
-    elif entree == "n":
-        donnees["parametres"]["calcul_APC"] = False
-        print("APC non calculés\n")
+        print("Chercher les erreurs (doublons de titres et hal sans doi) : " + str(
+            donnees["parametres"]["recherche_erreurs"]))
+        entree = input("Chercher les erreurs pour les mettre en csv? [y/n]\n")
+        if entree == "y":
+            donnees["parametres"]["recherche_erreurs"] = True
+            print("Les erreurs seront enregistrées!")
+        elif entree == "n":
+            donnees["parametres"]["recherche_erreurs"] = False
+            print("Les erreurs ne seront pas enregistrées!\n")
+
+        print("Calcul des APC actuel : " + str(donnees["parametres"]["calcul_APC"]))
+        entree = input("Calculer les APC ? [y/n]\n")
+        if entree == "y":
+            donnees["parametres"]["calcul_APC"] = True
+            print("APC calculés\n")
+        elif entree == "n":
+            donnees["parametres"]["calcul_APC"] = False
+            print("APC non calculés\n")
 
     print("Année pour les graphiques sur 1 an : " + str(donnees["parametres"]["annee"]))
     entree = input("Nouvelle année?\n")
@@ -156,7 +157,7 @@ def modification_settings():
         except ValueError:
             print("Les années doivent être des entiers\n")
 
-    entree = input("Changement des graphiques à produire? y?\n")
+    entree = input("Changement des graphiques à produire? [y/n]?\n")
     if entree == "y":
         for i in donnees["parametres"]["graphiques"]:
             print("\nGraphique " + i + " : " + str(donnees["parametres"]["graphiques"][i]))
@@ -167,6 +168,8 @@ def modification_settings():
             elif entree == "n":
                 donnees["parametres"]["graphiques"][i] = False
                 print("Le graphique " + i + " ne sera pas produit!")
+    else:
+        print("les graphiques ne sont pas modifiés")
 
     with open("./settings.json", "w", encoding="utf-8") as json_file:
         json.dump(donnees, json_file, ensure_ascii=False, indent=2)  # écrit les settings modifiés
