@@ -171,6 +171,53 @@ def modification_settings(garder_donnees):
     else:
         print("les graphiques ne sont pas modifiés")
 
+    entree = input("\nChangement dans les domaines? [y/n]?\n")
+    if entree == "y":
+        for i in donnees["choixDomaines"]["domain"]:
+            print("\ndomaine " + i + " : " +
+                  str(donnees["choixDomaines"]["domain"][i]))
+            entree = input("Garder ce domaine? si n, il sera comptabiliser en \"Autres\" [y/n]\n")
+            if entree == "y":
+                donnees["choixDomaines"]["domain"][i] = True
+                print("Le domaine " + i + " sera comptabiliser!")
+            elif entree == "n":
+                donnees["choixDomaines"]["domain"][i] = False
+                print("Le domaine " + i + " ne sera pas comptabiliser!")
+    else:
+        print("les domaines ne sont pas modifiés")
+
+    entree = input("\nChangement dans le sous-domaine ssh? [y/n]?\n")
+    if entree == "y":
+        for i in donnees["choixDomaines"]["shsdomain"]:
+            print("\ndomaine " + i + " : " +
+                  str(donnees["choixDomaines"]["shsdomain"][i]))
+            entree = input(
+                "Garder ce sous-domaine? si n, il sera comptabiliser en \"Autres\" [y/n]\n")
+            if entree == "y":
+                donnees["choixDomaines"]["shsdomain"][i] = True
+                print("Le sous-domaine " + i + " sera comptabiliser!")
+            elif entree == "n":
+                donnees["choixDomaines"]["shsdomain"][i] = False
+                print("Le sous-domaine " + i + " ne sera pas comptabiliser!")
+    else:
+        print("les sous-domaines de ssh ne sont pas modifiés")
+
+    entree = input("\nChangement dans le sous-domaine info? [y/n]?\n")
+    if entree == "y":
+        for i in donnees["choixDomaines"]["infodomain"]:
+            print("\ndomaine " + i + " : " +
+                  str(donnees["choixDomaines"]["infodomain"][i]))
+            entree = input(
+                "Garder ce sous-domaine? si n, il sera comptabiliser en \"Autres\" [y/n]\n")
+            if entree == "y":
+                donnees["choixDomaines"]["infodomain"][i] = True
+                print("Le sous-domaine " + i + " sera comptabiliser!")
+            elif entree == "n":
+                donnees["choixDomaines"]["infodomain"][i] = False
+                print("Le sous-domaine " + i + " ne sera pas comptabiliser!")
+    else:
+        print("les sous-domaines d'info ne sont pas modifiés")
+
     with open("./settings.json", "w", encoding="utf-8") as json_file:
         json.dump(donnees, json_file, ensure_ascii=False, indent=2)  # écrit les settings modifiés
     return None
