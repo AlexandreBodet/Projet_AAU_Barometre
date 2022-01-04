@@ -6,7 +6,7 @@ import pandas.testing as pd_testing
 sys.path.append("../")
 from src.importation_data.retrieve_hal import api_to_csv, req_to_pd
 
-with open("../settings.json") as json_file:
+with open("../settings.json", "r", encoding="utf-8") as json_file:
     donnees = json.load(json_file)
 
 

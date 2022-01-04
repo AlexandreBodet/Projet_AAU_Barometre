@@ -79,7 +79,7 @@ def modification_settings(garder_donnees):
 
         print("Utilisation actuelle de l'API de hal : " + str(donnees["parametres"]["utilise_api_hal"]))
         entree = input(
-            "Attention, le calcul ne fonctionne que si l'année utilisée pour les graphiques est présente dans le fichier openapc_journals.csv.\nUtilisation de l'API hal? [y/n]\n")
+            "Utilisation de l'API hal? [y/n]\n")
         if entree == "y":
             donnees["parametres"]["utilise_api_hal"] = True
             print("API hal utilisée!\n")
@@ -102,7 +102,7 @@ def modification_settings(garder_donnees):
             donnees["parametres"]["recherche_erreurs"] = False
             print("Les erreurs ne seront pas enregistrées!\n")
 
-        print("Calcul des APC actuel : " + str(donnees["parametres"]["calcul_APC"]))
+        print("Attention, le calcul ne fonctionne que si l'année utilisée pour les graphiques est présente dans le fichier openapc_journals.csv.\nCalcul des APC actuel : " + str(donnees["parametres"]["calcul_APC"]))
         entree = input("Calculer les APC ? [y/n]\n")
         if entree == "y":
             donnees["parametres"]["calcul_APC"] = True

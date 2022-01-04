@@ -6,7 +6,7 @@ import pandas as pd
 sys.path.append("../")
 from src import configuration
 
-with open("./settings.json") as json_file:
+with open("./settings.json", "r", encoding="utf-8") as json_file:
     donnees = json.load(json_file)
 
 

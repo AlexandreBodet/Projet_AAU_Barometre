@@ -40,7 +40,14 @@ def track_apc(doi, ligne, open_apc_dois, openapc_journals, doaj_apc_journals):
     # Si un ISSN est dans openapc et que des APC ont été payés la même année
     cols = ["issn", "issn_print", "issn_electronic", "issn_l"]
     openapc_mean = False
-    if ligne.published_year and 2014 < int(ligne.published_year) < date.today().year:
+    annees = list(openapc_journals.columns)
+    L = []
+    for i in annees:
+        try:
+            L.append(int(i))  # prend toutes les années de openapc_journals
+        except ValueError:
+            continue
+    if ligne.published_year and min(L) <= int(ligne.published_year) <= max(L):  # vérifie que l'année est dans openapc_journals
         for item in issns:
             for col in cols:
                 if item and openapc_journals[col].str.contains(item).any():
@@ -145,9 +152,8 @@ def ajout_apc(df=None, data_apc=None):
     if df is None:
         if os.path.exists("./resultats/fichiers_csv/df_metadonnees.csv"):
             df = pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv", encoding="utf8")
-            print("Pas de dataframe en entrée de ajout_apc(). Ancien fichier df_metadonnees.csv chargé à la place")
         else:
-            raise Exception("Erreur : pas de dataframe spécifié en entrée de ajout_apc()")
+            raise Exception("Erreur : pas de dataframe trouvé en entrée de ajout_apc()")
 
     openapc_dois = pd.read_csv("./data/apc_tracking/" + data_apc["openapc_dois"], na_filter=False)
     openapc_journals = pd.read_csv("./data/apc_tracking/" + data_apc["openapc_journals"], na_filter=False)

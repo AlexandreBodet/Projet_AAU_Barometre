@@ -36,15 +36,11 @@ if __name__ == "__main__":
         enrich_to_csv(df=df_charge, email=donnees["mail"], match_ref=donnees["data"]["match_ref"],
                       progression_denominateur=100)
         print("\n[FINI] Enrichissement fini\n")
-    elif step == 2:
-        pd.read_csv("./resultats/fichiers_csv/df_metadonnees.csv", encoding="utf8")
 
     if donnees["parametres"]["calcul_APC"]:
         if step < 3:
-            df_charge = ajout_apc(df=df_charge, data_apc=donnees["data"]["apc_tracking"])
+            ajout_apc(data_apc=donnees["data"]["apc_tracking"])
             print("\n[FINI] Ajout apc fini\n")
-        elif step == 3:
-            df_charge = pd.read_csv("./resultats/fichiers_csv/ajout_apc.csv", encoding="utf8")
 
     if step < 4:
         df_charge = aligner(referentials=donnees["data"]["match_ref"],

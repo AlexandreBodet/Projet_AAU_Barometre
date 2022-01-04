@@ -16,7 +16,7 @@
     },
     "match_ref": "match_referentials.json"
   },
-  "mail": "alan.roussel@eleves.ec-nantes.fr",
+  "mail": "alexandre.bodet@eleves.ec-nantes.fr",
   "api_hal": {
     "nom_labo": "AAU",
     "nombre_lignes_api": 10000
@@ -24,10 +24,10 @@
   "parametres": {
     "utilise_api_hal": true,
     "recherche_erreurs": false,
-    "calcul_APC": false,
-    "annee": 2020,
-    "annees_debut": 2015,
-    "annees_fin": 2020,
+    "calcul_APC": true,
+    "annee": 2019,
+    "annees_debut": 2013,
+    "annees_fin": 2019,
     "graphiques": {
       "rec_discipline": true,
       "domain_rec_discipline": true,

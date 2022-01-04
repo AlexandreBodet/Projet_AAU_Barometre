@@ -9,7 +9,7 @@ sys.path.append("../")
 from src.fonctions_analyse import chargement_sources
 from src.importation_data.retrieve_hal import api_to_csv
 
-with open("./settings.json") as json_file:
+with open("./settings.json", "r", encoding="utf-8") as json_file:
     donnees = json.load(json_file)
 
 
