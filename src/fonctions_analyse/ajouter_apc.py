@@ -17,7 +17,7 @@ def track_apc(doi, ligne, open_apc_dois, openapc_journals, doaj_apc_journals):
     """
 
     # Vérifier si le DOI est dans openapc
-    if doi and open_apc_dois["doi"].str.contains(doi, regex=False).any():
+    if doi and doi != "nan" and open_apc_dois["doi"].str.contains(doi, regex=False).any():
         if "apc_amount_euros" in open_apc_dois:
             apc_amount = open_apc_dois.loc[open_apc_dois["doi"] == doi, "apc_amount_euros"].item()
         else:
