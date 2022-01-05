@@ -121,3 +121,4 @@ data/.DS_Store
 /data/dois/hal_from_api.csv
 /.idea/
 /resultats/img/
+/resultats/fichiers_csv/
