@@ -53,14 +53,12 @@ def graphique_comparaison_bases(dossier):
     while True:  # on cherche la puissance de 10 au-dessus du nombre de publications
         if maxi // (10 ** p) == 0:
             break
-        else:
-            p += 1
-            continue
+        p += 1
 
-    for i in range(1, 11):
-        if maxi > i * 10 ** (p - 1):
-            continue
-        else:
+    ytickmax = maxi  # au cas où ça ne marche pas
+
+    for i in range(1, 11):  # Trouve le premier chiffre (2000 si on avait 1590)
+        if maxi <= i * 10 ** (p - 1):
             ytickmax = i * 10 ** (p - 1)
             break
 
