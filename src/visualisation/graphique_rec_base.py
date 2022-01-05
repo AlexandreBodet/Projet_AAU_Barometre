@@ -47,7 +47,24 @@ def graphique_comparaison_bases(dossier):
     yticks = ax.yaxis.get_major_ticks()
     yticks[0].label1.set_visible(False)
 
-    plt.yticks([i for i in range(0, 1500, 250)], fontsize=10)
+    maxi = max(df_use["all"])
+
+    p = 0
+    while True:  # on cherche la puissance de 10 au-dessus du nombre de publications
+        if maxi // (10 ** p) == 0:
+            break
+        else:
+            p += 1
+            continue
+
+    for i in range(1, 11):
+        if maxi > i * 10 ** (p - 1):
+            continue
+        else:
+            ytickmax = i * 10 ** (p - 1)
+            break
+
+    plt.yticks([i for i in range(0, ytickmax+1, ytickmax//5)], fontsize=10)
     ax.set_ylabel("Nombre de publications", fontsize=8)
     ax.set_xticks(x)
     ax.set_xticklabels([n.capitalize() for n in data["name"]], fontsize=11)
