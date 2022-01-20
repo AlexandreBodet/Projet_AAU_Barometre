@@ -122,3 +122,7 @@ data/.DS_Store
 /.idea/
 /resultats/img/
 /resultats/fichiers_csv/
+
+
+/.scannerwork/
+/src/.scannerwork/
