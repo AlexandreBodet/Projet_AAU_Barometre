@@ -1,5 +1,5 @@
 # Baromètre de la Science Ouverte de l'AAU
-Ce baromètre se base sur celui réalisé par Maxence Larrieu ([code sur Github](https://github.com/ml4rrieu/bso_univ_paris)) et prend en compte spécifiquemnt les publications présentes sur HAL avec et sans doi. La ([page internet sur la science ouverte du AAU](https://aau.archi.fr/laboratoire-aau/science-ouverte/)) utilise les images générées par ce code.
+Ce baromètre se base sur celui réalisé par Maxence Larrieu ([code sur Github](https://github.com/ml4rrieu/bso_univ_paris)) et prend en compte spécifiquemnt les publications présentes sur HAL avec et sans doi. La [page internet sur la science ouverte du AAU](https://aau.archi.fr/laboratoire-aau/science-ouverte/) utilise les images générées par ce code.
 
 ## Instruction
 - Pour lancer le fichier principal main.py, il faut avoir l’environnement conda activé avec les bibliothèques détaillées dans le fichier requiements.txt. 
